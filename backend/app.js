@@ -6,7 +6,7 @@ const cors = require("cors")
 const {BCRYPT_WORK_FACTOR} = require("./config");
 const { ExpressError } = require('./expressError');
 const usersRoutes = require("./routes/users");
-
+require('dotenv').config()
 app.use(express.json());
 app.use(cors());
 app.use("/users", usersRoutes);

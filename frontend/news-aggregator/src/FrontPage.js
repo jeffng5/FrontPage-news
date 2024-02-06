@@ -6,13 +6,13 @@ import ColoredLine from "./ColoredLine"
 import { Link } from 'react-router-dom'
 
 let username = localStorage.getItem('username')
-let apiKey ='e6522b5c205148009c589b3bc68a637d'
+const apiKey = process.env.REACT_APP_APIKEY
 let pref = localStorage.getItem('preferences')
 let subj = pref.split(",")
 let term = localStorage.getItem('freePreferences')
 console.log(term)
 console.log(subj[0])
-
+console.log(apiKey)
 
 // holds bulk of search, many API calls, displays current date
 const FrontPage = () => {
@@ -39,17 +39,17 @@ useEffect (()=> {
         try { 
         if (subj[0]==='Australia' || subj[1]=== 'Australia' || subj[2]==='Australia' || subj[3]==='Australia'
         || subj[4]=== 'Australia') {
-            const res = await axios.get(`https://newsapi.org/v2/top-headlines?country=au&pageSize=10&apiKey=9e27e511f89b442e8a6dafcc72fb6e3c`)
+            const res = await axios.get(`https://newsapi.org/v2/top-headlines?country=au&pageSize=10&apiKey=${apiKey}`)
             setAustralia(res['data']['articles'])
         }
         if (subj[0]==='Asia' || subj[1]=== 'Asia' || subj[2]==='Asia' || subj[3]==='Asia'
-        || subj[4]=== 'Asia') {
-            const res1 = await axios.get(`https://newsapi.org/v2/top-headlines?country=jp&apiKey=9e27e511f89b442e8a6dafcc72fb6e3c`)
+        || subj[4]=== 'Asia'){
+            const res1 = await axios.get(`https://newsapi.org/v2/top-headlines?country=jp&apiKey=${apiKey}`)
             setAsia(res1['data']['articles'])
         }
         if (subj[0]==='U.K.' || subj[1]=== 'U.K.' || subj[2]==='U.K.' || subj[3]==='U.K.'
         || subj[4]==='U.K.') {
-            const res2 = await axios.get(`https://newsapi.org/v2/top-headlines?country=gb&apiKey=9e27e511f89b442e8a6dafcc72fb6e3c`)
+            const res2 = await axios.get(`https://newsapi.org/v2/top-headlines?country=gb&apiKey=${apiKey}`)
             setUk(res2['data']['articles'])
         }
     
