@@ -1,0 +1,48 @@
+.App {
+  text-align: center;
+}
+
+b.title { color: yellow;
+  font-size: 80px;
+  text-shadow: -1px -1px 0 black, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+
+}
+
+b {
+  color: forestgreen;
+
+}
+
+p.news-title {
+  font-family: Courier;
+
+}
+
+body {
+  background-color: whitesmoke;
+}
+
+h1.or {
+  margin-top: 25px;
+  font-size: 45px;
+}
+
+p.news-title {
+  margin-bottom: 5px;
+}
+
+.welcome {
+  margin-top : 5px;
+  margin-bottom: 5px;
+}
+
+#log{
+  height: 33px;
+  position: relative;
+  text-align: center;
+  margin-left: 0px;
+}
+
+p.username {
+  color: green;
+}
