@@ -7,12 +7,19 @@ import { Link } from 'react-router-dom'
 
 let username = localStorage.getItem('username')
 const apiKey = process.env.REACT_APP_APIKEY
-let pref = localStorage.getItem('preferences')
-let subj = pref.split(",")
+let pref = ""
+if (localStorage.getItem('preferences')){
+    pref = localStorage.getItem('preferences')
+    console.log(pref)
+} else {
+    pref = ",";
+}
+
+let subj = pref.split(',')
 let term = localStorage.getItem('freePreferences')
 console.log(term)
 console.log(subj[0])
-console.log(apiKey)
+
 
 // holds bulk of search, many API calls, displays current date
 const FrontPage = () => {
