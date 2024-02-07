@@ -1,22 +1,31 @@
 import React from 'react'
 import './App.css'
-import Login from "./Login"
-import SignUp from "./SignUp"
+import './semantic.css'
+import { Link } from 'react-router-dom'
+
 
 const Welcome = () => {
 
     return (
+        <>
         <body>
-        <h1 className='welcome'>Welcome to <p className= 'news-title'><b className = 'title'>YourFrontPageNews.com</b></p></h1>
+        <h1 className='welcome'>Welcome to</h1> <p className= 'news-title'><b className = 'title'>YourFrontPageNews.com</b></p>
 
         <h2><div><b></b></div>
-        <div>
-            your curated articles of your news preferences</div> <div>from the <b>top news publications</b></div></h2>
-            
-    <Login />
-        <h1 className='or'>Or</h1>
-    <SignUp />
-    </body>)
+        <div className="intro">
+            your curated articles of your news preferences</div> <div className='intro'>from the <b>top news publications</b></div></h2>
+
+      
+        <span>
+        <Link to = "/login"><p className='top'>Login</p></Link>
+        </span>
+        <span>
+        <Link to = "/signup"><p className='top'>Register</p></Link>
+        </span>
+         
+    </body>
+    </>
+    )
 }
 
 export default Welcome

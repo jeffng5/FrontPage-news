@@ -26,13 +26,22 @@ h1.or {
   margin-top: 25px;
   font-size: 45px;
 }
+h1.welcome {
 
+  margin-bottom: 100px;
+
+}
 p.news-title {
+ 
   margin-bottom: 5px;
 }
 
+p {
+  font-size: 25px;
+}
+
 .welcome {
-  margin-top : 5px;
+  margin-top : 50px;
   margin-bottom: 5px;
 }
 
@@ -45,4 +54,13 @@ p.news-title {
 
 p.username {
   color: green;
+}
+
+p{
+  font-size: 28px;
+}
+
+span {
+
+  margin-top: 500px;
 }

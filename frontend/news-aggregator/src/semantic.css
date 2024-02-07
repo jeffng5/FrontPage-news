@@ -1,0 +1,74 @@
+Form {
+    /* text-align: center; */
+    display: inline-block;
+    width: 500px;
+    height: 40 px;
+    font-size: 17px;
+}
+
+div {
+  font-size: 18px;
+    
+}
+div.button {
+    margin-top: 10px;
+  
+}
+
+button.save {
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: teal;
+    color: white;
+    padding: 5px;
+    font-weight: 550;
+    height: 40px;
+    width: 250px; 
+
+}
+
+button.preferences {
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: teal;
+    color: white;
+    padding: 5px;
+    font-weight: 550;
+    height: 40px;
+    width: 200px; 
+    
+}
+
+div.intro {
+    font-size: 30px;
+    font-family: Courier;
+}
+
+h1.prefs {
+    font-size: 55px;
+    font-family: Courier;
+}
+
+h3.topics {
+    font-size: 25px;
+    font-family: Courier;
+}
+
+h3.color {
+    padding-top: 10px;
+    color: green;
+    font-size: 23px;
+    font-family: Courier;
+}
+
+
+h1.welcome {
+    font-size: 80px;
+    font-family: Courier;
+}
+
+
+p.top, span {
+    padding: 30px;
+    padding-bottom: 0px;
+}

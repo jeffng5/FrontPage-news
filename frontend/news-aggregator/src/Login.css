@@ -4,18 +4,6 @@ body {
     font-family: Courier;
 }
 
-button.save {
-    border-radius: 5px;
-    background-color: teal;
-    color: white;
-    padding: 5px;
-    font-weight: 550;
-    height: 29px;
-    width: 150px; 
-    position: relative;
-    
-
-}
 
 button.log{
     position: relative;
@@ -75,11 +63,10 @@ div.preferences{
     opacity: .25;
 }
 
-h3.color {
-    color : green;
+
+h2.separator {
+    margin-top: 7px;
 }
-
-
 div.button {
     padding-top: 10px;
 }
@@ -94,5 +81,5 @@ h1#login-welcome {
 
 p {
 color: grey;
-
+font-size: 24px;
 } 

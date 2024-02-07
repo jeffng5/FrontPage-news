@@ -7,15 +7,14 @@ import { Link } from 'react-router-dom'
 
 let username = localStorage.getItem('username')
 const apiKey = process.env.REACT_APP_APIKEY
-let pref = ""
-if (localStorage.getItem('preferences')){
-    pref = localStorage.getItem('preferences')
-    console.log(pref)
-} else {
-    pref = ",";
-}
+
+
+let pref = localStorage.getItem('preferences')
+console.log(pref)
+
 
 let subj = pref.split(',')
+
 let term = localStorage.getItem('freePreferences')
 console.log(term)
 console.log(subj[0])
@@ -24,8 +23,10 @@ console.log(subj[0])
 // holds bulk of search, many API calls, displays current date
 const FrontPage = () => {
 // states for all the topics
+    const initialState= ([])
     const [dateTime, setDateTime] = useState(new Date())
-    const [term, setTerm] = useState([])
+    const [getTerm, setGetTerm] = useState([])
+    const [search, setSearch] = useState([])
     const [australia, setAustralia] =useState([])
     const [asia, setAsia] = useState([])
     const [uk, setUk] = useState([])
@@ -38,6 +39,8 @@ const FrontPage = () => {
     const [sports, setSports] = useState([])
     const [technology, setTechnology] = useState([])
     const date = dateTime.toLocaleDateString();
+
+
 
 useEffect (()=> {
     setDateTime(new Date());
@@ -104,28 +107,24 @@ useEffect (()=> {
     
     setTechnology(res10['data']['articles'])
     
-    
-    if (term){
-    const res11 = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&q=${term}pageSize=15&apiKey=${apiKey}`)
-    
-    setTerm(res11['data']['articles'])
-    } }
+
+    }
         }
-    
-    
-    
+     
     catch (err) {console.log(err)}
-        console.log(australia)
-        console.log(subj)
-    };   
-    getApi();
-    
-}, [])
-
  
-
-
-
+    };   
+    const getApi2= async ()=>{
+        
+        try {
+        const res11 = await axios.get(`https://newsapi.org/v2/everything?q=+${term}&language=en&sortBy=relevancy&apiKey=${apiKey}`)
+        setSearch(res11['data']['articles']) 
+    } catch (e) {console.log(e)}
+    }
+    getApi();
+    getApi2();
+    setSearch([])    
+}, [])
 
 
 return (
@@ -139,8 +138,8 @@ return (
         <Link to = "/logout"><p>Logout</p></Link>
    
         </div>
-<h1>Your Front Page News </h1>
-<h2>{date}</h2>
+<h1 className='title'>Your Front Page News </h1>
+<h2 className='date'>{date}</h2>
 
 <ColoredLine color = "black" />
 
@@ -233,7 +232,7 @@ return (
 
     author = {c.author} />))} 
 
-{term.map(c => (
+{search.map(c => (
     <ArticleCard  title = {c.title} 
     url = {c.url}
     description ={c.description}

@@ -34,7 +34,7 @@ const SignUp = () => {
             onChange={handleChange} value={formData.username}></input>
             </div>
             <div className= "log-in-form">
-            <input id= "password" type= "text" name= 'password' onChange={handleChange} placeholder= "password" value={formData.password}></input>
+            <input id= "password" type= "password" name= 'password' onChange={handleChange} placeholder= "password" value={formData.password}></input>
             </div>
             <div className= "log-in-form">
             <input id= "email" type= "text" name= 'email' onChange={handleChange} placeholder= "email" value={formData.email}></input>

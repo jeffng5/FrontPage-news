@@ -2,16 +2,15 @@ div.article {
     width: 100%;
     text-align: left;
     display: inline-grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 }
 
 div.author {
     width: 100%;
-    display: inline-grid;
     position: relative;
     top: 20%;
-    right: 5px;
-    grid-template-columns: 350px 100px;
+    margin-left: 20px;
+    left: 100%;
     font-size: 20px;
 }
 
@@ -29,12 +28,12 @@ img {
 
 button.archive {
 
-    background-color: rgba(249, 249, 44, 0.877);
+    background-color: yellow;
     color: black;
     height: 33px;
     width: 120px;
-    bottom: 30%;
-    left: 100%;
+    top: 10%;
+    left: 0%;
 }
 
 button.archived {
@@ -42,7 +41,7 @@ button.archived {
     color: black;
     height: 33px;
     width: 120px;
-    bottom: 30%;
+    bottom: 56%;
     left: 100%;
 }
 #date-location { display: inline-block; position: absolute; left: 15px; top: 125px; text-align: left; background-color: #FFFFFF; border: 1px solid #006699; padding: 4px; z-index: 2; }
@@ -61,16 +60,30 @@ border-radius: 6px;
 height: 330px;
 width: 490px;
 text-align: right;
+margin-left: 300px;
+margin-top: 30px;
 
 }
 
-h2 {
-  font-size:30px;
+h2.headline {
+  font-size:40px;
+  padding-left: 25px;
+
 }
 
 a {
     color: black;
     text-decoration: none;
+}
+
+h4.author{
+    font-size: 20px;;
+
+}
+
+h1.title {
+    font-size: 90px;
+    font-family: Courier;
 }
 
 h3.desc {
@@ -79,7 +92,14 @@ h3.desc {
 
 h2.headlines {
     margin-left: -150px;
+}
 
+h2#headlines {
+    padding-bottom: 50px;
+}
+
+h5.desc {
+    font-size: 20px;
 }
 
 p {
@@ -89,4 +109,11 @@ p {
 
 .archived {
     color: gray; 
+}
+
+
+h2.date {
+    font-family: Courier;
+    font-size: 35px;
+    padding-bottom: 10px;
 }

@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import "./Login.css"
+import "./semantic.css"
+import { FormField, Checkbox, Button } from 'semantic-ui-react'
+
 import { Link } from 'react-router-dom'
 
 
@@ -13,10 +16,9 @@ const Preferences = () => {
     const initialState = pref
     const [prefs, setPrefs] = useState(initialState)
 
-
 useEffect(()=>{
     setPrefs(pref)
-   
+    setPrefs(initialState)
 }, []
 )
 
@@ -24,6 +26,7 @@ useEffect(()=>{
 const handleForm = (e) => {
 
         let wildCard=[]
+        console.log(e.target.value)
         wildCard.push(e.target.value)
         localStorage.setItem('freePreferences', wildCard)
     }
@@ -48,16 +51,19 @@ function handleChange(e) {
         }
             console.log(searchTopics)
 }           // setting searchTopics to localStorage
-            localStorage.setItem('preferences', searchTopics)
-
+            
+        if (searchTopics.length >= 0) {
+        localStorage.setItem('preferences', searchTopics)
+        }
+    
             //error handle if searchTopics is >5 or <1
-            if (searchTopics.length > 5 || searchTopics.length < 1) {
+            if (searchTopics.length > 5) {
                 throw Error("You must select between 1 - 5 topics.")}
-
+     
     }
 
 console.log(localStorage.getItem('preferences'))
-console.log(localStorage.getItem('freePreferences'))
+const wildCard = localStorage.getItem('freePreferences')
 
 
 
@@ -78,66 +84,79 @@ if (username)
         <Link to = "/logout"><p>Logout</p></Link>
    
         </div>
-        <h1>News Topic Preferences</h1> 
+        <h1 className='prefs'>News Topic Preferences</h1> 
      
-        <h3> Your current Topics Are: <h3 className='color'>{prefs}</h3></h3>
+        <h3 className='topics'> Your current Topics Are: <h3 className='color'>{prefs}</h3></h3>
         
-        <h3> Please Choose One (Up to 5): </h3>
+        <h3 className='topics'> Please Choose One (Up to 5): </h3>
 
 <form>
-        <div>
-        <input type = 'checkbox' id ='Australia' name='Australia' value= 'Australia' onChange={handleChange}></input>   
-        <label for= "Australia">Australia</label>
+<FormField
+      control={Checkbox}
+      label={<label>Australia</label>}
+      id = 'Australia' name= 'Australia' value = "Australia" onChange={handleChange}
+    />
+    <FormField
+      control={Checkbox}
+      label={<label>Asia</label>}
+      id = 'Asia' name= 'Asia' value = "Asia" onChange={handleChange}   
+    />
+  <FormField
+      control={Checkbox}
+      label={<label>Business</label>}
+      id = 'Business' name= 'Business' value = "Business" onChange={handleChange}   
+    />
+    <FormField
+      control={Checkbox}
+      label={<label>Entertainment</label>}
+      id = 'Entertainment' name= 'Entertainment' value = "Entertainment" onChange={handleChange}   
+    />
+  <FormField
+      control={Checkbox}
+      label={<label>General</label>}
+      id = 'General' name= 'General' value = "General" onChange={handleChange}   
+    />
+  <FormField
+      control={Checkbox}
+      label={<label>U.K.</label>}
+      id = 'U.K' name= 'U.K' value = "U.K." onChange={handleChange}   
+    />
+   <FormField
+      control={Checkbox}
+      label={<label>Health</label>}
+      id = 'Health' name= 'Health' value = "Health" onChange={handleChange}   
+    />
+  <FormField
+      control={Checkbox}
+      label={<label>Science</label>}
+      id = 'Science' name= 'Science' value = "Science" onChange={handleChange}   
+    />
+   <FormField
+      control={Checkbox}
+      label={<label>Sports</label>}
+      id = 'Sports' name= 'Sports' value = "Sports" onChange={handleChange}   
+    />
+  <FormField
+      control={Checkbox}
+      label={<label>Technology</label>}
+      id = 'Technology' name= 'Technology' value = "Technology" onChange={handleChange}   
+    />
+  <FormField
+      control={Checkbox}
+      label={<label>U.S.</label>}
+      id = 'US' name= 'US' value = "US" onChange={handleChange}   
+    />
+
+            <h2 className='separator'>or</h2>
+<FormField>
+      <input type= 'text' id='Anything' name='Anything' placeholder='anything' onChange={handleForm}/>
+        <label for= "Anything">             Most popular articles by search term </label>
+    </FormField>
+    <div className='button'>
+        <button className="preferences" onClick={handleChange}>Save Preferences</button> 
         </div>
-        <div>
-        <input type = 'checkbox'   id ='Asia' name='Asia' value= 'Asia' onChange={handleChange} ></input>   
-        <label for= "Asia">Asia</label>
-        </div>
-        <div>
-        <input type = 'checkbox'  id='business' name= "business" value= "Business" onChange={handleChange} ></input>
-        <label for= "business" >Business</label>
-        </div>
-        <div>
-        <input type = 'checkbox'   id ='entertainment' name='entertainment' value= 'Entertainment' onChange={handleChange}></input>   
-        <label for= "entertainment">Entertainment</label>
-        </div>
-        <div>
-        <input type = 'checkbox'   id ='general' name='general' value= 'General' onChange={handleChange}></input>   
-        <label for= "general">General</label>
-        </div>
-        <div>
-        <input type = 'checkbox' id ='U.K.' name='U.K.' value= 'U.K.' onChange={handleChange} ></input>   
-        <label for= "Europe">U.K.</label>
-        </div>
-        <div>
-        <input type = 'checkbox'  id ='health' name='health' value= 'Health' onChange={handleChange} ></input>   
-        <label for= "health">Health</label>
-        </div>
-        <div>
-        <input type = 'checkbox' id ='science' name='science' value= 'Science' onChange={handleChange} ></input>   
-        <label for= "science">Science</label>
-        </div>
-        <div>
-        <input type = 'checkbox'   id ='sports' name='sports' value= 'Sports' onChange={handleChange}></input>   
-        <label for= "sports">Sports</label>
-        </div>
-        <div>
-        <input type = 'checkbox'  id ='technology' name='technology' value= 'Technology' onChange={handleChange}></input>   
-        <label for= "technology">Technology</label>
-        </div>
-        <div>
-        <input type = 'checkbox' id ='US' name='US' value= 'US' onChange={handleChange}></input>   
-        <label for= "US">U.S.</label>
-        </div>
-        <div className='button'>
-        <button className="save" onClick={handleChange}>Save Preferences</button> 
-        </div>
-            <h2>OR</h2>
-        <input type = 'text' id ='Anything' name='Anything' placeholder='Anything' onChange={handleForm}></input>   
-        <label for= "Anything"> most popular articles by search term / phrase </label> 
-        
         <div className="button">
-       <Link to = 'preferences'><button className='save'>See Front Page News</button></Link>
+     <Link to = 'preferences'><button className='save'>See Front Page News</button></Link> 
        
         </div>
     

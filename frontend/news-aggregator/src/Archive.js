@@ -19,7 +19,6 @@ const Archive = ({username, url, title, description, author}) =>{
         }
     }
 
-console.log(state)
 if (state) {
     return (
         <button className='archived'><img id= 'archive' src = {myImage} alt=''></img>Archived</button>
