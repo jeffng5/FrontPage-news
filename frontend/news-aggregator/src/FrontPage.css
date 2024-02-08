@@ -14,11 +14,25 @@ div.author {
     font-size: 20px;
 }
 
+div.button{
+    margin-top: 23px;
+
+}
+
 h1 {
     font-size: 90px;
 }
 
 img#archive {
+    margin-left: 10px;
+    width: 25px;
+    height: 25px;
+    bottom: 45px;
+    margin-top: 0px;
+    
+}
+
+img#Forum {
     margin-left: 10px;
     width: 25px;
     height: 25px;
@@ -34,6 +48,19 @@ button.archive {
     width: 120px;
     top: 10%;
     left: 0%;
+}
+
+button.forum {
+    border-radius: 8px;
+    background-color: aquamarine;
+    color: black;
+    height: 33px;
+    width: 120px;
+    top: 10%;
+    left: 0%;
+
+
+
 }
 
 button.archived {
@@ -100,6 +127,12 @@ h2#headlines {
 
 h5.desc {
     font-size: 20px;
+}
+
+h6 {
+    position: relative;
+    bottom: 27px;
+    font-size: 14px;
 }
 
 p {

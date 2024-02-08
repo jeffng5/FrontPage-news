@@ -40,13 +40,13 @@ router.post("/preferences", async function (req, res, next) {
 // route to query archived articles, returns archives for that user 
 router.get('/archives', async function (req, res, next) {
     try {
-        const {username} = req.query     
-        const results = await db.query(`SELECT * FROM archives WHERE username = $1`, [username]);
+        let username = 'Comet123'
+        const results = await db.query(`SELECT title, url, description, author FROM archives WHERE username = $1`, [username]);
 
-        let articles = results.rows
-        console.log('youve made it')
-        console.log(results)
-        return articles
+        let articles = results.rows;
+        console.log('youve made it');
+        console.log(results.rows);
+        return articles;
     }
     catch (err){
         return next(err)
@@ -57,13 +57,25 @@ router.get('/archives', async function (req, res, next) {
 router.post('/forum', async function (req, res, next) {
     try {
         const { username, url, title, description, author, urlToImage}= req.body
-    const postToForum = await db.query(`INSERT into forums (username, url, title, description, author, urlToImage) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`, [username, url, title, description, author, urlToImage])
+    const postToForum = await db.query(`INSERT into forum (username, url, title, description, author, urlToImage) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`, [username, url, title, description, author, urlToImage])
+    if (postToForum) {
+        console.log('Forum article POSTED!')
+    }
+}
+    catch (err) { console.log(err)}
+
+})
+
+router.get('/forum', async function(req, res, next){
+    try {
+        const results = await db.query(`SELECT * from forum`);
+    if (results)
+    {console.log(results.rows, "getting request")};
+        return results.rows;
     }
     catch (err) { console.log(err)}
 
-if (postToForum) {
-    console.log('Forum article POSTED!')
-}}
+}
 )
 
 

@@ -4,42 +4,42 @@ import ArticleCard from "./ArticleCard"
 
 let username = localStorage.getItem('username')
 
-
 //display archives 
 const Saved = () => {
 
-    const [display, setDisplay] = useState([])
+    const [articles, setArticles] = useState([])
 
 
     // useEffect(() =>{
     //     archiveResults()
     // }, [])
 
-    const archiveResults = async() => {
-    try{
+async function archiveResults() {
+
     console.log(username)
 //helper function to query archives
-    const res = await Helpers.getArticles(username)
-    console.log(res)
+    const resp = await Helpers.getArticles(username)
+    console.log("I am here")
+    console.log(resp)
 // res not returning anything
-    setDisplay(res)
-    }
-    catch (e) {
-        console.log(e)
-    }
+    setArticles(resp)
+  
 }
 archiveResults()
-console.log(display)
+console.log(articles)
+console.log(username)
+
 
 return (
+<>
+     <h1>THIS IS THE ARCHIVE PAGE</h1>
 
-    // <h1>THIS IS THE ARCHIVE PAGE</h1>
-
-[...display].map(c =>(<ArticleCard title= {c.title}
+{articles.map(c => (<ArticleCard title= {c.title}
     url = {c.url}
     description = {c.description}
     author = {c.author}/> ))
-
+    }
+</>
 
 
 )

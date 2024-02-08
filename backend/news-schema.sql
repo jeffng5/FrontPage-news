@@ -21,7 +21,7 @@ CREATE TABLE forum (
     username TEXT NOT NULL,
     url TEXT NOT NULL,
     title TEXT NOT NULL,
-    description TEXT NOT NULL,
+    description TEXT,
     author TEXT,
     urlToImage TEXT
 );
