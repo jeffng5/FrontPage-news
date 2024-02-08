@@ -4,6 +4,7 @@ const { Client } = require("pg");
 const { getDatabaseUri } = require("./config");
 
 let db;
+const password = process.env.REACT_APP_APIKEY
 
 
 if (process.env.NODE_ENV === "production") {
@@ -17,7 +18,7 @@ if (process.env.NODE_ENV === "production") {
 } else {
   db = new Client({
     // connectionString: getDatabaseUri()
-    connectionString: "postgresql://jeffreyng:beachbodyp90x@127.0.0.1:5433/news"
+    connectionString: `postgresql://jeffreyng:${password}@127.0.0.1:5433/news`
   });
 }
 
