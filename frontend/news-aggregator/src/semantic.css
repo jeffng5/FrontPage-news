@@ -1,9 +1,13 @@
-Form {
+body {
+    background-color: lightgray;
+}
+
+form {
     /* text-align: center; */
     display: inline-block;
     width: 500px;
     height: 40 px;
-    font-size: 17px;
+    font-size: 27px;
 }
 
 div {
@@ -16,29 +20,39 @@ div.button {
 }
 
 button.save {
-    font-size: 20px;
+    font-size: 17px;
     border-radius: 5px;
     background-color: teal;
     color: white;
-    padding: 5px;
+    padding: 3px;
     font-weight: 550;
-    height: 40px;
+    height: 35px;
     width: 250px; 
 
 }
 
 button.preferences {
-    font-size: 20px;
+    font-size: 17px;
     border-radius: 5px;
     background-color: teal;
     color: white;
-    padding: 5px;
+    padding: 3px;
     font-weight: 550;
-    height: 40px;
+    height: 35px;
     width: 200px; 
     
 }
 
+div.links {
+    text-align: right;
+    margin-top:25px;
+    display: inline-grid;
+    font-size: 25px;
+    color: lightgrey;
+    grid-template-columns: 600px 200px 200px 200px 200px;
+    width: 100%;
+    margin-bottom: -45px ;
+}
 div.intro {
     font-size: 30px;
     font-family: Courier;
@@ -49,15 +63,23 @@ h1.prefs {
     font-family: Courier;
 }
 
+h1.forum {
+    font-family: Courier;
+    font-size: 55px;
+}
+
+h2.separator {
+    margin-top: 7px;
+}
+
 h3.topics {
     font-size: 25px;
     font-family: Courier;
 }
 
 h3.color {
-    padding-top: 10px;
     color: green;
-    font-size: 23px;
+    font-size: 28px;
     font-family: Courier;
 }
 
@@ -67,8 +89,17 @@ h1.welcome {
     font-family: Courier;
 }
 
+p {
+    color: grey;
+    font-size: 24px;
+    } 
 
-p.top, span {
-    padding: 30px;
-    padding-bottom: 0px;
+label {
+    font-size: 14px;
+    font-weight:550;
+}
+
+#login-welcome {
+    font-size: 55px;
+    font-family: Courier;
 }

@@ -29,27 +29,21 @@ export class Helpers {
     static async loginUser(username, password) {
         let res = await this.request(`login`, {username, password})
         console.log(res)
-        if (res) {
-            localStorage.setItem('username', username)
-        }
-        return res;
+        console.log(res.data)
+        return res.data;
 
     }
 // user SignUp helper function
     static async signUpUser(username, password, email) {
         let res = await this.request(`register`, {username, password, email}, 'post')
-        console.log(res)
-        if (res) {
-            localStorage.setItem('username',username)
-        }
-            
-        return res;
+        console.log(res)      
+        return res.data;
 
     }
 // call to archive articles
     static async saveArticle(username, url, title, description, author) {
         let res = await this.request(`users/preferences`, {username, url, title, description, author}, 'post')
-        console.log(res, "SAVE ARTICLE")
+        console.log(res, "SAVED ARTICLE")
         return res;
     }
 
@@ -59,14 +53,8 @@ export class Helpers {
     static async getArticles(username) {
         let res = await this.request('users/archives', {username})
         console.log(res)
-        localStorage.setItem('res', res)
-        return res.json();
+        return res;
     }    
  
-// call to patch preferences  
-    // static async updatePrefs(username, searchTopics) {
-    //     let res = await this.request('users/preferences', {username, searchTopics}, 'put')
-    //     console.log(res)
-    //     return res;
-    // }
+    
 }

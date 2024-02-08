@@ -34,15 +34,7 @@ button#preferences{
     
 }
 
-div.links{
-    margin-top:25px;
-    display: inline-grid;
-    font-size: 25px;
-    color: lightgrey;
-    grid-template-columns: 600px 400px 400px 400px;
-    width: 100%;
-    margin-bottom: -45px ;
-}
+
 
 div.log-in-form {
     padding: 5px;
@@ -64,9 +56,6 @@ div.preferences{
 }
 
 
-h2.separator {
-    margin-top: 7px;
-}
 div.button {
     padding-top: 10px;
 }
@@ -79,7 +68,4 @@ h1#login-welcome {
     font-size: 50px;
 }
 
-p {
-color: grey;
-font-size: 24px;
-} 
+

@@ -3,18 +3,17 @@ import {Helpers} from "./helpers"
 import ArticleCard from "./ArticleCard"
 
 let username = localStorage.getItem('username')
-let blah = localStorage.getItem('res')
-console.log(blah, "here")
+
 
 //display archives 
 const Saved = () => {
-    let initialState= []
-    const [display, setDisplay] = useState(initialState)
 
-// useEffect to  
-    useEffect(() =>{
-        archiveResults()
-    }, [])
+    const [display, setDisplay] = useState([])
+
+
+    // useEffect(() =>{
+    //     archiveResults()
+    // }, [])
 
     const archiveResults = async() => {
     try{
@@ -29,6 +28,7 @@ const Saved = () => {
         console.log(e)
     }
 }
+archiveResults()
 console.log(display)
 
 return (
@@ -40,9 +40,9 @@ return (
     description = {c.description}
     author = {c.author}/> ))
 
+
+
 )
-
-
 }
 
 

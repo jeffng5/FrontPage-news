@@ -10,6 +10,7 @@ require('dotenv').config()
 app.use(express.json());
 app.use(cors());
 app.use("/users", usersRoutes);
+const { createToken } = require('./helpers/tokens')
 // /** Handle 404 errors -- this matches everything */
 // app.use(function (req, res, next) {
 //     return next(new NotFoundError());
@@ -45,8 +46,11 @@ app.post('/register', async (req,res, next)=> {
 
         const register = result
         if (register){
-        await bcrypt.compare(password, hashedPwd)  
-        return res.json("Logged in!")
+        await bcrypt.compare(password, hashedPwd) 
+        const user = result[0].username;
+        const token= createToken(user)
+        let ans = res.status(201).json({user, token}) 
+        return ans
    
           }
     }catch (e) {
@@ -75,8 +79,10 @@ app.get('/login', async (req, res, next) => {
       
         if (user) {
               if (await bcrypt.compare(password, pwd)) {
-                return res.json("Logged in!")
-              }
+                const token = createToken(user)
+                let result = res.status(201).json({user, token})
+                return result
+                }
         }
         throw new ExpressError("Username or password not found/doesn't match.")
     } catch(e){

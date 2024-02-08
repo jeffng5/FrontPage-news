@@ -4,10 +4,11 @@ import axios from 'axios'
 import ArticleCard from "./ArticleCard"
 import ColoredLine from "./ColoredLine"
 import { Link } from 'react-router-dom'
+import Button from './Button'
 
-let username = localStorage.getItem('username')
+let token = localStorage.getItem('res.token')
 const apiKey = process.env.REACT_APP_APIKEY
-
+let username = localStorage.getItem('username')
 
 let pref = localStorage.getItem('preferences')
 console.log(pref)
@@ -25,7 +26,6 @@ const FrontPage = () => {
 // states for all the topics
     const initialState= ([])
     const [dateTime, setDateTime] = useState(new Date())
-    const [getTerm, setGetTerm] = useState([])
     const [search, setSearch] = useState([])
     const [australia, setAustralia] =useState([])
     const [asia, setAsia] = useState([])
@@ -127,12 +127,13 @@ useEffect (()=> {
 }, [])
 
 
+if (token)
 return (
     <>
      <div className='links'>
         <Link to = ""><p>Hi {username},</p></Link>
         <Link to = "/users"><p>Preferences</p></Link>
-        
+        <Link to = "/users/forum"><p>Forum</p></Link>
         <Link to = "/users/archives"><p>Archives</p></Link>
       
         <Link to = "/logout"><p>Logout</p></Link>
@@ -148,7 +149,7 @@ return (
     url = {c.url}
     description ={c.description}
    urlToImage= {c.urlToImage}
-
+    
     author = {c.author} />))} 
 
 {australia.map(c => (

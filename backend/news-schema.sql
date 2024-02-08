@@ -16,8 +16,12 @@ CREATE TABLE archives (
 
 );
 
-CREATE TABLE preferences (
+CREATE TABLE forum (
     id BIGSERIAL PRIMARY KEY,
     username TEXT NOT NULL,
-    preferences TEXT NOT NULL
-)
+    url TEXT NOT NULL,
+    title TEXT NOT NULL,
+    description TEXT NOT NULL,
+    author TEXT,
+    urlToImage TEXT
+);

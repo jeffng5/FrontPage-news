@@ -22,8 +22,12 @@ const Login = () => {
     async function LoginUser(e) {
         e.preventDefault();
         const res = await Helpers.loginUser(formData.username, formData.password);
+        console.log(res)
+        localStorage.setItem("res.token", res.token)
+        localStorage.setItem('username', res.user)
+        
         navigate('/users')
-        return res
+        return "TOKEN ADDED!"
     }
     console.log(formData)
     return (
@@ -46,7 +50,6 @@ const Login = () => {
     <FormInput
 
       error={{ content: 'Please enter your username', pointing: 'below' }}
-      fluid
       label='Username'
       type='text'
       placeholder='username'
@@ -57,7 +60,6 @@ const Login = () => {
     /> 
     <FormInput
       error={{ content : 'Please enter your password', pointing: 'below' }}
-      fluid
       label="Password"
       type ='password'
       placeholder='password'

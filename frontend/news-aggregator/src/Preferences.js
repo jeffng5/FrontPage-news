@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react'
-import "./Login.css"
+import { jwtDecode } from "jwt-decode"
 import "./semantic.css"
 import { FormField, Checkbox, Button } from 'semantic-ui-react'
-
 import { Link } from 'react-router-dom'
 
-
+let token = localStorage.getItem('res.token')
+console.log(token)
+const pl = jwtDecode(token)
+let user = localStorage.getItem('username')
+console.log(user)
 
 
 const Preferences = () => {
-    let username = localStorage.getItem('username')
+  
     let pref = localStorage.getItem('preferences')
     const searchTopics=[]
 
@@ -34,7 +37,7 @@ const handleForm = (e) => {
 // capture the checkbox input
 function handleChange(e) {
  // protected with username/sign in
-    if (username) {
+    if (user) {
         console.log(e.target.checked)
         console.log(e.target.value)
     //checks if checkbox is checked
@@ -69,15 +72,17 @@ const wildCard = localStorage.getItem('freePreferences')
 
 
 // protecting route
-if (username)
+if (token)
 //////////////////////////////// CHECKBOX FORM ////////////////////////////////
     return (
-        <>
+        <body>
         
      
         <div className='links'>
-        <Link to = ""><p>Hi {username},</p></Link>
+        <Link to = ""><p>Hi {user},</p></Link>
         <Link to = "/users"><p>Preferences</p></Link>
+
+        <Link to = "/users/forum"><p>Forum</p></Link>
         
         <Link to = "/users/archives"><p>Archives</p></Link>
       
@@ -91,65 +96,86 @@ if (username)
         <h3 className='topics'> Please Choose One (Up to 5): </h3>
 
 <form>
+    <h5>
 <FormField
       control={Checkbox}
-      label={<label>Australia</label>}
+      label={<label className='choices'>Australia</label>}
       id = 'Australia' name= 'Australia' value = "Australia" onChange={handleChange}
     />
+    </h5>
+    <h5>
     <FormField
       control={Checkbox}
       label={<label>Asia</label>}
       id = 'Asia' name= 'Asia' value = "Asia" onChange={handleChange}   
     />
+    </h5>
+    <h5>
   <FormField
       control={Checkbox}
       label={<label>Business</label>}
       id = 'Business' name= 'Business' value = "Business" onChange={handleChange}   
     />
+    </h5>
+    <h5>
     <FormField
       control={Checkbox}
       label={<label>Entertainment</label>}
       id = 'Entertainment' name= 'Entertainment' value = "Entertainment" onChange={handleChange}   
     />
+    </h5>
+    <h5>
   <FormField
       control={Checkbox}
       label={<label>General</label>}
       id = 'General' name= 'General' value = "General" onChange={handleChange}   
     />
+    </h5>
+    <h5>
   <FormField
       control={Checkbox}
       label={<label>U.K.</label>}
       id = 'U.K' name= 'U.K' value = "U.K." onChange={handleChange}   
     />
+    </h5>
+    <h5>
    <FormField
       control={Checkbox}
       label={<label>Health</label>}
       id = 'Health' name= 'Health' value = "Health" onChange={handleChange}   
     />
+    </h5>
+    <h5>
   <FormField
       control={Checkbox}
       label={<label>Science</label>}
       id = 'Science' name= 'Science' value = "Science" onChange={handleChange}   
     />
+    </h5>
+    <h5>
    <FormField
       control={Checkbox}
       label={<label>Sports</label>}
       id = 'Sports' name= 'Sports' value = "Sports" onChange={handleChange}   
     />
+    </h5>
+    <h5>
   <FormField
       control={Checkbox}
       label={<label>Technology</label>}
       id = 'Technology' name= 'Technology' value = "Technology" onChange={handleChange}   
     />
+    </h5>
+    <h5>
   <FormField
       control={Checkbox}
       label={<label>U.S.</label>}
       id = 'US' name= 'US' value = "US" onChange={handleChange}   
     />
-
+</h5>
             <h2 className='separator'>or</h2>
 <FormField>
-      <input type= 'text' id='Anything' name='Anything' placeholder='anything' onChange={handleForm}/>
+      <input type= 'text' id='Anything' name='anything' placeholder='anything' onChange={handleForm}/>
         <label for= "Anything">             Most popular articles by search term </label>
     </FormField>
     <div className='button'>
@@ -161,7 +187,7 @@ if (username)
         </div>
     
         </form>
-</>
+</body>
     )}
 
 

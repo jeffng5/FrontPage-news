@@ -18,16 +18,16 @@ h1 {
     font-size: 90px;
 }
 
-img {
+img#archive {
     margin-left: 10px;
     width: 25px;
     height: 25px;
     bottom: 45px;
-    margin-top: -4px;
+    margin-top: 0px;
 }
 
 button.archive {
-
+    border-radius: 8px;
     background-color: yellow;
     color: black;
     height: 33px;

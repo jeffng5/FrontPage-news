@@ -21,6 +21,8 @@ const SignUp = () => {
         e.preventDefault();
         const res = await Helpers.signUpUser(formData.username, formData.password, formData.email)
         console.log(res)
+        localStorage.setItem("res.token", res.token)
+        localStorage.setItem("username", res.username)
         navigate('/users')
     
     }
