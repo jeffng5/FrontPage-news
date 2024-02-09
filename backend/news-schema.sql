@@ -31,5 +31,5 @@ CREATE TABLE comments (
     id BIGSERIAL PRIMARY KEY,
     comment TEXT NOT NULL,
     username TEXT NOT NULL,
-    forum_id INTEGER REFERENCES forum(id) ON DELETE CASCADE 
+    forum_art_id INTEGER REFERENCES forum(id) ON DELETE CASCADE 
 )
