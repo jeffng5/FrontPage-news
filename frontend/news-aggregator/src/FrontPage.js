@@ -4,7 +4,6 @@ import axios from 'axios'
 import ArticleCard from "./ArticleCard"
 import ColoredLine from "./ColoredLine"
 import { Link } from 'react-router-dom'
-import Button from './Button'
 
 let token = localStorage.getItem('res.token')
 const apiKey = process.env.REACT_APP_APIKEY
@@ -24,7 +23,7 @@ console.log(subj[0])
 // holds bulk of search, many API calls, displays current date
 const FrontPage = () => {
 // states for all the topics
-    const initialState= ([])
+
     const [dateTime, setDateTime] = useState(new Date())
     const [search, setSearch] = useState([])
     const [australia, setAustralia] =useState([])

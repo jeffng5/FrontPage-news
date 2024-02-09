@@ -178,10 +178,10 @@ if (token)
       <input type= 'text' id='Anything' name='anything' placeholder='anything' onChange={handleForm}/>
         <label for= "Anything">             Most popular articles by search term </label>
     </FormField>
-    <div className='button'>
+    <div className='button-preferences'>
         <button className="preferences" onClick={handleChange}>Save Preferences</button> 
         </div>
-        <div className="button">
+        <div className="button-preferences">
      <Link to = 'preferences'><button className='save'>See Front Page News</button></Link> 
        
         </div>

@@ -58,6 +58,10 @@ div.intro {
     font-family: Courier;
 }
 
+div.button-preferences {
+    padding: 12px;
+
+}
 h1.prefs {
     font-size: 55px;
     font-family: Courier;

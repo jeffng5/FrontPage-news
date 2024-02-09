@@ -15,7 +15,9 @@ div.author {
 }
 
 div.button{
+    display: inline-flex;
     margin-top: 23px;
+    padding-right: 15px;
 
 }
 
