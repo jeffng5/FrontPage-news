@@ -46,7 +46,7 @@ router.get('/archives', async function (req, res, next) {
         let articles = results.rows;
         console.log('youve made it');
         console.log(results.rows);
-        return articles;
+        return results.rows;
     }
     catch (err){
         return next(err)
@@ -60,6 +60,7 @@ router.post('/forum', async function (req, res, next) {
     const postToForum = await db.query(`INSERT into forum (username, url, title, description, author, urlToImage) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`, [username, url, title, description, author, urlToImage])
     if (postToForum) {
         console.log('Forum article POSTED!')
+        
     }
 }
     catch (err) { console.log(err)}
@@ -68,10 +69,13 @@ router.post('/forum', async function (req, res, next) {
 
 router.get('/forum', async function(req, res, next){
     try {
-        const results = await db.query(`SELECT * from forum`);
-    if (results)
-    {console.log(results.rows, "getting request")};
-        return results.rows;
+        const res = await db.query(`SELECT * from forum`);
+    if (res)
+    {console.log(res.rows, "getting request")};
+      
+    console.log(res.rows, "I am here too!")
+    let forumArticles= res.rows
+    return forumArticles;
     }
     catch (err) { console.log(err)}
 

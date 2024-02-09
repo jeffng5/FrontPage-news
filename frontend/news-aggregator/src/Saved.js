@@ -18,12 +18,13 @@ async function archiveResults() {
 
     console.log(username)
 //helper function to query archives
-    const resp = await Helpers.getArticles(username)
-    console.log("I am here")
-    console.log(resp)
+    console.log("I am here")    
+    const res = await Helpers.getArticles(username)
+    console.log('after helper function')
+    console.log(res)
 // res not returning anything
-    setArticles(resp)
-  
+    setArticles(res.data)
+    console.log("after setting state")
 }
 archiveResults()
 console.log(articles)

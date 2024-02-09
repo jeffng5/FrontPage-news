@@ -23,5 +23,6 @@ CREATE TABLE forum (
     title TEXT NOT NULL,
     description TEXT,
     author TEXT,
-    urlToImage TEXT
+    urlToImage TEXT,
+    likes INTEGER
 );

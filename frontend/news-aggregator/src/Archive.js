@@ -12,7 +12,7 @@ const Archive = ({username, title, description, url, author}) =>{
     async function apiCall() {
         const res = await Helpers.saveArticle(username,url,title, description,author)
         alert("Submitted to archive")
-        console.log(res)
+        console.log(res.json())
 
     }
  

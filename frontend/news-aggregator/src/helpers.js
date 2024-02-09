@@ -51,20 +51,20 @@ export class Helpers {
 //call to get archived articles
     static async getArticles() {
         let res = await this.request(`users/archives`)
-        console.log(res, 'RETURNING ARCHIVE!!')
-        return res;
+        console.log(res, 'RETURNING ARCHIVE!!');
+        return res.data;
     }    
 //post request to users/forum
     static async postForum(username, url, title, description, author, urlToImage) {
         let res = await this.request(`users/forum`, {username, url, title, description, author, urlToImage}, 'post')
         console.log(res, "FORUM!!!")
-        return res
+        return res.status(201)
     }
 
 //get Articles in Forum
     static async getForum() {
         let res = await this.request(`users/forum`)
-        console.log(res, 'SAVED TO FROUM')
-        return res
+        console.log(res.data, 'loading forum')
+        return res.data;
     }
 }

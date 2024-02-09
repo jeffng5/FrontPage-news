@@ -9,7 +9,9 @@ const Forum = () => {
 
     async function getAllForumArticles() {
         let res = await Helpers.getForum()
-        setState(res)
+        console.log(res)
+        console.log(typeof res)
+        setState(res.data)
 
 }
 getAllForumArticles()
