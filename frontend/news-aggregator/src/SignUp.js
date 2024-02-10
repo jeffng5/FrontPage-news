@@ -1,12 +1,14 @@
 import React, {useState} from 'react'
 import './App.css'
+import './semantic.css'
 import {Helpers} from "./helpers"
-import { useNavigate } from 'react-router-dom'
+import { FormInput, Form } from 'semantic-ui-react'
+import { useNavigate, Link } from 'react-router-dom'
 
 
 const SignUp = () => {
     const navigate = useNavigate()
-    const [formData, setFormData] = useState("")
+    const [formData, setFormData] = useState([])
 
 // handle change to intake formData
     const handleChange = (e) => {
@@ -19,34 +21,58 @@ const SignUp = () => {
 //makes API call to backend to post register data and redirect to users page.
     async function SignUpUser(e) {
         e.preventDefault();
-        const res = await Helpers.signUpUser(formData.username, formData.password, formData.email)
+        const res = await Helpers.signUpUser(formData.username, formData.password, formData.email);
         console.log(res)
+       
         localStorage.setItem("res.token", res.token)
-        localStorage.setItem("username", res.username)
+        localStorage.setItem("username", res.user)
         navigate('/users')
+        return console.log("Sign in successful")
     
     }
     
     return (
         <>
         <h1 id='login-welcome'>Please SignUp</h1>
-        <form>
-            <div className= "log-in-form">
-            <input id= "username" type= "text" name='username'placeholder= "username"
-            onChange={handleChange} value={formData.username}></input>
-            </div>
-            <div className= "log-in-form">
-            <input id= "password" type= "password" name= 'password' onChange={handleChange} placeholder= "password" value={formData.password}></input>
-            </div>
-            <div className= "log-in-form">
-            <input id= "email" type= "text" name= 'email' onChange={handleChange} placeholder= "email" value={formData.email}></input>
-            </div>
+        <Form>
+    <div>
+    <FormInput
 
-    
-            <div className= 'log-in-form'>
-            <button id='log' onClick={SignUpUser}>SignUp</button>
-            </div>
-        </form>
+      error={{ content: 'Please enter your username', pointing: 'below' }}
+      label='Username'
+      type='text'
+      placeholder='username'
+      id='username'
+      name='username'
+      onChange= {handleChange}
+      value = {formData.username}
+    /> 
+    <FormInput
+      error={{ content : 'Please enter your password', pointing: 'below' }}
+      label="Password"
+      type ='password'
+      placeholder='password'
+      id='password'
+      name= 'password'
+      onChange = {handleChange}
+      value ={formData.password}
+    />
+       <FormInput
+      error={{ content : 'Please enter your email', pointing: 'below' }}
+      label="E-mail"
+      type ='email'
+      placeholder='email'
+      id='email'
+      name= 'email'
+      onChange = {handleChange}
+      value ={formData.email}
+    />
+    </div>
+    <div className= 'log-in-form'>
+      <Link to = "/users"><button id='log' onClick={SignUpUser}>Sign In</button></Link>
+    </div>
+  
+  </Form>
         </>
     )
 }

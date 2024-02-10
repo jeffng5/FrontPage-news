@@ -7,12 +7,12 @@ const Forum = () => {
 
     const [state, setState] = useState([])
 
+
     async function getAllForumArticles() {
         let res = await Helpers.getForum()
         console.log(res)
         console.log(typeof res)
-        setState(res.data)
-
+        setState('hello')
 }
 getAllForumArticles()
 console.log(state)
@@ -20,14 +20,14 @@ return (
 
 <>
 <h1 className = 'forum'>Welcome to the News Forum</h1>
-
-{state.map(c=> (
+<h3>{state}</h3>
+{/* {state.map(c=> (
     <ArticleCard title={c.title}
     description= {c.description}
     urlToImage= {c.urlToImage}
     author = {c.author}
     url = {c.url}/>
-))}
+))} */}
 </>
 )
 }

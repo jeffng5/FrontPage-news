@@ -111,8 +111,9 @@ h4.author{
 }
 
 h1.title {
-    font-size: 90px;
-    font-family: Courier;
+    font-size: 80px;
+    font-weight: 550;
+    font-family: Helvetica;
 }
 
 h3.desc {

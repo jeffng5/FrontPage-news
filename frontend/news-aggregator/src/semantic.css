@@ -55,7 +55,7 @@ div.links {
 }
 div.intro {
     font-size: 30px;
-    font-family: Courier;
+    font-family: Helvetica;
 }
 
 div.button-preferences {
@@ -64,11 +64,11 @@ div.button-preferences {
 }
 h1.prefs {
     font-size: 55px;
-    font-family: Courier;
+    font-family: Helvetica;
 }
 
 h1.forum {
-    font-family: Courier;
+    font-family: Helvetica;
     font-size: 55px;
 }
 
@@ -78,19 +78,19 @@ h2.separator {
 
 h3.topics {
     font-size: 25px;
-    font-family: Courier;
+    font-family: Helvetica;
 }
 
 h3.color {
     color: green;
     font-size: 28px;
-    font-family: Courier;
+    font-family: Helvetica;
 }
 
 
 h1.welcome {
     font-size: 80px;
-    font-family: Courier;
+    font-family: Helvetica;
 }
 
 p {
@@ -105,5 +105,5 @@ label {
 
 #login-welcome {
     font-size: 55px;
-    font-family: Courier;
+    font-family: Helvetica;
 }

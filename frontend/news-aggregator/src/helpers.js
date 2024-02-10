@@ -65,6 +65,6 @@ export class Helpers {
     static async getForum() {
         let res = await this.request(`users/forum`)
         console.log(res.data, 'loading forum')
-        return res.data;
+        return res.status(201);
     }
 }

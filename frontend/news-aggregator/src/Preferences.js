@@ -5,13 +5,10 @@ import { FormField, Checkbox, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 let token = localStorage.getItem('res.token')
-console.log(token)
 const pl = jwtDecode(token)
-let user = localStorage.getItem('username')
-console.log(user)
-
 
 const Preferences = () => {
+    let user = localStorage.getItem('username')
   
     let pref = localStorage.getItem('preferences')
     const searchTopics=[]
