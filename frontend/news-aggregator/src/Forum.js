@@ -1,26 +1,28 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import "./semantic.css"
-import {Helpers} from './helpers'
+import { Helpers } from './helpers'
 import ArticleCard from './ArticleCard'
 
 const Forum = () => {
 
     const [state, setState] = useState([])
 
-
+useEffect(()=> {
+    getAllForumArticles();
+},[])
     async function getAllForumArticles() {
         let res = await Helpers.getForum()
-        console.log(res)
+        const json = await res.json()
         console.log(typeof res)
-        setState('hello')
+        setState(json)
 }
-getAllForumArticles()
+// getAllForumArticles()
 console.log(state)
 return (
 
 <>
 <h1 className = 'forum'>Welcome to the News Forum</h1>
-<h3>{state}</h3>
+<h3>Here: {state}</h3>
 {/* {state.map(c=> (
     <ArticleCard title={c.title}
     description= {c.description}

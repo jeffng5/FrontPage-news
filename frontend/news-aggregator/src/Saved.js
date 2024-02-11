@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {Helpers} from "./helpers"
 import ArticleCard from "./ArticleCard"
 
@@ -10,9 +10,9 @@ const Saved = () => {
     const [articles, setArticles] = useState([])
 
 
-    // useEffect(() =>{
-    //     archiveResults()
-    // }, [])
+    useEffect(() =>{
+        archiveResults()
+    }, [])
 
 async function archiveResults() {
 
@@ -23,10 +23,10 @@ async function archiveResults() {
     console.log('after helper function')
     console.log(res)
 // res not returning anything
-    setArticles(res.data)
+    setArticles("testing")
     console.log("after setting state")
 }
-archiveResults()
+
 console.log(articles)
 console.log(username)
 
@@ -35,11 +35,13 @@ return (
 <>
      <h1>THIS IS THE ARCHIVE PAGE</h1>
 
-{articles.map(c => (<ArticleCard title= {c.title}
+{articles}
+
+{/* {articles.map(c => (<ArticleCard title= {c.title}
     url = {c.url}
     description = {c.description}
     author = {c.author}/> ))
-    }
+    } */}
 </>
 
 
