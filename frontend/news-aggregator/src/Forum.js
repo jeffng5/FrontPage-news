@@ -12,9 +12,9 @@ useEffect(()=> {
 },[])
     async function getAllForumArticles() {
         let res = await Helpers.getForum()
-        const json = await res.json()
+    
         console.log(typeof res)
-        setState(json)
+        setState(res.data)
 }
 // getAllForumArticles()
 console.log(state)
