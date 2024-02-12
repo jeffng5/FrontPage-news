@@ -122,7 +122,7 @@ useEffect (()=> {
     }
     getApi();
     getApi2();
-    setSearch([])    
+    setSearch([]);    
 }, [])
 
 

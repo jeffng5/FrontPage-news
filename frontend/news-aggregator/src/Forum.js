@@ -13,7 +13,7 @@ useEffect(()=> {
     async function getAllForumArticles() {
         let res = await Helpers.getForum()
     
-        console.log(typeof res)
+        console.log(res.data)
         setState(res.data)
 }
 // getAllForumArticles()
