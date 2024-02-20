@@ -3,10 +3,11 @@ body {
 }
 
 form {
-    /* text-align: center; */
+    margin-top: 30px;
+    margin-right: 1200px;
     display: inline-block;
     width: 500px;
-    height: 40 px;
+    height: 40px;
     font-size: 27px;
 }
 
@@ -26,8 +27,11 @@ button.save {
     color: white;
     padding: 3px;
     font-weight: 550;
-    height: 35px;
+    height: 33px;
     width: 250px; 
+    position: relative;
+    top: 500px;
+    left: 590px;
 
 }
 
@@ -40,31 +44,59 @@ button.preferences {
     font-weight: 550;
     height: 35px;
     width: 200px; 
+    text-align: center;
+    position: relative;
+    top: 0px;
+    left: 600px;
     
 }
-
+button#log{
+    text-align: center;
+    position: relative;
+    top: 500px;
+    left: -15px;
+}
 div.links {
     text-align: right;
-    margin-top:25px;
+    margin-top: 25px;
     display: inline-grid;
     font-size: 25px;
     color: lightgrey;
-    grid-template-columns: 600px 200px 200px 200px 200px;
+    grid-template-columns: 450px 200px 200px 200px 200px 200px;
     width: 100%;
     margin-bottom: -45px ;
 }
 div.intro {
     font-size: 30px;
     font-family: Helvetica;
+
+}
+div.form-entry {
+   position: relative;
+   bottom: 0px;
+   padding-top: 60px;
+
+}
+div.log-in-form{
+    position: relative;
+    bottom: 0px;
+}
+div.button-preferences {
+    text-align: center;
+    padding: 12px;
+    position: relative;
+
 }
 
-div.button-preferences {
-    padding: 12px;
+#username-error-message {
+    position: relative;
+
 
 }
 h1.prefs {
     font-size: 55px;
     font-family: Helvetica;
+    text-align: center;
 }
 
 h1.forum {
@@ -73,12 +105,16 @@ h1.forum {
 }
 
 h2.separator {
-    margin-top: 7px;
+    text-align: center;
+    margin-left: 840px;
+    margin-top: -37px;
+    margin-bottom: -390px;
 }
 
 h3.topics {
     font-size: 25px;
     font-family: Helvetica;
+    text-align: center;
 }
 
 h3.color {
@@ -98,12 +134,38 @@ p {
     font-size: 24px;
     } 
 
+p.header {
+    color: gray;
+    font-size: 24px;
+}
+
 label {
+    position:relative;
     font-size: 14px;
-    font-weight:550;
+    font-weight:450;
 }
 
 #login-welcome {
     font-size: 55px;
     font-family: Helvetica;
+}
+
+span {
+    display: grid;
+  position: relative;
+  top: 0px;
+  margin-left: 750px;  
+} 
+
+
+h5 {
+    text-align: center;
+    position: relative;
+    left: 600px;
+    
+}
+
+input {
+    position: relative;
+    
 }

@@ -1,6 +1,6 @@
 import React from 'react'
-import './App.css'
-import './semantic.css'
+import './css/App.css'
+// import './css/semantic.css'
 import { Link } from 'react-router-dom'
 
 
@@ -16,11 +16,11 @@ const Welcome = () => {
             your curated articles of your news preferences</div> <div className='intro'>from the <b>top news publications</b></div></h2>
 
       
-        <span>
+        <span id='login'>
         <Link to = "/login"><p className='top'>Login</p></Link>
         </span>
-        <span>
-        <Link to = "/signup"><p className='top'>Register</p></Link>
+        <span id='login'>
+        <Link to = "/signup"><p className='top-1'>Register</p></Link>
         </span>
          
     </body>

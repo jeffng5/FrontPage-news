@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { jwtDecode } from "jwt-decode"
-import "./semantic.css"
-import { FormField, Checkbox, Button } from 'semantic-ui-react'
+import "./css/semantic.css"
+import { FormField, Checkbox } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 let token = localStorage.getItem('res.token')
@@ -72,18 +72,18 @@ const wildCard = localStorage.getItem('freePreferences')
 if (token)
 //////////////////////////////// CHECKBOX FORM ////////////////////////////////
     return (
-        <body>
+        <>
         
      
         <div className='links'>
-        <Link to = ""><p>Hi {user},</p></Link>
-        <Link to = "/users"><p>Preferences</p></Link>
+        <Link to = ""><p className='header'>Hi {user},</p></Link>
+        <Link to = "/users"><p className= 'header'>Preferences</p></Link>
+        <Link to = '/users/frontpage'><p className='header'>FrontPage</p></Link>
+        <Link to = "/users/forum"><p className='header'>Forum</p></Link>
 
-        <Link to = "/users/forum"><p>Forum</p></Link>
-        
-        <Link to = "/users/archives"><p>Archives</p></Link>
+        <Link to = "/users/archives"><p className='header'>Archives</p></Link>
       
-        <Link to = "/logout"><p>Logout</p></Link>
+        <Link to = "/logout"><p className='header'>Logout</p></Link>
    
         </div>
         <h1 className='prefs'>News Topic Preferences</h1> 
@@ -171,20 +171,21 @@ if (token)
     />
 </h5>
             <h2 className='separator'>or</h2>
-<FormField>
-      <input type= 'text' id='Anything' name='anything' placeholder='anything' onChange={handleForm}/>
-        <label for= "Anything">             Most popular articles by search term </label>
+
+<FormField><span> <label for= "Anything">Most popular articles by search term </label>
+      <input type= 'text' id='Anything' name='anything' placeholder='anything' onChange={handleForm}/></span>
+       
     </FormField>
     <div className='button-preferences'>
         <button className="preferences" onClick={handleChange}>Save Preferences</button> 
         </div>
         <div className="button-preferences">
-     <Link to = 'preferences'><button className='save'>See Front Page News</button></Link> 
+     <Link to = 'frontpage'><button className='save'>See Front Page News</button></Link> 
        
         </div>
     
         </form>
-</body>
+</>
     )}
 
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import "./FrontPage.css"
+import "./css/FrontPage.css"
 import Archive from "./Archive"
 import ColoredLineThin from "./ColoredLineThin"
 import ButtonForum from "./ButtonForum"
@@ -14,20 +14,19 @@ const ArticleCard = ({title, description, url, author, urlToImage}) => {
 console.log(title)    
     return (
     <>
-    <p>
+  
     <div className='article'>
     <p><img className = 'photograph' src={urlToImage} alt = 'news'/></p>
     <h2 className='headline' id='headline'><span><a href={url} target="_blank">{title}<h5 className='desc'>{description}</h5></a></span></h2>
-
+    </div>
     <div className='button'>
-    <Archive username={username} title={title} description={description} url={url} author={author} />
+    <Archive username={username} title={title} description={description} url={url} author={author}/>
 
     <ButtonForum username={username} title={title} description={description} url={url} author={author} urltoImage={urlToImage}/></div>
     <div className='author'><h4 className='author'> by: {author} </h4></div>
-    </div>
-    </p>
-
+    <div className='line'>
     <ColoredLineThin color = "gray" />  
+    </div>
     </>
 )
 

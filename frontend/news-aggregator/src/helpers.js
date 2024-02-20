@@ -40,31 +40,43 @@ export class Helpers {
         return res.data;
 
     }
+//call to get archived articles
+static async getArticles(username) {
+    let res = await this.request(`users/archives`, {username})
+    console.log(res, 'RETURNING ARCHIVE!!');
+    return res.data;
+}   
 // call to archive articles
-    static async saveArticle(username, url, title, description, author) {
-        let res = await this.request(`users/preferences`, {username, url, title, description, author}, 'post')
+static async saveArticle(username, url, title, description, author) {
+        let res = await this.request(`users/frontpage`, {username, url, title, description, author}, 'post')
         console.log(res, "SAVED ARTICLE")
         return res;
     }
 
-
-//call to get archived articles
-    static async getArticles() {
-        let res = await this.request(`users/archives`)
-        console.log(res, 'RETURNING ARCHIVE!!');
-        return res.data;
-    }    
 //post request to users/forum
     static async postForum(username, url, title, description, author, urlToImage) {
         let res = await this.request(`users/forum`, {username, url, title, description, author, urlToImage}, 'post')
         console.log(res, "FORUM!!!")
-        return res.status(201)
+        return res.data
     }
 
 //get Articles in Forum
     static async getForum() {
         let res = await this.request(`users/forum`)
         console.log(res.data, 'loading forum')
-        return res.status(201);
+        return res.data;
     }
+
+// post into comments table
+    static async postComment(username, comment, forum_art_id) {
+        let res = await this.request('users/forum/comments', {username, comment, forum_art_id}, 'post')
+        return res.data;
+    } 
+
+// get all comments per article
+    static async getAllComments(id) {
+        let res = await this.request('users/forum/comments', {id} )
+        return res.data;
+
+}
 }

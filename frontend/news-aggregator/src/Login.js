@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
-import './App.css'
-import './semantic.css'
+import './css/semantic.css'
 import { FormInput, Form } from 'semantic-ui-react'
 import {Helpers} from "./helpers"
 import { useNavigate, Link } from 'react-router-dom'
@@ -46,9 +45,9 @@ const Login = () => {
             </div>
         </form> */}
           <Form>
-    <div>
+          <div className='form-entry'>
     <FormInput
-
+     
       error={{ content: 'Please enter your username', pointing: 'below' }}
       label='Username'
       type='text'
@@ -57,7 +56,8 @@ const Login = () => {
       name='username'
       onChange= {handleChange}
       value = {formData.username}
-    /> 
+    /> </div>
+     <div className='form-entry'>
     <FormInput
       error={{ content : 'Please enter your password', pointing: 'below' }}
       label="Password"
@@ -69,8 +69,8 @@ const Login = () => {
       value ={formData.password}
     />
     </div>
-    <div className= 'log-in-form'>
-      <Link to = '/users'><button id='log' onClick={LoginUser}>Log In</button></Link> 
+    <div className='log-in-form'>
+      <Link to = '/users'><button className='preferences' onClick={LoginUser}>Log In</button></Link> 
     </div>
   
   </Form>

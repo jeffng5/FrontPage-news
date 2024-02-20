@@ -1,5 +1,5 @@
 import React, { useState} from 'react'
-import './FrontPage.css'
+import './css/FrontPage.css'
 import {Helpers} from "./helpers"
 
 
@@ -26,7 +26,7 @@ const ButtonForum = ({username, url, title, description, author, urlToImage}) =>
     console.log(state)
 
     return (
-        <button className='forum' onClick={handleForum} style={{backgroundColor: buttonColor ? 'aquamarine' : 'grey'  }}><div><h6>Post to Forum</h6></div></button>
+        <button className='forum' onClick={handleForum} style={{backgroundColor: buttonColor ? 'aquamarine' : 'grey'  }}><h6 id='button'>Post to Forum</h6></button>
     )
     }
 

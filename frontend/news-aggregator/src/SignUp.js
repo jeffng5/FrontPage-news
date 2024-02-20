@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
-import './App.css'
-import './semantic.css'
+import './css/semantic.css'
 import {Helpers} from "./helpers"
 import { FormInput, Form } from 'semantic-ui-react'
 import { useNavigate, Link } from 'react-router-dom'

@@ -1,45 +1,50 @@
 import React, { useState, useEffect } from 'react'
-import './FrontPage.css'
+import './css/FrontPage.css'
 import {Helpers} from "./helpers"
 import myImage from './penfeather.png'
 
 
+
+// let username = localStorage.getItem('username')
 // button component to archive article takes in data from parent component
-const Archive = ({username, title, description, url, author}) =>{
+const Archive = ({username, url, title,description, author}) =>{
 
     const [activeButton, setActiveButton] = useState(true)
-    
-    useEffect(()=> {
-        handleArchive();
-        reloadButton();
-    },[])
-
-    async function apiCall() {
-        const res = await Helpers.saveArticle(username,url,title, description,author)
-        alert("Submitted to archive")
-        console.log(res)
-
-    }
- 
-    function reloadButton() {
-        setActiveButton(true)
+    const [state, setState] = useState([])
+    // useEffect(()=> {
+    //     handleArchive();
         
-    }
+    // },[])
+
+ 
 
     
     async function handleArchive() {
         apiCall();
-        setActiveButton(!activeButton);
+        
       
     }
 
-   
+ 
+    async function apiCall() {
+        try {
+        setActiveButton(false);
+        const res = await Helpers.saveArticle(username,url,title, description,author)
+        setState(res)
+        console.log(res)
 
+    }   catch (e) {
+        console.log(e)
+    }}
+console.log(state)
     return (
+        <>
 
         <button className='archive' onClick={handleArchive} style={{backgroundColor: activeButton ? 'yellow' : 'grey' }}><img id= 'archive' src = {myImage} alt=''></img>Archive</button>
 
-        
+
+      
+        </>
     )
 
 

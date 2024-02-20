@@ -1,24 +1,35 @@
 div.article {
-    width: 100%;
     text-align: left;
     display: inline-grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 300px, 350px, 350px;
+    margin-top: -500px;
+    margin-bottom: -50px;
 }
 
 div.author {
-    width: 100%;
     position: relative;
-    top: 20%;
-    margin-left: 20px;
-    left: 100%;
+    left: 665px;
+    bottom: -20px;
     font-size: 20px;
+
+
 }
 
 div.button{
+    position: relative;
+    right: -30px;
+    bottom: 450px;
     display: inline-flex;
     margin-top: 23px;
     padding-right: 15px;
+}
+div#links {
+    color: black;
+    display: inline-flex;  
+}
 
+div.line {
+    margin-top: -200px;
 }
 
 h1 {
@@ -61,8 +72,6 @@ button.forum {
     top: 10%;
     left: 0%;
 
-
-
 }
 
 button.archived {
@@ -84,29 +93,39 @@ right: 200px;
 }
 
 img.photograph{
-width: 100%;
+position: relative;
+top: 400px;
 border-radius: 6px;
 height: 330px;
 width: 490px;
 text-align: right;
-margin-left: 300px;
-margin-top: 30px;
+margin-left: 0px;
+margin-top: 0px;
 
 }
 
-h2.headline {
+h2#headline {
+  
+  right: 0px;
   font-size:40px;
-  padding-left: 25px;
+  bottom: 300px;
+  color:#006699;
+}
 
+h2.headline {
+    color:#006699;
 }
 
 a {
     color: black;
     text-decoration: none;
+    position: relative;
+    bottom: 500px;
 }
 
 h4.author{
-    font-size: 20px;;
+    font-size: 20px;
+    color:#006699;
 
 }
 
@@ -114,6 +133,7 @@ h1.title {
     font-size: 80px;
     font-weight: 550;
     font-family: Helvetica;
+    text-align: center;
 }
 
 h3.desc {
@@ -130,17 +150,26 @@ h2#headlines {
 
 h5.desc {
     font-size: 20px;
+    color: #006699;
 }
 
-h6 {
+h6#button {
     position: relative;
-    bottom: 27px;
-    font-size: 14px;
+    font-size: 15px;
+    bottom: 30px;
+    font-weight: 400;
 }
 
 p {
+    
     margin-left: 190px;
     margin-right: 190px;
+}
+
+p.link {
+    font-size: 20px;
+    display: inline-flex;
+    color: black;
 }
 
 .archived {
@@ -152,4 +181,20 @@ h2.date {
     font-family: Courier;
     font-size: 35px;
     padding-bottom: 10px;
+    text-align: center;
+}
+
+h5.desc {
+    margin-top: 20px;
+    position: relative;
+    left: 0px;
+    text-align: left;
+}
+
+h4.author {
+    position: relative;
+    margin-bottom: auto;
+    margin-top: 0px;
+    bottom: 470px;
+    right: 625px;
 }
