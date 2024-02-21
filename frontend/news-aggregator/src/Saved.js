@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import {Helpers} from "./helpers"
-import ForumArticleCard from "./ForumArticleCard"
+import ArchiveArticleCard from "./ArchiveArticleCard"
 import { Link } from 'react-router-dom'
 
 let username = localStorage.getItem('username')
@@ -35,19 +35,19 @@ console.log(username)
 return (
 <>
 <div className='links'>
-        <Link to = ""><p>Hi {username},</p></Link>
-        <Link to = "/users"><p>Preferences</p></Link>
-        <Link to = "/users/frontpage"><p>FrontPage</p></Link>
-        <Link to = "/users/forum"><p>Forum</p></Link>
-        <Link to = "/users/archives"><p>Archives</p></Link>
-        <Link to = "/logout"><p>Logout</p></Link>
+        <Link to = "">Hi {username},</Link>
+        <Link to = "/users">Preferences</Link>
+        <Link to = "/users/frontpage">FrontPage</Link>
+        <Link to = "/users/forum">Forum</Link>
+        <Link to = "/users/archives">Archives</Link>
+        <Link to = "/logout">Logout</Link>
    
         </div>
-     <h1>THIS IS THE ARCHIVE PAGE</h1>
+     <h1 className='archive-page'>THIS IS THE ARCHIVE PAGE</h1>
 
 
 
-{articles.map(c => (<ForumArticleCard title= {c.title}
+{articles.map(c => (<ArchiveArticleCard title= {c.title}
     url = {c.url}
     description = {c.description}
     author = {c.author}/> ))

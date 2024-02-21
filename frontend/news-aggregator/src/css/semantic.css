@@ -35,7 +35,7 @@ button.save {
 
 }
 
-button.preferences {
+.preferences {
     font-size: 17px;
     border-radius: 5px;
     background-color: teal;
@@ -46,7 +46,7 @@ button.preferences {
     width: 200px; 
     text-align: center;
     position: relative;
-    top: 0px;
+    top: 505px;
     left: 600px;
     
 }
@@ -56,32 +56,33 @@ button#log{
     top: 500px;
     left: -15px;
 }
-div.links {
+.links {
     text-align: right;
     margin-top: 25px;
     display: inline-grid;
     font-size: 25px;
     color: lightgrey;
-    grid-template-columns: 450px 200px 200px 200px 200px 200px;
+    grid-template-columns: 475px 200px 200px 200px 200px 200px;
     width: 100%;
     margin-bottom: -45px ;
 }
-div.intro {
+.intro {
     font-size: 30px;
     font-family: Helvetica;
 
 }
-div.form-entry {
-   position: relative;
-   bottom: 0px;
-   padding-top: 60px;
+.form-entry {
+    position: relative;
+    left: 600px;
+    text-align: center;
+    padding-bottom: 20px;
 
 }
 div.log-in-form{
     position: relative;
     bottom: 0px;
 }
-div.button-preferences {
+.button-preferences {
     text-align: center;
     padding: 12px;
     position: relative;
@@ -162,10 +163,16 @@ h5 {
     text-align: center;
     position: relative;
     left: 600px;
+    padding-top: 15px;
     
 }
 
 input {
     position: relative;
     
+}
+
+.anything {
+    position: relative;
+    top: 500px;
 }

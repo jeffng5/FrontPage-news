@@ -1,21 +1,36 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import "./css/forum.css"
 import { Helpers } from './helpers'
+import CommentCard from './CommentCard'
 
 
 const Comments = ({id}) => {
 
     const [state, setState] = useState([])
 
-function displayComments() {
-   const res = Helpers.getAllComments(id)
-   setState(res.data)
+    useEffect(() => {
+        displayComments();
+    }, [])
+    
+    async function displayComments() {
+        const res = await Helpers.getAllComments(id)
+        console.log(res, "label")
+        console.log(res.comments, 'WHy not?')
+        setState(res.comments)
 }
-
-displayComments()
+        console.log(state)
 
 return (
-    {state}
+ <>{state.map(c =>( 
+    <CommentCard
+    comment = {c.comment}
+    username = {c.username}
+/>
+
+))}</> 
+
+
+
 )
 
 }

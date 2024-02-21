@@ -48,8 +48,8 @@ const Login = () => {
           <div className='form-entry'>
     <FormInput
      
-      error={{ content: 'Please enter your username', pointing: 'below' }}
-      label='Username'
+      // error={{ content: 'Please enter your username', pointing: 'below' }}
+      // label='Username'
       type='text'
       placeholder='username'
       id='username'
@@ -59,8 +59,8 @@ const Login = () => {
     /> </div>
      <div className='form-entry'>
     <FormInput
-      error={{ content : 'Please enter your password', pointing: 'below' }}
-      label="Password"
+      // error={{ content : 'Please enter your password', pointing: 'below' }}
+      // label="Password"
       type ='password'
       placeholder='password'
       id='password'

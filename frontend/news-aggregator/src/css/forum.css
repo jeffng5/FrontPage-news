@@ -3,19 +3,24 @@ a {
     margin-left: 20px;
 }
 
-h5.title {
-    margin-top: 0px;
-    text-align: left;
-    margin-left: 20px;
-    margin-bottom: 0px;
+.title-forum-article {
     font-size: 20px;
+    margin-left: -390px;
+    text-align: left;
 }
 
-div{
-    margin-top: 20px;
+.description-forum-article
+{
+    font-size: 20px;
+    text-align: left;
+    margin-left: -390px;
 }
-
-p.commentary {
+.author-forum-article {
+    font-size: 20px;
+    text-align: left;
+    margin-left: -390px;
+}
+.commentary {
     text-align: left;
     padding-left: 20px;
     font-size: 10px;
@@ -27,21 +32,28 @@ label {
 }
 
 textarea {
-    font-size: 10px;
+    font-size: 18px;
 }
 
-button {
+.add-comment {
     background-color: teal;
     color: white;
-    height:30px;
-    width: 80px;
+    height:40px;
+    width: 150px;
     border-radius:6px;
-    position: relative;
-    top: 20px;
-    right: 330px;
-    font-size: 20px;
+    font-size: 12px;
+    margin-top: 10px;
 }
 
 h6 {
     font-size: 10px;
+}
+
+.forum {
+    margin-top: 65px;
+}
+
+.comment-card {
+    margin-left: 20px;
+
 }

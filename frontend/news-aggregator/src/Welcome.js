@@ -1,6 +1,5 @@
 import React from 'react'
 import './css/App.css'
-// import './css/semantic.css'
 import { Link } from 'react-router-dom'
 
 

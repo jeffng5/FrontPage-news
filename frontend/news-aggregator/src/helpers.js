@@ -70,12 +70,14 @@ static async saveArticle(username, url, title, description, author) {
 // post into comments table
     static async postComment(username, comment, forum_art_id) {
         let res = await this.request('users/forum/comments', {username, comment, forum_art_id}, 'post')
+        console.log(res, 'posted Comment')
         return res.data;
     } 
 
 // get all comments per article
     static async getAllComments(id) {
         let res = await this.request('users/forum/comments', {id} )
+        console.log(res.data, 'loading comments')
         return res.data;
 
 }

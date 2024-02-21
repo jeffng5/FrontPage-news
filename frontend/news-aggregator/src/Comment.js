@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import "./css/forum.css"
 import { Helpers } from './helpers'
 import Comments from './Comments'
@@ -7,11 +7,17 @@ import Comments from './Comments'
 const Comment = ({id}) => {
   const username = localStorage.getItem('username')
   const [comment, setComment] = useState([])
+  console.log(username)
 
- const addComment = (e) => {
-        e.preventDefault();
-       setComment(e.target.value)
-       const res = Helpers.postComment(username, comment, id)
+//   useEffect(() => {
+//     addComment();
+//   },[addComment])
+
+
+ async function addComment(e) {
+    e.preventDefault();
+    setComment(e.target.value)
+    const res = await Helpers.postComment(username, comment, id)
     console.log(res)
  }
 
@@ -23,15 +29,15 @@ const Comment = ({id}) => {
  }
 return (
     <>
-<Comments id = {id} />
+
 <form>
 
-<textarea name='message' rows='5' cols='50' onChange={handleChange}>
-    Type comment here...
+<textarea placeholder = 'Type comment here...' name='message' rows='5' cols='50' onChange={handleChange}>
+    
 
 </textarea>
 </form>
-<button onSubmit={addComment}>Add Comment</button>
+<button className= 'add-comment' onClick={addComment}>Add Comment</button>
 </>
 )
 }

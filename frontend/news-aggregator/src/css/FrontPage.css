@@ -25,7 +25,11 @@ div.button{
 }
 div#links {
     color: black;
-    display: inline-flex;  
+    display: inline-flex;
+    height: 200px;
+    width: 100%;
+    position:relative;
+    z-index: 999;  
 }
 
 div.line {
@@ -115,13 +119,13 @@ h2#headline {
 h2.headline {
     color:#006699;
 }
-
+/* 
 a {
     color: black;
     text-decoration: none;
     position: relative;
     bottom: 500px;
-}
+} */
 
 h4.author{
     font-size: 20px;
@@ -143,7 +147,9 @@ h3.desc {
 h2.headlines {
     margin-left: -150px;
 }
-
+h2.closing {
+    margin-top: 550px;
+}
 h2#headlines {
     padding-bottom: 50px;
 }
@@ -166,7 +172,7 @@ p {
     margin-right: 190px;
 }
 
-p.link {
+.link {
     font-size: 20px;
     display: inline-flex;
     color: black;

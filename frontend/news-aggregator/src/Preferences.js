@@ -76,14 +76,14 @@ if (token)
         
      
         <div className='links'>
-        <Link to = ""><p className='header'>Hi {user},</p></Link>
-        <Link to = "/users"><p className= 'header'>Preferences</p></Link>
-        <Link to = '/users/frontpage'><p className='header'>FrontPage</p></Link>
-        <Link to = "/users/forum"><p className='header'>Forum</p></Link>
+        <Link to = "">Hi {user},</Link>
+        <Link to = "/users">Preferences</Link>
+        <Link to = '/users/frontpage'>FrontPage</Link>
+        <Link to = "/users/forum">Forum</Link>
 
-        <Link to = "/users/archives"><p className='header'>Archives</p></Link>
+        <Link to = "/users/archives">Archives</Link>
       
-        <Link to = "/logout"><p className='header'>Logout</p></Link>
+        <Link to = "/logout">Logout</Link>
    
         </div>
         <h1 className='prefs'>News Topic Preferences</h1> 
@@ -172,7 +172,7 @@ if (token)
 </h5>
             <h2 className='separator'>or</h2>
 
-<FormField><span> <label for= "Anything">Most popular articles by search term </label>
+<FormField><span className='anything'> <label for= "Anything">Most popular articles by search term </label>
       <input type= 'text' id='Anything' name='anything' placeholder='anything' onChange={handleForm}/></span>
        
     </FormField>

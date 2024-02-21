@@ -91,6 +91,8 @@ router.get('/forum', async function(req, res, next){
 
 router.post('/forum/comments', async function(req, res, next){
     try {
+        const { username, comment, forum_art_id} = req.body
+        console.log(req.body)
         const commentForum = await db.query(`INSERT into comments (username, comment, forum_art_id) VALUES ($1, $2, $3) RETURNING *`, [username, comment, forum_art_id])
         console.log(res.status(201))
         return res.status(201).json(commentForum.rows)
@@ -99,10 +101,13 @@ router.post('/forum/comments', async function(req, res, next){
 })
 
 router.get('/forum/comments', async function(req, res, next){
-    const {id} = req.query 
+    
     try {
+        const {id} = req.query
+        console.log(req.query) 
         const results = await db.query(`SELECT * from comments WHERE forum_art_id = $1`, [id]);
         let comments = results.rows
+        console.log(comments, 'I am fetching comments')
         return res.json({comments})
     } catch (err) {return next(err)
     }
