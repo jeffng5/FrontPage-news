@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import "./css/FrontPage.css"
+import "./css/semantic.css"
 import axios from 'axios'
 import ArticleCard from "./ArticleCard"
 import ColoredLine from "./ColoredLine"
@@ -129,14 +130,14 @@ useEffect (()=> {
 if (token)
 return (
     <>
-     <div id='links'>
+     <div className='frontpage-links'>
       
-        <Link to = "">Hi {username}</Link>
-        <Link to = "/users"><p className='link'>Preferences</p></Link>
-        <Link to = "/users/forum"><p className='link'>Forum</p></Link>
-        <Link to = "/users/preferences"><p className='link'>FrontPage</p></Link>
-        <Link to = "/users/archives"><p className='link'>Archives</p></Link>
-        <Link to = "/logout"><p className='link'>Logout</p></Link>
+        <Link to = "">Hi {username},</Link>
+        <Link to = "/users">Preferences</Link>
+        <Link to = "/users/frontpage">FrontPage</Link>
+        <Link to = "/users/forum">Forum</Link>
+        <Link to = "/users/archives">Archives</Link>
+        <Link to = "/logout">Logout</Link>
         </div>
        
 <h1 className='title'>Your Front Page News </h1>

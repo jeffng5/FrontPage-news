@@ -28,6 +28,7 @@ return (
 <div className='links'>
         <Link to = "">Hi {username},</Link>
         <Link to = "/users">Preferences</Link>
+        <Link to = '/users/frontpage'>FrontPage</Link>
         <Link to = "/users/forum">Forum</Link>
         <Link to = "/users/archives">Archives</Link>
         <Link to = "/logout">Logout</Link>

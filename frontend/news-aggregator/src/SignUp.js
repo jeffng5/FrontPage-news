@@ -34,11 +34,10 @@ const SignUp = () => {
         <>
         <h1 id='login-welcome'>Please SignUp</h1>
         <Form>
-    <div>
+    <div className='sign-in'>
     <FormInput
 
-      error={{ content: 'Please enter your username', pointing: 'below' }}
-      label='Username'
+  
       type='text'
       placeholder='username'
       id='username'
@@ -46,9 +45,9 @@ const SignUp = () => {
       onChange= {handleChange}
       value = {formData.username}
     /> 
+   
     <FormInput
-      error={{ content : 'Please enter your password', pointing: 'below' }}
-      label="Password"
+  
       type ='password'
       placeholder='password'
       id='password'
@@ -57,8 +56,7 @@ const SignUp = () => {
       value ={formData.password}
     />
        <FormInput
-      error={{ content : 'Please enter your email', pointing: 'below' }}
-      label="E-mail"
+  
       type ='email'
       placeholder='email'
       id='email'

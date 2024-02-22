@@ -69,7 +69,7 @@ const Login = () => {
       value ={formData.password}
     />
     </div>
-    <div className='log-in-form'>
+    <div className='log-in-form-1'>
       <Link to = '/users'><button className='preferences' onClick={LoginUser}>Log In</button></Link> 
     </div>
   

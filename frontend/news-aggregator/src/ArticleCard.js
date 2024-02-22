@@ -19,11 +19,12 @@ console.log(title)
     <p><img className = 'photograph' src={urlToImage} alt = 'news'/></p>
     <h2 className='headline' id='headline'><span><a href={url} target="_blank">{title}<h5 className='desc'>{description}</h5></a></span></h2>
     </div>
-    <div className='button'>
+    <div className='button-6'>
     <Archive username={username} title={title} description={description} url={url} author={author}/>
-
+    </div>
+    <div className='button-6'>
     <ButtonForum username={username} title={title} description={description} url={url} author={author} urltoImage={urlToImage}/></div>
-    <div className='author'><h4 className='author'> by: {author} </h4></div>
+    <div className='author-2'>by: {author}</div>
     <div className='line'>
     <ColoredLineThin color = "gray" />  
     </div>

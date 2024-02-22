@@ -36,17 +36,12 @@ button#preferences{
 
 
 
-div.log-in-form {
+.log-in-form {
     padding: 5px;
 }
 
-div {
-    display: block;
-    padding: 5px;
 
-}
-
-div.preferences{
+.preferences{
     padding: 15px;
 }
 
@@ -56,7 +51,7 @@ div.preferences{
 }
 
 
-div.button {
+.button {
     padding-top: 10px;
 }
 
