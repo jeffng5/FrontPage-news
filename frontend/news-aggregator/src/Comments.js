@@ -14,8 +14,6 @@ const Comments = ({id}) => {
     
     async function displayComments() {
         const res = await Helpers.getAllComments(id)
-        console.log(res, "label")
-        console.log(res.comments, 'WHy not?')
         setState(res.comments)
 }
         console.log(state)
