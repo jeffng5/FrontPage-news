@@ -9,9 +9,13 @@ form {
     width: 500px;
     height: 40px;
     font-size: 27px;
+
 }
 
-
+.selection {
+    display: block;
+    
+}
 .button {
     margin-top: 10px;
   
@@ -118,11 +122,11 @@ h1.forum {
     font-size: 55px;
 }
 
-h2.separator {
+.separator {
     text-align: center;
     margin-left: 840px;
-    margin-top: -37px;
-    margin-bottom: -390px;
+    margin-top: -30px;
+    margin-bottom: -400px;
 }
 
 h3.topics {
@@ -180,11 +184,13 @@ span {
 
 
 h5 {
+    display: inline-grid;
     text-align: center;
     position: relative;
-    left: 600px;
-    padding-top: 15px;
-    
+    left: 320px;
+    margin-right: 40px;
+    margin-top: 15px;
+
 }
 
 input {

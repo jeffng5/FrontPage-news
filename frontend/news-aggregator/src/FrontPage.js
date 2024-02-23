@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import "./css/FrontPage.css"
 import "./css/semantic.css"
 import axios from 'axios'
@@ -130,7 +130,7 @@ useEffect (()=> {
 if (token)
 return (
     <>
-     <div className='frontpage-links'>
+     <div className='links'>
       
         <Link to = "">Hi {username},</Link>
         <Link to = "/users">Preferences</Link>

@@ -1,11 +1,10 @@
-import React, { useState, useEffect, Component } from 'react'
-import { Form, FormTextArea, FormButton } from 'semantic-ui-react'
-import "./css/semantic.css"
-import './css/forum.css'
+import React, { useState, useEffect } from 'react'
+// import "./css/semantic.css"
+// import './css/forum.css'
 import { Helpers } from './helpers'
 import ForumArticleCard from './ForumArticleCard'
 import { Link } from 'react-router-dom'
-import Comments from './Comments'
+
 
 let username = localStorage.getItem('username')
 const Forum = () => {

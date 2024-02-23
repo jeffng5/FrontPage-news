@@ -25,6 +25,7 @@ return (
     <CommentCard
     comment = {c.comment}
     username = {c.username}
+    datetime= {c.datetime}
 />
 
 ))}</> 

@@ -93,6 +93,7 @@ if (token)
         <h3 className='topics'> Please Choose One (Up to 5): </h3>
 
 <form>
+      <h5 className= 'selection'>
     <h5>
 <FormField
       control={Checkbox}
@@ -169,6 +170,7 @@ if (token)
       label={<label>U.S.</label>}
       id = 'US' name= 'US' value = "US" onChange={handleChange}   
     />
+    </h5>
 </h5>
             <h2 className='separator'>or</h2>
 

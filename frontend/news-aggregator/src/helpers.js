@@ -68,8 +68,8 @@ static async saveArticle(username, url, title, description, author) {
     }
 
 // post into comments table
-    static async postComment(username, comment, forum_art_id) {
-        let res = await this.request('users/forum/comments', {username, comment, forum_art_id}, 'post')
+    static async postComment(username, comment, forum_art_id, datetime) {
+        let res = await this.request('users/forum/comments', {username, comment, forum_art_id, datetime}, 'post')
         console.log(res, 'posted Comment')
         return res.data;
     } 

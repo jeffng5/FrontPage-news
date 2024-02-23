@@ -91,9 +91,9 @@ router.get('/forum', async function(req, res, next){
 
 router.post('/forum/comments', async function(req, res, next){
     try {
-        const { username, comment, forum_art_id} = req.body
+        const { username, comment, forum_art_id, datetime} = req.body
         console.log(req.body)
-        const commentForum = await db.query(`INSERT into comments (username, comment, forum_art_id) VALUES ($1, $2, $3) RETURNING *`, [username, comment, forum_art_id])
+        const commentForum = await db.query(`INSERT into comments (username, comment, forum_art_id, datetime) VALUES ($1, $2, $3, $4) RETURNING *`, [username, comment, forum_art_id, datetime])
         console.log(res.status(201))
         return res.status(201).json(commentForum.rows)
     }

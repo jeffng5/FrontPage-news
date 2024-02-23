@@ -5,20 +5,26 @@ a {
 
 .title-forum-article {
     font-size: 20px;
-    margin-left: -390px;
+    display: block;
     text-align: left;
+    margin-left: 213px;
+    margin-bottom: 10px;
 }
 
 .description-forum-article
 {
     font-size: 20px;
     text-align: left;
-    margin-left: -390px;
+    display: block;
+    margin-left: 212px;
 }
 .author-forum-article {
     font-size: 20px;
     text-align: left;
-    margin-left: -390px;
+    display: block;
+    margin-top: 10px;
+    margin-left: 213px;
+    margin-bottom: 10px;
 }
 .commentary {
     text-align: left;
@@ -55,5 +61,6 @@ h6 {
 
 .comment-card {
     margin-left: 20px;
-
+    display: inline-grid;   
 }
+

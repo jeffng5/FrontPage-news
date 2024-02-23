@@ -43,7 +43,7 @@ return (
         <Link to = "/logout">Logout</Link>
    
         </div>
-     <h1 className='archive-page'>THIS IS THE ARCHIVE PAGE</h1>
+     <h1 className='archive-page'>YOUR ARCHIVE PAGE</h1>
 
 
 
