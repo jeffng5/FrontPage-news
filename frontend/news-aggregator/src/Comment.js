@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import "./css/forum.css"
 import { Helpers } from './helpers'
-// import DateTime from 'react-datetime'
+
 
 
 const Comment = ({id}) => {
@@ -10,12 +10,8 @@ const Comment = ({id}) => {
   const [datetime, setDateTime] = useState(new Date())
   console.log(username)
 
-// useEffect(() => {
-//      addComment();
-//    },[comment])
 
-
- async function addComment(e) {
+  async function addComment(e) {
     e.preventDefault();
     setComment(e.target.value)
     setDateTime(new Date())
@@ -23,7 +19,7 @@ const Comment = ({id}) => {
     console.log(res)
  }
 
- const handleChange= (e) => {
+  const handleChange= (e) => {
     e.preventDefault();
     setComment(e.target.value)
     console.log(comment)

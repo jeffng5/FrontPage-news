@@ -113,6 +113,25 @@ router.get('/forum/comments', async function(req, res, next){
     }
 })
 
+router.post('/forum/likes', async function(req,res, next){
+    try {
+        const {comment} = req.body
+        console.log(req.body)
+        const results = await db.query(`UPDATE comments SET likes = likes+1 where comment = $1 RETURNING *`, [comment]);
+        let likeAmt = results.rows;
+        return res.json({likeAmt}) 
+    } catch (err) {return next(err)
+    }
+})
 
+router.get('/forum/likes', async function(req, res, next){
+    try {
+        const { comment } = req.query
+        const results = await db.query(`SELECT likes from comments WHERE comment = $1`, [comment]);
+        let thing = results.rows;
+        return res.json({thing})
+    } catch (err) { return next(err)
+    }
+})
 
 module.exports = router

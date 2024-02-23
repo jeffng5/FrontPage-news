@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 // import "./css/semantic.css"
-// import './css/forum.css'
+import './css/forum.css'
 import { Helpers } from './helpers'
 import ForumArticleCard from './ForumArticleCard'
 import { Link } from 'react-router-dom'
@@ -49,7 +49,7 @@ return (
    
 ))}
 
-<div>
+<div className='external-link'>
 <Link to = '/users/frontpage'>Go back to your Front Page</Link>
 </div>
 </>

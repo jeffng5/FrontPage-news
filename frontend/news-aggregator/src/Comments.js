@@ -23,6 +23,7 @@ const Comments = ({id}) => {
 return (
  <>{state.map(c =>( 
     <CommentCard
+    id = {c.id}
     comment = {c.comment}
     username = {c.username}
     datetime= {c.datetime}

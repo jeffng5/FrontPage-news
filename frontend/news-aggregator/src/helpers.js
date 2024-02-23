@@ -81,4 +81,19 @@ static async saveArticle(username, url, title, description, author) {
         return res.data;
 
 }
+//post a like to comment table
+    static async postLike(comment) {
+        let res = await this.request('users/forum/likes', {comment}, 'post')
+        console.log(res.data, "Like posted")
+        return res.data;
+    }
+
+// get likes for each comment
+    static async getPostLike(comment) {
+        let res = await this.request('users/forum/likes', {comment})
+        console.log(res.data, 'getting likes')
+        return res.data;
+    } 
+
+
 }
