@@ -8,6 +8,7 @@ const Comment = ({id}) => {
   const username = localStorage.getItem('username')
   const [comment, setComment] = useState([])
   const [datetime, setDateTime] = useState(new Date())
+  const [addedClause, setAddedClaus] = useState([])
   console.log(username)
 
 
@@ -17,12 +18,15 @@ const Comment = ({id}) => {
     setDateTime(new Date())
     const res = await Helpers.postComment(username,  comment, id, datetime)
     console.log(res)
+    setAddedClaus('comment has been added')
+    
  }
 
   const handleChange= (e) => {
     e.preventDefault();
     setComment(e.target.value)
     console.log(comment)
+    
 
  }
 return (
@@ -35,7 +39,7 @@ return (
 
 </textarea>
 </form>
-<button className= 'add-comment' onClick={addComment}>Add Comment</button>
+<button className= 'add-comment' onClick={addComment}>Add Comment</button><h4>{addedClause}</h4>
 </>
 )
 }
