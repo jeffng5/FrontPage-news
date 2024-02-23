@@ -24,7 +24,7 @@ CREATE TABLE forum (
     description TEXT,
     author TEXT,
     urlToImage TEXT,
-    likes INTEGER
+    likes INTEGER default 0
 );
 
 CREATE TABLE comments (
@@ -32,5 +32,5 @@ CREATE TABLE comments (
     comment TEXT NOT NULL,
     username TEXT NOT NULL,
     forum_art_id INTEGER REFERENCES forum(id) ON DELETE CASCADE,
-    likes INTEGER 
+    likes INTEGER default 0
 )
