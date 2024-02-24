@@ -11,13 +11,7 @@ const Archive = ({username, url, title,description, author}) =>{
 
     const [activeButton, setActiveButton] = useState(true)
     const [state, setState] = useState([])
-    // useEffect(()=> {
-    //     handleArchive();
-        
-    // },[])
-
- 
-
+  
     
     async function handleArchive() {
         apiCall();
@@ -25,7 +19,7 @@ const Archive = ({username, url, title,description, author}) =>{
       
     }
 
- 
+    //apiCall thru helper function to post article into archive table
     async function apiCall() {
         try {
         setActiveButton(false);
