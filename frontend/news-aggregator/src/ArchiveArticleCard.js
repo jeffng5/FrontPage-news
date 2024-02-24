@@ -3,6 +3,8 @@ import './css/App.css'
 
 const ArchiveArticleCard = ({title, url, description, author}) => {
 
+
+// returning the passed data thru structured html     
 return (
     <>
     <h6 className= 'divider-card'>

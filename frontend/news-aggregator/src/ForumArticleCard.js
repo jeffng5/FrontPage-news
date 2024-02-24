@@ -3,7 +3,7 @@ import './css/forum.css'
 import Comments from './Comments'
 import Comment from './Comment'
 
-
+// component to add structure into each article 
 const ForumArticleCard = ({title, description, url, author, likes, id}) =>{
     return (
         <>

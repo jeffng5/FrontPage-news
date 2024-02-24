@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-
+// divider line between articles
 const ColoredLineThin = ({ color }) => (
     <hr
         style={{

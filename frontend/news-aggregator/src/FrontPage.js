@@ -44,6 +44,8 @@ const FrontPage = () => {
 
 useEffect (()=> {
     setDateTime(new Date());
+
+    //this API call gets articles according to subject from the newsAPI.org
     const getApi = async() => {
    
         try { 
@@ -114,6 +116,8 @@ useEffect (()=> {
     catch (err) {console.log(err)}
  
     };   
+
+    //this API call gets teh term search from newAPI.org
     const getApi2= async ()=>{
         
         try {
@@ -126,7 +130,7 @@ useEffect (()=> {
     setSearch([]);    
 }, []);
 
-
+//protecting route with jwt-token
 if (token)
 return (
     <>

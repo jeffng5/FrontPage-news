@@ -176,7 +176,7 @@ label {
 }
 
 span {
-    display: grid;
+  display: grid;
   position: relative;
   top: 0px;
   margin-left: 750px;  
@@ -190,7 +190,6 @@ h5 {
     left: 320px;
     margin-right: 40px;
     margin-top: 15px;
-
 }
 
 input {
@@ -205,3 +204,4 @@ input {
     font-size: 25px;
     text-align: center;
 }
+

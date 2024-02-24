@@ -3,7 +3,7 @@ import "./css/forum.css"
 import { Helpers } from './helpers'
 import CommentCard from './CommentCard'
 
-
+//get all comments from db
 const Comments = ({id}) => {
 
     const [state, setState] = useState([])
@@ -11,6 +11,7 @@ const Comments = ({id}) => {
     useEffect(() => {
         displayComments();
     }, [])
+    
     
     async function displayComments() {
         const res = await Helpers.getAllComments(id)

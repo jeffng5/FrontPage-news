@@ -2,7 +2,7 @@ import React from 'react'
 import './css/App.css'
 import { Link } from 'react-router-dom'
 
-
+//welcome component on homepage
 const Welcome = () => {
 
     return (

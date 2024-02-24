@@ -94,7 +94,7 @@ if (token)
 
 <form>
       <h5 className= 'selection'>
-    <h5>
+    <h5 className= 'selection'>
 <FormField
       control={Checkbox}
       label={<label className='choices'>Australia</label>}
