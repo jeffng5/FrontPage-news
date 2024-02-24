@@ -1,10 +1,12 @@
 # news-aggregator-capstone2
-The second Capstone project for Springboard involving a news aggregator app that allows a user to curate articles pertaining to preselected topics a user is interested in using the NewsAPI.org
+ABOUT :\ 
+This web app returns to users curated news articles according to user selected preferences/topics in a front page newspaper format. User can archive and also discuss these articles in a forum on the app. 
+
+API:\
+from newsAPI.org
 
 ![title](pictures/Image1.png)
 
-ABOUT :\ 
-This web app returns to users curated news articles according to user selected preferences/topics in a front page newspaper format. User can archive and also discuss these articles in a forum on the app. 
 
 APP FEATURES :\
 Features implemented include a user login/signup/logout to keep user settings private. A preferences select page that allows users to select news topics that they will be interested in reading. Then the user can save their articles in their user account and also post an interesting article for discussion in the forum. There is also a search term available in case none of the preselected topics interest the user. 
