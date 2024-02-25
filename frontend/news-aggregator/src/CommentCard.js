@@ -3,17 +3,16 @@ import './css/forum.css'
 import { Helpers } from './helpers'
 import Likes from './Likes'
  
-
+// the structure for each comment
 const CommentCard = ({comment, username, datetime}) => {
     
     const [addLike, setAddLike] = useState(0)
-
+    //also has like functionality
     async function addLikes() {
-    
         await Helpers.postLike(comment)
-        
         const res = await Helpers.getPostLike(comment)
         console.log(res.thing[0].likes)
+        //parsing apiCall and setting the state
         setAddLike(res.thing[0].likes)
      
        

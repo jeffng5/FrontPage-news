@@ -32,24 +32,11 @@ const Login = () => {
     return (
         <>
         <h1 id='login-welcome'>Please Login</h1>
-        {/* <form>
-            <div className= "log-in-form">
-            <input id= "username" type= "text" name='username'placeholder= "username"
-            onChange={handleChange} value={formData.username}></input>
-            </div>
-            <div className= "log-in-form">
-            <input id= "password" type= "password" name= 'password' onChange={handleChange} placeholder= "password" value={formData.password}></input>
-            </div>
-            <div className= 'log-in-form'>
-            <Link to = '/users'><button id='log' onClick={LoginUser}>Log In</button></Link> 
-            </div>
-        </form> */}
+
           <Form>
           <div className='form-entry'>
     <FormInput
-     
-      // error={{ content: 'Please enter your username', pointing: 'below' }}
-      // label='Username'
+  
       type='text'
       placeholder='username'
       id='username'
@@ -59,8 +46,7 @@ const Login = () => {
     /> </div>
      <div className='form-entry'>
     <FormInput
-      // error={{ content : 'Please enter your password', pointing: 'below' }}
-      // label="Password"
+ 
       type ='password'
       placeholder='password'
       id='password'

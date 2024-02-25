@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 
 
 let username = localStorage.getItem('username')
+//forum component
 const Forum = () => {
 
     const [state, setState] = useState([])
@@ -15,6 +16,7 @@ const Forum = () => {
         getForumArticles();
     },[])
     
+    // helper function to get all articles in forum table
     async function getForumArticles() {
         let res = await Helpers.getForum();
         setState(res.forumArticles);
