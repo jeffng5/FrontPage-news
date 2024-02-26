@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <p
+    class="forum-article-card"
+  >
+    <a
+      class="url"
+      target="_blank"
+    >
+      <h7
+        class="title-forum-article"
+      />
+      <h7
+        class="description-forum-article"
+      />
+    </a>
+    <h7
+      class="author-forum-article"
+    >
+      -Author: 
+    </h7>
+  </p>
+  <p
+    class="commentary"
+  />
+  <p
+    class="commentary"
+  />
+  <form>
+    <textarea
+      cols="50"
+      name="message"
+      placeholder="Type comment here..."
+      rows="5"
+    />
+  </form>
+  <button
+    class="add-comment"
+  >
+    Add Comment
+  </button>
+  <h4 />
+  <p />
+  <p />
+</DocumentFragment>
+`;

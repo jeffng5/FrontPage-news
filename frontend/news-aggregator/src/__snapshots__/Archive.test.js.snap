@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <button
+    class="archive"
+    style="background-color: yellow;"
+  >
+    <img
+      alt=""
+      id="archive"
+      src="penfeather.png"
+    />
+    Archive
+  </button>
+</DocumentFragment>
+`;

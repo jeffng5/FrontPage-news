@@ -8,7 +8,7 @@ const ForumArticleCard = ({title, description, url, author, likes, id}) =>{
     return (
         <>
         <p className='forum-article-card'>
-        <a href= {url} className= 'url' target='_blank'><h7 className='title-forum-article'>{title}</h7><h7 className= 'description-forum-article'>{description}</h7></a><h7 className='author-forum-article'>-Author: {author}</h7>
+        <a href= {url} className= 'url' target='_blank'><p className='title-forum-article'>{title}</p><p className= 'description-forum-article'>{description}</p></a><p className='author-forum-article'>-Author: {author}</p>
 {likes}
         
         <p className='commentary'><Comments id ={id} /></p>
