@@ -18,7 +18,7 @@ test('testing component', ()=> {
 })
 
 test('login button works', ()=> {
-    const { getByText } = render( <Login/>);
+    const { getByText } = render(<Login/>);
     const heading = getByText('Log In')
     expect(heading).toHaveClass('preferences')
     fireEvent.click(getByText('Log In'))
