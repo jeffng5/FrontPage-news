@@ -26,9 +26,12 @@ const { createToken } = require('./helpers/tokens')
 //       error: { message, status },
 //     });
 //   });
+const password = process.env.PASSWORD
+const PORT = process.env.PORT
+const USER = process.env.USER
 
 const pgp = require('pg-promise')(/* options */)
-const db = pgp("postgresql://jeffreyng:beachbodyp90x@127.0.0.1:5433/news")
+const db = pgp(`postgresql://${USER}:${password}@127.0.0.1:${PORT}/news`)
 
 /////////////////////////// BASIC ROUTES for register and login ///////////////////////////////
 app.post('/register', async (req,res, next)=> {

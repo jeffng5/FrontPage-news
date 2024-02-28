@@ -14,7 +14,7 @@ let pref = localStorage.getItem('preferences')
 console.log(pref)
 
 
-let subj = pref.split(',')
+let subj = pref.split(',') || ''
 
 let term = localStorage.getItem('freePreferences')
 console.log(term)

@@ -8,6 +8,7 @@ const Logout = () => {
     const username = localStorage.getItem('username')
     async function logOutUser() {
         //removing username bc its used for access to many routes
+        
         const result = localStorage.removeItem('username')
         return result
     } 
