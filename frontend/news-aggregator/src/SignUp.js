@@ -12,7 +12,7 @@ const SignUp = () => {
 // handle change to intake formData
     const handleChange = (e) => {
         const { name, value } = e.target
-        setFormData(formData => ({...formData,[name]: value }))
+        setFormData(formData => ({...formData, [name]: value }))
     }
     console.log(formData.username)
     console.log(formData.email)

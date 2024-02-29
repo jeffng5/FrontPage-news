@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
 import './css/FrontPage.css'
+import { jwtDecode } from "jwt-decode"
 import {Helpers} from "./helpers"
+import { Navigate } from 'react-router-dom'
 import myImage from './penfeather.png'
 
 
+let token = localStorage.getItem('res.token')
+const decode = jwtDecode(token)
 
-// let username = localStorage.getItem('username')
 // button component to archive article takes in data from parent component
 const Archive = ({username, url, title,description, author}) =>{
-
+    
     const [activeButton, setActiveButton] = useState(true)
     const [state, setState] = useState([])
   
@@ -24,12 +27,16 @@ const Archive = ({username, url, title,description, author}) =>{
         setActiveButton(false);
         const res = await Helpers.saveArticle(username,url,title, description,author)
         setState(res)
-        console.log(res)
+     
 
     }   catch (e) {
         console.log(e)
     }}
-console.log(state)
+
+// if (!decode)   {
+//         return <Navigate to = '/users' />
+//     }    
+if (decode)
     return (
         <>
 
@@ -39,6 +46,7 @@ console.log(state)
       
         </>
     )
+
 
 
 }

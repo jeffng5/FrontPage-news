@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { jwtDecode } from "jwt-decode"
 import "./css/semantic.css"
+import { Navigate } from 'react-router-dom'
 import { FormField, Checkbox } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
+
 let token = localStorage.getItem('res.token')
+const decode = jwtDecode(token)
 
 
 const Preferences = () => {
+
     let user = localStorage.getItem('username')
   
     let pref = localStorage.getItem('preferences')
@@ -62,14 +66,16 @@ function handleChange(e) {
      
     }
 
-console.log(localStorage.getItem('preferences'))
+
 const wildCard = localStorage.getItem('freePreferences')
 
 
 
 
 // protecting route
-if (token)
+
+
+if (decode)
 //////////////////////////////// CHECKBOX FORM ////////////////////////////////
     return (
         <>
@@ -188,7 +194,19 @@ if (token)
     
         </form>
 </>
-    )}
+
+
+
+
+    )
+    // if (!decode) {
+    
+    //   return <Navigate to = '/users' />
+    
+    // }
+
+  
+  }
 
 
 

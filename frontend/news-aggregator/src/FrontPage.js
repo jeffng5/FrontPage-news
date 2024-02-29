@@ -1,30 +1,34 @@
 import React, { useState, useEffect } from 'react'
 import "./css/FrontPage.css"
 import "./css/semantic.css"
+import { Navigate } from 'react-router-dom'
+import  {jwtDecode}  from "jwt-decode"
 import axios from 'axios'
 import ArticleCard from "./ArticleCard"
 import ColoredLine from "./ColoredLine"
 import { Link } from 'react-router-dom'
 
-let token = localStorage.getItem('res.token')
-const apiKey = process.env.REACT_APP_APIKEY
 let username = localStorage.getItem('username')
+const apiKey = process.env.REACT_APP_APIKEY
+let token = localStorage.getItem('res.token')
+const decode = jwtDecode(token)
+
+
 
 let pref = localStorage.getItem('preferences')
-console.log(pref)
+
 
 
 let subj = pref.split(',') || ''
 
 let term = localStorage.getItem('freePreferences')
-console.log(term)
-console.log(subj[0])
+
 
 
 // holds bulk of search, many API calls, displays current date
 const FrontPage = () => {
 // states for all the topics
-
+    
     const [dateTime, setDateTime] = useState(new Date())
     const [search, setSearch] = useState([])
     const [australia, setAustralia] =useState([])
@@ -108,11 +112,8 @@ useEffect (()=> {
         const res10 = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=technology&pageSize=15&apiKey=${apiKey}`)
     
     setTechnology(res10['data']['articles'])
-    
-
     }
-        }
-     
+        }     
     catch (err) {console.log(err)}
  
     };   
@@ -131,7 +132,13 @@ useEffect (()=> {
 }, []);
 
 //protecting route with jwt-token
-if (token)
+// if (!decode) {
+    
+//     return <Navigate to = '/users' />
+
+// }
+
+if (decode)
 return (
     <>
      <div className='links'>
@@ -151,6 +158,7 @@ return (
 
 {us.map(c => (
     <ArticleCard  title = {c.title} 
+    key={c.key}
     url = {c.url}
     description ={c.description}
    urlToImage= {c.urlToImage}
@@ -160,6 +168,7 @@ return (
 {australia.map(c => (
     <ArticleCard  title = {c.title} 
     url = {c.url}
+    key={c.key}
     description ={c.description}
    urlToImage= {c.urlToImage}
 
@@ -169,6 +178,7 @@ return (
 {asia.map(c => (
     <ArticleCard  title = {c.title} 
     url = {c.url}
+    key={c.key}
     description ={c.description}
    urlToImage= {c.urlToImage}
 
@@ -177,6 +187,7 @@ return (
 {business.map(c => (
     <ArticleCard  title = {c.title} 
     url = {c.url}
+    key={c.key}
     description ={c.description}
    urlToImage= {c.urlToImage}
 
@@ -185,6 +196,7 @@ return (
 {entertainment.map(c => (
     <ArticleCard  title = {c.title} 
     url = {c.url}
+    key={c.key}
     description ={c.description}
    urlToImage= {c.urlToImage}
 
@@ -193,6 +205,7 @@ return (
 {general.map(c => (
     <ArticleCard  title = {c.title} 
     url = {c.url}
+    key={c.key}
     description ={c.description}
    urlToImage= {c.urlToImage}
 
@@ -201,6 +214,7 @@ return (
 {uk.map(c => (
     <ArticleCard  title = {c.title} 
     url = {c.url}
+    key={c.key}
     description ={c.description}
    urlToImage= {c.urlToImage}
 
@@ -209,6 +223,7 @@ return (
 {health.map(c => (
     <ArticleCard  title = {c.title} 
     url = {c.url}
+    key={c.key}
     description ={c.description}
    urlToImage= {c.urlToImage}
 
@@ -217,6 +232,7 @@ return (
 {science.map(c => (
     <ArticleCard  title = {c.title} 
     url = {c.url}
+    key={c.key}
     description ={c.description}
    urlToImage= {c.urlToImage}
 
@@ -225,6 +241,7 @@ return (
 {sports.map(c => (
     <ArticleCard  title = {c.title} 
     url = {c.url}
+    key={c.key}
     description ={c.description}
    urlToImage= {c.urlToImage}
 
@@ -233,6 +250,7 @@ return (
 {technology.map(c => (
     <ArticleCard  title = {c.title} 
     url = {c.url}
+    key={c.key}
     description ={c.description}
    urlToImage= {c.urlToImage}
 
@@ -241,6 +259,7 @@ return (
 {search.map(c => (
     <ArticleCard  title = {c.title} 
     url = {c.url}
+    key={c.key}
     description ={c.description}
    urlToImage= {c.urlToImage}
 
@@ -248,6 +267,7 @@ return (
 
 <h2 className='closing'><Link to = '/users'>Go back to Preferences Page</Link></h2>
 </>)
+
 }
 
     

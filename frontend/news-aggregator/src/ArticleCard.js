@@ -11,7 +11,7 @@ let username = localStorage.getItem('username')
 //receiving prop data from parent
 const ArticleCard = ({title, description, url, author, urlToImage}) => {
 
-console.log(title)    
+  
     return (
     <>
   

@@ -29,8 +29,7 @@ export class Helpers {
 // user login helper function
     static async loginUser(username, password) {
         let res = await this.request(`login`, {username, password})
-        console.log(res)
-        console.log(res.data)
+ 
         return res.data;
 
     }
@@ -92,7 +91,6 @@ static async saveArticle(username, url, title, description, author) {
 // get likes for each comment
     static async getPostLike(comment) {
         let res = await this.request('users/forum/likes', {comment})
-        console.log(res.data, 'getting likes')
         return res.data;
     } 
 

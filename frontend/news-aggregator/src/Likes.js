@@ -9,7 +9,7 @@ const Likes =( {comment}) =>{
     // API call to backend to fetch amt of likes per comment
     async function getLikeCount() {
     const res = await Helpers.getPostLike(comment)
-        console.log(res.thing[0].likes)
+     
         setLikeCount(res.thing[0].likes)
     }
 

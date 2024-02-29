@@ -28,7 +28,7 @@ const Login = () => {
         navigate('/users')
         return "TOKEN ADDED!"
     }
-    console.log(formData)
+ 
     return (
         <>
         <h1 id='login-welcome'>Please Login</h1>

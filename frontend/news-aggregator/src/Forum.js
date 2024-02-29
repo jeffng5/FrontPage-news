@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react'
-// import "./css/semantic.css"
+import { jwtDecode } from "jwt-decode" 
 import './css/forum.css'
 import { Helpers } from './helpers'
+import { Navigate } from 'react-router-dom'
 import ForumArticleCard from './ForumArticleCard'
 import { Link } from 'react-router-dom'
 
 
-let username = localStorage.getItem('username')
+
 //forum component
 const Forum = () => {
+    
+    let username = localStorage.getItem('username')
+    let token = localStorage.getItem('res.token')
+    const decode = jwtDecode(token)
 
     const [state, setState] = useState([])
 
@@ -22,7 +27,11 @@ const Forum = () => {
         setState(res.forumArticles);
     }
 
+// if (!decode) {
+//         return <Navigate to = '/users' />
+//     }
 
+if (decode)
 return (
 
 <>
@@ -56,5 +65,6 @@ return (
 </div>
 </>
 )
+
 }
 export default Forum
