@@ -10,8 +10,8 @@ import { Link } from 'react-router-dom'
 
 let username = localStorage.getItem('username')
 const apiKey = process.env.REACT_APP_APIKEY
-let token = localStorage.getItem('res.token')
-const decode = jwtDecode(token)
+// let token = localStorage.getItem('res.token')
+// const decode = jwtDecode(token)
 
 
 
@@ -138,7 +138,7 @@ useEffect (()=> {
 
 // }
 
-if (decode)
+// if (decode)
 return (
     <>
      <div className='links'>

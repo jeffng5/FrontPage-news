@@ -33,9 +33,9 @@ const Archive = ({username, url, title,description, author}) =>{
         console.log(e)
     }}
 
-// if (!decode)   {
-//         return <Navigate to = '/users' />
-//     }    
+if (!decode)   {
+        return <Navigate to = '/users' />
+    }    
 if (decode)
     return (
         <>

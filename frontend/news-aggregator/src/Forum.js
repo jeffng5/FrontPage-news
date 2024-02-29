@@ -27,9 +27,9 @@ const Forum = () => {
         setState(res.forumArticles);
     }
 
-// if (!decode) {
-//         return <Navigate to = '/users' />
-//     }
+if (!decode) {
+        return <Navigate to = '/users' />
+    }
 
 if (decode)
 return (

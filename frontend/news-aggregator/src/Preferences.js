@@ -73,7 +73,11 @@ const wildCard = localStorage.getItem('freePreferences')
 
 
 // protecting route
-
+   if (!decode) {
+    
+      return <Navigate to = '/users' />
+    
+    }
 
 if (decode)
 //////////////////////////////// CHECKBOX FORM ////////////////////////////////
@@ -199,11 +203,7 @@ if (decode)
 
 
     )
-    // if (!decode) {
-    
-    //   return <Navigate to = '/users' />
-    
-    // }
+ 
 
   
   }
