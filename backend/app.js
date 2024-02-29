@@ -17,7 +17,7 @@ const PORT = process.env.PORT
 const USER = process.env.USER
 
 const pgp = require('pg-promise')(/* options */)
-const db = pgp(`postgresql://${USER}:${password}@127.0.0.1:${PORT}/news`)
+const db = pgp(`postgresql://${USER}:${password}@127.0.0.1:5433/news`)
 
 /////////////////////////// BASIC ROUTES for register and login ///////////////////////////////
 app.post('/register', async (req,res, next)=> {
@@ -55,6 +55,7 @@ app.get('/login', async (req, res, next) => {
     try {
         const {username, password} = req.query;
         console.log(req.query)
+        console.log("I am here!")
         if (!username || !password) {
             throw new ExpressError("Username and password required.")
         }
