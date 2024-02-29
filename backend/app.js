@@ -55,7 +55,7 @@ app.get('/login', async (req, res, next) => {
     try {
         const {username, password} = req.query;
         console.log(req.query)
-        console.log("I am here!")
+       
         if (!username || !password) {
             throw new ExpressError("Username and password required.")
         }
