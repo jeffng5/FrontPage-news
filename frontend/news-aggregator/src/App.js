@@ -9,6 +9,7 @@ import Forum from './Forum'
 import Login from './Login'
 import SignUp from './SignUp'
 import Logout from './Logout'
+import Error from './Error'
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path = '/login' exact element = {<Login />}></Route>
         <Route path = "/signup" exact element = {<SignUp />}></Route>
         <Route path = "/logout" exact element= {<Logout />}></Route>
+        <Route path = '/error' exact element = {<Error />}></Route>
       
       </Routes>
       </BrowserRouter>
