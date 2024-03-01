@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import {Helpers} from "./helpers"
+import { jwtDecode } from "jwt-decode"
 import ArchiveArticleCard from "./ArchiveArticleCard"
 import { Link } from 'react-router-dom'
 
 let username = localStorage.getItem('username')
+let token = localStorage.getItem('res.token')
+const decode = jwtDecode(token)
 
 //display archives 
 const Saved = () => {
@@ -28,10 +31,9 @@ async function archiveResults() {
 
 }
 
-console.log(articles)
-console.log(username)
 
 
+if (decode)
 return (
 <>
 <div className='links'>

@@ -8,14 +8,10 @@ import { Link } from 'react-router-dom'
 
 let username = localStorage.getItem('username')
 const apiKey = process.env.REACT_APP_APIKEY
-// let token = localStorage.getItem('res.token')
-// const decode = jwtDecode(token)
-
-
+let token = localStorage.getItem('res.token')
+const decode = jwtDecode(token)
 
 let pref = localStorage.getItem('preferences')
-
-
 
 let subj = pref.split(',') || ''
 
@@ -130,13 +126,13 @@ useEffect (()=> {
 }, []);
 
 
-// if (decode)
+if (decode)
 
 return (
 <>
 <body>
      <div className='links'>
-        <Link to = "/">Hi {username},</Link>
+        Hi {username},
         <Link to = "/users">Preferences</Link>
         <Link to = "/users/frontpage">FrontPage</Link>
         <Link to = "/users/forum">Forum</Link>

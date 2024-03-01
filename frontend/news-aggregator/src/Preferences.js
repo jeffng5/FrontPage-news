@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { jwtDecode } from "jwt-decode"
 import "./css/semantic.css"
-import { Navigate } from 'react-router-dom'
 import { FormField, Checkbox } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 
-// let token = localStorage.getItem('res.token')
-// const decode = jwtDecode(token)
+let token = localStorage.getItem('res.token')
+const decode = jwtDecode(token)
 
 
 const Preferences = () => {
@@ -79,7 +78,7 @@ const wildCard = localStorage.getItem('freePreferences')
     
   //   }
 
-// if (decode)
+if (decode)
 //////////////////////////////// CHECKBOX FORM ////////////////////////////////
     return (
         <>

@@ -2,19 +2,16 @@ import React, { useState, useEffect } from 'react'
 import { jwtDecode } from "jwt-decode" 
 import './css/forum.css'
 import { Helpers } from './helpers'
-import { Navigate } from 'react-router-dom'
 import ForumArticleCard from './ForumArticleCard'
 import { Link } from 'react-router-dom'
 
-
+let token = localStorage.getItem('res.token')
+const decode = jwtDecode(token)
 
 //forum component
 const Forum = () => {
     
     let username = localStorage.getItem('username')
-    let token = localStorage.getItem('res.token')
-    const decode = jwtDecode(token)
-
     const [state, setState] = useState([])
 
     useEffect(()=> {
@@ -27,11 +24,7 @@ const Forum = () => {
         setState(res.forumArticles);
     }
 
-// if (!decode) {
-//         return <Navigate to = '/users' />
-//     }
-
-// if (decode)
+if (decode)
 return (
 
 <>
@@ -42,8 +35,7 @@ return (
         <Link to = "/users/forum">Forum</Link>
         <Link to = "/users/archives">Archives</Link>
         <Link to = "/logout">Logout</Link>
-   
-        </div>
+    </div>
 <h1 id = 'forum'>Welcome to the News Forum</h1>
 
 {state.map(c=> (
