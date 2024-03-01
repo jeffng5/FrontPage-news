@@ -27,11 +27,11 @@ const Forum = () => {
         setState(res.forumArticles);
     }
 
-if (!decode) {
-        return <Navigate to = '/users' />
-    }
+// if (!decode) {
+//         return <Navigate to = '/users' />
+//     }
 
-if (decode)
+// if (decode)
 return (
 
 <>
@@ -44,7 +44,7 @@ return (
         <Link to = "/logout">Logout</Link>
    
         </div>
-<h1 className = 'forum'>Welcome to the News Forum</h1>
+<h1 id = 'forum'>Welcome to the News Forum</h1>
 
 {state.map(c=> (
     <ForumArticleCard 

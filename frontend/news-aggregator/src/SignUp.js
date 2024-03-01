@@ -8,6 +8,7 @@ import { useNavigate, Link } from 'react-router-dom'
 const SignUp = () => {
     const navigate = useNavigate()
     const [formData, setFormData] = useState([])
+    const [message, setMessage] = useState([])
 
 // handle change to intake formData
     const handleChange = (e) => {
@@ -21,14 +22,20 @@ const SignUp = () => {
     async function SignUpUser(e) {
         e.preventDefault();
         const res = await Helpers.signUpUser(formData.username, formData.password, formData.email);
+        setMessage(res)
         console.log(res)
-       
         localStorage.setItem("res.token", res.token)
         localStorage.setItem("username", res.user)
+
+        if (res.token && res.user){
         navigate('/users')
         return console.log("Sign in successful")
-    
+        }
+        else {
+          navigate('/')
+        }
     }
+    console.log(message)
     
     return (
         <>

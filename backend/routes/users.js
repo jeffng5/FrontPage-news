@@ -66,7 +66,7 @@ router.get('/archives', async function (req, res, next) {
 
 router.post('/forum', async function (req, res, next) {
     try {
-        const { username, url, title, description, author, urlToImage}= req.body
+        const { username, url, title, description, author, urlToImage }= req.body
     const postToForum = await db.query(`INSERT into forum (username, url, title, description, author, urlToImage) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`, [username, url, title, description, author, urlToImage])
     if (postToForum) {
         console.log('Forum article POSTED!')}

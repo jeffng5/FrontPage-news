@@ -3,27 +3,26 @@
     display: inline-grid;
     grid-template-columns: 330px, 375px, 375px;
     margin-top: -500px;
-    padding-bottom: 300px;
+    padding-bottom: 400px;
     margin-bottom: 40px;
 }
 
 .author-2 {
     position: relative;
     font-size: 20px;
-    bottom: 450px;
-    right: 23px;
+    bottom: 550px;
+    right: 109px;
     color: #006699;
 }
 
 .button-6 {
     position: relative;
-    right: -30px;
-    bottom: 270px;
-    margin-bottom: -20px;
+    right: 70px; 
+    bottom: 350px;
+    margin-bottom: 20px;
     display: block;
 
 }
-
 
 .line {
     margin-top: -200px;
@@ -47,9 +46,9 @@ img#Forum {
     margin-top: 0px;
 }
 
-button.archive {
+.archive {
     border-radius: 8px;
-    background-color: yellow;
+    background-color: teal;
     color: black;
     height: 33px;
     width: 120px;
@@ -57,9 +56,9 @@ button.archive {
     left: 0%;
 }
 
-button.forum {
+.forum {
     border-radius: 8px;
-    background-color: aquamarine;
+    background-color: teal;
     color: black;
     height: 33px;
     width: 120px;
@@ -89,12 +88,13 @@ right: 200px;
 .photograph{
 position: relative;
 top: 400px;
+left: 200px;
 border-radius: 6px;
 height: 330px;
 width: 490px;
 text-align: right;
-margin-left: 0px;
-margin-top: 0px;
+/* margin-left: 0px;
+margin-top: 0px; */
 
 }
 

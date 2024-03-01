@@ -15,7 +15,7 @@ const ButtonForum = ({username, url, title, description, author, urlToImage}) =>
         try {
             setButtonColor(false)
             //using function to make backend API call to POST saved article
-            const res = await Helpers.postForum(username,url,title, description,author, urlToImage)
+            const res = await Helpers.postForum(username, url, title, description,author, urlToImage)
             setState(res)
         
         }
@@ -26,7 +26,7 @@ const ButtonForum = ({username, url, title, description, author, urlToImage}) =>
     
 
     return (
-        <button className='forum' onClick={handleForum} style={{backgroundColor: buttonColor ? 'aquamarine' : 'grey'  }}><h6 id='button'>Post to Forum</h6></button>
+        <button className='forum' onClick={handleForum} style={{backgroundColor: buttonColor ? 'gold' : 'grey'  }}><h6 id='button'>Post to Forum</h6></button>
     )
     }
 

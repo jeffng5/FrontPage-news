@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import "./css/FrontPage.css"
-import "./css/semantic.css"
-import { Navigate } from 'react-router-dom'
 import  {jwtDecode}  from "jwt-decode"
 import axios from 'axios'
 import ArticleCard from "./ArticleCard"
@@ -131,18 +129,14 @@ useEffect (()=> {
     setSearch([]);    
 }, []);
 
-//protecting route with jwt-token
-// if (!decode) {
-    
-//     return <Navigate to = '/users' />
-
-// }
 
 // if (decode)
+
 return (
-    <>
+<>
+<body>
      <div className='links'>
-        <Link to = "">Hi {username},</Link>
+        <Link to = "/">Hi {username},</Link>
         <Link to = "/users">Preferences</Link>
         <Link to = "/users/frontpage">FrontPage</Link>
         <Link to = "/users/forum">Forum</Link>
@@ -266,7 +260,9 @@ return (
     author = {c.author} />))} 
 
 <h2 className='closing'><Link to = '/users'>Go back to Preferences Page</Link></h2>
-</>)
+</body>
+</>
+)
 
 }
 

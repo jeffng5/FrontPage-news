@@ -10,7 +10,7 @@ const Login = () => {
     //redirect to /users onCLick
     const navigate = useNavigate()
     const [formData, setFormData] = useState([])
-    
+    const [message, setMessage] = useState([])
 
     //handles input
     const handleChange = (e) => {
@@ -21,16 +21,21 @@ const Login = () => {
     async function LoginUser(e) {
         e.preventDefault();
         const res = await Helpers.loginUser(formData.username, formData.password);
-        console.log(res)
+        setMessage(res)
         localStorage.setItem("res.token", res.token)
         localStorage.setItem('username', res.user)
         
-        navigate('/users')
-        return "TOKEN ADDED!"
+        if (res.token && res.user){
+          navigate('/users')
+          return "TOKEN ADDED!"
     }
- 
+        else {
+          navigate('/')
+        }
+      }
     return (
         <>
+    
         <h1 id='login-welcome'>Please Login</h1>
 
           <Form>

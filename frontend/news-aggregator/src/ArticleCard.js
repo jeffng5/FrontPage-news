@@ -28,6 +28,7 @@ const ArticleCard = ({title, description, url, author, urlToImage}) => {
     <div className='line'>
     <ColoredLineThin color = "gray" />  
     </div>
+   
     </>
 )
 

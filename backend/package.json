@@ -28,6 +28,7 @@
   },
   "description": "",
   "devDependencies": {
+    "express-jwt": "^8.4.1",
     "pg-promise": "^11.5.4",
     "webpack-cli": "^5.1.4"
   }

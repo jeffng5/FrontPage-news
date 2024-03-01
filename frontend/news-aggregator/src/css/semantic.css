@@ -1,5 +1,5 @@
 body {
-    background-color: lightgray;
+    background-color:gray;
 }
 
 form {
@@ -64,7 +64,7 @@ button#log{
     font-size: 25px;
     grid-template-columns: 475px 200px 200px 200px 200px 200px;
     width: 100%;
-    /* margin-bottom: -45px ; */
+   
 }
 
 .frontpage-links {

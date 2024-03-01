@@ -6,8 +6,8 @@ import { FormField, Checkbox } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 
-let token = localStorage.getItem('res.token')
-const decode = jwtDecode(token)
+// let token = localStorage.getItem('res.token')
+// const decode = jwtDecode(token)
 
 
 const Preferences = () => {
@@ -73,13 +73,13 @@ const wildCard = localStorage.getItem('freePreferences')
 
 
 // protecting route
-   if (!decode) {
+  //  if (!decode) {
     
-      return <Navigate to = '/users' />
+  //     return <Navigate to = '/users' />
     
-    }
+  //   }
 
-if (decode)
+// if (decode)
 //////////////////////////////// CHECKBOX FORM ////////////////////////////////
     return (
         <>

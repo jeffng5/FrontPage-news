@@ -3,18 +3,22 @@ import "./css/forum.css"
 import { Helpers } from './helpers'
 
 
+
 //component to add comment 
 const Comment = ({id}) => {
   const username = localStorage.getItem('username')
   const [comment, setComment] = useState([])
   const [datetime, setDateTime] = useState(new Date())
   const [addedClause, setAddedClaus] = useState([])
+  const [render, setRender] = useState([])
   console.log(username)
+
+
 
 
   async function addComment(e) {
     e.preventDefault();
-    setComment(e.target.value)
+    setComment(e.target.value);
     setDateTime(new Date())
     //helpers function to post comment
     const res = await Helpers.postComment(username,  comment, id, datetime)
