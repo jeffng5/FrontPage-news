@@ -18,14 +18,18 @@ const SignUp = () => {
     }
     console.log(formData.username)
     console.log(formData.email)
+    console.log(formData.password)
 
 //makes API call to backend to post register data and redirect to users page.
+
+// async function validation() {
+// if (formData.username && formData.password && formData.email) {
     async function SignUpUser(e) {
         e.preventDefault();
-        const res = await Helpers.signUpUser(formData.username, formData.password, formData.email);
+        let res = await Helpers.signUpUser(formData.username, formData.password, formData.email);
         localStorage.setItem("res.token", res.token)
         localStorage.setItem("username", res.user)
-
+        
         if (res.token && res.user){
         navigate('/users')
         return console.log("Sign in successful")
@@ -33,8 +37,12 @@ const SignUp = () => {
         else {
           navigate('/error')
         }
-    }
 
+    }
+    // else{
+    //   navigate('/error')
+    // }
+  
     
     return (
         <>

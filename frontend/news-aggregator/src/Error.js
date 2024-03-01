@@ -10,6 +10,7 @@ return (
 
 <h3 className= 'error-page'> Username taken. Please choose another.</h3>
 <h3><Link to = '/signup' >Return to SignUp</Link></h3>
+<h3><Link to = '/'>Homepage</Link></h3>
 </>
 )
 }
