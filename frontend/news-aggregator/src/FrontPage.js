@@ -4,7 +4,7 @@ import  {jwtDecode}  from "jwt-decode"
 import axios from 'axios'
 import ArticleCard from "./ArticleCard"
 import ColoredLine from "./ColoredLine"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 let username = localStorage.getItem('username')
 const apiKey = process.env.REACT_APP_APIKEY
@@ -22,7 +22,8 @@ let term = localStorage.getItem('freePreferences')
 // holds bulk of search, many API calls, displays current date
 const FrontPage = () => {
 // states for all the topics
-    
+    const navigate = useNavigate()
+    const [loading, isLoading] = useState(true)
     const [dateTime, setDateTime] = useState(new Date())
     const [search, setSearch] = useState([])
     const [australia, setAustralia] =useState([])
@@ -42,7 +43,7 @@ const FrontPage = () => {
 
 useEffect (()=> {
     setDateTime(new Date());
-
+    isLoading(false)
     //this API call gets articles according to subject from the newsAPI.org
     const getApi = async() => {
    
@@ -125,6 +126,11 @@ useEffect (()=> {
     setSearch([]);    
 }, []);
 
+if (loading) {
+    return (
+    <h2>Page does not exist</h2>
+    )
+}
 
 if (decode)
 

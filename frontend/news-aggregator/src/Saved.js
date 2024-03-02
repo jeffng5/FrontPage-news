@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import {Helpers} from "./helpers"
 import { jwtDecode } from "jwt-decode"
 import ArchiveArticleCard from "./ArchiveArticleCard"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 let username = localStorage.getItem('username')
 let token = localStorage.getItem('res.token')
@@ -10,12 +10,14 @@ const decode = jwtDecode(token)
 
 //display archives 
 const Saved = () => {
-
+    const navigate = useNavigate()
     const [articles, setArticles] = useState([])
+    const [loading, isLoading] = useState(true)
 
 
     useEffect(() =>{
         archiveResults()
+        isLoading(false)
     }, [])
 
 async function archiveResults() {
@@ -28,7 +30,14 @@ async function archiveResults() {
     console.log(res)
 // res not returning anything
     setArticles(res.articles)
+    isLoading(false)
 
+}
+
+if (loading) {
+    return(
+    <h2>Page does not exist</h2>
+    )
 }
 
 
@@ -47,19 +56,14 @@ return (
         </div>
      <h1 className='archive-page'>YOUR ARCHIVE PAGE</h1>
 
-
-
 {articles.map(c => (<ArchiveArticleCard title= {c.title}
     url = {c.url}
     description = {c.description}
     author = {c.author}/> ))
     }
-
-
 </>
-
-
 )
+
 }
 
 

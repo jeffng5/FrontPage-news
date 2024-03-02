@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { jwtDecode } from "jwt-decode" 
 import './css/forum.css'
+import { useNavigate } from 'react-router-dom'
 import { Helpers } from './helpers'
 import ForumArticleCard from './ForumArticleCard'
 import { Link } from 'react-router-dom'
@@ -10,12 +11,14 @@ const decode = jwtDecode(token)
 
 //forum component
 const Forum = () => {
-    
+    const navigate = useNavigate()
     let username = localStorage.getItem('username')
     const [state, setState] = useState([])
+    const [loading, isLoading] = useState(true)
 
     useEffect(()=> {
         getForumArticles();
+        isLoading(false)
     },[])
     
     // helper function to get all articles in forum table
@@ -24,7 +27,14 @@ const Forum = () => {
         setState(res.forumArticles);
     }
 
+
+if (loading) {
+        return (
+        <h2>Page does not exist</h2>
+        )
+    }    
 if (decode)
+{
 return (
 
 <>
@@ -57,6 +67,8 @@ return (
 </div>
 </>
 )
+}
+
 
 }
 export default Forum
