@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { jwtDecode } from "jwt-decode" 
+// import { jwtDecode } from "jwt-decode" 
 import './css/forum.css'
 import { useNavigate } from 'react-router-dom'
 import { Helpers } from './helpers'
@@ -15,9 +15,9 @@ const Forum = () => {
     function checkToken() {
         let token = localStorage.getItem('res.token')
         if (token) {
-          const decode = jwtDecode(token)
+        //   const decode = jwtDecode(token)
           setUserLoggedIn(true)
-          return decode
+        //   return decode
         }
         else {
           setUserLoggedIn(false)

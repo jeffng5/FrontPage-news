@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import './css/FrontPage.css'
-import { jwtDecode } from "jwt-decode"
 import {Helpers} from "./helpers"
 import myImage from './penfeather.png'
 
