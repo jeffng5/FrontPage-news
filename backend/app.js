@@ -31,6 +31,10 @@ app.post('/register', async (req,res, next)=> {
         const { username, password, email } = req.body;
         console.log(req.body)
 
+        if (!username || !password || !email ) {
+            console.log("Username and password/email required")
+            return new ExpressError("Username and password/email required")}
+
         const hashedPwd = await bcrypt.hash(password, BCRYPT_WORK_FACTOR);
    
         try {
@@ -46,7 +50,7 @@ app.post('/register', async (req,res, next)=> {
             return ans
          }  
           catch(e) {
-            // throw new ExpressError("Username taken. Please pick another!")
+         
             next(e)
           }
 
@@ -65,7 +69,7 @@ app.get('/login', async (req, res, next) => {
 
         const results = await db.query(
         `SELECT username, password FROM users
-        WHERE username = $1 RETURNING *`, [username]);
+        WHERE username = $1`, [username]);
 
         const user = results[0].username;
         const pwd = results[0].password;
@@ -78,8 +82,11 @@ app.get('/login', async (req, res, next) => {
                 }
         }
         if (!username || !password) {throw new ExpressError('Password and username does not match!')}
-      
+        else {
+            return new ExpressError('Username and/or password do not match')      
+        }
     } catch(e){
+        return new ExpressError('Username and/or password do not match')
         next(e)
         
     }
