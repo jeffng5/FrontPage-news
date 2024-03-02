@@ -27,12 +27,13 @@ router.post("/frontpage", async function (req, res, next) {
         const {username, url, title, description, author} = req.body
         console.log(req.body)
         
-        const test = await db.query(`select username, url FROM archives WHERE username = $1 AND url = $2`, [username, url])
+        // const test = await db.query(`select username, url FROM archives WHERE username = $1 AND url = $2`, [username, url])
        
-        if (test) 
-        { return console.log("YES IT HAS BEGUN")
-                }
-        else {
+        // if (test) 
+        // { return console.log("YES IT HAS BEGUN")
+        //         }
+        // else 
+        // {
         const addArticle = await db.query(`
         INSERT INTO archives (username, url, title, description, author)
         VALUES ($1, $2, $3, $4, $5)`, [username, url, title, description, author]) 
@@ -40,7 +41,8 @@ router.post("/frontpage", async function (req, res, next) {
       
         let result = addArticle.rows
         console.log(result)
-        return res.status(201).json({ result })}}
+        return res.status(201).json({ result })}
+    // }
     //  catch (e) {
     //     return next(e)
     // }

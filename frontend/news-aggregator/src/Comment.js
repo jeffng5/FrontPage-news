@@ -10,7 +10,7 @@ const Comment = ({id}) => {
   const [comment, setComment] = useState([])
   const [datetime, setDateTime] = useState(new Date())
   const [addedClause, setAddedClaus] = useState([])
-  const [render, setRender] = useState([])
+
   console.log(username)
 
 

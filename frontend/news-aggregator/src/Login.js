@@ -10,7 +10,7 @@ const Login = () => {
     //redirect to /users onCLick
     const navigate = useNavigate()
     const [formData, setFormData] = useState([])
-    const [errorRes, setErrorRes] = useState(false)
+    // const [errorRes, setErrorRes] = useState(false)
 
     //handles input
     const handleChange = (e) => {
@@ -20,29 +20,37 @@ const Login = () => {
     // takes in username, password and makes backend call to route for validation
     async function LoginUser(e) {
         e.preventDefault();
-        const res = await Helpers.loginUser(formData.username, formData.password);
-        setErrorRes(true)    
-        localStorage.setItem("res.token", res.token)
-        localStorage.setItem('username', res.user)
+        try {
+          if (!formData.username || !formData.password) {
+            navigate('/error')
+          }
+          const res = await Helpers.loginUser(formData.username, formData.password);    
+         
         
-        if (res.token && res.user){
-          navigate('/users')
-          return "TOKEN ADDED!"
-    }
-        if (!formData.username || !formData.password) {
-          navigate('/error')
-        }
-        if (!res.token || !res.user) {
-          navigate('/')
-        }
+          if (res.token && res.user){
+            localStorage.setItem("res.token", res.token)
+            localStorage.setItem('username', res.user)
+            navigate('/users')
+        
+          }
+     
+        // if (!res.token || !res.user) {
+        //   navigate('/')
+        // }
         else {
           console.log('wrong username or password')
           navigate('/error')
         }
-       
       }
+      catch (err) {
+        console.log('catch error. Username and/or password do not match')
+        navigate('/error')
+      }
+    }
      console.log(formData.username)
      console.log(formData.password)
+
+
     return (
         <>
     
@@ -77,7 +85,8 @@ const Login = () => {
   </Form>
         </>
     )
-}
+    }
+
 
 
 export default Login

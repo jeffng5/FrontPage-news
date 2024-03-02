@@ -147,7 +147,7 @@ if (userLoggedIn)
 {
 return (
 <>
-<body>
+<>
      <div className='links'>
         Hi {username},
         <Link to = "/users">Preferences</Link>
@@ -273,7 +273,7 @@ return (
     author = {c.author} />))} 
 
 <h2 className='closing'><Link to = '/users'>Go back to Preferences Page</Link></h2>
-</body>
+</>
 </>
 )
 }

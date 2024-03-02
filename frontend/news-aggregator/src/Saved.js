@@ -5,7 +5,7 @@ import ArchiveArticleCard from "./ArchiveArticleCard"
 import { Link, useNavigate } from 'react-router-dom'
 
 let username = localStorage.getItem('username')
-
+console.log(username)
 //display archives 
 const Saved = () => {
 

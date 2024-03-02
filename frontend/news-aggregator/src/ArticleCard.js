@@ -6,6 +6,7 @@ import ButtonForum from "./ButtonForum"
 
 
 let username = localStorage.getItem('username')
+console.log(username)
 // Card template to hold the articles returned
 
 //receiving prop data from parent
