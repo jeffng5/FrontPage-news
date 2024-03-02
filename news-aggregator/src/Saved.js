@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import {Helpers} from "./helpers"
-import jwt_decode from "jwt-decode"
+import { jwtDecode } from "jwt-decode"
 import ArchiveArticleCard from "./ArchiveArticleCard"
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -12,7 +12,7 @@ const Saved = () => {
     function checkToken() {
         let token = localStorage.getItem('res.token')
         if (token) {
-          const decode = jwt_decode(token)
+          const decode = jwtDecode(token)
           setUserLoggedIn(true)
           return decode
         }

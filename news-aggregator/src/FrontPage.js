@@ -9,7 +9,7 @@ import { Link, useNavigate } from 'react-router-dom'
 let username = localStorage.getItem('username')
 const apiKey = process.env.REACT_APP_APIKEY
 
-
+localStorage.setItem('preferences', 'Australia')
 let pref = localStorage.getItem('preferences')
 
 let subj = pref.split(',') || ''
@@ -146,7 +146,7 @@ useEffect (()=> {
 if (userLoggedIn)
 {
 return (
-<>
+
 <>
      <div className='links'>
         Hi {username},
@@ -274,7 +274,7 @@ return (
 
 <h2 className='closing'><Link to = '/users'>Go back to Preferences Page</Link></h2>
 </>
-</>
+
 )
 }
 else {
