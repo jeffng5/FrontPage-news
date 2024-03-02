@@ -5,11 +5,22 @@ import { FormField, Checkbox } from 'semantic-ui-react'
 import { Link, useNavigate } from 'react-router-dom'
 
 
-let token = localStorage.getItem('res.token')
-const decode = jwtDecode(token)
 
 
 const Preferences = () => {
+
+  function checkToken() {
+    let token = localStorage.getItem('res.token')
+    if (token) {
+      const decode = jwtDecode(token)
+      setUserLoggedIn(true)
+      return decode
+    }
+    else {
+      setUserLoggedIn(false)
+    }
+  }
+
     const navigate = useNavigate()
     let user = localStorage.getItem('username')
   
@@ -18,14 +29,17 @@ const Preferences = () => {
 
     const initialState = pref
     const [prefs, setPrefs] = useState(initialState)
-    const [loading, isLoading] = useState(true)
+    const [userLoggedIn, setUserLoggedIn] = useState(false)
 
   useEffect(()=>{
     setPrefs(pref)
     setPrefs(initialState)
-    isLoading(false)
-}, []
-)
+    checkToken()
+  }, [])
+  
+  useEffect(()=>{
+    console.log(userLoggedIn)
+  }, [userLoggedIn])
 
 // function to intake search term and save to localStorage
 const handleForm = (e) => {
@@ -71,15 +85,15 @@ function handleChange(e) {
 const wildCard = localStorage.getItem('freePreferences')
 
 
-if (loading) {
-  return (
-  <h2>Page does not exist</h2>
-  )
-}
+// if (loading) {
+//   return (
+//   <h2>Page does not exist</h2>
+//   )
+// }
 
 
 
-if (decode)
+if (userLoggedIn){
 //////////////////////////////// CHECKBOX FORM ////////////////////////////////
     return (
         <>
@@ -199,10 +213,12 @@ if (decode)
         </form>
 </>
 
-
-
-
     )
+}
+else {
+  navigate('/')
+
+}
 
 
   

@@ -8,8 +8,7 @@ import { Link, useNavigate } from 'react-router-dom'
 
 let username = localStorage.getItem('username')
 const apiKey = process.env.REACT_APP_APIKEY
-let token = localStorage.getItem('res.token')
-const decode = jwtDecode(token)
+
 
 let pref = localStorage.getItem('preferences')
 
@@ -21,9 +20,23 @@ let term = localStorage.getItem('freePreferences')
 
 // holds bulk of search, many API calls, displays current date
 const FrontPage = () => {
+
+    function checkToken() {
+        let token = localStorage.getItem('res.token')
+        if (token) {
+          const decode = jwtDecode(token)
+          setUserLoggedIn(true)
+          return decode
+        }
+        else {
+          setUserLoggedIn(false)
+        }
+      }
+
+
 // states for all the topics
     const navigate = useNavigate()
-    const [loading, isLoading] = useState(true)
+    const [userLoggedIn, setUserLoggedIn] = useState(false)
     const [dateTime, setDateTime] = useState(new Date())
     const [search, setSearch] = useState([])
     const [australia, setAustralia] =useState([])
@@ -39,11 +52,14 @@ const FrontPage = () => {
     const [technology, setTechnology] = useState([])
     const date = dateTime.toLocaleDateString();
 
+useEffect(()=> {
+    console.log(userLoggedIn)
+}, [userLoggedIn])
 
 
 useEffect (()=> {
     setDateTime(new Date());
-    isLoading(false)
+    checkToken()
     //this API call gets articles according to subject from the newsAPI.org
     const getApi = async() => {
    
@@ -126,14 +142,9 @@ useEffect (()=> {
     setSearch([]);    
 }, []);
 
-if (loading) {
-    return (
-    <h2>Page does not exist</h2>
-    )
-}
 
-if (decode)
-
+if (userLoggedIn)
+{
 return (
 <>
 <body>
@@ -265,6 +276,11 @@ return (
 </body>
 </>
 )
+}
+else {
+  navigate('/')
+
+}
 
 }
 

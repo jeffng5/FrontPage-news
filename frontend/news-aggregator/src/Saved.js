@@ -5,19 +5,30 @@ import ArchiveArticleCard from "./ArchiveArticleCard"
 import { Link, useNavigate } from 'react-router-dom'
 
 let username = localStorage.getItem('username')
-let token = localStorage.getItem('res.token')
-const decode = jwtDecode(token)
 
 //display archives 
 const Saved = () => {
+
+    function checkToken() {
+        let token = localStorage.getItem('res.token')
+        if (token) {
+          const decode = jwtDecode(token)
+          setUserLoggedIn(true)
+          return decode
+        }
+        else {
+          setUserLoggedIn(false)
+        }
+      }
+
     const navigate = useNavigate()
     const [articles, setArticles] = useState([])
-    const [loading, isLoading] = useState(true)
+    const [userLoggedIn, setUserLoggedIn] = useState(false)
 
 
     useEffect(() =>{
         archiveResults()
-        isLoading(false)
+        checkToken()
     }, [])
 
 async function archiveResults() {
@@ -30,19 +41,13 @@ async function archiveResults() {
     console.log(res)
 // res not returning anything
     setArticles(res.articles)
-    isLoading(false)
+  
 
 }
 
-if (loading) {
-    return(
-    <h2>Page does not exist</h2>
-    )
-}
 
 
-
-if (decode)
+if (userLoggedIn){
 return (
 <>
 <div className='links'>
@@ -63,6 +68,11 @@ return (
     }
 </>
 )
+}
+else {
+  navigate('/')
+
+}
 
 }
 

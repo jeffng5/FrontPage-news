@@ -25,6 +25,8 @@ export class Helpers {
         }
     
     }
+    
+    
 
 // user login helper function
     static async loginUser(username, password) {
@@ -36,7 +38,7 @@ export class Helpers {
 // user SignUp helper function
     static async signUpUser(username, password, email) {
         let res = await this.request(`register`, {username, password, email}, 'post')
-        console.log(res)      
+        console.log(res.data)      
         return res.data;
 
     }

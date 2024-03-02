@@ -6,19 +6,32 @@ import { Helpers } from './helpers'
 import ForumArticleCard from './ForumArticleCard'
 import { Link } from 'react-router-dom'
 
-let token = localStorage.getItem('res.token')
-const decode = jwtDecode(token)
+
 
 //forum component
 const Forum = () => {
+
+
+    function checkToken() {
+        let token = localStorage.getItem('res.token')
+        if (token) {
+          const decode = jwtDecode(token)
+          setUserLoggedIn(true)
+          return decode
+        }
+        else {
+          setUserLoggedIn(false)
+        }
+    }
+
     const navigate = useNavigate()
     let username = localStorage.getItem('username')
     const [state, setState] = useState([])
-    const [loading, isLoading] = useState(true)
+    const [userLoggedIn, setUserLoggedIn] = useState(false)
 
     useEffect(()=> {
         getForumArticles();
-        isLoading(false)
+        checkToken()
     },[])
     
     // helper function to get all articles in forum table
@@ -27,13 +40,7 @@ const Forum = () => {
         setState(res.forumArticles);
     }
 
-
-if (loading) {
-        return (
-        <h2>Page does not exist</h2>
-        )
-    }    
-if (decode)
+if (userLoggedIn)
 {
 return (
 
@@ -67,6 +74,11 @@ return (
 </div>
 </>
 )
+}
+
+else {
+  navigate('/')
+
 }
 
 

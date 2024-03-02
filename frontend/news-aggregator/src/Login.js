@@ -22,6 +22,7 @@ const Login = () => {
         e.preventDefault();
         const res = await Helpers.loginUser(formData.username, formData.password);
         setMessage(res)
+        
         localStorage.setItem("res.token", res.token)
         localStorage.setItem('username', res.user)
         
@@ -29,15 +30,20 @@ const Login = () => {
           navigate('/users')
           return "TOKEN ADDED!"
     }
+        if (!formData.username || !formData.password) {
+          navigate('/')
+        }
         else {
           navigate('/')
         }
+       
       }
+      console.log(message)
     return (
         <>
     
         <h1 id='login-welcome'>Please Login</h1>
-
+      
           <Form>
           <div className='form-entry'>
     <FormInput
