@@ -1,0 +1,208 @@
+
+
+form {
+    margin-top: 30px;
+    margin-right: 1200px;
+    display: inline-block;
+    width: 500px;
+    height: 40px;
+    font-size: 27px;
+
+}
+
+.selection {
+    display: block;
+    
+}
+.button {
+    margin-top: 10px;
+  
+}
+
+button.save {
+    font-size: 17px;
+    border-radius: 5px;
+    background-color: teal;
+    color: white;
+    padding: 3px;
+    font-weight: 550;
+    height: 33px;
+    width: 250px; 
+    position: relative;
+    top: 500px;
+    left: 590px;
+
+}
+
+.preferences {
+    font-size: 17px;
+    border-radius: 5px;
+    background-color: teal;
+    color: white;
+    padding: 3px;
+    font-weight: 550;
+    height: 35px;
+    width: 200px; 
+    text-align: center;
+    position: relative;
+    top: 505px;
+    left: 600px;
+    
+}
+button#log{
+    text-align: center;
+    position: relative;
+    top: 500px;
+    left: -15px;
+}
+.links {
+    text-align: right;
+    margin-top: 25px;
+    display: inline-grid;
+    font-size: 25px;
+    grid-template-columns: 475px 200px 200px 200px 200px 200px;
+    width: 100%;
+   
+}
+
+.frontpage-links {
+    text-align: right;
+    margin-top: 25px;
+    display: inline-grid;
+    font-size: 25px;
+    grid-template-columns: 475px 200px 200px 200px 200px 200px;
+    width: 100%;
+    /* margin-bottom: -45px ; */
+}
+
+.intro {
+    font-size: 30px;
+    font-family: Helvetica;
+
+}
+.form-entry {
+    position: relative;
+    left: 600px;
+    text-align: center;
+    padding-bottom: 20px;
+
+}
+.log-in-form{
+    position: relative;
+    bottom: 460px;
+    left: 600px;
+}
+.log-in-form-1 {
+    position: relative;
+    bottom: 460px;
+  
+}
+.button-preferences {
+    text-align: center;
+    padding: 12px;
+    position: relative;
+
+}
+
+#username-error-message {
+    position: relative;
+
+
+}
+h1.prefs {
+    font-size: 55px;
+    font-family: Helvetica;
+    text-align: center;
+}
+
+h1.forum {
+    font-family: Helvetica;
+    font-size: 55px;
+}
+
+.separator {
+    text-align: center;
+    margin-left: 840px;
+    margin-top: -30px;
+    margin-bottom: -400px;
+}
+
+h3.topics {
+    font-size: 25px;
+    font-family: Helvetica;
+    text-align: center;
+}
+
+h3.color {
+    color: green;
+    font-size: 28px;
+    font-family: Helvetica;
+}
+
+
+h1.welcome {
+    font-size: 80px;
+    font-family: Helvetica;
+}
+
+p {
+    color: grey;
+    font-size: 24px;
+    } 
+
+p.header {
+    color: gray;
+    font-size: 24px;
+}
+
+label {
+    position:relative;
+    font-size: 14px;
+    font-weight:450;
+}
+
+#login-welcome {
+    font-size: 55px;
+    font-family: Helvetica;
+ 
+}
+
+.sign-in {
+    position: relative;
+    left: 600px;
+    text-align: center;
+}
+
+span {
+  display: grid;
+  position: relative;
+  top: 0px;
+  margin-left: 750px;  
+} 
+
+
+h5 {
+    display: inline-grid;
+    text-align: center;
+    position: relative;
+    left: 320px;
+    margin-right: 40px;
+    margin-top: 15px;
+}
+
+input {
+    position: relative;
+    
+}
+
+.anything {
+    position: relative;
+    top: 500px;
+    right: 42px;
+    font-size: 25px;
+    text-align: center;
+}
+
+.error-page {
+    margin-top: 200px;
+}

@@ -1,0 +1,194 @@
+
+
+.article {
+    text-align: left;
+    display: inline-grid;
+    grid-template-columns: 330px, 375px, 375px;
+    margin-top: -500px;
+    padding-bottom: 400px;
+    margin-bottom: 40px;
+}
+
+.author-2 {
+    position: relative;
+    font-size: 20px;
+    bottom: 550px;
+    right: 109px;
+    color: #006699;
+}
+
+.button-6 {
+    position: relative;
+    right: 70px; 
+    bottom: 350px;
+    margin-bottom: 20px;
+    display: block;
+
+}
+
+.line {
+    margin-top: -200px;
+}
+
+
+img#archive {
+    margin-left: 10px;
+    width: 25px;
+    height: 25px;
+    bottom: 45px;
+    margin-top: 0px;
+    
+}
+
+img#Forum {
+    margin-left: 10px;
+    width: 25px;
+    height: 25px;
+    bottom: 45px;
+    margin-top: 0px;
+}
+
+.archive {
+    border-radius: 8px;
+    background-color: teal;
+    color: black;
+    height: 33px;
+    width: 120px;
+    top: 10%;
+    left: 0%;
+}
+
+.forum {
+    border-radius: 8px;
+    background-color: teal;
+    color: black;
+    height: 33px;
+    width: 120px;
+    top: 10%;
+    left: 0%;
+
+}
+
+button.archived {
+    background-color: gray;
+    color: black;
+    height: 33px;
+    width: 120px;
+    bottom: 56%;
+    left: 100%;
+}
+#date-location { display: inline-block; position: absolute; left: 15px; top: 125px; text-align: left; background-color: #FFFFFF; border: 1px solid #006699; padding: 4px; z-index: 2; }
+
+.date-font { color: #006699; font: 13px arial, sans-serif; font-weight: bold; }
+
+.archive {
+position: relative;
+right: 200px;
+
+}
+
+.photograph{
+position: relative;
+top: 400px;
+left: 200px;
+border-radius: 6px;
+height: 330px;
+width: 490px;
+text-align: right;
+/* margin-left: 0px;
+margin-top: 0px; */
+
+}
+
+#headline {
+  
+  right: 0px;
+  font-size:40px;
+  bottom: 300px;
+  color:#006699;
+}
+
+.headline {
+    color:#006699;
+}
+/* 
+a {
+    color: black;
+    text-decoration: none;
+    position: relative;
+    bottom: 500px;
+} */
+
+h4.author{
+    font-size: 20px;
+    color:#006699;
+
+}
+
+.title {
+    font-size: 80px;
+    font-weight: 550;
+    font-family: Helvetica;
+    text-align: center;
+}
+
+h3.desc {
+    color: green;
+}
+
+h2.headlines {
+    margin-left: -150px;
+}
+.closing {
+    margin-top: 50px;
+}
+h2#headlines {
+    padding-bottom: 50px;
+}
+
+h5.desc {
+    font-size: 20px;
+    color: #006699;
+}
+
+h6#button {
+    position: relative;
+    font-size: 15px;
+    bottom: 30px;
+    font-weight: 400;
+}
+
+p {
+    
+    margin-left: 190px;
+    margin-right: 190px;
+}
+
+
+
+.archived {
+    color: gray; 
+}
+
+
+h2.date {
+    font-family: Courier;
+    font-size: 35px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+h5.desc {
+    margin-top: 20px;
+    position: relative;
+    left: 0px;
+    text-align: left;
+}
+
+h4.author {
+    position: relative;
+    margin-bottom: auto;
+    margin-top: 0px;
+    bottom: 470px;
+    right: 625px;
+}

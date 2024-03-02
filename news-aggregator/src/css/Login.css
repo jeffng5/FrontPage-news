@@ -1,0 +1,66 @@
+body {
+   
+    background-color: lightgray;
+    font-family: Helvetica;
+}
+
+
+button.log{
+    position: relative;
+    right: 990px;
+    text-align: center;
+    height: 30px;
+    width: 90px;
+}
+
+button {
+    border-radius: 5px;
+    background-color: teal;
+    color: white;
+    padding: 5px;
+    font-weight: 550;
+    height: 29px;
+    width: 150px; 
+    position: relative;
+    
+
+}
+
+button#preferences{
+    position:relative;
+    text-align: center;
+    height: 35px;
+    width: 150px;
+    
+}
+
+
+
+.log-in-form {
+    padding: 5px;
+}
+
+
+.preferences{
+    padding: 15px;
+}
+
+.newspaper {
+    background:url("../photos/Newsbackground2.jpeg");
+    opacity: .25;
+}
+
+
+.button {
+    padding-top: 10px;
+}
+
+#noneall a {
+    text-decoration: none;
+}
+
+h1#login-welcome {
+    font-size: 50px;
+}
+
+

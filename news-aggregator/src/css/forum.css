@@ -1,0 +1,120 @@
+.url {
+    text-align: left;
+    margin-left: 20px;
+
+}
+
+.title-forum-article {
+    font-size: 26px;
+    display: block;
+    text-align: left;
+    margin-left: 40px;
+    margin-bottom: 10px;
+    padding-bottom: 15px;
+}
+
+.description-forum-article
+{
+    font-size: 24px;
+    text-align: left;
+    display: block;
+    margin-left: 40px;
+    padding-bottom: 15px;
+}
+.author-forum-article {
+    font-size: 20px;
+    position: relative;
+    left: 75px;
+    text-align: left;
+    display: block;
+    margin-left: 40px;
+    margin-bottom: 10px;
+}
+.commentary {
+    text-align: left;
+    padding-left: 20px;
+    font-size: 10px;
+}
+
+label {
+    position: relative;
+    bottom: 55px;
+}
+
+textarea {
+    font-size: 18px;
+}
+
+.add-comment {
+    background-color: teal;
+    color: white;
+    height:40px;
+    width: 150px;
+    border-radius:6px;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+h6 {
+    font-size: 10px;
+}
+
+#forum {
+    margin-top: 65px;
+    font-size: 70px;
+}
+
+.comment-card {
+    margin-top: -10px;
+    margin-left: 20px;
+    display: inline-flex;  
+    color: black;
+}
+
+.comment-card-whole {
+    margin-top: 8px;
+}
+
+.user{
+    padding-left: 25px;
+    color : gray;
+}
+.comment-card-1{
+    position: relative;
+    bottom: 25px;
+    left: 5px;
+}
+.like {
+    position: relative;
+    bottom: -3px;
+    right: 8px;
+    height: 20px;
+}
+
+.like-button {
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+    display: relative;
+    margin-top: 5px;
+    text-align: left;
+    display: inline-flex;
+
+}
+
+.external-link {
+    font-size: 25px;
+}
+
+.forum-article-card {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding-bottom: 15px;
+    padding-right: 30px;
+    margin-left: 180px;
+    margin-right: 180px;
+    margin-bottom: 50px;
+    
+}
+

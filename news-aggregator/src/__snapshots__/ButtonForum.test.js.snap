@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <button
+    class="forum"
+    style="background-color: aquamarine;"
+  >
+    <h6
+      id="button"
+    >
+      Post to Forum
+    </h6>
+  </button>
+</DocumentFragment>
+`;

@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="article"
+  >
+    <p>
+      <img
+        alt="news"
+        class="photograph"
+      />
+    </p>
+    <h2
+      class="headline"
+      id="headline"
+    >
+      <span>
+        <a
+          target="_blank"
+        >
+          <h5
+            class="desc"
+          />
+        </a>
+      </span>
+    </h2>
+  </div>
+  <div
+    class="button-6"
+  >
+    <button
+      class="archive"
+      style="background-color: yellow;"
+    >
+      <img
+        alt=""
+        id="archive"
+        src="penfeather.png"
+      />
+      Archive
+    </button>
+  </div>
+  <div
+    class="button-6"
+  >
+    <button
+      class="forum"
+      style="background-color: aquamarine;"
+    >
+      <h6
+        id="button"
+      >
+        Post to Forum
+      </h6>
+    </button>
+  </div>
+  <div
+    class="author-2"
+  >
+    by: 
+  </div>
+  <div
+    class="line"
+  >
+    <hr
+      style="color: gray; background-color: gray; height: 3px;"
+    />
+  </div>
+</DocumentFragment>
+`;
