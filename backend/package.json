@@ -6,7 +6,7 @@
     "test": "jest",
     "start": "node server.js",
     "server": "nodemon server.js",
-    "client": "npm run start --prefix ../frontend/news-aggregator",
+    "client": "npm run start --prefix ../news-aggregator",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
   },
   "keywords": [],
