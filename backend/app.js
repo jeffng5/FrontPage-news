@@ -31,9 +31,6 @@ app.post('/register', async (req,res, next)=> {
         const { username, password, email } = req.body;
         console.log(req.body)
 
-        if (!username || !password || !email ) {
-            throw new ExpressError("Username and password/email required.")}
-
         const hashedPwd = await bcrypt.hash(password, BCRYPT_WORK_FACTOR);
    
         try {
@@ -68,7 +65,7 @@ app.get('/login', async (req, res, next) => {
 
         const results = await db.query(
         `SELECT username, password FROM users
-        WHERE username = $1`, [username]);
+        WHERE username = $1 RETURNING *`, [username]);
 
         const user = results[0].username;
         const pwd = results[0].password;
