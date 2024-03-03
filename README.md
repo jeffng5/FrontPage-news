@@ -12,7 +12,7 @@ APP FEATURES :\
 Features implemented include a user login/signup/logout to keep user settings private. A preferences select page that allows users to select news topics that they will be interested in reading. Then the user can save their articles in their user account and also post an interesting article for discussion in the forum. There is also a search term available in case none of the preselected topics interest the user. 
 
 TESTING :\
-Tests are run using Cypress and the files are located in the src/ folder.
+There are smoke, snapshot and integration tests for each component located in the src/ folder.
 
 USERFLOW :\ 
 Upon sign in or register, the user is taken to the Preferences page where user can select predetermined topics about the news they would like to read. User can select up to five topics. They may also enter a search term. They can save these settings and/or change them by navigating back go this screen at any time. 
