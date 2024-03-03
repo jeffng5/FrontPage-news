@@ -21,9 +21,9 @@ const Login = () => {
     async function LoginUser(e) {
         e.preventDefault();
         try {
-          if (!formData.username || !formData.password) {
-            navigate('/error')
-          }
+          // if (!formData.username || !formData.password) {
+          //   navigate('/error')
+          // }
           const res = await Helpers.loginUser(formData.username, formData.password);    
          
         
@@ -34,19 +34,19 @@ const Login = () => {
         
           }
      
-        // if (!res.token || !res.user) {
-        //   navigate('/')
-        // }
+        if (!res.token || !res.user) {
+          navigate('/')
+        }
         else {
           console.log('wrong username or password')
           navigate('/error')
         }
       }
       catch (err) {
-        console.log('catch error. Username and/or password do not match')
+        console.log(err)
         navigate('/error')
-      }
     }
+  }
      console.log(formData.username)
      console.log(formData.password)
 
@@ -86,7 +86,7 @@ const Login = () => {
         </>
     )
     }
-
+  
 
 
 export default Login

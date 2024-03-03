@@ -39,6 +39,7 @@ const Forum = () => {
         let res = await Helpers.getForum();
         setState(res.forumArticles);
     }
+    console.log(state)
 
 if (userLoggedIn)
 {

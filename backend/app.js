@@ -57,15 +57,13 @@ app.post('/register', async (req,res, next)=> {
 })
 
 app.get('/login', async (req, res, next) => {
-
+    if (!req.headers.authorization) {
+        return res.status(401).json({error: 'inaccessible'})
+    }
     try {
+
         const {username, password} = req.query;
         console.log(req.query)
-       
-        //  {
-    
-            
-        // }
 
         const results = await db.query(
         `SELECT username, password FROM users
