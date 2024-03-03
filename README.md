@@ -26,7 +26,7 @@ The forum functionality allows users to post their articles in an open forum for
 Finally there is a logout feature.
 
 TECH STACK USED :\
-Express.js, React.js, Axios, Bcrypt (for authentication), JWT-tokens (for authentication), PostgreSQL (for database), Cypress (for testing), CSS, HTML5
+Express.js, React.js, Axios, Bcrypt (for authentication), JWT-tokens (for authentication), PostgreSQL (for database), CSS, HTML5
 
 NOTES:\
 Most articles returned to user have full metadata about the article, however some data can be missing in some cases where the page would render a blank for that section of the article.
