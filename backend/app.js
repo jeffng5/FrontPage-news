@@ -95,7 +95,7 @@ app.get('/login', async (req, res, next) => {
 }
 
 )
-app.use((error, req, res, next)=> {
-    res.send("Password and username do not match.")
-})
+// app.use((error, req, res, next)=> {
+//     res.send("Password and username do not match.")
+// })
 module.exports = app;
