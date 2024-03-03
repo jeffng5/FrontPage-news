@@ -22,15 +22,14 @@ const SignUp = () => {
 
 //makes API call to backend to post register data and redirect to users page.
 
-// async function validation() {
-// if (formData.username && formData.password && formData.email) {
     async function SignUpUser(e) {
         e.preventDefault();
         try {
          
 
           let res = await Helpers.signUpUser(formData.username, formData.password, formData.email);
-        
+          console.log(res.token)
+          console.log(res.user)
           if (res.token && res.user){
             localStorage.setItem("res.token", res.token)
             localStorage.setItem("username", res.user)
@@ -93,7 +92,7 @@ const SignUp = () => {
     />
     </div>
     <div className= 'log-in-form'>
-      <Link to = "/users"><button id='log' onClick={SignUpUser}>Sign In</button></Link>
+      <button id='log' onClick={SignUpUser}>Sign In</button>
     </div>
   
   </Form>

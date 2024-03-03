@@ -79,7 +79,7 @@ const Login = () => {
     />
     </div>
     <div className='log-in-form-1'>
-      <Link to = '/users'><button className='preferences' onClick={LoginUser}>Log In</button></Link> 
+      <button className='preferences' onClick={LoginUser}>Log In</button>
     </div>
   
   </Form>
