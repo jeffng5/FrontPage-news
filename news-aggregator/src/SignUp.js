@@ -35,24 +35,18 @@ const SignUp = () => {
             localStorage.setItem("username", res.user)
             navigate('/users')
           }
-          if (!formData.username || !formData.password || !formData.email) {
-            navigate('/error')
-          }
+          // if (!formData.username || !formData.password || !formData.email) {
+          //   navigate('/error')
+          // }
 
-          else {
-            navigate('/error')
-          }
+          // else {
+          //   navigate('/error')
+          // }
         }
         catch (err) {
           console.log('sign up error')
           navigate('/error')
-
         }
-       
-        
-
-       
-
     }
   
     
