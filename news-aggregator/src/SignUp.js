@@ -27,9 +27,7 @@ const SignUp = () => {
     async function SignUpUser(e) {
         e.preventDefault();
         try {
-          if (!formData.username || !formData.password || !formData.email) {
-            navigate('/error')
-          }
+         
 
           let res = await Helpers.signUpUser(formData.username, formData.password, formData.email);
         
@@ -37,6 +35,9 @@ const SignUp = () => {
             localStorage.setItem("res.token", res.token)
             localStorage.setItem("username", res.user)
             navigate('/users')
+          }
+          if (!formData.username || !formData.password || !formData.email) {
+            navigate('/error')
           }
 
           else {
