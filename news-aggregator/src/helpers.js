@@ -47,7 +47,7 @@ export class Helpers {
     
 // user SignUp helper function
     static async signUpUser(username, password, email) {
-        let res = await this.request(`register`, {username, password, email}, 'post', )
+        let res = await this.request(`register`, {username, password, email}, 'post')
         return res.data;
     }
      
