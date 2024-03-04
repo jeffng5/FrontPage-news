@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import "./css/FrontPage.css"
+import "./css/semantic.css"
 import  {jwtDecode}  from "jwt-decode"
 import axios from 'axios'
 import ArticleCard from "./ArticleCard"
@@ -9,7 +10,6 @@ import { Link, useNavigate } from 'react-router-dom'
 
 const apiKey = process.env.REACT_APP_APIKEY
 
-// localStorage.setItem('preferences', 'Australia')
 let pref = localStorage.getItem('preferences')
 
 let subj = pref.split(',') || ''
@@ -146,11 +146,12 @@ useEffect (()=> {
 
 if (userLoggedIn)
 {
+
 return (
 
 <>
      <div className='links'>
-        Hi {username},
+        <Link to = "/">Hi {username},</Link>
         <Link to = "/users">Preferences</Link>
         <Link to = "/users/frontpage">FrontPage</Link>
         <Link to = "/users/forum">Forum</Link>

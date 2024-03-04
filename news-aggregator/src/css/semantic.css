@@ -60,8 +60,9 @@ button#log{
     margin-top: 25px;
     display: inline-grid;
     font-size: 25px;
-    grid-template-columns: 475px 200px 200px 200px 200px 200px;
+    grid-template-columns: 320px 300px 300px 300px 300px 300px;
     width: 100%;
+    z-index: 10;
    
 }
 

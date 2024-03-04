@@ -111,13 +111,14 @@ margin-top: 0px; */
 .headline {
     color:#006699;
 }
-/* 
+
 a {
-    color: black;
+    z-index: 100;
+    /* color: black;
     text-decoration: none;
     position: relative;
-    bottom: 500px;
-} */
+    bottom: 500px; */
+}
 
 h4.author{
     font-size: 20px;
