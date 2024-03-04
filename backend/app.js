@@ -17,6 +17,7 @@ const authorization = (req, res, next ) => {
     }
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
+    console.log(token)
     if (token == null) return res.sendStatus(401);
 
     jwt.verify(token, SECRET_KEY, (err, user) => {
@@ -76,9 +77,7 @@ app.post('/register', async (req,res, next)=> {
 })
 
 app.get('/login', async (req, res, next) => {
-    if (!req.headers.authorization) {
-        return res.status(401).json({error: 'inaccessible'})
-    }
+
     try {
 
         const {username, password} = req.query;
