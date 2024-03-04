@@ -35,15 +35,15 @@ const SignUp = () => {
           if (res.token && res.user){
             localStorage.setItem("res.token", res.token)
             localStorage.setItem("username", res.user)
-            navigate('/users')
+            return navigate('/users')
           }
           else {
-            navigate('/error')
+            return navigate('/error')
           }
         }
         catch (err) {
           console.log('sign up error')
-          navigate('/error')
+          return navigate('/error')
         }
     }
   
