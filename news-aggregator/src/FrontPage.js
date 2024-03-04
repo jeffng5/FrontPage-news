@@ -9,7 +9,7 @@ import { Link, useNavigate } from 'react-router-dom'
 
 const apiKey = process.env.REACT_APP_APIKEY
 
-localStorage.setItem('preferences', 'Australia')
+// localStorage.setItem('preferences', 'Australia')
 let pref = localStorage.getItem('preferences')
 
 let subj = pref.split(',') || ''

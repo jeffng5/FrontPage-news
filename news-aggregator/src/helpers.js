@@ -94,19 +94,16 @@ static async saveArticle(username, url, title, description, author) {
         console.log(res.data, 'loading comments')
         return res.data;
         }
-//post a like to comment table
-    static async postLike(comment) {
 
-      
+//post a like to comment table
+    static async postLike(comment) {      
         let res = await this.request('users/forum/likes', {comment}, 'post')
         console.log(res.data, "Like posted")
         return res.data;}
        
 
 // get likes for each comment
-    static async getPostLike(comment) {
-
-       
+    static async getPostLike(comment) {       
         let res = await this.request('users/forum/likes', {comment})
         return res.data;}
 
