@@ -17,8 +17,7 @@ const Comments = ({id}) => {
         const res = await Helpers.getAllComments(id)
         if (Array.isArray(res.comments)){
         setState(res.comments)}
-}
-        console.log(state)
+        }
 
 return (
  <>{state.map(c =>( 
