@@ -26,7 +26,7 @@ const SignUp = () => {
         e.preventDefault();
         try {
           if (!formData.username || !formData.password || !formData.email) {
-            navigate('/error')
+            return navigate('/error')
           }
          
           let res = await Helpers.signUpUser(formData.username, formData.password, formData.email);
