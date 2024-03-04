@@ -48,6 +48,8 @@ export class Helpers {
 // user SignUp helper function
     static async signUpUser(username, password, email) {
         let res = await this.request(`register`, {username, password, email}, 'post')
+        localStorage.setItem("token", res.data.token)
+        localStorage.setItem('username', res.data.user)
         return res.data;
     }
      
