@@ -26,27 +26,26 @@ const SignUp = () => {
         e.preventDefault();
         try {
             if (!formData.username || !formData.password || !formData.email) {
-            navigate('/error')
+            return navigate('/error')
            }
          
 
           let res = await Helpers.signUpUser(formData.username, formData.password, formData.email);
-          console.log(res.token)
-          console.log(res.user)
+      
           if (res.token && res.user){
             localStorage.setItem("res.token", res.token)
             localStorage.setItem("username", res.user)
-            navigate('/users')
+            return navigate('/users')
           }
      
 
-          // else {
-          //   navigate('/error')
-          // }
+          else {
+            return navigate('/error')
+          }
         }
         catch (err) {
           console.log('sign up error')
-          navigate('/error')
+          return navigate('/error')
         }
     }
   
