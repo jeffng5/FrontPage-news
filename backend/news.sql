@@ -1,14 +1,14 @@
-\echo 'Delete and recreate news db?'
-\prompt 'Return for yes or control-C to cancel > ' foo
+-- \echo 'Delete and recreate news db?'
+-- \prompt 'Return for yes or control-C to cancel > ' foo
 
-DROP DATABASE news;
-CREATE DATABASE news;
-\connect news
+-- DROP DATABASE news;
+-- CREATE DATABASE news;
+-- use news
 
 DROP TABLE IF EXISTS archives;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS preferences;
-DROP TABLE IF EXISTS comments
+DROP TABLE IF EXISTS comments;
 
 CREATE TABLE users (
     id BIGSERIAL PRIMARY KEY,
@@ -45,7 +45,7 @@ CREATE TABLE comments (
     username TEXT NOT NULL,
     forum_art_id INTEGER REFERENCES forum(id) ON DELETE CASCADE,
     likes INTEGER default 0
-)
+);
 
 ALTER TABLE users ADD CONSTRAINT constraintname UNIQUE (username);
 

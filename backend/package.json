@@ -4,6 +4,7 @@
   "main": "app.js",
   "scripts": {
     "test": "jest",
+    "createdb" : "node initdb.js",
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm run start --prefix ../news-aggregator",
