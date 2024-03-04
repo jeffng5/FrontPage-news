@@ -6,7 +6,7 @@ import ArticleCard from "./ArticleCard"
 import ColoredLine from "./ColoredLine"
 import { Link, useNavigate } from 'react-router-dom'
 
-let username = localStorage.getItem('username')
+
 const apiKey = process.env.REACT_APP_APIKEY
 
 localStorage.setItem('preferences', 'Australia')
@@ -21,8 +21,9 @@ let term = localStorage.getItem('freePreferences')
 // holds bulk of search, many API calls, displays current date
 const FrontPage = () => {
 
+    let username = localStorage.getItem('username')
     function checkToken() {
-        let token = localStorage.getItem('res.token')
+        let token = localStorage.getItem('token')
         if (token) {
           const decode = jwtDecode(token)
           setUserLoggedIn(true)

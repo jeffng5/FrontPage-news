@@ -10,19 +10,27 @@ export class Helpers {
     static token;
     // skeleton of request helper function
     static async request(endpoint, data ={}, method = 'get') {
-        console.debug("API call:", endpoint, data, method);
+        
         const url = `${BASE_URL}/${endpoint}`;
-        const headers = { Authorization: `Bearer ${Helpers.token}`};
+        const token = localStorage.getItem('token')
+        const headers = { Authorization: `Bearer ${token}`};
+        console.info("API call:", endpoint, data, method, headers);
         const params = (method === 'get')
             ? data
             : {};
         try {
             return (await axios({ url, method, data, params, headers}));
         } catch (err) {
+            if (err.response) {
+
+            
             console.error("API Error:", err.response.data);
             let message = err.response.data.error.message;
             throw Array.isArray(message) ? message : [message];
-
+            }
+            else{
+                console.error(err)
+            }
         }
     
     }
@@ -30,18 +38,21 @@ export class Helpers {
 // user login helper function
     static async loginUser(username, password) {
        
-        // let headers = { Authorization: `Bearer ${Helpers.token}`}
+      
         let res = await this.request(`login`, {username, password})
-        // if (res) {
-        //     console.log(res.data)
-            return res.data;}
-     
-        
+        if (res) {
+            console.log(res.data)
+            localStorage.setItem("token", res.data.token)
+            localStorage.setItem('username', res.data.user)
+            return res.data;
+        }
+    }
+    
     
 // user SignUp helper function
     static async signUpUser(username, password, email) {
-        let headers = { Authorization: `Bearer ${Helpers.token}`}
-        let res = await this.request(`register`, {username, password, email}, 'post', headers)
+ 
+        let res = await this.request(`register`, {username, password, email}, 'post', )
         if (res) {
         console.log(res.data)      
         return res.data;}
@@ -53,8 +64,8 @@ export class Helpers {
 //call to get archived articles
 static async getArticles(username) {
    
-    let headers = { Authorization: `Bearer ${Helpers.token}`}
-    let res = await this.request(`users/archives`, {username}, headers)
+
+    let res = await this.request(`users/archives`, {username})
     if (res) {
     console.log(res, 'RETURNING ARCHIVE!!');
     return res.data;}
@@ -65,8 +76,8 @@ static async getArticles(username) {
 // call to archive articles
 static async saveArticle(username, url, title, description, author) {
 
-    let headers = { Authorization: `Bearer ${Helpers.token}`}
-    let res = await this.request(`users/frontpage`, {username, url, title, description, author}, 'post', headers)
+   
+    let res = await this.request(`users/frontpage`, {username, url, title, description, author}, 'post')
     if (res) {
     console.log(res, "SAVED ARTICLE")
     return res.data;}
@@ -78,8 +89,8 @@ static async saveArticle(username, url, title, description, author) {
 //post request to users/forum
     static async postForum(username, url, title, description, author, urlToImage) {
      
-        let headers = { Authorization: `Bearer ${Helpers.token}`}
-        let res = await this.request(`users/forum`, {username, url, title, description, author, urlToImage}, 'post', headers)
+      
+        let res = await this.request(`users/forum`, {username, url, title, description, author, urlToImage}, 'post')
         if (res) {
         console.log(res, "FORUM!!!")
         return res.data;}
@@ -99,8 +110,8 @@ static async saveArticle(username, url, title, description, author) {
 // post into comments table
     static async postComment(username, comment, forum_art_id, datetime) {
      
-        let headers = { Authorization: `Bearer ${Helpers.token}`}
-        let res = await this.request('users/forum/comments', {username, comment, forum_art_id, datetime}, 'post', headers)
+        
+        let res = await this.request('users/forum/comments', {username, comment, forum_art_id, datetime}, 'post')
         if (res) {
         console.log(res, 'posted Comment')
         return res.data;}
@@ -112,8 +123,8 @@ static async saveArticle(username, url, title, description, author) {
 // get all comments per article
     static async getAllComments(id) {
 
-        let headers = { Authorization: `Bearer ${Helpers.token}`}
-        let res = await this.request('users/forum/comments', {id}, headers )
+        
+        let res = await this.request('users/forum/comments', {id})
         if (res) {
         console.log(res.data, 'loading comments')
         return res.data;}
@@ -125,8 +136,8 @@ static async saveArticle(username, url, title, description, author) {
 //post a like to comment table
     static async postLike(comment) {
 
-        let headers = { Authorization: `Bearer ${Helpers.token}`}
-        let res = await this.request('users/forum/likes', {comment}, 'post', headers)
+      
+        let res = await this.request('users/forum/likes', {comment}, 'post')
         if (res) {
         console.log(res.data, "Like posted")
         return res.data;}
@@ -138,8 +149,8 @@ static async saveArticle(username, url, title, description, author) {
 // get likes for each comment
     static async getPostLike(comment) {
 
-        let headers = { Authorization: `Bearer ${Helpers.token}`}
-        let res = await this.request('users/forum/likes', {comment}, headers)
+       
+        let res = await this.request('users/forum/likes', {comment})
         if (res) {
         return res.data;}
         else {

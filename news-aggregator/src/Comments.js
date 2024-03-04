@@ -15,7 +15,8 @@ const Comments = ({id}) => {
     
     async function displayComments() {
         const res = await Helpers.getAllComments(id)
-        setState(res.comments)
+        if (Array.isArray(res.comments)){
+        setState(res.comments)}
 }
         console.log(state)
 

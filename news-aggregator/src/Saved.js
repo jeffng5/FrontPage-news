@@ -10,7 +10,7 @@ console.log(username)
 const Saved = () => {
 
     function checkToken() {
-        let token = localStorage.getItem('res.token')
+        let token = localStorage.getItem('token')
         if (token) {
           const decode = jwtDecode(token)
           setUserLoggedIn(true)

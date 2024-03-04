@@ -28,23 +28,22 @@ const Login = () => {
          
         
           if (res.token && res.user){
-            localStorage.setItem("res.token", res.token)
-            localStorage.setItem('username', res.user)
-            navigate('/users')
+          
+            return navigate('/users')
         
           }
      
         if (!res.token || !res.user) {
-          navigate('/')
+          return navigate('/')
         }
         else {
           console.log('wrong username or password')
-          navigate('/error')
+          return navigate('/error')
         }
       }
       catch (err) {
         console.log(err)
-        navigate('/error')
+        return navigate('/error')
     }
   }
      console.log(formData.username)

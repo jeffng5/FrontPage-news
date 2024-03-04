@@ -1,14 +1,31 @@
 const express = require('express');
+const jwt = require('jsonwebtoken');
 const { NotFoundError } = require("./expressError");
 const bcrypt = require('bcrypt')
 const app = express();
 const cors = require("cors")
-const {BCRYPT_WORK_FACTOR} = require("./config");
+const {BCRYPT_WORK_FACTOR, SECRET_KEY} = require("./config");
 const { ExpressError } = require('./expressError');
 const usersRoutes = require("./routes/users");
 require('dotenv').config()
 app.use(express.json());
 app.use(cors());
+
+const authorization = (req, res, next ) => {
+    if (req.originalUrl.includes("login") || req.originalUrl.includes("register")){
+        return next()
+    }
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+    if (token == null) return res.sendStatus(401);
+
+    jwt.verify(token, SECRET_KEY, (err, user) => {
+        if (err) return res.sendStatus(403);
+        req.user = user;
+        next();
+    });    
+}
+app.use(authorization)
 app.use("/users", usersRoutes);
 const { createToken } = require('./helpers/tokens')
 
@@ -24,6 +41,8 @@ const USER = process.env.USER
 
 const pgp = require('pg-promise')(/* options */)
 const db = pgp(`postgresql://${USER}:${password}@127.0.0.1:${PORT}/news`)
+
+
 
 /////////////////////////// BASIC ROUTES for register and login ///////////////////////////////
 app.post('/register', async (req,res, next)=> {

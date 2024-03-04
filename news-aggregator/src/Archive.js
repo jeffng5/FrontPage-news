@@ -4,7 +4,7 @@ import {Helpers} from "./helpers"
 import myImage from './penfeather.png'
 
 
-// let token = localStorage.getItem('res.token')
+// let token = localStorage.getItem('token')
 // const decode = jwtDecode(token)
 
 // button component to archive article takes in data from parent component

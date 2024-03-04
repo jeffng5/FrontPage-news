@@ -13,7 +13,7 @@ const Forum = () => {
 
 
     function checkToken() {
-        let token = localStorage.getItem('res.token')
+        let token = localStorage.getItem('token')
         if (token) {
            const decode = jwtDecode(token)
           setUserLoggedIn(true)
