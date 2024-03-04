@@ -34,9 +34,9 @@ const Login = () => {
         
           }
      
-        // if (!res.token || !res.user) {
-        //   navigate('/')
-        // }
+        if (!res.token || !res.user) {
+          navigate('/')
+        }
         else {
           console.log('wrong username or password')
           navigate('/error')
