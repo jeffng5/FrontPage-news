@@ -10,7 +10,7 @@ const Login = () => {
     //redirect to /users onCLick
     const navigate = useNavigate()
     const [formData, setFormData] = useState([])
-    // const [errorRes, setErrorRes] = useState(false)
+
 
     //handles input
     const handleChange = (e) => {
@@ -21,9 +21,9 @@ const Login = () => {
     async function LoginUser(e) {
         e.preventDefault();
         try {
-          // if (!formData.username || !formData.password) {
-          //   navigate('/error')
-          // }
+          if (!formData.username || !formData.password) {
+            navigate('/error')
+          }
           const res = await Helpers.loginUser(formData.username, formData.password);    
          
         
@@ -42,7 +42,6 @@ const Login = () => {
         }
       }
       catch (err) {
-        console.log(err)
         return navigate('/error')
     }
   }

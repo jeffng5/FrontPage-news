@@ -14,7 +14,7 @@ export class Helpers {
         const url = `${BASE_URL}/${endpoint}`;
         const token = localStorage.getItem('token')
         const headers = { Authorization: `Bearer ${token}`};
-        console.info("API call:", endpoint, data, method, headers);
+        console.info("API call:", endpoint, data, method);
         const params = (method === 'get')
             ? data
             : {};

@@ -96,10 +96,12 @@ app.get('/login', async (req, res, next) => {
                 let result = res.status(201).json({user, token})
                 return result
                 }
+            
             else {
-                return new ExpressError('Username and/or password do not match')      
+                let ans = res.status(401).json({error : 'Username and/or password do not match' })
+                return ans  
                 }
-        }
+            }
         if (!username || !password) {throw new ExpressError('Password and username does not match!')}
         
     } catch(e){
