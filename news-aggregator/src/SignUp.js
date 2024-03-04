@@ -33,7 +33,7 @@ const SignUp = () => {
           let res = await Helpers.signUpUser(formData.username, formData.password, formData.email);
       
           if (res.token && res.user){
-            localStorage.setItem("res.token", res.token)
+            localStorage.setItem("token", res.token)
             localStorage.setItem("username", res.user)
             return navigate('/users')
           }
