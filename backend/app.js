@@ -42,8 +42,8 @@ const USER = process.env.USER
 
 const pgp = require('pg-promise')(/* options */)
 // const db = pgp(`postgresql://${USER}:${password}@127.0.0.1:${PORT}/news`)
-const db = require('./db.js')
-db.connect()
+const db = require('./db.js');
+db.connect();
 
 
 /////////////////////////// BASIC ROUTES for register and login ///////////////////////////////
