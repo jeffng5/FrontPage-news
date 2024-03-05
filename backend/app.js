@@ -89,8 +89,8 @@ app.get('/login', async (req, res, next) => {
         `SELECT username, password FROM users
         WHERE username = $1`, [username]);
 
-        const user = results[0].username;
-        const pwd = results[0].password;
+        const user = results.rows[0].username;
+        const pwd = results.rows[0].password;
       
         if (user && pwd) {
               if (await bcrypt.compare(password, pwd)) {

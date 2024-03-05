@@ -33,7 +33,7 @@ const Preferences = () => {
 
   useEffect(()=>{
     setPrefs(pref)
-    setPrefs(initialState)
+    // setPrefs(initialState)
     checkToken()
   }, [])
   
