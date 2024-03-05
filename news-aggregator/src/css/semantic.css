@@ -62,7 +62,7 @@ button#log{
     font-size: 25px;
     grid-template-columns: 320px 300px 300px 300px 300px 300px;
     width: 100%;
-    z-index: 10;
+    z-index: 100;
    
 }
 
