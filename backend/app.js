@@ -62,12 +62,13 @@ app.post('/register', async (req,res, next)=> {
         const result = await db.query(`
         INSERT INTO users (username, password, email)
         VALUES ($1, $2, $3)
-        RETURNING username`, [username, hashedPwd, email]);
-        console.log(result)
+        RETURNING *`, [username, hashedPwd, email]);
+            
         await bcrypt.compare(password, hashedPwd) 
-            const user = result[0];
+            const user = result.rows[0].username;
             const token= createToken(user)
             let ans = res.status(201).json({user, token}) 
+            console.log(ans)
             return ans
          }  
           catch(e) {
