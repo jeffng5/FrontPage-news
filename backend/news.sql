@@ -48,5 +48,6 @@ CREATE TABLE comments (
 );
 
 ALTER TABLE users ADD CONSTRAINT constraintname UNIQUE (username);
+ALTER TABLE comments ADD COLUMN datetime timestamp with time zone;
 
 -- \i news-seed.sql
