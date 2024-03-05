@@ -21,9 +21,7 @@ const Login = () => {
     async function LoginUser(e) {
         e.preventDefault();
         try {
-          if (!formData.username || !formData.password) {
-            navigate('/error')
-          }
+
           const res = await Helpers.loginUser(formData.username, formData.password);    
          
         
