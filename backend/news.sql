@@ -12,7 +12,7 @@ DROP TABLE IF EXISTS comments;
 
 CREATE TABLE users (
     id BIGSERIAL PRIMARY KEY,
-    username VARCHAR(25),
+    username TEXT NOT NULL,
     password TEXT NOT NULL,
     email TEXT NOT NULL 
     CHECK (position('@' IN email) > 1));
