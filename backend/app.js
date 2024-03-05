@@ -51,9 +51,9 @@ app.post('/register', async (req,res, next)=> {
         const { username, password, email } = req.body;
         console.log(req.body)
 
-        if (!username || !password || !email ) {
-            console.log("Username and password/email required")
-            return new ExpressError("Username and password/email required")}
+        // if (!username || !password || !email ) {
+        //     console.log("Username and password/email required")
+        //     return new ExpressError("Username and password/email required")}
 
         const hashedPwd = await bcrypt.hash(password, BCRYPT_WORK_FACTOR);
    
