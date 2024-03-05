@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 
 //forum component
 const Forum = () => {
-
+    let user = localStorage.getItem('username')
 
     function checkToken() {
         let token = localStorage.getItem('token')
@@ -41,7 +41,7 @@ const Forum = () => {
     }
     console.log(state)
 
-if (userLoggedIn)
+if (userLoggedIn && user)
 {
 return (
 

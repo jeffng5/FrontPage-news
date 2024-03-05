@@ -93,7 +93,7 @@ const wildCard = localStorage.getItem('freePreferences')
 
 
 
-if (userLoggedIn){
+if (userLoggedIn && user){
 //////////////////////////////// CHECKBOX FORM ////////////////////////////////
     return (
         <>

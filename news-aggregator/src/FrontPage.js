@@ -144,7 +144,7 @@ useEffect (()=> {
 }, []);
 
 
-if (userLoggedIn)
+if (userLoggedIn && username)
 {
 
 return (
