@@ -65,7 +65,7 @@ app.post('/register', async (req,res, next)=> {
         RETURNING username`, [username, hashedPwd, email]);
         console.log(result)
         await bcrypt.compare(password, hashedPwd) 
-            const user = result[0].username;
+            const user = result[0];
             const token= createToken(user)
             let ans = res.status(201).json({user, token}) 
             return ans
