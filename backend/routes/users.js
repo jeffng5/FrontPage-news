@@ -109,7 +109,6 @@ router.get('/forum/comments', async function(req, res, next){
         console.log(req.query) 
         const results = await db.query(`SELECT * from comments WHERE forum_art_id = $1`, [id]);
         let comments = results.rows
-        console.log(comments, 'I am fetching comments')
         return res.json({comments})
     } catch (err) {return next(err)
     }

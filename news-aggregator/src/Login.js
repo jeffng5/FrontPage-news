@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import './css/semantic.css'
-import { FormInput, Form } from 'semantic-ui-react'
+import { FormInput, Form, Message } from 'semantic-ui-react'
 import {Helpers} from "./helpers"
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 
 
@@ -10,6 +10,7 @@ const Login = () => {
     //redirect to /users onCLick
     const navigate = useNavigate()
     const [formData, setFormData] = useState([])
+    const [errorState, setErrorState] = useState({visible: false, message: ''})
 
 
     //handles input
@@ -21,9 +22,13 @@ const Login = () => {
     async function LoginUser(e) {
         e.preventDefault();
         try {
-
+          
+          if (!formData.username || !formData.password) {
+            return setErrorState({visible: true, message: 'Username or password cannot be blank'})
+          }
+          console.log('running loginUser')
           const res = await Helpers.loginUser(formData.username, formData.password);    
-         
+          console.log(res)
         
           if (res.token && res.user){
           
@@ -40,7 +45,9 @@ const Login = () => {
         }
       }
       catch (err) {
-        return navigate('/error')
+        console.log(err)
+        setErrorState({visible: true, message: err})
+       
     }
   }
      console.log(formData.username)
@@ -52,7 +59,7 @@ const Login = () => {
     
         <h1 id='login-welcome'>Please Login</h1>
       
-          <Form>
+          <Form error={errorState.visible}>
           <div className='form-entry'>
     <FormInput
   
@@ -62,16 +69,28 @@ const Login = () => {
       name='username'
       onChange= {handleChange}
       value = {formData.username}
-    /> </div>
+    /> 
+    
+    </div>
      <div className='form-entry'>
+    
+    
     <FormInput
- 
+   
       type ='password'
       placeholder='password'
       id='password'
       name= 'password'
       onChange = {handleChange}
       value ={formData.password}
+    />
+    
+    </div>
+    <div className = 'form-entry'>
+    <Message
+      error
+      header='Login Error'
+      content={errorState.message}
     />
     </div>
     <div className='log-in-form-1'>

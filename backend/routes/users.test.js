@@ -12,13 +12,16 @@ afterAll(AfterAll);
 //////////////////////// Start TESTING /////////////////////
 
 // Testing basic get id/username route
-test("GET / works", async function () {
-        const resp = await request(app).get("/");
-        expect(resp.body).toEqual({
-            users: [{
-                id: '1'
-            }]
-        })
+test("GET /login works", async function () {
+
+        const resp = await request(app).get("/login")
+        .send({ username : 'Comet123', password: 'password'});
+
+        // expect(resp.body).toEqual({
+        //     username: "TedWilliams",
+        //     password: ' $2b$04$0wWmDNfe74V0ItrFUy0HjekYsJyRshFQkAecNlrgKL1y1Cmmo6Cs2'
+        // })
+        expect(resp.statusCode).toEqual(200);
     })
   
 test("POST article on archive works", async function () {
@@ -30,7 +33,7 @@ test("POST article on archive works", async function () {
         author: 'Babe Ruth'
     };
         const resp = await request(app)
-            .post("/preferences")
+            .post("/frontpage")
             .send(newArchive);
         expect(resp.statusCode).toEqual(201);
         expect(resp.body).toEqual({

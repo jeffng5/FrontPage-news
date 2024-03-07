@@ -15,7 +15,7 @@ async function BeforeEach() {
 
     await db.query(`INSERT INTO archives (username, url, title, description, author) VALUES (
         'TedWilliams',
-        'www.Jimmy.com"\',
+        'www.Jimmy.com',
         'baseballLegend',
         'cooperstown',
         'Babe Ruth') RETURNING *

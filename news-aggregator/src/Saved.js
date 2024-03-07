@@ -4,11 +4,11 @@ import { jwtDecode } from "jwt-decode"
 import ArchiveArticleCard from "./ArchiveArticleCard"
 import { Link, useNavigate } from 'react-router-dom'
 
-let username = localStorage.getItem('username')
+
 
 //display archives 
 const Saved = () => {
-
+    let username = localStorage.getItem('username')
     function checkToken() {
         let token = localStorage.getItem('token')
         if (token) {

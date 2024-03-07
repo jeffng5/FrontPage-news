@@ -88,10 +88,12 @@ app.get('/login', async (req, res, next) => {
         const results = await db.query(
         `SELECT username, password FROM users
         WHERE username = $1`, [username]);
-
+            console.log(results.rows[0])
         const user = results.rows[0].username;
         const pwd = results.rows[0].password;
-      
+            console.log('anything')
+        // const validPasswordResult = await bcrypt.compare(password, pwd)
+        // console.log(validPasswordResult)
         if (user && pwd) {
               if (await bcrypt.compare(password, pwd)) {
                 const token = createToken(user)
@@ -100,6 +102,7 @@ app.get('/login', async (req, res, next) => {
                 }
             
             else {
+                console.log('checking if this runs')
                 let ans = res.status(401).json({error : 'Username and/or password do not match' })
                 return ans  
                 }
@@ -107,8 +110,7 @@ app.get('/login', async (req, res, next) => {
         if (!username || !password) {throw new ExpressError('Password and username does not match!')}
         
     } catch(e){
-        return new ExpressError('Username and/or password do not match')
-        next(e)
+        return res.status(400).json({error : 'Username and/or password do not match' })   
         
     }
 

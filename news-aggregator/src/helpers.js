@@ -19,13 +19,16 @@ export class Helpers {
             ? data
             : {};
         try {
+            console.log('qwerty')
             return (await axios({ url, method, data, params, headers}));
         } catch (err) {
+            console.log('test', err)
             if (err.response) {
 
             
             console.error("API Error:", err.response.data);
-            let message = err.response.data.error.message;
+            console.log(err.response.data)
+            let message = err.response.data.error;
             throw Array.isArray(message) ? message : [message];
             }
             else{
@@ -38,9 +41,10 @@ export class Helpers {
 // user login helper function
     static async loginUser(username, password) {
         let res = await this.request(`login`, {username, password})
+        console.log(res.data)
         localStorage.setItem("token", res.data.token)
         localStorage.setItem('username', res.data.user)
-            return res.data;
+        return res.data;
         }
     
     

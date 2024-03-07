@@ -29,7 +29,8 @@
     "nodemon": "^3.1.0",
     "pg": "^8.3.0",
     "pg-promise": "^11.5.4",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "supertest": "^6.3.4"
   },
   "description": "",
   "devDependencies": {
