@@ -8,7 +8,7 @@ CREATE DATABASE news;
 DROP TABLE IF EXISTS archives;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS preferences;
-DROP TABLE IF EXISTS comments
+DROP TABLE IF EXISTS comments;
 
 CREATE TABLE users (
     id BIGSERIAL PRIMARY KEY,
@@ -45,8 +45,9 @@ CREATE TABLE comments (
     username TEXT NOT NULL,
     forum_art_id INTEGER REFERENCES forum(id) ON DELETE CASCADE,
     likes INTEGER default 0
-)
+);
 
 ALTER TABLE users ADD CONSTRAINT constraintname UNIQUE (username);
+ALTER TABLE comments ADD COLUMN datetime timestamp with time zone;
 
 -- \i news-seed.sql

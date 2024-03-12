@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === "production") {
   });
 } else {
   db = new Client({
-    connectionString: `postgresql://${USER}:${password}@127.0.0.1:${DATABASE_PORT}/news`
+    connectionString: `postgresql://${USER}:${password}@localhost:${DATABASE_PORT}/news`
   });
 }
 

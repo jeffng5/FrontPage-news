@@ -23,7 +23,7 @@ const PORT = process.env.DATABASE_PORT
 const USER = process.env.USER
 
 const pgp = require('pg-promise')(/* options */)
-const db = pgp(`postgresql://${USER}:${password}@127.0.0.1:${PORT}/news`)
+const db = pgp(`postgresql://${USER}:${password}@127.0.0.0.1:${PORT}/news`)
 
 /////////////////////////// BASIC ROUTES for register and login ///////////////////////////////
 app.post('/register', async (req,res, next)=> {
