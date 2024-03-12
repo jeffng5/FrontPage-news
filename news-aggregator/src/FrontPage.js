@@ -68,77 +68,72 @@ useEffect (()=> {
         let options = {
             method : 'GET',
             url: 'https://api.newscatcherapi.com/v2/latest_headlines?countries=au&lang=en&page=1',
-            // params: {lang:'en', page: '1'},
             headers : { 'x-api-key' : apiKey }
         }
 
         let options1 = {
             method : 'GET',
             url: 'https://api.newscatcherapi.com/v2/latest_headlines?countries=jp&lang=en&page=1',
-            // params: {lang:'en', page: '1'},
             headers : { 'x-api-key' : apiKey }
         }
 
         let options2 = {
             method : 'GET',
             url: 'https://api.newscatcherapi.com/v2/latest_headlines?countries=gb&lang=en&page=1',
-            // params: {lang:'en', page: '1'},
             headers : { 'x-api-key' : apiKey }
         }
 
         let options3 = {
             method : 'GET',
             url: 'https://api.newscatcherapi.com/v2/latest_headlines?countries=US&topic=US&lang=en&page=1',
-            // params: {lang:'en', page: '1'},
             headers : { 'x-api-key' : apiKey }
         }
 
         let options4 = {
             method : 'GET',
             url: 'https://api.newscatcherapi.com/v2/latest_headlines?countries=US&topic=business&lang=en&page=1',
-            // params: {lang:'en', page: '1'},
+     
             headers : { 'x-api-key' : apiKey }
         }
 
         let options5 = {
             method : 'GET',
             url: 'https://api.newscatcherapi.com/v2/latest_headlines?countries=US&topic=entertainment&lang=en&page=1',
-            // params: {lang:'en', page: '1'},
             headers : { 'x-api-key' : apiKey }
         }
 
         let options6 = {
             method : 'GET',
             url: 'https://api.newscatcherapi.com/v2/latest_headlines?countries=US&topic=global&lang=en&page=1',
-            // params: {lang:'en', page: '1'},
+
             headers : { 'x-api-key' : apiKey }
         }
 
         let options7 = {
             method : 'GET',
             url: 'https://api.newscatcherapi.com/v2/latest_headlines?countries=US&topic=health&lang=en&page=1',
-            // params: {lang:'en', page: '1'},
+
             headers : { 'x-api-key' : apiKey }
         }
 
         let options8 = {
             method : 'GET',
             url: 'https://api.newscatcherapi.com/v2/latest_headlines?countries=US&topic=science&lang=en&page=1',
-            // params: {lang:'en', page: '1'},
+
             headers : { 'x-api-key' : apiKey }
         }
 
         let options9 = {
             method : 'GET',
             url: 'https://api.newscatcherapi.com/v2/latest_headlines?countries=US&topic=sports&lang=en&page=1',
-            // params: {lang:'en', page: '1'},
+
             headers : { 'x-api-key' : apiKey }
         }
 
         let options10 = {
             method : 'GET',
             url: 'https://api.newscatcherapi.com/v2/latest_headlines?countries=US&topic=technology&lang=en&page=1',
-            // params: {lang:'en', page: '1'},
+
             headers : { 'x-api-key' : apiKey }
         }
       
@@ -247,8 +242,7 @@ useEffect (()=> {
 
         let options11 = {
             method : 'GET',
-            url: `https://api.newscatcherapi.com/v2/search?q+${term}&language=en&pagesize=1`,
-            // params: {lang:'en', page: '1'},
+            url: `https://api.newscatcherapi.com/v2/search?q=${term}&language=en&pagesize=1`,
             headers : { 'x-api-key' : apiKey }
         }
         

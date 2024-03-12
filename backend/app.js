@@ -26,6 +26,16 @@ const authorization = (req, res, next ) => {
         next();
     });    
 }
+
+const handleCors = (req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+ };
+
+
+
+app.use(handleCors)
 app.use(authorization)
 app.use("/users", usersRoutes);
 const { createToken } = require('./helpers/tokens')
