@@ -145,7 +145,7 @@ useEffect (()=> {
     try { 
         if (subj[0]==='Australia' || subj[1]=== 'Australia' || subj[2]==='Australia' || subj[3]==='Australia'
         || subj[4]=== 'Australia') {
-            axios.request(options).then(function (response){
+            await axios.request(options).then(function (response){
             console.log(response.data.articles);
             setAustralia(response.data.articles)
             }).catch(function (error)
@@ -155,7 +155,7 @@ useEffect (()=> {
     
         if (subj[0]==='Asia' || subj[1]=== 'Asia' || subj[2]==='Asia' || subj[3]==='Asia'
         || subj[4]=== 'Asia'){
-            axios.request(options1).then(function (response){
+            await axios.request(options1).then(function (response){
                 console.log(response.data.articles);
                 setAsia(response.data.articles)
                 }).catch(function (error)
@@ -164,7 +164,7 @@ useEffect (()=> {
    
         if (subj[0]==='U.K.' || subj[1]=== 'U.K.' || subj[2]==='U.K.' || subj[3]==='U.K.'
         || subj[4]==='U.K.') {
-            axios.request(options2).then(function (response){
+            await axios.request(options2).then(function (response){
                 console.log(response.data.articles);
                 setUk(response.data.articles)
                 }).catch(function (error)
@@ -173,7 +173,7 @@ useEffect (()=> {
 
         if (subj[0]==='US' || subj[1]=== 'US' || subj[2]==='US' || subj[3]==='US'
         || subj[4]=== 'US') {
-            axios.request(options3).then(function (response){
+            await axios.request(options3).then(function (response){
                 console.log(response.data.articles);
                 setUS(response.data.articles)
                 }).catch(function (error)
@@ -181,7 +181,7 @@ useEffect (()=> {
         }
   
         if (subj[0]==='Business' || subj[1]==='Business' || subj[2] === 'Business' || subj[3]=== 'Business' || subj[4]==='Business') {
-            axios.request(options4).then(function (response){
+            await axios.request(options4).then(function (response){
                 console.log(response.data.articles);
                 setBusiness(response.data.articles)
                 }).catch(function (error)
@@ -191,14 +191,14 @@ useEffect (()=> {
 
 
         if (subj[0]==='Entertainment' || subj[1]==='Entertainment' || subj[2] === 'Entertainment' || subj[3]=== 'Entertainment' || subj[4]==='Entertainment'){
-            axios.request(options5).then(function (response){
+            await axios.request(options5).then(function (response){
                 console.log(response.data.articles);
                 setEntertainment(response.data.articles)
                 }).catch(function (error)
                 {console.error(error)}) 
             }
         if (subj[0]==='General' || subj[1]==='General' || subj[2] === 'General' || subj[3]=== 'General' || subj[4]==='General'){
-            axios.request(options6).then(function (response){
+            await axios.request(options6).then(function (response){
                 console.log(response.data.articles);
                 setGeneral(response.data.articles)
                 }).catch(function (error)
@@ -207,7 +207,7 @@ useEffect (()=> {
 
 
         if (subj[0]==='Health' || subj[1]==='Health' || subj[2] === 'Health' || subj[3]=== 'Health' || subj[4]==='Health'){
-        axios.request(options7).then(function (response){
+         await axios.request(options7).then(function (response){
             console.log(response.data.articles);
             setHealth(response.data.articles)
             }).catch(function (error)
@@ -215,7 +215,7 @@ useEffect (()=> {
     }  
     
     if (subj[0]==='Science' || subj[1]==='Science' || subj[2] === 'Science' || subj[3]=== 'Science' || subj[4]==='Science'){
-        axios.request(options8).then(function (response){
+         await axios.request(options8).then(function (response){
             console.log(response.data.articles);
             setScience(response.data.articles)
             }).catch(function (error)
@@ -223,7 +223,7 @@ useEffect (()=> {
     }  
     
     if (subj[0]==='Sports' || subj[1]==='Sports' || subj[2] === 'Sports' || subj[3]=== 'Sports' || subj[4]==='Sports'){
-        axios.request(options9).then(function (response){
+        await axios.request(options9).then(function (response){
             console.log(response.data.articles);
             setSports(response.data.articles)
             }).catch(function (error)
@@ -231,7 +231,7 @@ useEffect (()=> {
     }  
     
     if (subj[0]==='Technology' || subj[1]==='Technology' || subj[2] === 'Technology' || subj[3]=== 'Technology' || subj[4]==='Technology'){
-       axios.request(options10).then(function (response){
+       await axios.request(options10).then(function (response){
             console.log(response.data.articles);
             setTechnology(response.data.articles)
             }).catch(function (error)
@@ -253,7 +253,7 @@ useEffect (()=> {
         }
         
         try {
-            axios.request(options11).then(function (response){
+            await axios.request(options11).then(function (response){
                 console.log(response.data.articles);
                 setSearch(response.data.articles)
                 }).catch(function (error)
