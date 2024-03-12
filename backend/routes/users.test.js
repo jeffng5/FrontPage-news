@@ -5,9 +5,9 @@ const app = require("../app");
 const {BeforeAll, AfterAll, BeforeEach, AfterEach} = require("./commonSetup"); 
 
 // beforeAll(BeforeAll);
-beforeEach(BeforeEach);
-afterEach(AfterEach)
-afterAll(AfterAll);
+// beforeEach(BeforeEach);
+// afterEach(AfterEach)
+// afterAll(AfterAll);
 
 //////////////////////// Start TESTING /////////////////////
 

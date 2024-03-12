@@ -24,7 +24,7 @@ router.get('/', async function (req, res, next) {
 router.post("/frontpage", async function (req, res, next) {
     
     // try {
-        const {username, url, title, description, author} = req.body
+        const {username, link, title, excerpt, author} = req.body
         console.log(req.body)
         
         // const test = await db.query(`select username, url FROM archives WHERE username = $1 AND url = $2`, [username, url])
@@ -36,7 +36,7 @@ router.post("/frontpage", async function (req, res, next) {
         // {
         const addArticle = await db.query(`
         INSERT INTO archives (username, url, title, description, author)
-        VALUES ($1, $2, $3, $4, $5)`, [username, url, title, description, author]) 
+        VALUES ($1, $2, $3, $4, $5)`, [username, link, title, excerpt, author]) 
         
       
         let result = addArticle.rows
@@ -68,8 +68,8 @@ router.get('/archives', async function (req, res, next) {
 
 router.post('/forum', async function (req, res, next) {
     try {
-        const { username, url, title, description, author, urlToImage }= req.body
-    const postToForum = await db.query(`INSERT into forum (username, url, title, description, author, urlToImage) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`, [username, url, title, description, author, urlToImage])
+        const { username, link, title, excerpt, author, media }= req.body
+    const postToForum = await db.query(`INSERT into forum (username, url, title, description, author, urlToImage) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`, [username, link, title, excerpt, author, media])
     if (postToForum) {
         console.log('Forum article POSTED!')}
     return res.status(201).json(postToForum.rows)   

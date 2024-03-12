@@ -4,7 +4,7 @@ import {Helpers} from "./helpers"
 
 
 
-const ButtonForum = ({username, url, title, description, author, urlToImage}) => {
+const ButtonForum = ({username, link, title, excerpt, author, media}) => {
   
   
     const [state, setState] = useState([])
@@ -15,7 +15,7 @@ const ButtonForum = ({username, url, title, description, author, urlToImage}) =>
         try {
             setButtonColor(false)
             //using function to make backend API call to POST saved article
-            const res = await Helpers.postForum(username, url, title, description,author, urlToImage)
+            const res = await Helpers.postForum(username, link, title, excerpt,author, media)
             setState(res)
         
         }

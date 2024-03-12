@@ -19,7 +19,6 @@ export class Helpers {
             ? data
             : {};
         try {
-            console.log('qwerty')
             return (await axios({ url, method, data, params, headers}));
         } catch (err) {
             console.log('test', err)
@@ -65,14 +64,14 @@ static async getArticles(username) {
   
   
 // call to archive articles
-static async saveArticle(username, url, title, description, author) {
-    let res = await this.request(`users/frontpage`, {username, url, title, description, author}, 'post')
+static async saveArticle(username, link, title, excerpt, author) {
+    let res = await this.request(`users/frontpage`, {username, link, title, excerpt, author}, 'post')
     console.log(res, "SAVED ARTICLE")
     return res.data;}
 
 //post request to users/forum
-    static async postForum(username, url, title, description, author, urlToImage) {
-        let res = await this.request(`users/forum`, {username, url, title, description, author, urlToImage}, 'post')     
+    static async postForum(username, link, title, excerpt, author, media) {
+        let res = await this.request(`users/forum`, {username, link, title, excerpt, author, media}, 'post')     
         console.log(res, "FORUM!!!")
         return res.data;}      
         

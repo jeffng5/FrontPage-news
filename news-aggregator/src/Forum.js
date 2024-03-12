@@ -28,6 +28,7 @@ const Forum = () => {
     let username = localStorage.getItem('username')
     const [state, setState] = useState([])
     const [userLoggedIn, setUserLoggedIn] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(()=> {
         getForumArticles();
@@ -41,6 +42,15 @@ const Forum = () => {
     }
     console.log(state)
 
+    async function loading() {
+        setIsLoading(false)
+        console.log(loading)
+      }
+      setTimeout( loading, 2000)
+      
+if (isLoading) {return (<h1>LOADING...please WAIT</h1>)}
+
+else {
 if (userLoggedIn && user)
 {
 return (
@@ -49,7 +59,7 @@ return (
 <div className='links'>
         <Link to = "">Hi {username},</Link>
         <Link to = "/users">Preferences</Link>
-        <Link to = '/users/frontpage'>FrontPage</Link>
+        <Link to = "/users/frontpage">FrontPage</Link>
         <Link to = "/users/forum">Forum</Link>
         <Link to = "/users/archives">Archives</Link>
         <Link to = "/logout">Logout</Link>
@@ -60,10 +70,10 @@ return (
     <ForumArticleCard 
         key={c.id}
         title={c.title}
-        description= {c.description}
-        urlToImage= {c.urlToImage}
+        description= {c.summary}
+        urlToImage= {c.media}
         author = {c.author}
-        url = {c.url}
+        url = {c.link}
         likes= {c.likes}
         id = {c.id}
     />
@@ -82,6 +92,7 @@ else {
 
 }
 
+}
 
 }
 export default Forum

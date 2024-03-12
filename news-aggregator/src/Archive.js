@@ -8,7 +8,7 @@ import myImage from './penfeather.png'
 // const decode = jwtDecode(token)
 
 // button component to archive article takes in data from parent component
-const Archive = ({username, url, title,description, author}) =>{
+const Archive = ({username, link, title, excerpt, author}) =>{
     
     const [activeButton, setActiveButton] = useState(true)
     const [state, setState] = useState([])
@@ -23,7 +23,8 @@ const Archive = ({username, url, title,description, author}) =>{
     async function apiCall() {
         try {
         setActiveButton(false);
-        const res = await Helpers.saveArticle(username,url,title, description,author)
+        const res = await Helpers.saveArticle(username, link, title, excerpt, author)
+        console.log(state)
         setState(res)
      
 

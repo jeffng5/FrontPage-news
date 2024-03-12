@@ -24,6 +24,7 @@ const Saved = () => {
     const navigate = useNavigate()
     const [articles, setArticles] = useState([])
     const [userLoggedIn, setUserLoggedIn] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
 
 
     useEffect(() =>{
@@ -45,8 +46,15 @@ async function archiveResults() {
 
 }
 
+async function loading() {
+  setIsLoading(false)
+  console.log(loading)
+}
+setTimeout( loading, 2000)
 
+if (isLoading) {return (<h1>LOADING...please WAIT</h1>)}
 
+else {
 if (userLoggedIn && username){
 return (
 <>
@@ -73,7 +81,7 @@ else {
   navigate('/')
 
 }
-
+}
 }
 
 

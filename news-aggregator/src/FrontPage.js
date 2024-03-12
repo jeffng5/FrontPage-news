@@ -9,7 +9,7 @@ import { Link, useNavigate } from 'react-router-dom'
 
 
 const apiKey = process.env.REACT_APP_APIKEY
-
+console.log(apiKey)
 let pref = localStorage.getItem('preferences')
 
 let subj = pref.split(',') || ''
@@ -51,6 +51,7 @@ const FrontPage = () => {
     const [science, setScience] = useState([])
     const [sports, setSports] = useState([])
     const [technology, setTechnology] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
     const date = dateTime.toLocaleDateString();
 
 useEffect(()=> {
@@ -63,79 +64,200 @@ useEffect (()=> {
     checkToken()
     //this API call gets articles according to subject from the newsAPI.org
     const getApi = async() => {
-   
-        try { 
+
+        let options = {
+            method : 'GET',
+            url: 'https://api.newscatcherapi.com/v2/latest_headlines?countries=au&lang=en&page=1',
+            // params: {lang:'en', page: '1'},
+            headers : { 'x-api-key' : apiKey }
+        }
+
+        let options1 = {
+            method : 'GET',
+            url: 'https://api.newscatcherapi.com/v2/latest_headlines?countries=jp&lang=en&page=1',
+            // params: {lang:'en', page: '1'},
+            headers : { 'x-api-key' : apiKey }
+        }
+
+        let options2 = {
+            method : 'GET',
+            url: 'https://api.newscatcherapi.com/v2/latest_headlines?countries=gb&lang=en&page=1',
+            // params: {lang:'en', page: '1'},
+            headers : { 'x-api-key' : apiKey }
+        }
+
+        let options3 = {
+            method : 'GET',
+            url: 'https://api.newscatcherapi.com/v2/latest_headlines?countries=US&topic=US&lang=en&page=1',
+            // params: {lang:'en', page: '1'},
+            headers : { 'x-api-key' : apiKey }
+        }
+
+        let options4 = {
+            method : 'GET',
+            url: 'https://api.newscatcherapi.com/v2/latest_headlines?countries=US&topic=business&lang=en&page=1',
+            // params: {lang:'en', page: '1'},
+            headers : { 'x-api-key' : apiKey }
+        }
+
+        let options5 = {
+            method : 'GET',
+            url: 'https://api.newscatcherapi.com/v2/latest_headlines?countries=US&topic=entertainment&lang=en&page=1',
+            // params: {lang:'en', page: '1'},
+            headers : { 'x-api-key' : apiKey }
+        }
+
+        let options6 = {
+            method : 'GET',
+            url: 'https://api.newscatcherapi.com/v2/latest_headlines?countries=US&topic=global&lang=en&page=1',
+            // params: {lang:'en', page: '1'},
+            headers : { 'x-api-key' : apiKey }
+        }
+
+        let options7 = {
+            method : 'GET',
+            url: 'https://api.newscatcherapi.com/v2/latest_headlines?countries=US&topic=health&lang=en&page=1',
+            // params: {lang:'en', page: '1'},
+            headers : { 'x-api-key' : apiKey }
+        }
+
+        let options8 = {
+            method : 'GET',
+            url: 'https://api.newscatcherapi.com/v2/latest_headlines?countries=US&topic=science&lang=en&page=1',
+            // params: {lang:'en', page: '1'},
+            headers : { 'x-api-key' : apiKey }
+        }
+
+        let options9 = {
+            method : 'GET',
+            url: 'https://api.newscatcherapi.com/v2/latest_headlines?countries=US&topic=sports&lang=en&page=1',
+            // params: {lang:'en', page: '1'},
+            headers : { 'x-api-key' : apiKey }
+        }
+
+        let options10 = {
+            method : 'GET',
+            url: 'https://api.newscatcherapi.com/v2/latest_headlines?countries=US&topic=technology&lang=en&page=1',
+            // params: {lang:'en', page: '1'},
+            headers : { 'x-api-key' : apiKey }
+        }
+      
+    try { 
         if (subj[0]==='Australia' || subj[1]=== 'Australia' || subj[2]==='Australia' || subj[3]==='Australia'
         || subj[4]=== 'Australia') {
-            const res = await axios.get(`https://newsapi.org/v2/top-headlines?country=au&pageSize=10&apiKey=${apiKey}`)
-            setAustralia(res['data']['articles'])
+            axios.request(options).then(function (response){
+            console.log(response.data.articles);
+            setAustralia(response.data.articles)
+            }).catch(function (error)
+            {console.error(error)})         
         }
+    
+    
         if (subj[0]==='Asia' || subj[1]=== 'Asia' || subj[2]==='Asia' || subj[3]==='Asia'
         || subj[4]=== 'Asia'){
-            const res1 = await axios.get(`https://newsapi.org/v2/top-headlines?country=jp&apiKey=${apiKey}`)
-            setAsia(res1['data']['articles'])
+            axios.request(options1).then(function (response){
+                console.log(response.data.articles);
+                setAsia(response.data.articles)
+                }).catch(function (error)
+                {console.error(error)})       
         }
+   
         if (subj[0]==='U.K.' || subj[1]=== 'U.K.' || subj[2]==='U.K.' || subj[3]==='U.K.'
         || subj[4]==='U.K.') {
-            const res2 = await axios.get(`https://newsapi.org/v2/top-headlines?country=gb&apiKey=${apiKey}`)
-            setUk(res2['data']['articles'])
+            axios.request(options2).then(function (response){
+                console.log(response.data.articles);
+                setUk(response.data.articles)
+                }).catch(function (error)
+                {console.error(error)})  
         }
-    
+
         if (subj[0]==='US' || subj[1]=== 'US' || subj[2]==='US' || subj[3]==='US'
         || subj[4]=== 'US') {
-            const res3 = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`)
-            setUS(res3['data']['articles'])
-        
+            axios.request(options3).then(function (response){
+                console.log(response.data.articles);
+                setUS(response.data.articles)
+                }).catch(function (error)
+                {console.error(error)})  
         }
+  
         if (subj[0]==='Business' || subj[1]==='Business' || subj[2] === 'Business' || subj[3]=== 'Business' || subj[4]==='Business') {
-            const res4 = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=business&pageSize=15&apiKey=${apiKey}`)
-        console.log(res4)
-        setBusiness(res4['data']['articles'])
+            axios.request(options4).then(function (response){
+                console.log(response.data.articles);
+                setBusiness(response.data.articles)
+                }).catch(function (error)
+                {console.error(error)})  
     }  
+
+
+
         if (subj[0]==='Entertainment' || subj[1]==='Entertainment' || subj[2] === 'Entertainment' || subj[3]=== 'Entertainment' || subj[4]==='Entertainment'){
-            const res5 = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=entertainment&pageSize=15&apiKey=${apiKey}`)
-      
-        setEntertainment(res5['data']['articles'])
-    }  
+            axios.request(options5).then(function (response){
+                console.log(response.data.articles);
+                setEntertainment(response.data.articles)
+                }).catch(function (error)
+                {console.error(error)}) 
+            }
         if (subj[0]==='General' || subj[1]==='General' || subj[2] === 'General' || subj[3]=== 'General' || subj[4]==='General'){
-        const res6 = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=general&pageSize=15&apiKey=${apiKey}`)
-    
-    setGeneral(res6['data']['articles'])
+            axios.request(options6).then(function (response){
+                console.log(response.data.articles);
+                setGeneral(response.data.articles)
+                }).catch(function (error)
+                {console.error(error)}) 
     }  
+
+
         if (subj[0]==='Health' || subj[1]==='Health' || subj[2] === 'Health' || subj[3]=== 'Health' || subj[4]==='Health'){
-        const res7 = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=health&pageSize=15&apiKey=${apiKey}`)
-    
-    setHealth(res7['data']['articles'])
+        axios.request(options7).then(function (response){
+            console.log(response.data.articles);
+            setHealth(response.data.articles)
+            }).catch(function (error)
+            {console.error(error)}) 
     }  
     
     if (subj[0]==='Science' || subj[1]==='Science' || subj[2] === 'Science' || subj[3]=== 'Science' || subj[4]==='Science'){
-        const res8 = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=science&pageSize=15&apiKey=${apiKey}`)
-    
-    setScience(res8['data']['articles'])
+        axios.request(options8).then(function (response){
+            console.log(response.data.articles);
+            setScience(response.data.articles)
+            }).catch(function (error)
+            {console.error(error)}) 
     }  
     
     if (subj[0]==='Sports' || subj[1]==='Sports' || subj[2] === 'Sports' || subj[3]=== 'Sports' || subj[4]==='Sports'){
-        const res9 = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=sports&pageSize=15&apiKey=${apiKey}`)
-    
-    setSports(res9['data']['articles'])
+        axios.request(options9).then(function (response){
+            console.log(response.data.articles);
+            setSports(response.data.articles)
+            }).catch(function (error)
+            {console.error(error)}) 
     }  
     
     if (subj[0]==='Technology' || subj[1]==='Technology' || subj[2] === 'Technology' || subj[3]=== 'Technology' || subj[4]==='Technology'){
-        const res10 = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&category=technology&pageSize=15&apiKey=${apiKey}`)
-    
-    setTechnology(res10['data']['articles'])
+       axios.request(options10).then(function (response){
+            console.log(response.data.articles);
+            setTechnology(response.data.articles)
+            }).catch(function (error)
+            {console.error(error)}) 
     }
         }     
     catch (err) {console.log(err)}
  
     };   
 
-    //this API call gets teh term search from newAPI.org
+  //  this API call gets teh term search from newAPI.org
     const getApi2= async ()=>{
+
+        let options11 = {
+            method : 'GET',
+            url: `https://api.newscatcherapi.com/v2/search?q+${term}&language=en&pagesize=1`,
+            // params: {lang:'en', page: '1'},
+            headers : { 'x-api-key' : apiKey }
+        }
         
         try {
-        const res11 = await axios.get(`https://newsapi.org/v2/everything?q=+${term}&language=en&sortBy=relevancy&apiKey=${apiKey}`)
-        setSearch(res11['data']['articles']) 
+            axios.request(options11).then(function (response){
+                console.log(response.data.articles);
+                setSearch(response.data.articles)
+                }).catch(function (error)
+                {console.error(error)}) 
     } catch (e) {console.log(e)}
     }
     getApi();
@@ -143,7 +265,15 @@ useEffect (()=> {
     setSearch([]);    
 }, []);
 
+async function loading() {
+    setIsLoading(false)
+    console.log(loading)
+  }
+  setTimeout( loading, 2000)
+  
+  if (isLoading) {return (<h1>FETCHING...Your Front Page News...please WAIT</h1>)}
 
+else {
 if (userLoggedIn && username)
 {
 
@@ -168,109 +298,109 @@ return (
 {us.map(c => (
     <ArticleCard  title = {c.title} 
     key={c.key}
-    url = {c.url}
-    description ={c.description}
-   urlToImage= {c.urlToImage}
+    url = {c.link}
+    excerpt ={c.excerpt}
+   media= {c.media}
     
     author = {c.author} />))} 
 
 {australia.map(c => (
     <ArticleCard  title = {c.title} 
-    url = {c.url}
+    link = {c.link}
     key={c.key}
-    description ={c.description}
-   urlToImage= {c.urlToImage}
+    excerpt ={c.excerpt}
+   media = {c.media}
 
     author = {c.author} />))}
 
 
 {asia.map(c => (
     <ArticleCard  title = {c.title} 
-    url = {c.url}
+    link = {c.link}
     key={c.key}
-    description ={c.description}
-   urlToImage= {c.urlToImage}
+    excerpt ={c.excerpt}
+    media = {c.media}
 
     author = {c.author} />))}
 
 {business.map(c => (
     <ArticleCard  title = {c.title} 
-    url = {c.url}
+    link = {c.link}
     key={c.key}
-    description ={c.description}
-   urlToImage= {c.urlToImage}
+    excerpt ={c.excerpt}
+   media= {c.media}
 
     author = {c.author} />))} 
 
 {entertainment.map(c => (
     <ArticleCard  title = {c.title} 
-    url = {c.url}
+    link = {c.link}
     key={c.key}
-    description ={c.description}
-   urlToImage= {c.urlToImage}
+    excerpt ={c.excerpt}
+   media= {c.media}
 
     author = {c.author} />))} 
 
 {general.map(c => (
     <ArticleCard  title = {c.title} 
-    url = {c.url}
+    link = {c.link}
     key={c.key}
-    description ={c.description}
-   urlToImage= {c.urlToImage}
+    excerpt ={c.excerpt}
+    media = {c.media}
 
     author = {c.author} />))} 
 
 {uk.map(c => (
     <ArticleCard  title = {c.title} 
-    url = {c.url}
+    link = {c.link}
     key={c.key}
-    description ={c.description}
-   urlToImage= {c.urlToImage}
+    excerpt ={c.excerpt}
+    media = {c.media}
 
     author = {c.author} />))} 
 
 {health.map(c => (
     <ArticleCard  title = {c.title} 
-    url = {c.url}
+    link = {c.link}
     key={c.key}
-    description ={c.description}
-   urlToImage= {c.urlToImage}
+    excerpt ={c.excerpt}
+    media= {c.media}
 
     author = {c.author} />))} 
 
 {science.map(c => (
     <ArticleCard  title = {c.title} 
-    url = {c.url}
+    link = {c.link}
     key={c.key}
-    description ={c.description}
-   urlToImage= {c.urlToImage}
+    excerpt ={c.excerpt}
+    media = {c.media}
 
     author = {c.author} />))} 
 
 {sports.map(c => (
     <ArticleCard  title = {c.title} 
-    url = {c.url}
+    link = {c.link}
     key={c.key}
-    description ={c.description}
-   urlToImage= {c.urlToImage}
+    excerpt ={c.excerpt}
+   media= {c.media}
 
     author = {c.author} />))} 
 
 {technology.map(c => (
     <ArticleCard  title = {c.title} 
-    url = {c.url}
+    link = {c.link}
     key={c.key}
-    description ={c.description}
-   urlToImage= {c.urlToImage}
+    excerpt ={c.excerpt}
+   media= {c.media}
 
     author = {c.author} />))} 
 
 {search.map(c => (
     <ArticleCard  title = {c.title} 
-    url = {c.url}
+    link = {c.link}
     key={c.key}
-    description ={c.description}
-   urlToImage= {c.urlToImage}
+    excerpt ={c.excerpt}
+    media = {c.media}
 
     author = {c.author} />))} 
 
@@ -283,7 +413,7 @@ else {
   navigate('/')
 
 }
-
+}
 }
 
     
