@@ -28,11 +28,7 @@ const authorization = (req, res, next ) => {
 }
 
 const handleCors = (req, res, next) => {
-    // if (req.originalUrl.includes("forum") || req.originalUrl.includes("archive")){
-    //     return next()
-    // }
-
-    res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
   next();
  };
