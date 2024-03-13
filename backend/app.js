@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(cors());
 
 const authorization = (req, res, next ) => {
-    if (req.originalUrl.includes("login") || req.originalUrl.includes("register")){
+    if (req.originalUrl.includes("login") || req.originalUrl.includes("register") || req.originalUrl.includes("comments")){
         return next()
     }
     const authHeader = req.headers['authorization'];

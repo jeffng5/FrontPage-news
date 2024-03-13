@@ -88,7 +88,8 @@ static async saveArticle(username, link, title, excerpt, author) {
     static async postComment(username, comment, forum_art_id, datetime) {
         let res = await this.request('users/forum/comments', {username, comment, forum_art_id, datetime}, 'post')
         console.log(res.data, 'posted Comment')
-        return res.data;}
+        return res.data;
+    }
 
 
 // get all comments per article
