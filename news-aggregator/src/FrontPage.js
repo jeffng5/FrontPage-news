@@ -290,7 +290,9 @@ return (
 
 
 {us.map(c => (
-    <ArticleCard  title = {c.title} 
+    <ArticleCard  
+  
+    title = {c.title} 
     key={c.key}
     url = {c.link}
     excerpt ={c.excerpt}
@@ -299,7 +301,9 @@ return (
     author = {c.author} />))} 
 
 {australia.map(c => (
-    <ArticleCard  title = {c.title} 
+    <ArticleCard  
+
+    title = {c.title} 
     link = {c.link}
     key={c.key}
     excerpt ={c.excerpt}
@@ -309,7 +313,9 @@ return (
 
 
 {asia.map(c => (
-    <ArticleCard  title = {c.title} 
+    <ArticleCard  
+ 
+    title = {c.title} 
     link = {c.link}
     key={c.key}
     excerpt ={c.excerpt}
@@ -318,7 +324,9 @@ return (
     author = {c.author} />))}
 
 {business.map(c => (
-    <ArticleCard  title = {c.title} 
+    <ArticleCard  
+  
+    title = {c.title} 
     link = {c.link}
     key={c.key}
     excerpt ={c.excerpt}
@@ -327,7 +335,9 @@ return (
     author = {c.author} />))} 
 
 {entertainment.map(c => (
-    <ArticleCard  title = {c.title} 
+    <ArticleCard  
+
+    title = {c.title} 
     link = {c.link}
     key={c.key}
     excerpt ={c.excerpt}
@@ -336,7 +346,9 @@ return (
     author = {c.author} />))} 
 
 {general.map(c => (
-    <ArticleCard  title = {c.title} 
+    <ArticleCard  
+
+    title = {c.title} 
     link = {c.link}
     key={c.key}
     excerpt ={c.excerpt}
@@ -345,7 +357,9 @@ return (
     author = {c.author} />))} 
 
 {uk.map(c => (
-    <ArticleCard  title = {c.title} 
+    <ArticleCard  
+    
+    title = {c.title} 
     link = {c.link}
     key={c.key}
     excerpt ={c.excerpt}
@@ -354,7 +368,9 @@ return (
     author = {c.author} />))} 
 
 {health.map(c => (
-    <ArticleCard  title = {c.title} 
+    <ArticleCard  
+
+    title = {c.title} 
     link = {c.link}
     key={c.key}
     excerpt ={c.excerpt}
@@ -363,7 +379,9 @@ return (
     author = {c.author} />))} 
 
 {science.map(c => (
-    <ArticleCard  title = {c.title} 
+    <ArticleCard  
+ 
+    title = {c.title} 
     link = {c.link}
     key={c.key}
     excerpt ={c.excerpt}
@@ -372,7 +390,9 @@ return (
     author = {c.author} />))} 
 
 {sports.map(c => (
-    <ArticleCard  title = {c.title} 
+    <ArticleCard  
+    
+    title = {c.title} 
     link = {c.link}
     key={c.key}
     excerpt ={c.excerpt}
@@ -381,7 +401,9 @@ return (
     author = {c.author} />))} 
 
 {technology.map(c => (
-    <ArticleCard  title = {c.title} 
+    <ArticleCard  
+
+    title = {c.title} 
     link = {c.link}
     key={c.key}
     excerpt ={c.excerpt}
@@ -390,7 +412,9 @@ return (
     author = {c.author} />))} 
 
 {search.map(c => (
-    <ArticleCard  title = {c.title} 
+    <ArticleCard  
+
+    title = {c.title} 
     link = {c.link}
     key={c.key}
     excerpt ={c.excerpt}

@@ -5,13 +5,13 @@ import ColoredLineThin from "./ColoredLineThin"
 import ButtonForum from "./ButtonForum"
 
 
-let username = localStorage.getItem('username')
-console.log(username)
+
 // Card template to hold the articles returned
 
 //receiving prop data from parent
 const ArticleCard = ({title, excerpt, link, author, media}) => {
-
+    let username = localStorage.getItem('username')
+    console.log(username)
   
     return (
     <>
