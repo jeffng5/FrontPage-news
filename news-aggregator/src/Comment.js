@@ -14,20 +14,17 @@ const Comment = ({id}) => {
 
   console.log(username)
 
-
-
-
-  async function addComment(e) {
-    e.preventDefault();
-    setComment(e.target.value);
+ 
+  async function addComment() {
     setDateTime(new Date())
     //helpers function to post comment
     const res = await Helpers.postComment(username,  comment, forum_art_id, datetime)
-    console.log(res)
+    console.log(res.entry)
     // note to user that comment has been added
     setAddedClaus('comment has been added')
     return ('status OK')
  }
+
 //handleChange function
   const handleChange= (e) => {
     e.preventDefault();
