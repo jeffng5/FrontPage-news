@@ -28,7 +28,7 @@ const authorization = (req, res, next ) => {
 }
 
 const handleCors = (req, res, next) => {
-    // if (res.originalUrl.includes("forum") || req.originalUrl.includes("archive")){
+    // if (req.originalUrl.includes("forum") || req.originalUrl.includes("archive")){
     //     return next()
     // }
 
