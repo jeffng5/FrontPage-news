@@ -25,7 +25,7 @@ const Comment = ({id}) => {
         })
     // note to user that comment has been added
   
-    return (res.entry, 'status OK')
+    return (res, 'status OK')
  }
 
 //handleChange function
