@@ -7,6 +7,7 @@ import { Helpers } from './helpers'
 //component to add comment 
 const Comment = ({id}) => {
   const username = localStorage.getItem('username')
+  let forum_art_id = id
   const [comment, setComment] = useState([])
   const [datetime, setDateTime] = useState(new Date())
   const [addedClause, setAddedClaus] = useState([])
@@ -21,7 +22,7 @@ const Comment = ({id}) => {
     setComment(e.target.value);
     setDateTime(new Date())
     //helpers function to post comment
-    const res = await Helpers.postComment(username,  comment, id, datetime)
+    const res = await Helpers.postComment(username,  comment, forum_art_id, datetime)
     console.log(res)
     // note to user that comment has been added
     setAddedClaus('comment has been added')
