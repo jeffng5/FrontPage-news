@@ -19,9 +19,12 @@ const Comment = ({id}) => {
     setDateTime(new Date())
     //helpers function to post comment
     const res = await Helpers.postComment(username,  comment, forum_art_id, datetime)
-    console.log(res.entry)
+        .then(function (response) {setAddedClaus('comment has been added')})
+        .catch(function (error) {
+          console.log(error)
+        })
     // note to user that comment has been added
-    setAddedClaus('comment has been added')
+  
     return (res.entry, 'status OK')
  }
 
