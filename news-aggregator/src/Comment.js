@@ -26,7 +26,7 @@ const Comment = ({id}) => {
     console.log(res)
     // note to user that comment has been added
     setAddedClaus('comment has been added')
-    
+    return ('status OK')
  }
 //handleChange function
   const handleChange= (e) => {
