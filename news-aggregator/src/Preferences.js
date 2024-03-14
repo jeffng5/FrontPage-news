@@ -146,6 +146,13 @@ if (userLoggedIn && user){
     />
     </h5>
     <h5>
+   <FormField
+      control={Checkbox}
+      label={<label>Food</label>}
+      id = 'Food' name= 'Food' value = "Food" onChange={handleChange}   
+    />
+    </h5>
+    <h5>
   <FormField
       control={Checkbox}
       label={<label>General</label>}
@@ -159,13 +166,7 @@ if (userLoggedIn && user){
       id = 'U.K' name= 'U.K' value = "U.K." onChange={handleChange}   
     />
     </h5>
-    <h5>
-   <FormField
-      control={Checkbox}
-      label={<label>Health</label>}
-      id = 'Health' name= 'Health' value = "Health" onChange={handleChange}   
-    />
-    </h5>
+  
     <h5>
   <FormField
       control={Checkbox}

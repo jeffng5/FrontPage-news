@@ -50,7 +50,7 @@ const FrontPage = () => {
     const [business, setBusiness] = useState([])
     const [entertainment, setEntertainment] = useState([])
     const [general, setGeneral] = useState([])
-    const [health, setHealth] = useState([])
+    const [food, setFood] = useState([])
     const [science, setScience] = useState([])
     const [sports, setSports] = useState([])
     const [technology, setTechnology] = useState([])
@@ -115,7 +115,7 @@ useEffect (()=> {
 
         let options7 = {
             method : 'GET',
-            url: 'https://api.newscatcherapi.com/v2/latest_headlines?topic=health&lang=en&page=1',
+            url: 'https://api.newscatcherapi.com/v2/latest_headlines?topic=food&lang=en&page=1',
 
             headers : { 'x-api-key' : apiKey }
         }
@@ -205,7 +205,7 @@ useEffect (()=> {
     }  
 
 
-        if (subj[0]==='Health' || subj[1]==='Health' || subj[2] === 'Health' || subj[3]=== 'Health' || subj[4]==='Health'){
+        if (subj[0]==='Food' || subj[1]==='Food' || subj[2] === 'Food' || subj[3]=== 'Food' || subj[4]==='Food'){
          await axios.request(options7).then(function (response){
             console.log(response.data.articles);
             setHealth(response.data.articles)
