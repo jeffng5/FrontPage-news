@@ -11,7 +11,7 @@ import ButtonForum from "./ButtonForum"
 //receiving prop data from parent
 const ArticleCard = ({title, excerpt, link, author, media}) => {
     let username = localStorage.getItem('username')
-    console.log(username)
+
   
     return (
     <>
