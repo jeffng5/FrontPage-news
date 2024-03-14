@@ -248,7 +248,7 @@ const FrontPage = () => {
             } catch (e) { console.log(e) }
         }
         getApi();
-        getApi2();
+        // getApi2();
         setSearch(null);
     }, []);
 
