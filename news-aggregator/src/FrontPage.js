@@ -115,7 +115,7 @@ useEffect (()=> {
 
         let options7 = {
             method : 'GET',
-            url: 'https://api.newscatcherapi.com/v2/latest_headlines?topic=food&lang=en&page=1',
+            url: 'https://api.newscatcherapi.com/v2/latest_headlines?countries=US&topic=food&lang=en&page=1',
 
             headers : { 'x-api-key' : apiKey }
         }
