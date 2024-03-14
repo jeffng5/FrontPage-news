@@ -108,7 +108,7 @@ useEffect (()=> {
 
         let options6 = {
             method : 'GET',
-            url: 'https://api.newscatcherapi.com/v2/latest_headlines?countries=US&topic=global&lang=en&page=1',
+            url: 'https://api.newscatcherapi.com/v2/latest_headlines?countries=US&topic=news&lang=en&page=1',
 
             headers : { 'x-api-key' : apiKey }
         }
@@ -129,14 +129,14 @@ useEffect (()=> {
 
         let options9 = {
             method : 'GET',
-            url: 'https://api.newscatcherapi.com/v2/latest_headlines?topic=sports&lang=en&page=1',
+            url: 'https://api.newscatcherapi.com/v2/latest_headlines?topic=sport&lang=en&page=1',
 
             headers : { 'x-api-key' : apiKey }
         }
 
         let options10 = {
             method : 'GET',
-            url: 'https://api.newscatcherapi.com/v2/latest_headlines?topic=technology&lang=en&page=1',
+            url: 'https://api.newscatcherapi.com/v2/latest_headlines?topic=tech&lang=en&page=1',
 
             headers : { 'x-api-key' : apiKey }
         }
