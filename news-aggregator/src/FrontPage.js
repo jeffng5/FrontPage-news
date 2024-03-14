@@ -208,7 +208,7 @@ useEffect (()=> {
         if (subj[0]==='Food' || subj[1]==='Food' || subj[2] === 'Food' || subj[3]=== 'Food' || subj[4]==='Food'){
          await axios.request(options7).then(function (response){
             console.log(response.data.articles);
-            setHealth(response.data.articles)
+            setFood(response.data.articles)
             }).catch(function (error)
             {console.error(error)}) 
     }  
@@ -372,7 +372,7 @@ return (
 
     author = {c.author} />))} 
 
-{health.map(c => (
+{food.map(c => (
     <ArticleCard  
 
     title = {c.title} 
