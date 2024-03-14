@@ -19,7 +19,9 @@ export class Helpers {
             ? data
             : {};
         try {
-            return (await axios({ url, method, data, params, headers}));
+            return (await axios({ url, method, data, 
+                params, 
+                headers}));
         } catch (err) {
             console.log('test', err)
             if (err.response) {

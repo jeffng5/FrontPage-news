@@ -8,7 +8,7 @@ import ColoredLine from "./ColoredLine"
 import { Link, useNavigate } from 'react-router-dom'
 
 
-const apiKey = process.env.REACT_APP_APIKEY
+
 
 let pref = localStorage.getItem('preferences')
 
@@ -20,7 +20,7 @@ let term = localStorage.getItem('freePreferences')
 
 // holds bulk of search, many API calls, displays current date
 const FrontPage = () => {
-
+    const apiKey = process.env.REACT_APP_APIKEY
     let username = localStorage.getItem('username')
     function checkToken() {
         let token = localStorage.getItem('token')

@@ -118,3 +118,10 @@ h6 {
     
 }
 
+.url-forum {
+    text-align: left;
+    padding-top: 20px;
+    padding-bottom: -50px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
