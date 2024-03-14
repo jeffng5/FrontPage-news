@@ -24,7 +24,6 @@ const Archive = ({username, link, title, excerpt, author}) =>{
         try {
         setActiveButton(false);
         const res = await Helpers.saveArticle(username, link, title, excerpt, author)
-        console.log(state)
         setState(res)
      
 

@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react'
 import "./css/FrontPage.css"
 import "./css/semantic.css"
 import { jwtDecode } from "jwt-decode"
-import axios from 'axios'
-import ArticleCard from "./ArticleCard"
 import ColoredLine from "./ColoredLine"
 import { Link, useNavigate } from 'react-router-dom'
 import UseApi from './hooks/useApi'
@@ -13,10 +11,7 @@ const FrontPage = () => {
 
     let pref = localStorage.getItem('preferences')
 
-    let subj = pref ? pref.split(',') : "";
-
-    let term = localStorage.getItem('freePreferences')
-
+    let subj = pref ? pref.split(',') : ""
 
     let username = localStorage.getItem('username')
     function checkToken() {
@@ -53,7 +48,7 @@ const FrontPage = () => {
 
     async function loading() {
         setIsLoading(false)
-        console.log(loading)
+   
     }
     setTimeout(loading, 2000)
 

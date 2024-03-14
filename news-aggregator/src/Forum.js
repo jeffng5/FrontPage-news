@@ -44,7 +44,7 @@ const Forum = () => {
 
     async function loading() {
         setIsLoading(false)
-        console.log(loading)
+
     }
     setTimeout(loading, 2000)
 

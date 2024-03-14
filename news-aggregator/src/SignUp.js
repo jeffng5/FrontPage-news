@@ -16,9 +16,6 @@ const SignUp = () => {
     const { name, value } = e.target
     setFormData(formData => ({ ...formData, [name]: value }))
   }
-  console.log(formData.username)
-  console.log(formData.email)
-  console.log(formData.password)
 
   //makes API call to backend to post register data and redirect to users page.
 

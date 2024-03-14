@@ -54,8 +54,7 @@ const Preferences = () => {
   function handleChange(e) {
     // protected with username/sign in
     if (user) {
-      console.log(e.target.checked)
-      console.log(e.target.value)
+   
       //checks if checkbox is checked
       if (e.target.checked === true) {
         //pushes value of checkbox into empty array

@@ -11,7 +11,7 @@ const CommentCard = ({comment, username, datetime}) => {
     async function addLikes() {
         await Helpers.postLike(comment)
         const res = await Helpers.getPostLike(comment)
-        console.log(res.thing[0].likes)
+   
         //parsing apiCall and setting the state
         setAddLike(res.thing[0].likes)
      

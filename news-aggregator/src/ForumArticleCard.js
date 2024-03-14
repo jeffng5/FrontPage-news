@@ -6,7 +6,7 @@ import Comment from './Comment'
 // component to add structure into each article 
 const ForumArticleCard = ({title, description, url, author, likes, id}) =>{
 
-    console.log({url})
+
     return (
         <>
         <p className='forum-article-card'>

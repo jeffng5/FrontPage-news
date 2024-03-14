@@ -12,7 +12,7 @@ const Comment = ({id}) => {
   const [datetime, setDateTime] = useState(new Date())
   const [addedClause, setAddedClaus] = useState([])
 
-  console.log(username)
+ 
 
  
   async function addComment() {
@@ -20,7 +20,6 @@ const Comment = ({id}) => {
     //helpers function to post comment
     const res = await Helpers.postComment(username,  comment, forum_art_id, datetime)
         .then(function (response) {
-          console.log(response.data);
           setAddedClaus('comment has been added')})
         .catch(function (error) {
           console.log(error)
