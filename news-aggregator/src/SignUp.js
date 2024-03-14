@@ -34,7 +34,7 @@ const SignUp = () => {
         
           if (res.token && res.user){
             // localStorage.setItem("token", res.token)
-            // localStorage.setItem("username", res.user)
+         
             return navigate('/users')
           }
      

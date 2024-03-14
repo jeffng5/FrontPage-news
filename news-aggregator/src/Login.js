@@ -31,7 +31,7 @@ const Login = () => {
           console.log(res)
         
           if (res.token && res.user){
-          
+
             return navigate('/users')
         
           }
