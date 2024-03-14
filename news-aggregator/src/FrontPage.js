@@ -249,7 +249,7 @@ const FrontPage = () => {
         }
         getApi();
         // getApi2();
-        setSearch(null);
+        setSearch([]);
     }, []);
 
     async function loading() {
