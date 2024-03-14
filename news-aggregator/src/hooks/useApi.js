@@ -4,7 +4,9 @@ import axios from 'axios'
 const useApi = async() => {
 
     const apiKey = process.env.REACT_APP_APIKEY
-
+    let pref = localStorage.getItem('preferences')
+    let subj = pref ? pref.split(',') : "";
+    let term = localStorage.getItem('freePreferences')
     const [article, setArticle] = useState([])
     
     mySearchParams ={

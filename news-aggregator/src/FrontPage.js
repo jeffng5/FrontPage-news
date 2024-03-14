@@ -134,6 +134,12 @@ const FrontPage = () => {
                 headers: { 'x-api-key': apiKey }
             }
 
+            let options11 = {
+                method: 'GET',
+                url: `https://api.newscatcherapi.com/v2/search?q=${term}&language=en&pagesize=1`,
+                headers: { 'x-api-key': apiKey }
+            }
+
             try {
                 if (subj[0] === 'Australia' || subj[1] === 'Australia' || subj[2] === 'Australia' || subj[3] === 'Australia'
                     || subj[4] === 'Australia') {
@@ -219,13 +225,7 @@ const FrontPage = () => {
                     }).catch(function (error) { console.error(error) })
                 }
 
-                let options11 = {
-                    method: 'GET',
-                    url: `https://api.newscatcherapi.com/v2/search?q=${term}&language=en&pagesize=1`,
-                    headers: { 'x-api-key': apiKey }
-                }
-
-
+            
                 await axios.request(options11).then(function (response) {
                     console.log(response.data.articles);
                     setSearch(response.data.articles)
