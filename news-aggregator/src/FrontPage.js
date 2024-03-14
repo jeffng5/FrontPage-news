@@ -22,7 +22,8 @@ let term = localStorage.getItem('freePreferences')
 
 // holds bulk of search, many API calls, displays current date
 const FrontPage = () => {
-    const apiKey = process.env.REACT_APP_APIKEY
+
+    
     let username = localStorage.getItem('username')
     function checkToken() {
         let token = localStorage.getItem('token')
@@ -66,6 +67,7 @@ useEffect (()=> {
     checkToken()
     //this API call gets articles according to subject from the newsAPI.org
     const getApi = async() => {
+        const apiKey = process.env.REACT_APP_APIKEY
 
         let options = {
             method : 'GET',
@@ -241,6 +243,7 @@ useEffect (()=> {
 
   //  this API call gets teh term search from newAPI.org
     const getApi2= async ()=>{
+        const apiKey = process.env.REACT_APP_APIKEY
 
         let options11 = {
             method : 'GET',

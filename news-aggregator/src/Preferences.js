@@ -106,7 +106,6 @@ if (userLoggedIn && user){
         <Link to = "/users/forum">Forum</Link>
 
         <Link to = "/users/archives">Archives</Link>
-      
         <Link to = "/logout">Logout</Link>
    
         </div>
