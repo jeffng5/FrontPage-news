@@ -225,12 +225,12 @@ const FrontPage = () => {
                     }).catch(function (error) { console.error(error) })
                 }
 
-            
-                await axios.request(options11).then(function (response) {
-                    console.log(response.data.articles);
-                    setSearch(response.data.articles)
-                }).catch(function (error) { console.error(error) })
-
+                try {
+                    await axios.request(options11).then(function (response) {
+                        console.log(response.data.articles);
+                        setSearch(response.data.articles)
+                    }).catch(function (error) { console.error(error) })
+                } catch (err) { console.log(err) }
             }
             catch (err) { console.log(err) }
 

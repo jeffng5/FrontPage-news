@@ -56,9 +56,20 @@ for (const [key, value] of myTopicParams) {
         setArticle(response.data.articles)
     }).catch(function (error) { console.error(error) })
 }
+}
+let options11 = {
+    method: 'GET',
+    url: `https://api.newscatcherapi.com/v2/search?q=${term}&language=en&pagesize=1`,
+    headers: { 'x-api-key': apiKey }
+}
 
-
-
+try {
+    await axios.request(options11).then(function (response) {
+        console.log(response.data.articles);
+        setSearch(response.data.articles)
+    }).catch(function (error) { console.error(error) })
+} catch (e) {
+    console.log(e)
 }
 
 }
