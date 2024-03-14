@@ -7,21 +7,14 @@ import ArticleCard from "./ArticleCard"
 import ColoredLine from "./ColoredLine"
 import { Link, useNavigate } from 'react-router-dom'
 
-
-
-
-let pref = localStorage.getItem('preferences')
-
-// let subj = '' || pref.split(',') 
-
-let subj = pref ? pref.split(',') : "";
-
-let term = localStorage.getItem('freePreferences')
-
-
-
 // holds bulk of search, many API calls, displays current date
 const FrontPage = () => {
+
+    let pref = localStorage.getItem('preferences')
+
+    let subj = pref ? pref.split(',') : "";
+
+    let term = localStorage.getItem('freePreferences')
 
 
     let username = localStorage.getItem('username')
@@ -231,13 +224,13 @@ const FrontPage = () => {
                     url: `https://api.newscatcherapi.com/v2/search?q=${term}&language=en&pagesize=1`,
                     headers: { 'x-api-key': apiKey }
                 }
-    
-                try {
-                    await axios.request(options11).then(function (response) {
-                        console.log(response.data.articles);
-                        setSearch(response.data.articles)
-                    }).catch(function (error) { console.error(error) })
-                } catch (e) { console.log(e) }
+
+
+                await axios.request(options11).then(function (response) {
+                    console.log(response.data.articles);
+                    setSearch(response.data.articles)
+                }).catch(function (error) { console.error(error) })
+
             }
             catch (err) { console.log(err) }
 
