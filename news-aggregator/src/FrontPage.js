@@ -12,7 +12,7 @@ import { Link, useNavigate } from 'react-router-dom'
 
 let pref = localStorage.getItem('preferences')
 
-let subj = pref.split(',') || ''
+let subj = '' || pref.split(',') 
 
 let term = localStorage.getItem('freePreferences')
 
