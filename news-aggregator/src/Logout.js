@@ -13,17 +13,17 @@ const Logout = () => {
         const result = localStorage.removeItem('username')
 
         return result
-    } 
-        //set Timeout to allow username to be displayed before popping localStorage 
+    }
+    //set Timeout to allow username to be displayed before popping localStorage 
     setTimeout(logOutUser, 2000)
 
     return (
         <>
-        <h2>Thanks for Visiting! <p className='username'>{username}</p></h2>
-        
-        <h2><Link to = '/'>Sign In at Homepage</Link></h2>
+            <h2>Thanks for Visiting! <p className='username'>{username}</p></h2>
+
+            <h2><Link to='/'>Sign In at Homepage</Link></h2>
         </>
-    
+
     )
 
 }

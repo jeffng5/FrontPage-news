@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { jwtDecode }  from "jwt-decode" 
+import { jwtDecode } from "jwt-decode"
 import './css/forum.css'
 import { useNavigate } from 'react-router-dom'
 import { Helpers } from './helpers'
@@ -15,12 +15,12 @@ const Forum = () => {
     function checkToken() {
         let token = localStorage.getItem('token')
         if (token) {
-           const decode = jwtDecode(token)
-          setUserLoggedIn(true)
-        return decode
+            const decode = jwtDecode(token)
+            setUserLoggedIn(true)
+            return decode
         }
         else {
-          setUserLoggedIn(false)
+            setUserLoggedIn(false)
         }
     }
 
@@ -30,11 +30,11 @@ const Forum = () => {
     const [userLoggedIn, setUserLoggedIn] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
 
-    useEffect(()=> {
+    useEffect(() => {
         getForumArticles();
         checkToken()
-    },[])
-    
+    }, [])
+
     // helper function to get all articles in forum table
     async function getForumArticles() {
         let res = await Helpers.getForum();
@@ -45,54 +45,53 @@ const Forum = () => {
     async function loading() {
         setIsLoading(false)
         console.log(loading)
-      }
-      setTimeout( loading, 2000)
-      
-if (isLoading) {return (<h1>LOADING...please WAIT</h1>)}
+    }
+    setTimeout(loading, 2000)
 
-else {
-if (userLoggedIn && user)
-{
-return (
+    if (isLoading) { return (<h1>LOADING...please WAIT</h1>) }
 
-<>
-<div className='links'>
-        <Link to = "">Hi {username},</Link>
-        <Link to = "/users">Preferences</Link>
-        <Link to = "/users/frontpage">FrontPage</Link>
-        <Link to = "/users/forum">Forum</Link>
-        <Link to = "/users/archives">Archives</Link>
-        <Link to = "/logout">Logout</Link>
-    </div>
-<h1 id = 'forum'>Welcome to the News Forum</h1>
+    else {
+        if (userLoggedIn && user) {
+            return (
 
-{state.map(c=> (
-    <ForumArticleCard 
-        key={c.id}
-        title={c.title}
-        description= {c.summary}
-        urlToImage= {c.media}
-        author = {c.author}
-        url = {c.link}
-        likes= {c.likes}
-        id = {c.id}
-    />
-   
-))}
+                <>
+                    <div className='links'>
+                        <Link to="">Hi {username},</Link>
+                        <Link to="/users">Preferences</Link>
+                        <Link to="/users/frontpage">FrontPage</Link>
+                        <Link to="/users/forum">Forum</Link>
+                        <Link to="/users/archives">Archives</Link>
+                        <Link to="/logout">Logout</Link>
+                    </div>
+                    <h1 id='forum'>Welcome to the News Forum</h1>
 
-<div className='external-link'>
-<Link to = '/users/frontpage'>Go back to your Front Page</Link>
-</div>
-</>
-)
-}
+                    {state.map(c => (
+                        <ForumArticleCard
+                            key={c.id}
+                            title={c.title}
+                            description={c.summary}
+                            urlToImage={c.media}
+                            author={c.author}
+                            url={c.link}
+                            likes={c.likes}
+                            id={c.id}
+                        />
 
-else {
-  navigate('/')
+                    ))}
 
-}
+                    <div className='external-link'>
+                        <Link to='/users/frontpage'>Go back to your Front Page</Link>
+                    </div>
+                </>
+            )
+        }
 
-}
+        else {
+            navigate('/')
+
+        }
+
+    }
 
 }
 export default Forum
