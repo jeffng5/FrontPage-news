@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS comments (
     likes INTEGER default 0
 );
 
-ALTER TABLE users DROP CONSTRAINT IF EXISTS constraintname
+ALTER TABLE users DROP CONSTRAINT IF EXISTS constraintname;
 ALTER TABLE users ADD CONSTRAINT constraintname UNIQUE (username);
 ALTER TABLE comments ADD COLUMN IF NOT EXISTS datetime timestamp with time zone;
 
