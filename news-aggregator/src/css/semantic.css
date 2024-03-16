@@ -210,7 +210,7 @@ input {
 
 @media screen and (width: 1920px) {
     .mobile-users {
-    width: 100%;
+    width: 40%;
     }
     }
 }
