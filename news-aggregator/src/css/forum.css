@@ -1,3 +1,5 @@
+@media screen and (max-width: 5000px) {
+
 .url {
     text-align: left;
     margin-left: 20px;
@@ -124,4 +126,11 @@ h6 {
     padding-bottom: -50px;
     padding-left: 30px;
     padding-right: 30px;
+}
+
+@media screen and (width: 1920px) {
+    .mobile-users {
+    width: 100%;
+    }
+    }
 }

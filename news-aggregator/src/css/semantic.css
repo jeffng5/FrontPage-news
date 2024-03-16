@@ -1,4 +1,4 @@
-
+@media all and (max-width: 5000px) {
 
 form {
     margin-top: 30px;
@@ -206,4 +206,11 @@ input {
 
 .error-page {
     margin-top: 200px;
+}
+
+@media screen and (width: 1920px) {
+    .mobile-users {
+    width: 100%;
+    }
+    }
 }

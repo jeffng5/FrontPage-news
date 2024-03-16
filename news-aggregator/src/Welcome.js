@@ -7,7 +7,7 @@ const Welcome = () => {
 
     return (
         <>
-        <body>
+        <body className='mobile-users'>
         <h1 className='welcome'>Welcome to</h1> <p className= 'news-title'><b className = 'title'>YourFrontPageNews.com</b></p>
 
         <h2><div><b></b></div>

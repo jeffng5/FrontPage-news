@@ -1,4 +1,4 @@
-
+@media screen and (max-width: 5000px) {
 
 .article {
     text-align: left;
@@ -192,4 +192,13 @@ h4.author {
     margin-top: 0px;
     bottom: 470px;
     right: 625px;
+}
+
+@media screen and (width: 1920px) {
+    .mobile-users {
+    width: 100%;
+    }
+    }
+
+
 }
