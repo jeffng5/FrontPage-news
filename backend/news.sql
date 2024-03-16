@@ -3,13 +3,6 @@
 
 -- DROP DATABASE news;
 -- CREATE DATABASE news;
--- use news
-
--- DROP TABLE IF EXISTS archives;
--- DROP TABLE IF EXISTS users;
--- DROP TABLE IF EXISTS preferences;
--- DROP TABLE IF EXISTS comments;
--- DROP TABLE IF EXISTS forum;
 
 CREATE TABLE IF NOT EXISTS users (
     id BIGSERIAL PRIMARY KEY,
@@ -51,5 +44,3 @@ CREATE TABLE IF NOT EXISTS comments (
 ALTER TABLE users DROP CONSTRAINT IF EXISTS constraintname;
 ALTER TABLE users ADD CONSTRAINT constraintname UNIQUE (username);
 ALTER TABLE comments ADD COLUMN IF NOT EXISTS datetime timestamp with time zone;
-
--- \i news-seed.sql
