@@ -1,5 +1,3 @@
-
-
 form {
     margin-top: 30px;
     margin-right: 1200px;
@@ -12,11 +10,12 @@ form {
 
 .selection {
     display: block;
-    
+
 }
+
 .button {
     margin-top: 10px;
-  
+
 }
 
 button.save {
@@ -27,7 +26,7 @@ button.save {
     padding: 3px;
     font-weight: 550;
     height: 33px;
-    width: 250px; 
+    width: 250px;
     position: relative;
     top: 500px;
     left: 590px;
@@ -42,19 +41,21 @@ button.save {
     padding: 3px;
     font-weight: 550;
     height: 35px;
-    width: 200px; 
+    width: 200px;
     text-align: center;
     position: relative;
     top: 505px;
     left: 600px;
-    
+
 }
-button#log{
+
+button#log {
     text-align: center;
     position: relative;
     top: 500px;
     left: -15px;
 }
+
 .links {
     text-align: right;
     margin-top: 25px;
@@ -63,7 +64,7 @@ button#log{
     grid-template-columns: 200px 250px 250px 250px 250px 300px;
     width: 100%;
     z-index: 100;
-   
+
 }
 
 .frontpage-links {
@@ -81,6 +82,7 @@ button#log{
     font-family: Helvetica;
 
 }
+
 .form-entry {
     position: relative;
     left: 600px;
@@ -88,16 +90,19 @@ button#log{
     padding-bottom: 20px;
 
 }
-.log-in-form{
+
+.log-in-form {
     position: relative;
     bottom: 460px;
     left: 600px;
 }
+
 .log-in-form-1 {
     position: relative;
     bottom: 460px;
-  
+
 }
+
 .button-preferences {
     text-align: center;
     padding: 12px;
@@ -110,6 +115,7 @@ button#log{
 
 
 }
+
 h1.prefs {
     font-size: 55px;
     font-family: Helvetica;
@@ -149,7 +155,7 @@ h1.welcome {
 p {
     color: grey;
     font-size: 24px;
-    } 
+}
 
 p.header {
     color: gray;
@@ -157,15 +163,15 @@ p.header {
 }
 
 label {
-    position:relative;
+    position: relative;
     font-size: 14px;
-    font-weight:450;
+    font-weight: 450;
 }
 
 #login-welcome {
     font-size: 55px;
     font-family: Helvetica;
- 
+
 }
 
 .sign-in {
@@ -175,11 +181,11 @@ label {
 }
 
 span {
-  display: grid;
-  position: relative;
-  top: 0px;
-  margin-left: 750px;  
-} 
+    display: grid;
+    position: relative;
+    top: 0px;
+    margin-left: 750px;
+}
 
 
 h5 {
@@ -193,7 +199,7 @@ h5 {
 
 input {
     position: relative;
-    
+
 }
 
 .anything {
@@ -210,7 +216,14 @@ input {
 
 @media screen and (max-width: 420px) {
     .mobile-users {
-text-align: center;
-font-size: 25vw;
+        text-align: center;
+        font-size: 25vw;
     }
+}
+
+@media screen and (min-width: 320px) {
+    .mobile-users {
+        text-align: center;
+        font-size: 25vw;
     }
+}

@@ -1,5 +1,3 @@
-
-
 .url {
     text-align: left;
     margin-left: 20px;
@@ -15,14 +13,14 @@
     padding-bottom: 15px;
 }
 
-.description-forum-article
-{
+.description-forum-article {
     font-size: 24px;
     text-align: left;
     display: block;
     margin-left: 40px;
     padding-bottom: 15px;
 }
+
 .author-forum-article {
     font-size: 20px;
     position: relative;
@@ -32,6 +30,7 @@
     margin-left: 40px;
     margin-bottom: 10px;
 }
+
 .commentary {
     text-align: left;
     padding-left: 20px;
@@ -50,9 +49,9 @@ textarea {
 .add-comment {
     background-color: teal;
     color: white;
-    height:40px;
+    height: 40px;
     width: 150px;
-    border-radius:6px;
+    border-radius: 6px;
     font-size: 12px;
     margin-top: 10px;
 }
@@ -69,7 +68,7 @@ h6 {
 .comment-card {
     margin-top: -10px;
     margin-left: 20px;
-    display: inline-flex;  
+    display: inline-flex;
     color: black;
 }
 
@@ -77,15 +76,17 @@ h6 {
     margin-top: 8px;
 }
 
-.user{
+.user {
     padding-left: 25px;
-    color : gray;
+    color: gray;
 }
-.comment-card-1{
+
+.comment-card-1 {
     position: relative;
     bottom: 25px;
     left: 5px;
 }
+
 .like {
     position: relative;
     bottom: -3px;
@@ -117,7 +118,7 @@ h6 {
     margin-left: 180px;
     margin-right: 180px;
     margin-bottom: 50px;
-    
+
 }
 
 .url-forum {
@@ -131,7 +132,14 @@ h6 {
 
 @media screen and (max-width: 420px) {
     .mobile-users {
-text-align: center;
-font-size: 25vw;
+        text-align: center;
+        font-size: 25vw;
     }
+}
+
+@media screen and (min-width: 320px) {
+    .mobile-users {
+        text-align: center;
+        font-size: 25vw;
     }
+}

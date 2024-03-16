@@ -1,13 +1,11 @@
-
-
 body {
-   
+
     background-color: lightgray;
     font-family: Helvetica;
 }
 
 
-button.log{
+button.log {
     position: relative;
     right: 990px;
     text-align: center;
@@ -22,18 +20,18 @@ button {
     padding: 5px;
     font-weight: 550;
     height: 29px;
-    width: 150px; 
+    width: 150px;
     position: relative;
-    
+
 
 }
 
-button#preferences{
-    position:relative;
+button#preferences {
+    position: relative;
     text-align: center;
     height: 35px;
     width: 150px;
-    
+
 }
 
 
@@ -43,12 +41,12 @@ button#preferences{
 }
 
 
-.preferences{
+.preferences {
     padding: 15px;
 }
 
 .newspaper {
-    background:url("../photos/Newsbackground2.jpeg");
+    background: url("../photos/Newsbackground2.jpeg");
     opacity: .25;
 }
 
@@ -68,9 +66,14 @@ h1#login-welcome {
 
 @media screen and (max-width: 420px) {
     .mobile-users {
-text-align: center;
-font-size: 25vw;
+        text-align: center;
+        font-size: 25vw;
     }
+}
+
+@media screen and (min-width: 320px) {
+    .mobile-users {
+        text-align: center;
+        font-size: 25vw;
     }
-
-
+}

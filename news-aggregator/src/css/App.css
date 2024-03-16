@@ -125,3 +125,10 @@ font-size: 25vw;
   }
   }
 
+
+  @media screen and (min-width: 320px) {
+    .mobile-users {
+  text-align: center;
+  font-size: 25vw;
+    }
+    }

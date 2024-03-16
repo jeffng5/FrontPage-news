@@ -1,5 +1,3 @@
-
-
 .article {
     text-align: left;
     display: inline-grid;
@@ -19,7 +17,7 @@
 
 .button-6 {
     position: relative;
-    right: 70px; 
+    right: 70px;
     bottom: 350px;
     margin-bottom: 20px;
     display: block;
@@ -37,7 +35,7 @@ img#archive {
     height: 25px;
     bottom: 45px;
     margin-top: 0px;
-    
+
 }
 
 img#Forum {
@@ -77,39 +75,54 @@ button.archived {
     bottom: 56%;
     left: 100%;
 }
-#date-location { display: inline-block; position: absolute; left: 15px; top: 125px; text-align: left; background-color: #FFFFFF; border: 1px solid #006699; padding: 4px; z-index: 2; }
 
-.date-font { color: #006699; font: 13px arial, sans-serif; font-weight: bold; }
+#date-location {
+    display: inline-block;
+    position: absolute;
+    left: 15px;
+    top: 125px;
+    text-align: left;
+    background-color: #FFFFFF;
+    border: 1px solid #006699;
+    padding: 4px;
+    z-index: 2;
+}
+
+.date-font {
+    color: #006699;
+    font: 13px arial, sans-serif;
+    font-weight: bold;
+}
 
 .archive {
-position: relative;
-right: 200px;
+    position: relative;
+    right: 200px;
 
 }
 
-.photograph{
-position: relative;
-top: 400px;
-left: 200px;
-border-radius: 6px;
-height: 330px;
-width: 490px;
-text-align: right;
-/* margin-left: 0px;
+.photograph {
+    position: relative;
+    top: 400px;
+    left: 200px;
+    border-radius: 6px;
+    height: 330px;
+    width: 490px;
+    text-align: right;
+    /* margin-left: 0px;
 margin-top: 0px; */
 
 }
 
 #headline {
-  
-  right: 0px;
-  font-size:40px;
-  bottom: 300px;
-  color:#006699;
+
+    right: 0px;
+    font-size: 40px;
+    bottom: 300px;
+    color: #006699;
 }
 
 .headline {
-    color:#006699;
+    color: #006699;
 }
 
 a {
@@ -120,9 +133,9 @@ a {
     bottom: 500px; */
 }
 
-h4.author{
+h4.author {
     font-size: 20px;
-    color:#006699;
+    color: #006699;
 
 }
 
@@ -140,9 +153,11 @@ h3.desc {
 h2.headlines {
     margin-left: -150px;
 }
+
 .closing {
     margin-top: 50px;
 }
+
 h2#headlines {
     padding-bottom: 50px;
 }
@@ -160,7 +175,7 @@ h6#button {
 }
 
 p {
-    
+
     margin-left: 190px;
     margin-right: 190px;
 }
@@ -168,7 +183,7 @@ p {
 
 
 .archived {
-    color: gray; 
+    color: gray;
 }
 
 
@@ -197,9 +212,14 @@ h4.author {
 
 @media screen and (max-width: 420px) {
     .mobile-users {
-text-align: center;
-font-size: 25vw;
+        text-align: center;
+        font-size: 25vw;
     }
+}
+
+@media screen and (min-width: 320px) {
+    .mobile-users {
+        text-align: center;
+        font-size: 25vw;
     }
-
-
+}
