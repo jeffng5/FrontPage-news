@@ -128,10 +128,10 @@ h6 {
     padding-right: 30px;
 }
 
-@media screen and (min-width: 1920px) {
-    .mobile-users {
 
-    margin-left: 400px;
-    margin-right: 400px;
+@media screen and (max-width: 420px) {
+    .mobile-users {
+text-align: center;
+font-size: 25vw;
     }
     }

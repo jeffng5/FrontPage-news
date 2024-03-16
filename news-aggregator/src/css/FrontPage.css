@@ -194,11 +194,11 @@ h4.author {
     right: 625px;
 }
 
-@media screen and (min-width: 1920px) {
+
+@media screen and (max-width: 420px) {
     .mobile-users {
-    
-    margin-left: 400px;
-margin-right: 400px;
+text-align: center;
+font-size: 25vw;
     }
     }
 
