@@ -26,7 +26,7 @@ const useApi = () => {
             'U.K.': 'gb',
             'US': 'US',
         }
-
+// API call for country's articles
         for (const [key, value] of Object.entries(mySearchParams)) {
 
             let options = {
@@ -45,6 +45,7 @@ const useApi = () => {
         }
     }
 
+// API Call for articles according to topic
     function findArticlesByTopic() {
         const myTopicParams = {
             'Business': 'business',
@@ -73,6 +74,7 @@ const useApi = () => {
         }
     }
 
+// API Call to articles according to a search term    
     function findArticlesBySearchTerm() {
         let term = localStorage.getItem('freePreferences')
         let options11 = {

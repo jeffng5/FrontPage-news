@@ -9,10 +9,6 @@ import UseApi from './hooks/useApi'
 // holds bulk of search, many API calls, displays current date
 const FrontPage = () => {
 
-    let pref = localStorage.getItem('preferences')
-
-    let subj = pref ? pref.split(',') : ""
-
     let username = localStorage.getItem('username')
     function checkToken() {
         let token = localStorage.getItem('token')
@@ -42,7 +38,6 @@ const FrontPage = () => {
     useEffect(() => {
         setDateTime(new Date());
         checkToken();
-        //this API call gets articles according to subject from the newsAPI.org
 
     }, []);
 
