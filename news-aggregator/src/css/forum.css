@@ -137,9 +137,3 @@ h6 {
     }
 }
 
-@media screen and (min-width: 320px) {
-    #login {
-        text-align: center;
-        font-size: 25vw;
-    }
-}
