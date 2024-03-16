@@ -117,11 +117,10 @@ bottom: 60px;
   background-color: white;
 }
 
-@media screen and (max-width: 1920px) {
+@media screen and (min-width: 1920px) {
 .mobile-users {
-width: 40%;
-margin-left: 300px;
-margin-right: 300px;
+margin-left: 400px;
+margin-right: 400px;
 }
 }
 
