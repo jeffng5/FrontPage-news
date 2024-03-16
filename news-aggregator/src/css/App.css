@@ -119,7 +119,7 @@ bottom: 60px;
 
 
 @media screen and (max-width: 420px) {
-  .mobile-users {
+  #login {
 text-align: center;
 font-size: 25vw;
   }
@@ -127,7 +127,7 @@ font-size: 25vw;
 
 
   @media screen and (min-width: 320px) {
-    .mobile-users {
+    #login {
   text-align: center;
   font-size: 25vw;
     }
