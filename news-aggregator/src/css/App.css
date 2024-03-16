@@ -119,7 +119,7 @@ bottom: 60px;
 
 
 @media screen and (max-width: 420px) {
-  #login {
+  .top, .top-1 {
 text-align: center;
 font-size: 25vw;
   }
