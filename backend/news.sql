@@ -12,8 +12,7 @@ CREATE TABLE IF NOT EXISTS users (
     CHECK (position('@' IN email) > 1));
 
 CREATE TABLE IF NOT EXISTS archives (
-    id BIGSERIAL PRIMARY KEY,
-    -- user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    id BIGSERIAL PRIMARY KEY
     username TEXT NOT NULL,
     url TEXT NOT NULL,
     title TEXT NOT NULL,
