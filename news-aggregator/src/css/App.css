@@ -123,4 +123,11 @@ bottom: 60px;
        text-align: center;
        font-size: 15px;
    }
+   h2 {
+    font-size: 15px;
+   }
+
+   h1 {
+    font-size: 15px;
+   }
 }
