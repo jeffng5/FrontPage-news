@@ -214,10 +214,4 @@ input {
     margin-top: 200px;
 }
 
-@media screen and (max-width: 420px) {
-   .top, .top-1{
-        text-align: center;
-        font-size: 25vw;
-    }
-}
 
