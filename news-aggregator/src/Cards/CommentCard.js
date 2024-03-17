@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import './css/forum.css'
-import { Helpers } from './helpers'
-import Likes from './Likes'
+import '../css/forum.css'
+import { Helpers } from '../helpers'
+import Likes from '../Likes'
  
 // the structure for each comment
 const CommentCard = ({comment, username, datetime}) => {

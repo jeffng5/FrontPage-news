@@ -17,7 +17,7 @@
 
 .button-6 {
     position: relative;
-    right: 70px;
+    right: 40px;
     bottom: 350px;
     margin-bottom: 20px;
     display: block;
@@ -103,7 +103,7 @@ button.archived {
 .photograph {
     position: relative;
     top: 400px;
-    left: 200px;
+    left: 40px;
     border-radius: 6px;
     height: 330px;
     width: 490px;

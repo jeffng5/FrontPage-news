@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
-import './css/semantic.css'
+import '../css/semantic.css'
 import { FormInput, Form, Message } from 'semantic-ui-react'
-import {Helpers} from "./helpers"
+import {Helpers} from "../helpers"
 import { useNavigate } from 'react-router-dom'
 
 

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { jwtDecode } from "jwt-decode"
-import './css/forum.css'
+import '../css/forum.css'
 import { useNavigate } from 'react-router-dom'
-import { Helpers } from './helpers'
-import ForumArticleCard from './ForumArticleCard'
+import { Helpers } from '../helpers'
+import ForumArticleCard from '../Cards/ForumArticleCard'
 import { Link } from 'react-router-dom'
 
 

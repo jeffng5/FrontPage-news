@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import "./css/forum.css"
 import { Helpers } from './helpers'
-import CommentCard from './CommentCard'
+import CommentCard from './Cards/CommentCard'
 
 //get all comments from db
 const Comments = ({ id }) => {

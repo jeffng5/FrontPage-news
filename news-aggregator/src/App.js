@@ -1,15 +1,15 @@
 import React from 'react'
 import './css/App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Welcome from './Welcome'
-import Preferences from './Preferences'
-import FrontPage from './FrontPage'
-import Saved from './Saved'
-import Forum from './Forum'
-import Login from './Login'
-import SignUp from './SignUp'
-import Logout from './Logout'
-import Error from './Error'
+import Welcome from './MainComponents/Welcome'
+import Preferences from './MainComponents/Preferences'
+import FrontPage from './MainComponents/FrontPage'
+import Saved from './MainComponents/Saved'
+import Forum from './MainComponents/Forum'
+import Login from './MainComponents/Login'
+import SignUp from './MainComponents/SignUp'
+import Logout from './MainComponents/Logout'
+import Error from './MainComponents/Error'
 
 
 function App() {

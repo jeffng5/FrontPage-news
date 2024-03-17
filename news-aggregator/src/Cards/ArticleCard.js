@@ -1,8 +1,8 @@
 import React from 'react'
-import "./css/FrontPage.css"
-import Archive from "./Archive"
-import ColoredLineThin from "./ColoredLineThin"
-import ButtonForum from "./ButtonForum"
+import "../css/FrontPage.css"
+import Archive from "../Buttons/Archive"
+import ColoredLineThin from "../SmallComponents/ColoredLineThin"
+import ButtonForum from "../Buttons/ButtonForum"
 
 
 

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import "./css/FrontPage.css"
-import "./css/semantic.css"
+import "../css/FrontPage.css"
+import "../css/semantic.css"
 import { jwtDecode } from "jwt-decode"
-import ColoredLine from "./ColoredLine"
+import ColoredLine from "../SmallComponents/ColoredLine"
 import { Link, useNavigate } from 'react-router-dom'
-import UseApi from './hooks/useApi'
+import UseApi from '../hooks/useApi'
 
 // holds bulk of search, many API calls, displays current date
 const FrontPage = () => {

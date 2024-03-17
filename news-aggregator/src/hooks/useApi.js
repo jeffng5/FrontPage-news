@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import ArticleCard from "../ArticleCard"
-import ColoredLine from "../ColoredLine"
+import ArticleCard from "../Cards/ArticleCard"
+import ColoredLine from "../SmallComponents/ColoredLine"
 
 const useApi = () => {
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import './css/FrontPage.css'
-import {Helpers} from "./helpers"
+import '../css/FrontPage.css'
+import {Helpers} from "../helpers"
 import myImage from './penfeather.png'
 
 

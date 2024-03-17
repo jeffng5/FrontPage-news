@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { jwtDecode } from "jwt-decode"
-import "./css/semantic.css"
+import "../css/semantic.css"
 import { FormField, Checkbox } from 'semantic-ui-react'
 import { Link, useNavigate } from 'react-router-dom'
 

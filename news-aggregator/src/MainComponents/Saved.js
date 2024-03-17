@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { Helpers } from "./helpers"
+import { Helpers } from "../helpers"
 import { jwtDecode } from "jwt-decode"
-import ArchiveArticleCard from "./ArchiveArticleCard"
+import ArchiveArticleCard from "../Cards/ArchiveArticleCard"
 import { Link, useNavigate } from 'react-router-dom'
 
 
