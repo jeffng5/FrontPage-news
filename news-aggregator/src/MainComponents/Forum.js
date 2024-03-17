@@ -72,7 +72,7 @@ const Forum = () => {
                             description={c.summary}
                             urlToImage={c.media}
                             author={c.author}
-                            url={c.link}
+                            url={c.url}
                             likes={c.likes}
                             id={c.id}
                         />
