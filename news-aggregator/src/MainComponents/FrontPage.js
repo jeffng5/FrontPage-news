@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import "../css/FrontPage.css"
 import "../css/semantic.css"
-const jwtJsDecode = require('jwt-js-decode');
+import { jwtDecode } from "jwt-decode"
 import ColoredLine from "../SmallComponents/ColoredLine"
 import { Link, useNavigate } from 'react-router-dom'
 import UseApi from '../hooks/useApi'
@@ -13,7 +13,7 @@ const FrontPage = () => {
     function checkToken() {
         let token = localStorage.getItem('token')
         if (token) {
-            const decode = jwtJsDecode(token)
+            const decode = jwtDecode(token)
             setUserLoggedIn(true)
             return decode
         }

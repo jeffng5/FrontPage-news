@@ -3,7 +3,7 @@ import { jwtDecode } from "jwt-decode"
 import "../css/semantic.css"
 import { FormField, Checkbox } from 'semantic-ui-react'
 import { Link, useNavigate } from 'react-router-dom'
-const jwtJsDecode = require('jwt-js-decode');
+
 
 
 
@@ -12,7 +12,7 @@ const Preferences = () => {
   function checkToken() {
     let token = localStorage.getItem('token')
     if (token) {
-      const decode = jwtJsDecode(token)
+      const decode = jwtDecode(token)
       setUserLoggedIn(true)
       return decode
     }
