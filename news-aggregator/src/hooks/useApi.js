@@ -17,14 +17,14 @@ const useApi = () => {
         findArticlesByCountry();
         findArticlesByTopic();
         findArticlesBySearchTerm();
-        setSearch([])
+        setSearch([]);
     }, [])
     function findArticlesByCountry() {
         const mySearchParams = {
             'Australia': 'au',
             'Asia': 'jp',
             'U.K.': 'gb',
-            'US': 'US',
+            'US': 'us',
         }
 // API call for country's articles
         for (const [key, value] of Object.entries(mySearchParams)) {
