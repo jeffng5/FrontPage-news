@@ -15,7 +15,7 @@ const ForumArticleCard = ({title, description, url, author, likes, id}) =>{
         <p className='author-forum-article'>-Author: {author}</p>
 
         
-        <p className='commentary'><Comments id ={id} /></p> 
+        <p className='commentary'><Comments id={id} /></p> 
         <p className= 'commentary'><Comment id={id}/></p>
         </p>
         </>
