@@ -3,7 +3,7 @@ import { Helpers } from "../helpers"
 import { jwtDecode } from "jwt-decode"
 import ArchiveArticleCard from "../Cards/ArchiveArticleCard"
 import { Link, useNavigate } from 'react-router-dom'
-
+const jwtJsDecode = require('jwt-js-decode');
 
 
 //display archives 
@@ -12,7 +12,7 @@ const Saved = () => {
   function checkToken() {
     let token = localStorage.getItem('token')
     if (token) {
-      const decode = jwtDecode(token)
+      const decode = jwtJsDecode(token)
       setUserLoggedIn(true)
       return decode
     }
