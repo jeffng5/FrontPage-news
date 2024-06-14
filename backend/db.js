@@ -5,7 +5,7 @@ const { getDatabaseUri } = require("./config");
 
 
 let db;
-const password = process.env.PASSWORD;
+const PASSWORD = process.env.PASSWORD;
 const USER = process.env.USER;
 const DATABASE_PORT = process.env.DATABASE_PORT;
 
