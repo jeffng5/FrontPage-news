@@ -11,7 +11,7 @@ const DATABASE_PORT = process.env.DATABASE_PORT;
 
 if (process.env.NODE_ENV === "production") {
   db = new Client({
-    connectionString: {getDatabaseUri},
+    connectionString: `postgresql://${USER}:${PASSWORD}@127.0.0.1:${DATABASE_PORT}/news`,
   
     ssl: {
       rejectUnauthorized: false
