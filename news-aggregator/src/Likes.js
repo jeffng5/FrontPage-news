@@ -3,7 +3,7 @@ import {Helpers} from './helpers'
 import './css/forum.css'
 
 //component to fetch like data from comments table
-const Likes =( {comment}) =>{
+const Likes =({comment}) =>{
     console.log(comment)
     const [likeCount, setLikeCount] = useState()
     // API call to backend to fetch amt of likes per comment

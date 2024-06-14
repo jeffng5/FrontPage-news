@@ -32,7 +32,7 @@ const Forum = () => {
 
     useEffect(() => {
         getForumArticles();
-        checkToken()
+        checkToken();
     }, [])
 
     // helper function to get all articles in forum table

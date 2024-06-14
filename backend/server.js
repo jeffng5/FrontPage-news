@@ -3,6 +3,6 @@
 const app = require("./app");
 
 
-app.listen(3001, function () {
-  console.log(`Started on http://0.0.0.0:3001`);
+app.listen(3000, function () {
+  console.log(`Started on http://0.0.0.0:3000`);
 });
