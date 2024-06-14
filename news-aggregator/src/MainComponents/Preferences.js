@@ -32,7 +32,7 @@ const Preferences = () => {
   const [userLoggedIn, setUserLoggedIn] = useState(false)
 
   useEffect(() => {
-    setPrefs(pref)
+    setPrefs(pref);
     // setPrefs(initialState)
     checkToken()
   }, [])
@@ -111,7 +111,7 @@ const Preferences = () => {
         </div>
         <h1 className='prefs'>News Topic Preferences</h1>
 
-        <h3 className='topics'> Your current Topics Are:</h3> <h3 className='color'>{pref}</h3>
+        <h3 className='topics'> Your current Topics Are:</h3> <h3 className='color'>{prefs}</h3>
 
         <h3 className='topics'> Please Choose One (Up to 5): </h3>
 
