@@ -24,7 +24,7 @@ function App() {
         <Route path = "/users" exact element={<Preferences />}></Route>
         <Route path = "/users/frontpage" exact element={<FrontPage />}></Route>
         <Route path = "/users/archives" exact element= {<Saved />}></Route>
-        <Route path = "/users/forum" exact element = {<Forum />}></Route>
+        <Route exact path = "/users/forum" element = {<Forum />}></Route>
         <Route path = '/login' exact element = {<Login />}></Route>
         <Route path = "/signup" exact element = {<SignUp />}></Route>
         <Route path = "/logout" exact element= {<Logout />}></Route>
