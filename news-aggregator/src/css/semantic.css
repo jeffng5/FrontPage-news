@@ -134,7 +134,7 @@ h1.forum {
     margin-bottom: -400px;
 }
 
-h3.topics {
+.topics {
     font-size: 25px;
     font-family: Helvetica;
     text-align: center;
@@ -213,5 +213,3 @@ input {
 .error-page {
     margin-top: 200px;
 }
-
-
