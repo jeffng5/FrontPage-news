@@ -17,6 +17,6 @@
     "express-jwt": "^8.4.1",
     "jwt-decode": "^4.0.0",
     "pg-promise": "^11.5.4",
-    "react-router-dom": "^6.22.0"
+    "react-router-dom": "^6.4"
   }
 }
