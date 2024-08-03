@@ -28,14 +28,14 @@ const Preferences = () => {
   const searchTopics = []
 
   const initialState = [null]
-  const [prefs, setPrefs] = useState(pref)
+  const [prefs, setPrefs] = useState(initialState)
   const [userLoggedIn, setUserLoggedIn] = useState(false)
 
   useEffect(() => {
     setPrefs(pref);
     // setPrefs(initialState)
     checkToken()
-  }, [prefs])
+  }, [])
 
   useEffect(() => {
     console.log(userLoggedIn)
