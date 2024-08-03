@@ -26,8 +26,10 @@ const SignUp = () => {
         return navigate('/error')
       }
 
-
-      let res = await Helpers.signUpUser(formData.username, formData.password, formData.email);
+      let username = formData.username
+      let password = formData.password
+      let email = formData.email
+      let res = await Helpers.signUpUser(username, password, email);
 
       if (res.token && res.user) {
         // localStorage.setItem("token", res.token)
