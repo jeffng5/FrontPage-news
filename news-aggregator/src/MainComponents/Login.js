@@ -28,8 +28,10 @@ const Login = () => {
           }
           console.log('running loginUser')
           console.log(formData.username)
+          let username = formData.username
+          let password = formData.password
           console.log(formData.password)
-          const res = await Helpers.loginUser(formData.username, formData.password);    
+          const res = await Helpers.loginUser(username, password);    
           console.log(res)
         
           if (res.token && res.user){
