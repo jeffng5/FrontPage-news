@@ -35,7 +35,7 @@ const Preferences = () => {
     setPrefs(pref);
     // setPrefs(initialState)
     checkToken()
-  }, [])
+  }, [prefs])
 
   useEffect(() => {
     console.log(userLoggedIn)
