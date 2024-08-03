@@ -92,8 +92,8 @@ app.get('/login', async (req, res, next) => {
 
     try {
 
-        const {username, password} = req.body;
-        console.log(req.body)
+        const {username, password} = req.query;
+        console.log(req.query)
 
         const results = await db.query(
         `SELECT username, password FROM users
@@ -105,7 +105,7 @@ app.get('/login', async (req, res, next) => {
         // const validPasswordResult = await bcrypt.compare(password, pwd)
         // console.log(validPasswordResult)
         if (user && pwd) {
-              if (bcrypt.compare(password, pwd)) {
+              if (await bcrypt.compare(password, pwd)) {
                 const token = createToken(user)
                 let result = res.status(201).json({user, token})
                 return result
