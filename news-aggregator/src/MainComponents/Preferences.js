@@ -203,7 +203,8 @@ const Preferences = () => {
             <input type='text' id='Anything' name='anything' placeholder='anything' onChange={handleForm} /></span>
           </FormField>
            <div className='button-preferences'>
-            <button className="preferences" onSubmit={handleChange}>Save Preferences</button>
+            <Link to='/'>
+            <button className="preferences" onSubmit={handleChange}>Save Preferences</button></Link>
           </div> 
           <div className="button-preferences">
             <Link to='frontpage'><button className='save'>See Front Page News</button></Link>
