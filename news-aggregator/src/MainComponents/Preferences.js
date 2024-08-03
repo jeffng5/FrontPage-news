@@ -17,7 +17,7 @@ const Preferences = () => {
       return decode
     }
     else {
-      setUserLoggedIn(false)
+      setUserLoggedIn(true)
     }
   }
 
@@ -33,10 +33,10 @@ const Preferences = () => {
   const [userLoggedIn, setUserLoggedIn] = useState(false)
 
   useEffect(() => {
-
+    checkToken()
     setPrefs(pref);
     // setPrefs(initialState)
-    checkToken()
+    
   }, [])
 
   useEffect(() => {
