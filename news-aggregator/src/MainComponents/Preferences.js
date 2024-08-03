@@ -27,7 +27,7 @@ const Preferences = () => {
   let pref = localStorage.getItem('preferences')
   const searchTopics = []
 
-  const initialState = [null]
+  const initialState = pref
   const [prefs, setPrefs] = useState(initialState)
   const [userLoggedIn, setUserLoggedIn] = useState(false)
 
@@ -203,8 +203,8 @@ const Preferences = () => {
             <input type='text' id='Anything' name='anything' placeholder='anything' onChange={handleForm} /></span>
           </FormField>
            <div className='button-preferences'>
-            <Link to=''>
-            <button className="preferences" onSubmit={handleChange}>Save Preferences</button></Link>
+        
+            <button className="preferences" onSubmit={handleChange}>Save Preferences</button>
           </div> 
           <div className="button-preferences">
             <Link to='frontpage'><button className='save'>See Front Page News</button></Link>
