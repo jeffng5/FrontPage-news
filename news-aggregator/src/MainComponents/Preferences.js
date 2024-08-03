@@ -198,7 +198,7 @@ const Preferences = () => {
           </FormField>
            <div className='button-preferences'>
         
-            <button className="preferences" onSubmit={handleChange}>Save Preferences</button>
+            <button className="preferences" onClick={handleChange}>Save Preferences</button>
           </div> 
           <div className="button-preferences">
             <Link to='frontpage'><button className='save'>See Front Page News</button></Link>
