@@ -25,6 +25,7 @@ const Preferences = () => {
   let user = localStorage.getItem('username')
 
   let pref = localStorage.getItem('preferences')
+  console.log(pref)
   const searchTopics = []
 
   const initialState = [null]
@@ -32,6 +33,7 @@ const Preferences = () => {
   const [userLoggedIn, setUserLoggedIn] = useState(false)
 
   useEffect(() => {
+
     setPrefs(pref);
     // setPrefs(initialState)
     checkToken()
@@ -69,7 +71,7 @@ const Preferences = () => {
         searchTopics.splice(index, 1);
       }
       console.log(searchTopics)
-    }           // setting searchTopics to localStorage
+              // setting searchTopics to localStorage
 
     if (searchTopics.length >= 0) {
       localStorage.setItem('preferences', searchTopics)
@@ -79,19 +81,11 @@ const Preferences = () => {
     if (searchTopics.length > 5) {
       throw Error("You must select between 1 - 5 topics.")
     }
-
+  }
   }
 
 
   const wildCard = localStorage.getItem('freePreferences')
-
-
-  // if (loading) {
-  //   return (
-  //   <h2>Page does not exist</h2>
-  //   )
-  // }
-
 
 
   if (userLoggedIn && user) {
