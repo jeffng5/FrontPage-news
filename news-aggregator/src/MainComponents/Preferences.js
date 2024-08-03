@@ -83,7 +83,7 @@ const Preferences = () => {
     }
   }
   }
-
+console.log(prefs)
 
   const wildCard = localStorage.getItem('freePreferences')
 
@@ -196,10 +196,10 @@ const Preferences = () => {
           <FormField><span className='anything'> <label for="Anything">Most popular articles by search term </label>
             <input type='text' id='Anything' name='anything' placeholder='anything' onChange={handleForm} /></span>
           </FormField>
-           <div className='button-preferences'>
+           {/* <div className='button-preferences'> */}
         
-            <button className="preferences" onChange={handleChange}>Save Preferences</button>
-          </div> 
+            <button className="preferences" onSubmit={handleChange}>Save Preferences</button>
+          {/* </div>  */}
           <div className="button-preferences">
             <Link to='frontpage'><button className='save'>See Front Page News</button></Link>
           </div>
