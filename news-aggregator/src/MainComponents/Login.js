@@ -27,6 +27,8 @@ const Login = () => {
             return setErrorState({visible: true, message: 'Username or password cannot be blank'})
           }
           console.log('running loginUser')
+          console.log(formData.username)
+          console.log(formData.password)
           const res = await Helpers.loginUser(formData.username, formData.password);    
           console.log(res)
         
