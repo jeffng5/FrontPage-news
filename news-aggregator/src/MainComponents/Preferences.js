@@ -27,8 +27,8 @@ const Preferences = () => {
   let pref = localStorage.getItem('preferences')
   const searchTopics = []
 
-  const initialState = pref
-  const [prefs, setPrefs] = useState(initialState)
+  const initialState = [null]
+  const [prefs, setPrefs] = useState(pref)
   const [userLoggedIn, setUserLoggedIn] = useState(false)
 
   useEffect(() => {
