@@ -3,7 +3,7 @@
 This web app returns to users curated news articles according to user selected preferences/topics in a front page newspaper format. User can archive and also discuss these articles in a forum on the app. The link to the deployment can found here [YourFrontPageNews.com](https://frontpage-news-agg.onrender.com/)
 
 ## API
-brought to you by [NewsCatcherAPI](https://app.newscatcherapi.com) This API fetches news articles from around the web according to specific parameters set by the user.   
+brought to you by [https://www.newscatcherapi.com](https://www.newscatcherapi.com/). This API fetches news articles from around the web according to specific parameters set by the user.   
 
 ![title](pictures/Image1.png)
 
