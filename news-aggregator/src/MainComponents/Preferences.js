@@ -8,7 +8,8 @@ import { Link, useNavigate } from 'react-router-dom'
 
 
 const Preferences = () => {
-
+  
+  
   function checkToken() {
     let token = localStorage.getItem('token')
     if (token) {
@@ -23,21 +24,22 @@ const Preferences = () => {
 
   const navigate = useNavigate()
   let user = localStorage.getItem('username')
-
   let pref = localStorage.getItem('preferences')
+
   console.log(pref)
   const searchTopics = []
 
-  const initialState = [null]
-  const [prefs, setPrefs] = useState(initialState)
+  const [prefs, setPrefs] = useState("")
   const [userLoggedIn, setUserLoggedIn] = useState(false)
 
   useEffect(() => {
-    checkToken()
+  
+    checkToken();
+
     setPrefs(pref);
-    // setPrefs(initialState)
-    
-  }, [])
+ 
+
+  }, [prefs])
 
   useEffect(() => {
     console.log(userLoggedIn)
@@ -51,6 +53,7 @@ const Preferences = () => {
     wildCard.push(e.target.value)
     localStorage.setItem('freePreferences', wildCard)
   }
+
 
   // capture the checkbox input
   function handleChange(e) {
@@ -71,22 +74,23 @@ const Preferences = () => {
         searchTopics.splice(index, 1);
       }
       console.log(searchTopics)
-              // setting searchTopics to localStorage
+      // setting searchTopics to localStorage
 
-    if (searchTopics) {
+
       localStorage.setItem('preferences', searchTopics)
-    }
+      
+      //error handle if searchTopics is >5 or <1
+      if (searchTopics.length > 5) {
+        throw Error("You must select between 1 - 5 topics.")
+      }
 
-    //error handle if searchTopics is >5 or <1
-    if (searchTopics.length > 5) {
-      throw Error("You must select between 1 - 5 topics.")
     }
+ 
   }
-  }
-console.log(prefs)
+
 
   const wildCard = localStorage.getItem('freePreferences')
-
+  console.log(prefs)
 
   if (userLoggedIn && user) {
     //////////////////////////////// CHECKBOX FORM ////////////////////////////////
@@ -196,10 +200,11 @@ console.log(prefs)
           <FormField><span className='anything'> <label for="Anything">Most popular articles by search term </label>
             <input type='text' id='Anything' name='anything' placeholder='anything' onChange={handleForm} /></span>
           </FormField>
-           {/* <div className='button-preferences'>
-        <input className='preferences' type='button' value='Save Preferences' onSubmit={handleChange}></input> 
-            {/* <button className="preferences" onSubmit={handleChange}>Save Preferences</button> 
-          </div>  */}
+
+          <div className='button-preferences'>
+            <button className='preferences' type='button' value='Save Preferences'
+            onClick={handleChange}>Save Preferences</button> 
+          </div>
           <div className="button-preferences">
             <Link to='frontpage'><button className='save'>See Front Page News</button></Link>
           </div>
