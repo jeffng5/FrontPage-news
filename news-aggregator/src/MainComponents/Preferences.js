@@ -28,17 +28,18 @@ const Preferences = () => {
 
   console.log(pref)
 
-
+  const [showWildCard, setShowWildCard] = useState('Please enter search term')
   const [prefs, setPrefs] = useState(pref)
   const [error, setError] = useState("")
   const [searchTopics, setSearchTopics] = useState([])
   const [userLoggedIn, setUserLoggedIn] = useState(false)
+  const [termState, setTermState] = useState("")
 
   useEffect(() => {
 
     checkToken();
     throwError();
-  }, [prefs])
+  }, [pref])
 
   useEffect(() => {
     console.log(userLoggedIn)
@@ -51,8 +52,14 @@ const Preferences = () => {
     console.log(e.target.value)
     wildCard.push(e.target.value)
     localStorage.setItem('freePreferences', wildCard)
+    setShowWildCard(wildCard)
+    setTermState("anything")
+
   }
 
+  useEffect(()=> {
+    searchTerm();
+  }, [])
 
   // capture the checkbox input
   function handleChange(e) {
@@ -66,7 +73,7 @@ const Preferences = () => {
       }
       //handles if the box is unchecked
       if (e.target.checked === false) {
-        // trying to get index of unchecked if in array 
+         
         setSearchTopics(searchTopics.filter(topic => topic !== e.target.value))
       }
       console.log(searchTopics)
@@ -76,7 +83,8 @@ const Preferences = () => {
   function throwError() {
     if (searchTopics.length > 5) {
       setError("Please select at most 5 topics")
-      navigate('/users')
+      localStorage.setItem('preferences', "")
+      
 
     } else {
       setError("")
@@ -90,12 +98,17 @@ const Preferences = () => {
     setPrefs(searchTopics)
 
   }
-
+  function searchTerm() {
   const wildCard = localStorage.getItem('freePreferences')
+  setShowWildCard("")
+  setTermState("anything")
+  }
   console.log(prefs)
+    
+  //////////////////////////////// CHECKBOX FORM ////////////////////////////////
 
   if (userLoggedIn && user) {
-    //////////////////////////////// CHECKBOX FORM ////////////////////////////////
+    
     return (
       <>
 
@@ -113,9 +126,8 @@ const Preferences = () => {
         <h1 className='prefs'>News Topic Preferences</h1>
 
         <h3 className='topics'> Your current Topics Are:</h3> <h3 className='color'>{pref}</h3>
-        {error}
+        <h4>{error}</h4>
         <h3 className='topics'> Please Choose One (Up to 5): </h3>
-
         <form>
           <h5 className='selection'>
             <h5 className='selection'>
@@ -198,11 +210,11 @@ const Preferences = () => {
             </h5>
           </h5>
           <h2 className='separator'>or</h2>
-
-          <FormField><span className='anything'> <label for="Anything">Most popular articles by search term </label>
-            <input type='text' id='Anything' name='anything' placeholder='anything' onChange={handleForm} /></span>
+            
+          <FormField><span className='anything'> <label for="Anything">Most popular articles by search term <h3 className='color'>{showWildCard}</h3></label>
+            <input type='text' id='Anything' name='anything' placeholder={termState} onChange={handleForm} /></span>
           </FormField>
-
+          
           <div className='button-preferences'>
             <button className='preferences' type='button' value='Save Preferences'
               onClick={handleSave}>Save Preferences</button>
