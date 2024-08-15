@@ -8,8 +8,8 @@ import { Link, useNavigate } from 'react-router-dom'
 
 
 const Preferences = () => {
-  
-  
+
+
   function checkToken() {
     let token = localStorage.getItem('token')
     if (token) {
@@ -27,18 +27,17 @@ const Preferences = () => {
   let pref = localStorage.getItem('preferences')
 
   console.log(pref)
-  const searchTopics = []
 
-  const [prefs, setPrefs] = useState("")
+
+  const [prefs, setPrefs] = useState(pref)
+  const [error, setError] = useState("")
+  const [searchTopics, setSearchTopics] = useState([])
   const [userLoggedIn, setUserLoggedIn] = useState(false)
 
   useEffect(() => {
-  
+
     checkToken();
-
-    setPrefs(pref);
- 
-
+    throwError();
   }, [prefs])
 
   useEffect(() => {
@@ -63,31 +62,34 @@ const Preferences = () => {
       e.preventDefault();
       //checks if checkbox is checked
       if (e.target.checked === true) {
-        //pushes value of checkbox into empty array
-        searchTopics.push(e.target.value)
+        setSearchTopics([...searchTopics, e.target.value])
       }
       //handles if the box is unchecked
       if (e.target.checked === false) {
         // trying to get index of unchecked if in array 
-        const index = searchTopics.indexOf(e.target.value);
-        //splicing off element by index (the false checked item)
-        searchTopics.splice(index, 1);
+        setSearchTopics(searchTopics.filter(topic => topic !== e.target.value))
       }
       console.log(searchTopics)
-      // setting searchTopics to localStorage
-
-
-      localStorage.setItem('preferences', searchTopics)
-      
-      //error handle if searchTopics is >5 or <1
-      if (searchTopics.length > 5) {
-        throw Error("You must select between 1 - 5 topics.")
-      }
-
     }
- 
   }
 
+  function throwError() {
+    if (searchTopics.length > 5) {
+      setError("Please select at most 5 topics")
+      navigate('/users')
+
+    } else {
+      setError("")
+    }
+  }
+
+
+
+  const handleSave = () => {
+    localStorage.setItem('preferences', searchTopics)
+    setPrefs(searchTopics)
+
+  }
 
   const wildCard = localStorage.getItem('freePreferences')
   console.log(prefs)
@@ -110,8 +112,8 @@ const Preferences = () => {
         </div>
         <h1 className='prefs'>News Topic Preferences</h1>
 
-        <h3 className='topics'> Your current Topics Are:</h3> <h3 className='color'>{prefs}</h3>
-
+        <h3 className='topics'> Your current Topics Are:</h3> <h3 className='color'>{pref}</h3>
+        {error}
         <h3 className='topics'> Please Choose One (Up to 5): </h3>
 
         <form>
@@ -203,7 +205,7 @@ const Preferences = () => {
 
           <div className='button-preferences'>
             <button className='preferences' type='button' value='Save Preferences'
-            onClick={handleChange}>Save Preferences</button> 
+              onClick={handleSave}>Save Preferences</button>
           </div>
           <div className="button-preferences">
             <Link to='frontpage'><button className='save'>See Front Page News</button></Link>

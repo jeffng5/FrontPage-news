@@ -118,10 +118,13 @@ bottom: 60px;
 }
 
 
-@media screen and (max-width: 420px) {
-  .top, .top-1{
+@media screen and (max-width: 501px) {
+  p.top, p.top-1{
+       position: relative;
+       top: 0px;
+       bottom: 450px;
        text-align: center;
-       font-size: 15px;
+       padding-bottom: -700px;
    }
    .title, .intro {
     font-size: 15px;

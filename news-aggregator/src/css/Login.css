@@ -64,9 +64,3 @@ h1#login-welcome {
 }
 
 
-@media screen and (max-width: 420px) {
-    .top, .top-1{
-        text-align: center;
-        font-size: 25vw;
-    }
-}
