@@ -25,15 +25,16 @@ const Preferences = () => {
   const navigate = useNavigate()
   let user = localStorage.getItem('username')
   let pref = localStorage.getItem('preferences')
+  let wildCard = localStorage.getItem('freePreferences')
 
   console.log(pref)
 
-  const [showWildCard, setShowWildCard] = useState('Please enter search term')
+  const [showWildCard, setShowWildCard] = useState(wildCard)
   const [prefs, setPrefs] = useState(pref)
   const [error, setError] = useState("")
   const [searchTopics, setSearchTopics] = useState([])
   const [userLoggedIn, setUserLoggedIn] = useState(false)
-  const [termState, setTermState] = useState("")
+  const [termState, setTermState] = useState("anything")
 
   useEffect(() => {
 
@@ -54,12 +55,10 @@ const Preferences = () => {
     localStorage.setItem('freePreferences', wildCard)
     setShowWildCard(wildCard)
     setTermState("anything")
+    
 
   }
 
-  useEffect(()=> {
-    searchTerm();
-  }, [])
 
   // capture the checkbox input
   function handleChange(e) {
@@ -79,7 +78,7 @@ const Preferences = () => {
       console.log(searchTopics)
     }
   }
-
+  // function to catch if user selects more than 5 topics and defaults back to 0
   function throwError() {
     if (searchTopics.length > 5) {
       setError("Please select at most 5 topics")
@@ -92,17 +91,17 @@ const Preferences = () => {
   }
 
 
-
+ // function to ingest the topics and search term into localStorage 
   const handleSave = () => {
     localStorage.setItem('preferences', searchTopics)
     setPrefs(searchTopics)
+    localStorage.setItem('freePreferences', wildCard)
+    setShowWildCard(wildCard)
+    setTermState("anything")
+   
 
   }
-  function searchTerm() {
-  const wildCard = localStorage.getItem('freePreferences')
-  setShowWildCard("")
-  setTermState("anything")
-  }
+
   console.log(prefs)
     
   //////////////////////////////// CHECKBOX FORM ////////////////////////////////

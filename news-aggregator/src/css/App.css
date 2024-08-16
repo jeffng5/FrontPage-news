@@ -8,7 +8,7 @@ body {
   background-color: lightgray;
 }
 
-b.title { color: yellow;
+.title { color: yellow;
   font-size: 80px;
   text-shadow: -1px -1px 0 black, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 
@@ -19,7 +19,7 @@ b {
 
 }
 
-p.news-title {
+.news-title {
   font-family: Helvetica;
 
 }
@@ -29,17 +29,17 @@ body {
   text-align: center;
 }
 
-h1.or {
+.or {
   margin-top: 25px;
   font-size: 45px;
 }
-h1.welcome {
+.welcome {
 
-  margin-bottom: 100px;
+  margin-bottom: 150px;
 
 }
-p.news-title {
- 
+.news-title {
+ margin-top: 30px;
   margin-bottom: 5px;
 }
 
@@ -64,7 +64,7 @@ p {
   margin-top: 15px;
 }
 
-p.username {
+.username {
   color: green;
 }
 
@@ -119,7 +119,7 @@ bottom: 60px;
 
 
 @media screen and (max-width: 501px) {
-  p.top, p.top-1{
+  .top, .top-1{
        position: relative;
        top: 0px;
        bottom: 450px;
@@ -132,6 +132,7 @@ bottom: 60px;
 
    .welcome {
     font-size: 15px;
+    margin-bottom: 20px;
    }
 
    .mobile-users {

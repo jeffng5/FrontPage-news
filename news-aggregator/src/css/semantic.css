@@ -62,7 +62,7 @@ button#log {
     text-align: right;
     margin-top: 25px;
     display: inline-grid;
-    font-size: 25px;
+    font-size: 31px;
     grid-template-columns: 200px 250px 250px 250px 250px 300px;
     width: 100%;
     z-index: 100;
@@ -124,7 +124,7 @@ h1.prefs {
     text-align: center;
 }
 
-h1.forum {
+.forum {
     font-family: Helvetica;
     font-size: 55px;
 }
@@ -142,14 +142,14 @@ h1.forum {
     text-align: center;
 }
 
-h3.color {
+.color {
     color: green;
     font-size: 28px;
     font-family: Helvetica;
 }
 
 
-h1.welcome {
+.welcome {
     font-size: 80px;
     font-family: Helvetica;
 }

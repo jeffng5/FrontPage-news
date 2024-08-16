@@ -132,7 +132,7 @@ a {
     bottom: 500px; */
 }
 
-h4.author {
+.author {
     font-size: 20px;
     color: #006699;
 
@@ -145,11 +145,11 @@ h4.author {
     text-align: center;
 }
 
-h3.desc {
+.desc {
     color: green;
 }
 
-h2.headlines {
+.headlines {
     margin-left: -150px;
 }
 
@@ -161,7 +161,7 @@ h2#headlines {
     padding-bottom: 50px;
 }
 
-h5.desc {
+.desc {
     font-size: 20px;
     color: #006699;
 }
@@ -186,21 +186,21 @@ p {
 }
 
 
-h2.date {
+.date {
     font-family: Courier;
     font-size: 35px;
     padding-bottom: 10px;
     text-align: center;
 }
 
-h5.desc {
+.desc {
     margin-top: 20px;
     position: relative;
     left: 0px;
     text-align: left;
 }
 
-h4.author {
+.author {
     position: relative;
     margin-bottom: auto;
     margin-top: 0px;
