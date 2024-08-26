@@ -73,7 +73,7 @@ app.post('/register', async (req,res, next)=> {
         INSERT INTO users (username, password, email)
         VALUES ($1, $2, $3)
         RETURNING *`, [username, hashedPwd, email]);
-            
+            console.log('INSERTED RECORD!!!')
         await bcrypt.compare(password, hashedPwd) 
             const user = result.rows[0].username;
             const token= createToken(user)
