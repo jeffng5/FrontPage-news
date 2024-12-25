@@ -217,3 +217,12 @@ input {
 }
 
 
+@media only screen and (min-device-width : 320px ) and (max-device-width: 480px) {
+
+    .log-in-form-1, .form-entry {
+    margin-left: 100px;
+
+    }
+    
+    
+    }

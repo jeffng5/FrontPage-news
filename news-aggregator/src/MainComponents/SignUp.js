@@ -43,7 +43,7 @@ const SignUp = () => {
       }
     }
     catch (err) {
-      console.log('sign up error')
+      console.log(err, 'sign up error')
       return navigate('/error')
     }
   }

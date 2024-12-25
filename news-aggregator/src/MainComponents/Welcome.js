@@ -16,10 +16,10 @@ const Welcome = () => {
 
 
                 <span id='login'>
-                    <Link to="/login"><p className='top'>Login</p></Link>
+                    <Link to="/login"><p id='top'>Login</p></Link>
                 </span>
                 <span id='login'>
-                    <Link to="/signup"><p className='top-1'>Register</p></Link>
+                    <Link to="/signup"><p id='top-1'>Register</p></Link>
                 </span>
 
             </body>
