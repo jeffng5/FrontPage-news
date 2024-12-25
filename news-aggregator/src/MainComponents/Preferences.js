@@ -129,7 +129,7 @@ const Preferences = () => {
         <h3 className='topics'> Please Choose One (Up to 5): </h3>
         <form>
           <h5 className='selection'>
-            <h5 className='selection'>
+            <h5>
               <FormField
                 control={Checkbox}
                 label={<label className='choices'>Australia</label>}

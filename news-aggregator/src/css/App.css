@@ -117,13 +117,13 @@ text-align: center;
 }
 
 
-@media screen and (max-width: 501px) {
-  .top, .top-1{
-       position: relative;
-       top: 0px;
+@media only screen and (min-device-width : 320px ) and (max-device-width: 480px) {
+
+
+  #top, #top-1{
        bottom: 450px;
        text-align: center;
-       padding-bottom: -700px;
+      
    }
    .title, .intro {
     font-size: 15px;
@@ -135,7 +135,7 @@ text-align: center;
    }
 
    .mobile-users {
-    font-size: 20px;
+    font-size: 15px;
    }
 
 }
