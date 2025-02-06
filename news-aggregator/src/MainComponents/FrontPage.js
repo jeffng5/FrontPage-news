@@ -5,6 +5,7 @@ import { jwtDecode } from "jwt-decode"
 import ColoredLine from "../SmallComponents/ColoredLine"
 import { Link, useNavigate } from 'react-router-dom'
 import UseApi from '../hooks/useApi'
+import snoopy from './snoopy.jpg'
 
 // holds bulk of search, many API calls, displays current date
 const FrontPage = () => {
@@ -47,7 +48,9 @@ const FrontPage = () => {
     }
     setTimeout(loading, 2000)
 
-    if (isLoading) { return (<h1>FETCHING...Your Front Page News...please WAIT</h1>) }
+    if (isLoading) { return (
+    <>
+    <h1 className='snoopy'>Fetching News...</h1><img src = {snoopy} alt ='snoopy'/> </>) }
 
     else {
         if (userLoggedIn && username) {

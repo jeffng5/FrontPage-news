@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { Helpers } from '../helpers'
 import ForumArticleCard from '../Cards/ForumArticleCard'
 import { Link } from 'react-router-dom'
+import snoopy from './snoopy.jpg'
 
 
 
@@ -48,7 +49,9 @@ const Forum = () => {
     }
     setTimeout(loading, 2000)
 
-    if (isLoading) { return (<h1>LOADING...please WAIT</h1>) }
+    if (isLoading) { return (
+        <>
+        <h1 className='snoopy'>Fetching News...</h1><img src = {snoopy} alt ='snoopy'/> </>) }
 
     else {
         if (userLoggedIn && user) {

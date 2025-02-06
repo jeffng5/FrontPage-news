@@ -3,6 +3,7 @@ import { Helpers } from "../helpers"
 import { jwtDecode } from "jwt-decode"
 import ArchiveArticleCard from "../Cards/ArchiveArticleCard"
 import { Link, useNavigate } from 'react-router-dom'
+import snoopy from './snoopy.jpg'
 
 
 
@@ -52,7 +53,9 @@ const Saved = () => {
   }
   setTimeout(loading, 2000)
 
-  if (isLoading) { return (<h1>LOADING...please WAIT</h1>) }
+  if (isLoading) { return (
+    <>
+    <h1 className='snoopy'>Fetching News...</h1><img src = {snoopy} alt ='snoopy'/> </>) }
 
   else {
     if (userLoggedIn && username) {
