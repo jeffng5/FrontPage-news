@@ -12,6 +12,7 @@ const useApi = () => {
     const [article, setArticle] = useState([])
     const [article1, setArticle1] = useState([])
     const [search, setSearch] = useState([])
+    const [error, setError] = useState('')
 
     useEffect(() => {
         findArticlesByCountry();
@@ -41,7 +42,11 @@ const useApi = () => {
                     console.log(response);
                     console.log(response.data.articles);
                     setArticle(response.data.articles)
-                }).catch(function (error) { console.log('The API has reached its call limit for the day.') })
+                }).catch(e); {
+                    
+                        if (e) {setError('The API has reached its call limit for the day.')}
+                    
+                } { console.log('The API has reached its call limit for the day.') }
             }
 
         }
@@ -77,12 +82,14 @@ const useApi = () => {
                 console.log(response.status)
                 console.log(response.data.articles);
                 setArticle1(response.data.articles);
-                }).catch((error) => { console.log('The API has reached its call limit for the day.') }
-                )
-            }
+                }).catch(e) ;{
+                if (e) {setError('The API has reached its call limit for the day.')} 
+                console.log('The API has reached its call limit for the day.') 
+                }
+            
         }
         }
-    
+    }
 
 // API Call to articles according to a search term    
     function findArticlesBySearchTerm() {
@@ -102,15 +109,16 @@ const useApi = () => {
                 // localStorage.removeItem('freePreferences')
             }).catch(function (error) { console.error(error) })
         } catch(e) {
+            if (e) {setError('The API has reached its call limit for the day.')}
             console.log('The API has reached its call limit for the day.')
         }
     }
 
-
+    
     return (
 
         <>
-       
+       {error}
             {article.map(c => (
                 <ArticleCard
                     title={c.title}
@@ -144,4 +152,5 @@ const useApi = () => {
     )
 
 }
+
 export default useApi
