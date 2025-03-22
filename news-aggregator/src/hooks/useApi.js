@@ -43,7 +43,7 @@ const useApi = () => {
                     console.log(response.data.articles);
                     setArticle(response.data.articles)
                 }) 
-                  if (!response)  
+                  if (article== [])  
                         {setError('The API has reached its call limit for the day.')}
                     
                 { console.log('The API has reached its call limit for the day.') }
@@ -83,7 +83,7 @@ const useApi = () => {
                 console.log(response.data.articles);
                 setArticle1(response.data.articles);
                 })
-                if (!response) {
+                if (article1 == []) {
                 {setError('The API has reached its call limit for the day.')} 
                 console.log('The API has reached its call limit for the day.') 
                 }
