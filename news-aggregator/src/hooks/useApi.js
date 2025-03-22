@@ -119,7 +119,7 @@ const useApi = () => {
     return (
 
         <>
-       {error}
+       <h1>{error}</h1>
             {article.map(c => (
                 <ArticleCard
                     title={c.title}
