@@ -108,9 +108,9 @@ const useApi = () => {
                 console.log(response.data.articles);
                 setSearch(response.data.articles);
                 // localStorage.removeItem('freePreferences')
-            }).catch(function (error) { console.error(error) })
+            }).catch(function (error) { console.error(error); setError('The API has reached its call limit for the day.') })
         } catch(e) {
-            setError('The API has reached its call limit for the day.')
+            
             console.log('The API has reached its call limit for the day.')
         }
     }
