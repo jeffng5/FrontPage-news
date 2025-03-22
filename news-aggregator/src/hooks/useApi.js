@@ -106,9 +106,15 @@ const useApi = () => {
         }
     }
 
+    if (!article || !article1 || !search) {
+
+        return (
+            <h1>The API has reached its call limit for the day.</h1>
+        )
+
+    }
+
     return (
-
-
 
         <>
        
