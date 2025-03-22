@@ -41,7 +41,7 @@ const useApi = () => {
                     console.log(response);
                     console.log(response.data.articles);
                     setArticle(response.data.articles)
-                }).catch(function (error) { console.error(error) })
+                }).catch(function (error) { console.log('The API has reached its call limit for the day.') })
             }
 
         }
@@ -77,7 +77,7 @@ const useApi = () => {
                 console.log(response.status)
                 console.log(response.data.articles);
                 setArticle1(response.data.articles);
-                }).catch((error) => { console.error(error) }
+                }).catch((error) => { console.log('The API has reached its call limit for the day.') }
                 )
             }
         }
@@ -102,17 +102,10 @@ const useApi = () => {
                 // localStorage.removeItem('freePreferences')
             }).catch(function (error) { console.error(error) })
         } catch(e) {
-            console.log(e)
+            console.log('The API has reached its call limit for the day.')
         }
     }
 
-    if (!article || !article1 || !search) {
-
-        return (
-            <h1>The API has reached its call limit for the day.</h1>
-        )
-
-    }
 
     return (
 
