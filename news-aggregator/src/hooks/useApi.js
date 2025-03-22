@@ -6,7 +6,6 @@ import ColoredLine from "../SmallComponents/ColoredLine"
 
 const useApi = () => {
     const apiKey = process.env.REACT_APP_APIKEY
-  
     let pref = localStorage.getItem('preferences')
     let subj = pref ? pref.split(',') : "";
     console.log('PREFS', subj)
@@ -97,7 +96,7 @@ const useApi = () => {
         }  
             try {
             axios.request(search).then(function (response){
-                console.log(response.status);
+                console.log(response);
                 console.log(response.data.articles);
                 setSearch(response.data.articles);
                 // localStorage.removeItem('freePreferences')
@@ -106,9 +105,7 @@ const useApi = () => {
             console.log(e)
         }
     }
-        console.log({article})
-        console.log({article1})
-        console.log({search})
+
     return (
 
 
