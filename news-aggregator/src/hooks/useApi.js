@@ -44,9 +44,9 @@ const useApi = () => {
                     setArticle(response.data.articles)
                 }) 
                   if (article== [])  
-                        {setError('The API has reached its call limit for the day.')}
+                        {setError('The API has reached its call limit for the day.')
                     
-                { console.log('The API has reached its call limit for the day.') }
+                { console.log('The API has reached its call limit for the day.') } }
             }
 
         }
@@ -84,9 +84,9 @@ const useApi = () => {
                 setArticle1(response.data.articles);
                 })
                 if (article1 == []) {
-                {setError('The API has reached its call limit for the day.')} 
+                {setError('The API has reached its call limit for the day.')
                 console.log('The API has reached its call limit for the day.') 
-                }
+                }}
             
         }
         }
@@ -110,12 +110,12 @@ const useApi = () => {
                 // localStorage.removeItem('freePreferences')
             }).catch(function (error) { console.error(error) })
         } catch(e) {
-            if (e) {setError('The API has reached its call limit for the day.')}
+            setError('The API has reached its call limit for the day.')
             console.log('The API has reached its call limit for the day.')
         }
     }
 
-    
+    console.log({error})
     return (
 
         <>
