@@ -42,11 +42,11 @@ const useApi = () => {
                     console.log(response);
                     console.log(response.data.articles);
                     setArticle(response.data.articles)
-                }).catch(e); {
+                }).catch(e); 
                     
-                        if (e) {setError('The API has reached its call limit for the day.')}
+                        {setError('The API has reached its call limit for the day.')}
                     
-                } { console.log('The API has reached its call limit for the day.') }
+                { console.log('The API has reached its call limit for the day.') }
             }
 
         }
@@ -83,7 +83,7 @@ const useApi = () => {
                 console.log(response.data.articles);
                 setArticle1(response.data.articles);
                 }).catch(e) ;{
-                if (e) {setError('The API has reached its call limit for the day.')} 
+                {setError('The API has reached its call limit for the day.')} 
                 console.log('The API has reached its call limit for the day.') 
                 }
             
