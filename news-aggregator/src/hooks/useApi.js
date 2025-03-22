@@ -37,7 +37,7 @@ const useApi = () => {
             
             if (subj[0] == key || subj[1] == key || subj[2] == key || subj[3] == key
                 || subj[4] == key) {
-                axios.request(options).then(function (response) {
+                axios.request(options).then(response=> {
                     console.log(response);
                     console.log(response.data.articles);
                     setArticle(response.data.articles)
@@ -73,7 +73,7 @@ const useApi = () => {
                 || subj[4] == key) 
             
                 {
-                axios.request(options1).then(function (response){
+                axios.request(options1).then(response =>{
                 console.log(response.status)
                 console.log(response.data.articles);
                 setArticle1(response.data.articles);
@@ -95,7 +95,7 @@ const useApi = () => {
             headers : { 'x-api-key': apiKey, 'Content-Type' : 'application/json' } 
         }  
             try {
-            axios.request(search).then(function (response){
+            axios.request(search).then(response=>{
                 console.log(response);
                 console.log(response.data.articles);
                 setSearch(response.data.articles);
