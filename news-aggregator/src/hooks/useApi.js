@@ -20,7 +20,7 @@ const useApi = () => {
         findArticlesBySearchTerm();
         setSearch([]);
     }, [])
-    function findArticlesByCountry() {
+    async function findArticlesByCountry() {
         const mySearchParams = {
             'Australia': 'au',
             'Asia': 'jp',
@@ -32,28 +32,37 @@ const useApi = () => {
             
             let options = {
             method : 'GET',
-            url : `https://newsapi.org/v2/top-headlines?country=${value}&lang=en&page=1`,
-            headers : { 'x-api-key': apiKey, 'Content-Type' : 'application/json' }
+            url : `https://eventregistry.org/api/v1/article/getArticles`,
+            headers : { 'Content-Type' : 'application/json' },
+            params : {
+                'action' : 'getArticles',
+                'keyword' : `${value}`,
+                'articlesCount' : 50,
+                'articlesSortBy' : 'sourceImportance',
+                'ignoreSourcesGroupUri' : 'paywall/paywalled_sources',
+                'articlesPage': 1,
+                'resultType' : 'articles',
+                'apiKey' : apiKey        
+            }
             }
             
-            if (subj[0] == key || subj[1] == key || subj[2] == key || subj[3] == key
-                || subj[4] == key) {
-                axios.request(options).then(response=> {
-                    console.log(response);
-                    console.log(response.data.articles);
-                    setArticle(response.data.articles)
-                }) 
-                  if (article== [])  
+            if (subj[0] === key || subj[1] === key || subj[2] === key || subj[3] === key
+                || subj[4] === key) {
+                let res = await axios.request(options)
+                
+                    setArticle(res.data.articles.results)
+                }
+                  if (article === [])  
                         {setError('The API has reached its call limit for the day.')
                     
                 { console.log('The API has reached its call limit for the day.') } }
             }
 
         }
-   }
+   
 
 // API Call for articles according to topic
-    function findArticlesByTopic() {
+    async function findArticlesByTopic() {
         
         const myTopicParams = {
 
@@ -69,89 +78,91 @@ const useApi = () => {
         for (const [key, value] of Object.entries(myTopicParams)) {
             
             let options1 = {
-            method: 'GET',
-            url : `https://newsapi.org/v2/everything?q=${value}`,
-            headers : { 'x-api-key': apiKey, 'Content-Type' : 'application/json' }
-            }
+                method : 'GET',
+                url : `https://eventregistry.org/api/v1/article/getArticles`,
+                headers : { 'Content-Type' : 'application/json' },
+                params : {
+                    'action' : 'getArticles',
+                    'keyword' : `${value}`,
+                    'articlesCount' : 50,
+                    'articlesSortBy' : 'sourceImportance',
+                    'ignoreSourcesGroupUri' : 'paywall/paywalled_sources',
+                    'articlesPage': 1,
+                    'resultType' : 'articles',
+                    'apiKey' : apiKey,
+                }
+                }
             
-            if (subj[0] == key || subj[1] == key || subj[2] == key || subj[3] == key
-                || subj[4] == key) 
+            if (subj[0] === key || subj[1] === key || subj[2] === key || subj[3] === key
+                || subj[4] === key) 
             
                 {
-                axios.request(options1).then(response =>{
-                console.log(response.status)
-                console.log(response.data.articles);
-                setArticle1(response.data.articles);
-                })
-                if (article1 == []) {
+                let res = await axios.request(options1)
+                console.log(res.data.articles.results)
+                setArticle1(res.data.articles.results);
+                }
+                if (article1 === []) {
                 {setError('The API has reached its call limit for the day.')
                 console.log('The API has reached its call limit for the day.') 
                 }}
             
         }
         }
-    }
+    
 
 // API Call to articles according to a search term    
-    function findArticlesBySearchTerm() {
+    async function findArticlesBySearchTerm() {
         let term = localStorage.getItem('freePreferences')
         console.log(term)
         let search = {
             method : 'GET', 
-            url :`https://newsapi.org/v2/everything?q=${term}`,
-            params : { lang:'en' , page: '1'},
-            headers : { 'x-api-key': apiKey, 'Content-Type' : 'application/json' } 
+            url :`https://eventregistry.org/api/v1/article/getArticles`,
+            params : { 
+                'action' : 'getArticles',
+                'keyword' : `${term}`,
+                'ignoreSourceGroupUri' : 'paywall/paywalled_sources',
+                'articlesPage' : 1,
+                'articlesCount' : 50,
+                'articlesSortBy' : 'sourceImportance',
+                'dataType' : 'news',
+                'resultType' : 'articles',
+                'apiKey' : apiKey, 
+            },
+            headers : { 'Content-Type' : 'application/json' } 
         }  
             try {
-            axios.request(search).then(response=>{
-                console.log(response);
-                console.log(response.data.articles);
-                setSearch(response.data.articles);
+            let res = await axios.request(search)
+                setSearch(res.data.articles.results);
                 // localStorage.removeItem('freePreferences')
-            }).catch(function (error) { console.error(error); setError('The API has reached its call limit for the day.') })
+            
         } catch(e) {
             
             console.log('The API has reached its call limit for the day.')
         }
     }
 
+
+    // const arrayOfArticles = Object.entries(article)
+    // const arrayOfArticles1 = Object.entries(article1)
+    // const arrayOfSearches = Object.entries(search)
+
+    console.log('SEARCH', search)
+    console.log('ARTICLE1', article1)
+    console.log('ARTICLE',article)
+
+    let objectConcat = [...article, ...search, ...article1]
     console.log({error})
     return (
 
         <>
        <h1>{error}</h1>
-            {article.map(c => (
-                <ArticleCard
-                    title={c.title}
-                    // key={c.key}
-                    url={c.url}
-                    excerpt={c.description}
-                    media={c.urlToImage}
-                    author={c.author} />
-            ))}
-            {article1.map(c => (
-                <ArticleCard
-                    title={c.title}
-                    // key={c.key}
-                    url={c.url}
-                    excerpt={c.description}
-                    media={c.urlToImage}
-                    author={c.author} />
-            ))}
-            {search.map(c => (
-                <ArticleCard
-                    title={c.title}
-                    // key={c.key}
-                    url={c.url}
-                    excerpt={c.description}
-                    media={c.urlToImage}
-                    author={c.author} />
-            ))}
-
+                    
+                <ArticleCard items = {objectConcat} />
+    
         </>
 
     )
+            };
 
-}
 
 export default useApi
