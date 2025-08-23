@@ -51,8 +51,7 @@ const password = process.env.PASSWORD
 const PORT = process.env.DATABASE_PORT
 const USER = process.env.USER
 
-const pgp = require('pg-promise')(/* options */)
-// const db = pgp(`postgresql://${USER}:${password}@127.0.0.1:${PORT}/news`)
+const pgp = require('pg-promise')
 const db = require('./db.js');
 db.connect();
 

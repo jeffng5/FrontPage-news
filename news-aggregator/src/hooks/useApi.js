@@ -6,6 +6,7 @@ import ColoredLine from "../SmallComponents/ColoredLine"
 
 const useApi = () => {
     const apiKey = process.env.REACT_APP_APIKEY
+    console.log(apiKey)
     let pref = localStorage.getItem('preferences')
     let subj = pref ? pref.split(',') : "";
     console.log('PREFS', subj)
@@ -32,25 +33,19 @@ const useApi = () => {
             
             let options = {
             method : 'GET',
-            url : `https://eventregistry.org/api/v1/article/getArticles`,
+            url : `https://api.thenewsapi.com/v1/news/top?api_token=${apiKey}&locale=${value}&limit=50&language=en`,
             headers : { 'Content-Type' : 'application/json' },
-            params : {
-                'action' : 'getArticles',
-                'keyword' : `${value}`,
-                'articlesCount' : 50,
-                'articlesSortBy' : 'sourceImportance',
-                'ignoreSourcesGroupUri' : 'paywall/paywalled_sources',
-                'articlesPage': 1,
-                'resultType' : 'articles',
-                'apiKey' : apiKey        
-            }
+            // params : {
+            //     'limit' : 50,
+            //     'language': 'en'  
+            // }
             }
             
             if (subj[0] === key || subj[1] === key || subj[2] === key || subj[3] === key
                 || subj[4] === key) {
                 let res = await axios.request(options)
-                
-                    setArticle(res.data.articles.results)
+                console.log(res)
+                    setArticle(res.data.data)
                 }
                   if (article === [])  
                         {setError('The API has reached its call limit for the day.')
@@ -75,39 +70,32 @@ const useApi = () => {
             'Technology': 'technology',
            
         }
-        for (const [key, value] of Object.entries(myTopicParams)) {
+
             
             let options1 = {
                 method : 'GET',
-                url : `https://eventregistry.org/api/v1/article/getArticles`,
+                url : `https://api.thenewsapi.com/v1/news/top?api_token=${apiKey}&locale=us&categories=${subj}&limit=50&language=en`,
                 headers : { 'Content-Type' : 'application/json' },
-                params : {
-                    'action' : 'getArticles',
-                    'keyword' : `${value}`,
-                    'articlesCount' : 50,
-                    'articlesSortBy' : 'sourceImportance',
-                    'ignoreSourcesGroupUri' : 'paywall/paywalled_sources',
-                    'articlesPage': 1,
-                    'resultType' : 'articles',
-                    'apiKey' : apiKey,
-                }
+                //params : {
+                    // 'categories' : `${value}`,
+                //     'limit' : 50,
+                //     'api_token': apiKey
+               // }
                 }
             
-            if (subj[0] === key || subj[1] === key || subj[2] === key || subj[3] === key
-                || subj[4] === key) 
-            
-                {
+    
                 let res = await axios.request(options1)
-                console.log(res.data.articles.results)
-                setArticle1(res.data.articles.results);
-                }
+                console.log(res.data.data)
+                
+                setArticle1(res.data.data);
+                
                 if (article1 === []) {
                 {setError('The API has reached its call limit for the day.')
                 console.log('The API has reached its call limit for the day.') 
                 }}
             
         }
-        }
+        
     
 
 // API Call to articles according to a search term    
@@ -116,23 +104,17 @@ const useApi = () => {
         console.log(term)
         let search = {
             method : 'GET', 
-            url :`https://eventregistry.org/api/v1/article/getArticles`,
-            params : { 
-                'action' : 'getArticles',
-                'keyword' : `${term}`,
-                'ignoreSourceGroupUri' : 'paywall/paywalled_sources',
-                'articlesPage' : 1,
-                'articlesCount' : 50,
-                'articlesSortBy' : 'sourceImportance',
-                'dataType' : 'news',
-                'resultType' : 'articles',
-                'apiKey' : apiKey, 
-            },
+            url :`https://api.thenewsapi.com/v1/news/top?api_token=${apiKey}&search=${term}&limit=50&language=en`,
+            // params : { 
+            //     'language' : 'en',
+            //     'limit' : 50 
+            // },
             headers : { 'Content-Type' : 'application/json' } 
         }  
             try {
             let res = await axios.request(search)
-                setSearch(res.data.articles.results);
+                console.log(res)
+                setSearch(res.data.data);
                 // localStorage.removeItem('freePreferences')
             
         } catch(e) {
