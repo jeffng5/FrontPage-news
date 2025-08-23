@@ -27,16 +27,16 @@ const authorization = (req, res, next ) => {
     });    
 }
 
-const handleCors = (req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header('Access-Control-Allow-Methods', '*');
-  res.header("Access-Control-Allow-Headers", 'Content-Type', 'Authorization');
-  next();
- };
+// const handleCors = (req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header('Access-Control-Allow-Methods', '*');
+//   res.header("Access-Control-Allow-Headers", 'Content-Type', 'Authorization');
+//   next();
+//  };
 
 
 
-app.use(handleCors)
+// app.use(handleCors)
 app.use(authorization)
 app.use("/users", usersRoutes);
 const { createToken } = require('./helpers/tokens')
