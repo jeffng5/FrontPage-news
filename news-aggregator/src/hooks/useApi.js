@@ -6,7 +6,6 @@ import ColoredLine from "../SmallComponents/ColoredLine"
 
 const useApi = () => {
     const apiKey = process.env.REACT_APP_APIKEY
-    console.log(apiKey)
     let pref = localStorage.getItem('preferences')
     let subj = pref ? pref.split(',') : "";
     console.log('PREFS', subj)
