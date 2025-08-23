@@ -17,9 +17,7 @@ if (process.env.NODE_ENV === "production") {
     }
   });
 } else {
-  db = new Client({
-    connectionString: `postgresql://postgres_news_db_user:14vFZYHBnS0FT8ph1HHCtS6eAIlUg24q@dpg-cnjk5o6v3ddc738dcmcg-a.oregon-postgres.render.com/postgres_news_db`
-  });
+console.log('Error loading database. Please look at render.com db')
 }
 
 
