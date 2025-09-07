@@ -134,7 +134,9 @@ const useApi = () => {
     let objectConcat = [...article, ...search, ...article1]
     console.log({error})
 
-
+    setArticle([])
+    setArticle1([])
+    setSearch([])
     return (
         <>
        <h1>{error}</h1>
