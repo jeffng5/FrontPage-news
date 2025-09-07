@@ -107,7 +107,7 @@ const useApi = () => {
         console.log('search API call', res)
         if (res && fetchSearch) {
             setSearch(res.data.data);
-            // localStorage.removeItem('freePreferences')
+            localStorage.removeItem('freePreferences')
         }
 
         else {
