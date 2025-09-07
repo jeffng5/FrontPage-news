@@ -131,7 +131,7 @@ const useApi = () => {
     console.log('ARTICLE1', article1)
     console.log('ARTICLE',article)
 
-    let objectConcat = [article, search, article1]
+    let objectConcat = [...article, ...search, ...article1]
     console.log({error})
 
 
