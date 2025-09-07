@@ -7,11 +7,13 @@ import ColoredLine from "../SmallComponents/ColoredLine"
 const useApi = () => {
     const apiKey = process.env.REACT_APP_APIKEY
     let pref = localStorage.getItem('preferences')
+    let term = localStorage.getItem('freePreferences')
+    console.log('debugging', term)
     let subj = pref ? pref.split(',') : "";
     console.log('PREFS', subj)
     const [article, setArticle] = useState([])
     const [article1, setArticle1] = useState([])
-    const [search, setSearch] = useState([])
+    const [search, setSearch] = useState('')
     const [error, setError] = useState('')
 
     useEffect(() => {
@@ -19,7 +21,7 @@ const useApi = () => {
         findArticlesByTopic();
         findArticlesBySearchTerm();
         setSearch([]);
-    }, [article, article1, search])
+    }, [])
     async function findArticlesByCountry() {
         const mySearchParams = {
             'Australia': 'au',
@@ -29,7 +31,7 @@ const useApi = () => {
         }
 // API call for country's articles
         for (const [key, value] of Object.entries(mySearchParams)) {
-            
+            console.log('key', key)
             let options = {
             method : 'GET',
             url : `https://api.thenewsapi.com/v1/news/top?api_token=${apiKey}&locale=${value}&limit=50&language=en`,
@@ -46,13 +48,10 @@ const useApi = () => {
                 console.log(res)
                     setArticle(res.data.data)
                 }
-                  if (article === [])  
-                        {setError('The API has reached its call limit for the day.')
-                    
-                { console.log('The API has reached its call limit for the day.') } }
-            }
+ }
+            };
 
-        }
+        
    
 
 // API Call for articles according to topic
@@ -70,10 +69,11 @@ const useApi = () => {
            
         }
 
+        for (const [k, v] of Object.entries(myTopicParams)){
             
             let options1 = {
                 method : 'GET',
-                url : `https://api.thenewsapi.com/v1/news/top?api_token=${apiKey}&locale=us&categories=${subj}&limit=50&language=en`,
+                url : `https://api.thenewsapi.com/v1/news/top?api_token=${apiKey}&locale=us&categories=${v}&limit=50&language=en`,
                 headers : { 'Content-Type' : 'application/json' },
                 //params : {
                     // 'categories' : `${value}`,
@@ -82,26 +82,25 @@ const useApi = () => {
                // }
                 }
             
+            if (subj[0] === k || subj[1] === k || subj[2] === k || subj[3] ===k || subj[4] === k) {
     
                 let res = await axios.request(options1)
                 console.log(res.data.data)
                 
                 setArticle1(res.data.data);
                 
-                if (article1 === []) {
-                {setError('The API has reached its call limit for the day.')
-                console.log('The API has reached its call limit for the day.') 
-                }}
-            
+
+            }
         }
+    };
         
     
 
 // API Call to articles according to a search term    
     async function findArticlesBySearchTerm() {
-        let term = localStorage.getItem('freePreferences')
-        console.log(term)
-        let search = {
+       
+        console.log('TERM', term)
+        let fetchSearch = {
             method : 'GET', 
             url :`https://api.thenewsapi.com/v1/news/top?api_token=${apiKey}&search=${term}&limit=50&language=en`,
             // params : { 
@@ -110,18 +109,18 @@ const useApi = () => {
             // },
             headers : { 'Content-Type' : 'application/json' } 
         }  
+        if (term != null) {
             try {
-            let res = await axios.request(search)
+      
+            let res = await axios.request(fetchSearch)
                 console.log(res)
                 setSearch(res.data.data);
-                // localStorage.removeItem('freePreferences')
-            
-        } catch(e) {
-            
-            console.log('The API has reached its call limit for the day.')
-        }
+                localStorage.removeItem('freePreferences')
+            } catch(e) {
+        console.log(e)
     }
-
+    };
+    };
 
     // const arrayOfArticles = Object.entries(article)
     // const arrayOfArticles1 = Object.entries(article1)
