@@ -10,6 +10,7 @@ const useApi = () => {
     let term = localStorage.getItem('freePreferences')
     let subj = pref ? pref.split(',') : "";
     console.log('PREFS', subj)
+    console.log('search term', term)
     const [article, setArticle] = useState([])
     const [article1, setArticle1] = useState([])
     const [search, setSearch] = useState('')
@@ -19,8 +20,9 @@ const useApi = () => {
         findArticlesByCountry();
         findArticlesByTopic();
         findArticlesBySearchTerm(term);
-        // setSearch('');
+        setSearch('');
     }, [])
+
     async function findArticlesByCountry() {
         const mySearchParams = {
             'Australia': 'au',
@@ -35,10 +37,6 @@ const useApi = () => {
                 method: 'GET',
                 url: `https://api.thenewsapi.com/v1/news/top?api_token=${apiKey}&locale=${value}&limit=50&language=en`,
                 headers: { 'Content-Type': 'application/json' },
-                // params : {
-                //     'limit' : 50,
-                //     'language': 'en'  
-                // }
             }
 
             if (subj[0] === key || subj[1] === key || subj[2] === key || subj[3] === key
@@ -48,7 +46,7 @@ const useApi = () => {
                 const fetchedData = res.data.data
                 setArticle((prev) => [...prev, ...fetchedData])
                 // }
-            } 
+            }
         }
     };
 
@@ -80,10 +78,7 @@ const useApi = () => {
                 let res = await axios.request(options1)
                 console.log(res.data.data)
                 let topicData = res.data.data
-
-                // if (res.length > 0) {
                 setArticle1((prev) => [...prev, ...topicData]);
-                // }
             }
         };
     };
@@ -99,7 +94,7 @@ const useApi = () => {
         }
         let res = await axios.request(fetchSearch)
 
-        if (res && fetchSearch) {
+        if (res && fetchSearch && term) {
             setSearch(res.data.data);
             localStorage.removeItem('freePreferences')
         }
@@ -118,20 +113,18 @@ const useApi = () => {
     console.log('ARTICLE1', article1)
     console.log('ARTICLE', article)
 
+
     let objectConcat = [...article, ...article1, ...search]
 
-
-
-    return (
-        <>
-            <h1>{error}</h1>
-
-            <ArticleCard items={objectConcat} />
-
-        </>
-
-    )
+    if (term == null && article.length == 0 && article1.length == 0) {
+        return (
+            <>
+                <h1>The API has returned no results or has reached the API limit for the day. Please try again later.</h1>
+            </>
+        )
+    } else {
+        return <ArticleCard items={objectConcat} />
+    }
 };
-
 
 export default useApi
