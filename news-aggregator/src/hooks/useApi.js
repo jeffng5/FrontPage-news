@@ -48,9 +48,7 @@ const useApi = () => {
                 const fetchedData = res.data.data
                 setArticle((prev) => [...prev, ...fetchedData])
                 // }
-            } else{
-                setError("The API has reach its call limit. Please try again later.")
-            }
+            } 
         }
     };
 
@@ -86,8 +84,6 @@ const useApi = () => {
                 // if (res.length > 0) {
                 setArticle1((prev) => [...prev, ...topicData]);
                 // }
-            }else {
-                setError("The API has reach its call limit. Please try again later.")
             }
         };
     };
