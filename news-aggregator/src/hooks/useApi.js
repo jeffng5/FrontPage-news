@@ -15,12 +15,12 @@ const useApi = () => {
     const [search, setSearch] = useState('')
     const [error, setError] = useState('')
 
-    useEffect(() => { 
+    useEffect(() => {
         findArticlesByCountry();
         findArticlesByTopic();
         findArticlesBySearchTerm(term);
         // setSearch('');
-     }, [])
+    }, [])
     async function findArticlesByCountry() {
         const mySearchParams = {
             'Australia': 'au',
@@ -45,9 +45,11 @@ const useApi = () => {
                 || subj[4] === key) {
                 let res = await axios.request(options)
                 console.log(res.data.data)
-                const fetchedData = res.data.data   
+                const fetchedData = res.data.data
                 setArticle((prev) => [...prev, ...fetchedData])
                 // }
+            } else{
+                setError("The API has reach its call limit. Please try again later.")
             }
         }
     };
@@ -74,21 +76,18 @@ const useApi = () => {
                 method: 'GET',
                 url: `https://api.thenewsapi.com/v1/news/top?api_token=${apiKey}&categories=${v}&limit=50&language=en`,
                 headers: { 'Content-Type': 'application/json' },
-                //params : {
-                // 'categories' : `${value}`,
-                //     'limit' : 50,
-                //     'api_token': apiKey
-                // }
             }
 
             if (subj[0] === k || subj[1] === k || subj[2] === k || subj[3] === k || subj[4] === k) {
                 let res = await axios.request(options1)
                 console.log(res.data.data)
                 let topicData = res.data.data
-             
+
                 // if (res.length > 0) {
-                    setArticle1((prev) => [...prev, ...topicData]);
+                setArticle1((prev) => [...prev, ...topicData]);
                 // }
+            }else {
+                setError("The API has reach its call limit. Please try again later.")
             }
         };
     };
@@ -102,16 +101,15 @@ const useApi = () => {
             url: `https://api.thenewsapi.com/v1/news/top?api_token=${apiKey}&search=${term}&limit=50&language=en`,
             headers: { 'Content-Type': 'application/json' }
         }
-        console.log('do you see me?')
         let res = await axios.request(fetchSearch)
-        console.log('search API call', res)
+
         if (res && fetchSearch) {
             setSearch(res.data.data);
             localStorage.removeItem('freePreferences')
         }
 
         else {
-            console.log('You are down here')
+            console.log('no search term was entered')
 
         }
     };
