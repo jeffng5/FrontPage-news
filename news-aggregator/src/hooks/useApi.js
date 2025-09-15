@@ -116,15 +116,13 @@ const useApi = () => {
 
     let objectConcat = [...article, ...article1, ...search]
 
-    if (term === null && article.length === 0 && article1.length === 0) {
+    if (objectConcat) {
         return (
             <>
-                <h1>The API has returned no results or has reached the API limit for the day. Please try again later.</h1>
+             <ArticleCard items={objectConcat} />
             </>
         )
-    } else {
-        return <ArticleCard items={objectConcat} />
-    }
+    } 
 };
 
 export default useApi
