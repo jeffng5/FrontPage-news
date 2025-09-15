@@ -29,6 +29,8 @@ Finally there is a logout feature.
 Express.js, React.js, Axios, Bcrypt (for authentication), JWT-tokens (for authentication), PostgreSQL (for database), CSS, HTML5
 
 ## NOTES
+Sign in takes a minute or two because of db spin down activity.
+
 Most articles returned to user have full metadata about the article, however some data can be missing in some cases where the page would render a blank for that section of the article.
 
 The article in the frontpage is just the title, a brief article synopsis or description, the article image, and the author. It is not the full article itself. User must be aware that reading the article will REDIRECT to the url page AWAY from the web site. Once out of the website, user will be subjected to whatever the URL will serve them including cookie permissions, ads, banners, etc. The URL will show the article but note the above.
