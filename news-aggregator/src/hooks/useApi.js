@@ -86,11 +86,11 @@ const useApi = () => {
 
 
     // API Call to articles according to a search term    
-    async function findArticlesBySearchTerm(term) {
-        console.log('89', term)
+    async function findArticlesBySearchTerm(TERM) {
+        console.log('89', TERM)
         let fetchSearch = {
             method: 'GET',
-            url: `https://api.thenewsapi.com/v1/news/top?api_token=${apiKey}&search=${term}&limit=50&language=en`,
+            url: `https://api.thenewsapi.com/v1/news/top?api_token=${apiKey}&search=${TERM}&limit=50&language=en`,
             headers: { 'Content-Type': 'application/json' }
         }
         let res = await axios.request(fetchSearch)
