@@ -19,7 +19,7 @@ const useApi = () => {
     useEffect(() => {
         findArticlesByCountry();
         findArticlesByTopic();
-        findArticlesBySearchTerm(term);
+        findArticlesBySearchTerm();
         setSearch('');
     }, [])
 
@@ -116,7 +116,7 @@ const useApi = () => {
 
     let objectConcat = [...article, ...article1, ...search]
 
-    if (term == null && article.length == 0 && article1.length == 0) {
+    if (term === null && article.length === 0 && article1.length === 0) {
         return (
             <>
                 <h1>The API has returned no results or has reached the API limit for the day. Please try again later.</h1>
