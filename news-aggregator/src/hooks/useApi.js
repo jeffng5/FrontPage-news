@@ -8,9 +8,10 @@ const useApi = () => {
     const apiKey = process.env.REACT_APP_APIKEY
     let pref = localStorage.getItem('preferences')
     let term = localStorage.getItem('freePreferences')
+    let TERM = term
     let subj = pref ? pref.split(',') : "";
     console.log('PREFS', subj)
-    console.log('search term', term)
+    console.log('search term', TERM)
     const [article, setArticle] = useState([])
     const [article1, setArticle1] = useState([])
     const [search, setSearch] = useState('')
@@ -20,7 +21,7 @@ const useApi = () => {
         findArticlesByCountry();
         findArticlesByTopic();
         findArticlesBySearchTerm();
-        setSearch('');
+     
     }, [])
 
     async function findArticlesByCountry() {
@@ -86,7 +87,7 @@ const useApi = () => {
 
     // API Call to articles according to a search term    
     async function findArticlesBySearchTerm(term) {
-
+        console.log('89', term)
         let fetchSearch = {
             method: 'GET',
             url: `https://api.thenewsapi.com/v1/news/top?api_token=${apiKey}&search=${term}&limit=50&language=en`,
@@ -94,7 +95,7 @@ const useApi = () => {
         }
         let res = await axios.request(fetchSearch)
 
-        if (res && fetchSearch && term) {
+        if (res && TERM) {
             setSearch(res.data.data);
             localStorage.removeItem('freePreferences')
         }
@@ -105,10 +106,6 @@ const useApi = () => {
         }
     };
 
-    // const arrayOfArticles = Object.entries(article)
-    // const arrayOfArticles1 = Object.entries(article1)
-    // const arrayOfSearches = Object.entries(search)
-
     console.log('SEARCH', search)
     console.log('ARTICLE1', article1)
     console.log('ARTICLE', article)
@@ -116,13 +113,9 @@ const useApi = () => {
 
     let objectConcat = [...article, ...article1, ...search]
 
-    if (objectConcat) {
-        return (
-            <>
-             <ArticleCard items={objectConcat} />
-            </>
-        )
-    } 
+
+    return <ArticleCard items={objectConcat} />
+   
 };
 
 export default useApi
