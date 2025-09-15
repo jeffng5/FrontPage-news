@@ -15,7 +15,7 @@ function getDatabaseUri() {
     process.env.NODE_ENV === "test")
       ? "news_test"
       : 
-      process.env.DATABASE_URL || "news";
+      process.env.DATABASE_URL || 'news';
 }
 
 // Speed up bcrypt during tests, since the algorithm safety isn't being tested
@@ -27,7 +27,6 @@ console.log("News Config:".green);
 console.log("SECRET_KEY:".yellow, SECRET_KEY);
 console.log("PORT:".yellow, PORT.toString());
 console.log("BCRYPT_WORK_FACTOR".yellow, BCRYPT_WORK_FACTOR);
-console.log("Database:".yellow, getDatabaseUri());
 console.log("---");
 
 module.exports = {
