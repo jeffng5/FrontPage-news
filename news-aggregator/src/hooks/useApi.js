@@ -23,7 +23,7 @@ const useApi = ({term}) => {
         findArticlesByTopic();
         findArticlesBySearchTerm();
    
-    }, [term])
+    }, [termState])
 
     // API Call to articles according to a search term    
     async function findArticlesBySearchTerm(term) {
@@ -34,11 +34,11 @@ const useApi = ({term}) => {
             url: `https://api.thenewsapi.com/v1/news/top?api_token=${apiKey}&search=${termState}&limit=25&language=en`,
             headers: { 'Content-Type': 'application/json' }
         }
-        let res = await axios.request(fetchSearch)
 
-        if (res) {
-            setSearch(res.data.data);
-            // localStorage.removeItem('freePreferences')
+        if (termState) {
+        let res = await axios.request(fetchSearch)
+        setSearch(res.data.data);
+        setTermState(null)
         }
 
         else {
@@ -68,7 +68,7 @@ const useApi = ({term}) => {
                 let res = await axios.request(options)
                 console.log(res.data.data)
                 const fetchedData = res.data.data
-                setArticle((prev) => [...prev, ...fetchedData])
+                setArticle(fetchedData)
                 // }
             }
         }
@@ -102,7 +102,7 @@ const useApi = ({term}) => {
                 let res = await axios.request(options1)
                 console.log(res.data.data)
                 let topicData = res.data.data
-                setArticle1((prev) => [...prev, ...topicData]);
+                setArticle1(topicData);
             }
         };
     };
