@@ -15,7 +15,7 @@ const useApi = ({term}) => {
     const [article, setArticle] = useState([])
     const [article1, setArticle1] = useState([])
     const [search, setSearch] = useState([])
-    const [termState, setTermState] = useState('')
+    const [termState, setTermState] = useState(term)
     
 
     useEffect(() => {
@@ -23,7 +23,7 @@ const useApi = ({term}) => {
         findArticlesByTopic();
         findArticlesBySearchTerm();
    
-    }, [])
+    }, [term])
 
     // API Call to articles according to a search term    
     async function findArticlesBySearchTerm(term) {

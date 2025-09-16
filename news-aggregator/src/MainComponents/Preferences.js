@@ -34,7 +34,7 @@ const Preferences = () => {
   const [error, setError] = useState("")
   const [searchTopics, setSearchTopics] = useState([])
   const [userLoggedIn, setUserLoggedIn] = useState(false)
-  const [termState, setTermState] = useState("anything")
+  const [termState, setTermState] = useState('anything')
 
   useEffect(() => {
 
