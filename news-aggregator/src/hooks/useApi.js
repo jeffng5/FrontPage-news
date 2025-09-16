@@ -8,21 +8,43 @@ const useApi = () => {
     const apiKey = process.env.REACT_APP_APIKEY
     let pref = localStorage.getItem('preferences')
     let term = localStorage.getItem('freePreferences')
-    let TERM = term
     let subj = pref ? pref.split(',') : "";
     console.log('PREFS', subj)
-    console.log('search term', TERM)
+    console.log('search term', term)
     const [article, setArticle] = useState([])
     const [article1, setArticle1] = useState([])
-    const [search, setSearch] = useState('')
-    const [error, setError] = useState('')
+    const [search, setSearch] = useState([])
+    const [termState, setTermState] = useState('')
+    
 
     useEffect(() => {
         findArticlesByCountry();
         findArticlesByTopic();
         findArticlesBySearchTerm();
-     
+   
     }, [])
+
+    // API Call to articles according to a search term    
+    async function findArticlesBySearchTerm(term) {
+        setTermState(term)
+        console.log('89', termState)
+        let fetchSearch = {
+            method: 'GET',
+            url: `https://api.thenewsapi.com/v1/news/all?api_token=${apiKey}&search=${termState}&limit=25&language=en`,
+            headers: { 'Content-Type': 'application/json' }
+        }
+        let res = await axios.request(fetchSearch)
+
+        if (res) {
+            setSearch(res.data.data);
+            // localStorage.removeItem('freePreferences')
+        }
+
+        else {
+            console.log('no search term was entered')
+
+        }
+    };
 
     async function findArticlesByCountry() {
         const mySearchParams = {
@@ -82,28 +104,6 @@ const useApi = () => {
                 setArticle1((prev) => [...prev, ...topicData]);
             }
         };
-    };
-
-
-    // API Call to articles according to a search term    
-    async function findArticlesBySearchTerm(TERM) {
-        console.log('89', TERM)
-        let fetchSearch = {
-            method: 'GET',
-            url: `https://api.thenewsapi.com/v1/news/top?api_token=${apiKey}&search=${TERM}&limit=50&language=en`,
-            headers: { 'Content-Type': 'application/json' }
-        }
-        let res = await axios.request(fetchSearch)
-
-        if (res && TERM) {
-            setSearch(res.data.data);
-            localStorage.removeItem('freePreferences')
-        }
-
-        else {
-            console.log('no search term was entered')
-
-        }
     };
 
     console.log('SEARCH', search)
