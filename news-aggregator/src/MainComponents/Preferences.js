@@ -54,7 +54,7 @@ const Preferences = () => {
     wildCard.push(e.target.value)
     localStorage.setItem('freePreferences', wildCard)
     setShowWildCard(wildCard)
-    setTermState("anything")
+    setTermState(wildCard)
     
 
   }
@@ -97,7 +97,7 @@ const Preferences = () => {
     setPrefs(searchTopics)
     localStorage.setItem('freePreferences', wildCard)
     setShowWildCard(wildCard)
-    setTermState("anything")
+    setTermState(wildCard)
    
 
   }
@@ -210,7 +210,7 @@ const Preferences = () => {
           </h5>
           <h2 className='separator'>or</h2>
             
-          <FormField><span className='anything'> <label for="Anything">Most popular articles by search term <h3 className='color'>{showWildCard}</h3></label>
+          <FormField><span className='anything'> <label for="Anything">Most popular articles by search term <h3 className='color'>{termState}</h3></label>
             <input type='text' id='Anything' name='anything' placeholder={termState} onChange={handleForm} /></span>
           </FormField>
           
