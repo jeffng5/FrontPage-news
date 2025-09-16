@@ -10,6 +10,8 @@ import snoopy from './snoopy.jpg'
 // holds bulk of search, many API calls, displays current date
 const FrontPage = () => {
 
+    let term = localStorage.getItem('freePreferences')
+
     let username = localStorage.getItem('username')
     function checkToken() {
         let token = localStorage.getItem('token')
@@ -72,7 +74,7 @@ const FrontPage = () => {
 
                     <ColoredLine color="black" />
 
-                    <UseApi />
+                    <UseApi term = {term}/>
 
 
 
