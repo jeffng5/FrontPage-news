@@ -69,8 +69,7 @@ const FrontPage = () => {
 
   const checkToken = useCallback(() => {
     const token = localStorage.getItem("token");
-    console.log("token", token);
-    console.log('username', username);
+
     if (!token) {
       setUserLoggedIn(false);
       return;
