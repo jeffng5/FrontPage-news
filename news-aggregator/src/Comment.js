@@ -1,54 +1,61 @@
-import React, { useState } from 'react'
-import "./css/forum.css"
-import { Helpers } from './helpers'
+import React, { useState } from "react";
+import "./css/forum.css";
+import { postComment } from "./api";
 
+const Comment = ({ id, onCommentPosted }) => {
+  const username = localStorage.getItem("username");
+  const [body, setBody] = useState("");
+  const [status, setStatus] = useState("");
+  const [pending, setPending] = useState(false);
 
-
-//component to add comment 
-const Comment = ({id}) => {
-  const username = localStorage.getItem('username')
-  let forum_art_id = id
-  const [comment, setComment] = useState([])
-  const [datetime, setDateTime] = useState(new Date())
-  const [addedClause, setAddedClaus] = useState([])
-
- 
-
- 
-  async function addComment() {
-    setDateTime(new Date())
-    //helpers function to post comment
-    const res = await Helpers.postComment(username,  comment, forum_art_id, datetime)
-        .then(function (response) {
-          setAddedClaus('comment has been added')})
-        .catch(function (error) {
-          console.log(error)
-        })
-    // note to user that comment has been added
-  
-    return (res, 'status OK')
- }
-
-//handleChange function
-  const handleChange= (e) => {
+  async function addComment(e) {
     e.preventDefault();
-    setComment(e.target.value)
-    console.log(comment)
-    
+    const text = body.trim();
+    if (!text) {
+      setStatus("Write a comment first.");
+      return;
+    }
+    setPending(true);
+    setStatus("");
+    try {
+      const datetime = new Date();
+      await postComment(username, text, id, datetime);
+      setBody("");
+      setStatus("Comment added.");
+      onCommentPosted?.();
+    } catch (err) {
+      console.error(err);
+      setStatus("Could not post comment.");
+    } finally {
+      setPending(false);
+    }
+  }
 
- }
-return (
+  return (
     <>
+      <form onSubmit={addComment}>
+        <textarea
+          placeholder="Type comment here..."
+          name="message"
+          rows={3}
+          value={body}
+          onChange={(e) => setBody(e.target.value)}
+        />
+        <button
+          type="submit"
+          className="add-comment"
+          disabled={pending}
+        >
+          {pending ? "Posting…" : "Add Comment"}
+        </button>
+      </form>
+      {status ? (
+        <p className="comment-form__status" role="status">
+          {status}
+        </p>
+      ) : null}
+    </>
+  );
+};
 
-<form>
-
-<textarea placeholder = 'Type comment here...' name='message' rows='5' cols='50' onChange={handleChange}>
-    
-
-</textarea>
-</form>
-<button className= 'add-comment' onClick={addComment}>Add Comment</button><h4>{addedClause}</h4>
-</>
-)
-}
-export default Comment
+export default Comment;

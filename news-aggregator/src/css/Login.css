@@ -1,7 +1,9 @@
+@media screen and (min-width: 1920px) {
+
 body {
 
     background-color: lightgray;
-    font-family: Helvetica;
+    font-family: var(--app-font);
 }
 
 
@@ -61,6 +63,8 @@ button#preferences {
 
 h1#login-welcome {
     font-size: 50px;
+}
+
 }
 
 

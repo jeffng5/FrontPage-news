@@ -128,7 +128,11 @@ const Preferences = () => {
         <h4>{error}</h4>
         <h3 className='topics'> Please Choose One (Up to 5): </h3>
         <form>
-          <h5 className='selection'>
+          <div
+            className="selection preferences-topics-grid"
+            role="group"
+            aria-label="News topics"
+          >
             <h5>
               <FormField
                 control={Checkbox}
@@ -207,7 +211,7 @@ const Preferences = () => {
                 id='US' name='US' value="US" onChange={handleChange}
               />
             </h5>
-          </h5>
+          </div>
           <h2 className='separator'>or</h2>
             
           <FormField><span className='anything'> <label for="Anything">Most popular articles by search term <h3 className='color'>{termState}</h3></label>

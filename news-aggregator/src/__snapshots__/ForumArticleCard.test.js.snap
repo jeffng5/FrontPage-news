@@ -8,19 +8,18 @@ exports[`matches snapshot 1`] = `
     <a
       class="url"
       target="_blank"
-    >
-      <h7
-        class="title-forum-article"
-      />
-      <h7
-        class="description-forum-article"
-      />
-    </a>
-    <h7
-      class="author-forum-article"
-    >
-      -Author: 
-    </h7>
+    />
+  </p>
+  <p
+    class="title-forum-article"
+  />
+  <p
+    class="description-forum-article"
+  />
+  <p
+    class="author-forum-article"
+  >
+    -Author: 
   </p>
   <p
     class="commentary"

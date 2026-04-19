@@ -1,46 +1,41 @@
+/* App-wide + welcome title (not gated on viewport width) */
 
 .App {
   text-align: center;
-  
 }
 
 body {
-  background-color: lightgray;
+  background-color: #fff;
+  text-align: center;
 }
 
-.title { color: yellow;
-  font-size: 80px;
+b.title {
+  color: yellow;
+  /* Fluid on small screens; cap on large desktops */
+  font-size: clamp(1.15rem, 5vw + 1.5vmin, 5rem);
+  line-height: 1.1;
   text-shadow: -1px -1px 0 black, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 b {
   color: forestgreen;
-
 }
 
-.news-title {
-  font-family: Helvetica;
-
-}
-
-body {
-  background-color: lightgray;
-  text-align: center;
+p.news-title {
+  font-family: var(--app-font);
+  margin-bottom: 5px;
 }
 
 .or {
   margin-top: 25px;
   font-size: 45px;
 }
-.welcome {
 
-  margin-bottom: 150px;
-
-}
-.news-title {
- margin-top: 30px;
-  margin-bottom: 5px;
+h1.welcome {
+  margin-bottom: 1.5rem;
 }
 
 p {
@@ -48,11 +43,11 @@ p {
 }
 
 .welcome {
-  margin-top : 50px;
+  margin-top: 50px;
   margin-bottom: 5px;
 }
 
-#log{
+#log {
   background-color: teal;
   color: white;
   border-radius: 8px;
@@ -60,7 +55,7 @@ p {
   height: 33px;
   position: relative;
   text-align: center;
-  margin-left: 0px;
+  margin-left: 0;
   margin-top: 15px;
 }
 
@@ -68,74 +63,233 @@ p {
   color: green;
 }
 
-p{
-  font-size: 28px;
-}
-
-/* span {
-  margin-top: 500px;} */
-
-
 #login {
   text-align: center;
-  margin-top: 80px;
-  margin-left: 50px;
-
+  margin-top: 100px;
 }
 
-#top-1 {
-text-align: center;
+.top-1 {
+  position: relative;
+  right: 350px;
+  text-align: center;
+  bottom: 60px;
 }
 
-#top {
-
-text-align: center;
+.top {
+  position: relative;
+  right: 350px;
 }
-.archive-page{
-  font-size: 35px;
+
+.saved-page {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+  text-align: center;
+}
+
+.archive-page {
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  margin: 0.5rem 0 1.5rem;
+}
+
+/* Archive article cards: width follows content, caps at page width */
+.divider-card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto 1.25rem;
+  padding: 1rem 1.25rem 1.15rem;
+  border: 1px solid #000;
+  border-radius: 10px;
+  background-color: #fff;
+  text-align: left;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.archive-card__title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.35;
 }
 
 .archive-card {
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.4;
+}
 
-  font-size: 19px;
-  text-align: left;
-  margin-left: 40px;
+.archive-card a {
+  font-weight: 400;
 }
 
 .archive-card-1 {
-  font-size: 15px;
-  text-align: left;
-  margin-left: 55px;
+  font-size: 0.9rem;
+  margin: 0;
+  font-weight: 500;
+  opacity: 0.9;
 }
 
-.divider-card {
-  border: black 1px solid;
-  width: 80%;
-  border-radius: 10px;
-  margin-left: 50px;
-  background-color: white;
+/* Welcome — centered on all viewports */
+.welcome-page {
+  box-sizing: border-box;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  padding: max(2rem, env(safe-area-inset-top, 0px))
+    max(1.5rem, env(safe-area-inset-right, 0px))
+    max(3rem, env(safe-area-inset-bottom, 0px))
+    max(1.5rem, env(safe-area-inset-left, 0px));
+  background-color: #fff;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
+.welcome-page .welcome {
+  margin-top: 2rem;
+  margin-bottom: 0.35rem;
+}
+
+.welcome-page .news-title {
+  margin: 0 0 1rem;
+}
+
+.welcome-page__tagline {
+  margin: 0 auto 2rem;
+  padding: 0 0.75rem;
+  font-size: clamp(1rem, 2.5vw, 1.35rem);
+  font-weight: normal;
+  max-width: 36rem;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
+.welcome-page__line {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  line-height: 1.45;
+  font-family: var(--app-font);
+}
+
+.welcome-page__emphasis {
+  font-weight: 700;
+  color: forestgreen;
+}
+
+.welcome-page__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem 2.5rem;
+  margin-top: 0.5rem;
+}
+
+.welcome-page__link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.welcome-page .top,
+.welcome-page .top-1 {
+  position: static;
+  right: auto;
+  bottom: auto;
+  margin: 0;
+}
+
+/* Phone: keep Welcome on one screen, no horizontal scroll */
+@media (max-width: 540px) {
+  .welcome-page {
+    justify-content: center;
+    padding: max(0.75rem, env(safe-area-inset-top, 0px))
+      max(0.85rem, env(safe-area-inset-right, 0px))
+      max(0.85rem, env(safe-area-inset-bottom, 0px))
+      max(0.85rem, env(safe-area-inset-left, 0px));
+    gap: 0.25rem;
+  }
+
+  .welcome-page .welcome {
+    margin-top: 0;
+    margin-bottom: 0.2rem;
+    font-size: clamp(1.1rem, 5.2vw, 1.5rem);
+    line-height: 1.2;
+  }
+
+  .welcome-page .news-title {
+    margin: 0 0 0.5rem;
+    max-width: 100%;
+    padding: 0 0.25rem;
+  }
+
+  .welcome-page b.title {
+    font-size: clamp(1rem, 6.2vw, 1.65rem);
+    line-height: 1.12;
+    display: block;
+    padding: 0 0.35rem;
+  }
+
+  .welcome-page__tagline {
+    margin: 0 auto 1rem;
+    padding: 0 0.65rem;
+    font-size: clamp(0.88rem, 3.6vw, 1.05rem);
+    gap: 0.25rem;
+  }
+
+  .welcome-page__actions {
+    flex-direction: column;
+    gap: 0.65rem;
+    margin-top: 0.35rem;
+    width: 100%;
+    max-width: 16rem;
+  }
+
+  .welcome-page__link {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .welcome-page__link .top,
+  .welcome-page__link .top-1 {
+    font-size: clamp(0.95rem, 3.8vw, 1.1rem);
+    padding: 0.35rem 0;
+  }
+}
 
 @media only screen and (min-device-width : 320px ) and (max-device-width: 480px) {
-
-
-  #top, #top-1{
-       bottom: 450px;
-       text-align: center;
-      
-   }
-   .title, .intro {
+  #top,
+  #top-1 {
+    bottom: 450px;
+    text-align: center;
+  }
+  .title,
+  .intro {
     font-size: 15px;
-   }
+  }
 
-   .welcome {
+  .welcome {
     font-size: 15px;
     margin-bottom: 20px;
-   }
+  }
 
-   .mobile-users {
+  .mobile-users {
     font-size: 15px;
-   }
-
+  }
 }

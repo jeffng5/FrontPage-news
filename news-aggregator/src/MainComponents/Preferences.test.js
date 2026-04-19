@@ -1,34 +1,63 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import Preferences from './Preferences'
+import React from "react";
+import { render, fireEvent, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
+import Preferences from "./Preferences";
 
-it('renders without crashing', function() {
-  render(<Preferences />);
-})
+jest.mock("jwt-decode", () => ({
+  jwtDecode: jest.fn(() => ({})),
+}));
 
-//snapshot test
-it("matches snapshot", function() {
-    const {asFragment} = render(<Preferences />);
-    expect(asFragment()).toMatchSnapshot();
-  });
+function renderPreferences() {
+  localStorage.setItem("token", "mock-token");
+  localStorage.setItem("username", "tester");
+  return render(
+    <MemoryRouter>
+      <Preferences />
+    </MemoryRouter>
+  );
+}
 
-test('testing component', ()=> {
-    const {getByText} = render(<Preferences />);
-    getByText('Preferences')
-})
+beforeEach(() => {
+  localStorage.clear();
+  window.alert = jest.fn();
+});
 
-test('save preference', ()=> {
-    const { getByText } = render(<Preferences/>);
-    const heading = getByText('Save Preferences')
-    expect(heading).toHaveClass('preferences')
-    fireEvent.click(getByText('Save Preferences'))
-    expect(heading).toBeInTheDocument();
-})
+it("renders without crashing", function () {
+  renderPreferences();
+});
 
-test('see FrontPageNews', ()=> {
-    const { getByText } = render(<Preferences/>);
-    const heading = getByText('See Front Page News')
-    expect(heading).toHaveClass('button-preferences')
-    fireEvent.click(getByText('See Front Page News'))
-    expect(heading).toBeInTheDocument();
-})
+it("matches snapshot", function () {
+  const { asFragment } = renderPreferences();
+  expect(asFragment()).toMatchSnapshot();
+});
+
+test("testing component", () => {
+  const { getByText } = renderPreferences();
+  getByText("Preferences");
+});
+
+test("save preference persists topics after checkbox + save", () => {
+  renderPreferences();
+  const saveBtn = screen.getByRole("button", { name: /save preferences/i });
+  expect(saveBtn).toHaveClass("preferences");
+
+  fireEvent.click(screen.getByRole("checkbox", { name: /U\.S\./i }));
+  fireEvent.click(saveBtn);
+
+  expect(localStorage.getItem("preferences")).toBe("US");
+  expect(window.alert).not.toHaveBeenCalled();
+});
+
+test("save without selection shows alert", () => {
+  renderPreferences();
+  fireEvent.click(screen.getByRole("button", { name: /save preferences/i }));
+  expect(window.alert).toHaveBeenCalled();
+});
+
+test("see FrontPageNews", () => {
+  const { getByText } = renderPreferences();
+  const heading = getByText("See Front Page News");
+  expect(heading).toHaveClass("save");
+  fireEvent.click(getByText("See Front Page News"));
+  expect(heading).toBeInTheDocument();
+});

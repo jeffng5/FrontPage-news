@@ -1,111 +1,98 @@
-import React, {useState} from 'react'
-import '../css/semantic.css'
-import { FormInput, Form, Message } from 'semantic-ui-react'
-import {Helpers} from "../helpers"
-import { useNavigate } from 'react-router-dom'
-
-
+import React, { useState } from "react";
+import "../css/semantic.css";
+import "../css/LoginPage.css";
+import { FormInput, Form, Message } from "semantic-ui-react";
+import { loginUser } from "../api";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-    //redirect to /users onCLick
-    const navigate = useNavigate()
-    const [formData, setFormData] = useState([])
-    const [errorState, setErrorState] = useState({visible: false, message: ''})
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState([]);
+  const [errorState, setErrorState] = useState({
+    visible: false,
+    message: "",
+  });
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((formData) => ({ ...formData, [name]: value }));
+  };
 
-    //handles input
-    const handleChange = (e) => {
-        const { name, value } = e.target
-        setFormData(formData => ({...formData,[name]: value }))
-    }
-    // takes in username, password and makes backend call to route for validation
-    async function LoginUser(e) {
-        e.preventDefault();
-        try {
-          
-          if (!formData.username || !formData.password) {
-            return setErrorState({visible: true, message: 'Username or password cannot be blank'})
-          }
-          console.log('running loginUser')
-          
-          let username = formData.username
-          let password = formData.password
-       
-          const res = await Helpers.loginUser(username, password);    
-          console.log(res)
-        
-          if (res.token && res.user){
-
-            return navigate('/users')
-        
-          }
-     
-        if (!res.token || !res.user) {
-          return navigate('/')
-        }
-        else {
-          console.log('wrong username or password')
-          return navigate('/error')
-        }
+  async function LoginUser(e) {
+    e.preventDefault();
+    try {
+      if (!formData.username || !formData.password) {
+        return setErrorState({
+          visible: true,
+          message: "Username or password cannot be blank",
+        });
       }
-      catch (err) {
-        console.log(err)
-        setErrorState({visible: true, message: err})
-       
+      console.log("running loginUser");
+      const res = await loginUser(formData.username, formData.password);
+      console.log(res);
+
+      if (res.token && res.user) {
+        return navigate("/users");
+      }
+
+      if (!res.token || !res.user) {
+        return navigate("/");
+      } else {
+        console.log("wrong username or password");
+        return navigate("/error");
+      }
+    } catch (err) {
+      console.log(err);
+      const message = Array.isArray(err) ? err.join(" ") : String(err);
+      setErrorState({ visible: true, message });
     }
   }
-     console.log(formData.username)
-     console.log(formData.password)
 
+  console.log(formData.username);
+  console.log(formData.password);
 
-    return (
-        <>
-    
-        <h1 id='login-welcome'>Please Login</h1>
-      
-          <Form error={errorState.visible}>
-          <div className='form-entry'>
-    <FormInput
-  
-      type='text'
-      placeholder='username'
-      id='username'
-      name='username'
-      onChange= {handleChange}
-      value = {formData.username}
-    /> 
-    
-    </div>
-     <div className='form-entry'>
-    
-    
-    <FormInput
-   
-      type ='password'
-      placeholder='password'
-      id='password'
-      name= 'password'
-      onChange = {handleChange}
-      value ={formData.password}
-    />
-    
-    </div>
-    <div className = 'form-entry'>
-    <Message
-      error
-      header='Login Error'
-      content={errorState.message}
-    />
-    </div>
-    <div className='log-in-form-1'>
-      <button className='preferences' onClick={LoginUser}>Log In</button>
-    </div>
-  
-  </Form>
-        </>
-    )
-    }
-  
+  return (
+    <main className="login-page">
+      <h1 id="login-welcome">Please Login</h1>
 
+      <Form error={errorState.visible}>
+        <div className="form-entry">
+          <FormInput
+            type="text"
+            placeholder="username"
+            id="username"
+            name="username"
+            onChange={handleChange}
+            value={formData.username}
+          />
+        </div>
+        <div className="form-entry">
+          <FormInput
+            type="password"
+            placeholder="password"
+            id="password"
+            name="password"
+            onChange={handleChange}
+            value={formData.password}
+          />
+        </div>
+        {errorState.visible ? (
+          <div className="form-entry login-page__error" role="alert">
+            <Message
+              error
+              header="Login Error"
+              content={errorState.message}
+            />
+          </div>
+        ) : null}
+        <div className="log-in-form-1 login-page__actions">
+          <button type="button" className="preferences" onClick={LoginUser}>
+            Log In
+          </button>
+        </div>
+      </Form>
+    </main>
+  );
+};
 
-export default Login
+export default Login;

@@ -8,7 +8,8 @@
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm run start --prefix ../news-aggregator",
-    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "delete-empty-comments": "node scripts/delete-empty-comments.js"
   },
   "keywords": [],
   "author": "",

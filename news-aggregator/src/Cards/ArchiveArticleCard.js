@@ -3,17 +3,18 @@ import '../css/App.css'
 
 const ArchiveArticleCard = ({title, url, description, author}) => {
 
-
-// returning the passed data thru structured html     
-return (
-    <>
-    <h6 className= 'divider-card'>
-<h6 className='archive-card'>Title: <a href={url} target='_blank'>{title}</a> </h6>
-<h6 className='archive-card'>Description: {description}</h6>
-<h6 className='archive-card-1'>By : {author}</h6>
-</h6>
-</>
-)
+  return (
+    <article className="divider-card">
+      <h2 className="archive-card archive-card__title">Title: {title}</h2>
+      <p className="archive-card">Description: {description}</p>
+      <p className="archive-card">
+        <a href={url} target="_blank" rel="noopener noreferrer">
+          {url}
+        </a>
+      </p>
+      <p className="archive-card-1">By: {author}</p>
+    </article>
+  );
 }
 
 export default ArchiveArticleCard

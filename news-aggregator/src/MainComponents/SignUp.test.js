@@ -1,26 +1,35 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import SignUp from './SignUp'
+import React from "react";
+import { render, fireEvent } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
+import SignUp from "./SignUp";
 
-it('renders without crashing', function() {
-  render(<SignUp />);
-})
+function renderSignUp() {
+  return render(
+    <MemoryRouter>
+      <SignUp />
+    </MemoryRouter>
+  );
+}
 
-//snapshot test
-it("matches snapshot", function() {
-    const {asFragment} = render(<SignUp />);
-    expect(asFragment()).toMatchSnapshot();
-  });
+it("renders without crashing", function () {
+  renderSignUp();
+});
 
-test('testing component', ()=> {
-    const {getByText} = render(<SignUp />);
-    getByText('Please SignUp')
-})
+it("matches snapshot", function () {
+  const { asFragment } = renderSignUp();
+  expect(asFragment()).toMatchSnapshot();
+});
 
-test('sign up button works', ()=> {
-    const { getByText } = render(<SignUp/>);
-    const heading = getByText('Sign In')
-    
-    fireEvent.click(getByText('Sign In'))
-    expect(heading).toBeInTheDocument();
-})
+test("testing component", () => {
+  const { getByText } = renderSignUp();
+  getByText("Please SignUp");
+});
+
+test("sign up button works", () => {
+  const { getByText } = renderSignUp();
+  const btn = getByText("Sign In");
+  expect(btn).toHaveClass("preferences");
+
+  fireEvent.click(getByText("Sign In"));
+  expect(btn).toBeInTheDocument();
+});

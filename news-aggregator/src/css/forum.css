@@ -1,139 +1,218 @@
-.url {
-    text-align: left;
-    margin-left: 20px;
+/* Forum + comments — scoped to .forum-page */
 
+.forum-page {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 0.75rem 0.75rem 1.5rem;
+}
+
+.forum-page .links {
+  gap: 0.35rem 0.65rem;
+  font-size: clamp(calc(0.82rem + 2px), calc(1.6vw + 2px), calc(0.95rem + 2px));
+  margin-bottom: 0.35rem;
+}
+
+.url {
+  text-align: left;
+  margin-left: 0;
 }
 
 .title-forum-article {
-    font-size: 26px;
-    display: block;
-    text-align: left;
-    margin-left: 40px;
-    margin-bottom: 10px;
-    padding-bottom: 15px;
+  font-size: calc(1.1rem + 2px);
+  display: block;
+  font-weight: 600;
+  text-align: left;
+  margin: 0 0 0.3rem;
+  padding-bottom: 0.2rem;
+  line-height: 1.3;
 }
 
 .description-forum-article {
-    font-size: 24px;
-    text-align: left;
-    display: block;
-    margin-left: 40px;
-    padding-bottom: 15px;
+  font-size: calc(0.95rem + 2px);
+  text-align: left;
+  display: block;
+  margin: 0 0 0.45rem;
+  padding-bottom: 0.15rem;
+  line-height: 1.4;
 }
 
 .author-forum-article {
-    font-size: 20px;
-    position: relative;
-    left: 75px;
-    text-align: left;
-    display: block;
-    margin-left: 40px;
-    margin-bottom: 10px;
+  font-size: calc(0.88rem + 2px);
+  text-align: left;
+  display: block;
+  margin: 0 0 0.45rem;
+  line-height: 1.35;
 }
 
 .commentary {
-    text-align: left;
-    padding-left: 20px;
-    font-size: 10px;
+  text-align: left;
+  padding-left: 0;
+  font-size: calc(0.8rem + 2px);
+  margin: 0.35rem 0 0;
 }
 
-label {
-    position: relative;
-    bottom: 55px;
+/* Comment form: full box so top border is not lost to margin-collapse / overlap */
+.commentary + .commentary--form {
+  margin-top: 0.65rem;
 }
 
-textarea {
-    font-size: 18px;
+.commentary--form {
+  display: flow-root;
+  padding: 0.65rem 0.7rem 0.75rem;
+  border: 1px solid #b0bec5;
+  border-radius: 6px;
+  background: #f8fafb;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+}
+
+.commentary--form form {
+  margin: 0;
+}
+
+.comment-form__status {
+  margin: 0.35rem 0 0;
+  font-size: calc(0.85rem + 2px);
+  color: #2e7d32;
+}
+
+.forum-page label {
+  position: static;
+  bottom: auto;
+}
+
+.forum-page textarea {
+  font-size: calc(0.9rem + 2px);
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0.45rem 0.5rem;
+  line-height: 1.35;
+  border: 1px solid #cfd8dc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background: #fff;
 }
 
 .add-comment {
-    background-color: teal;
-    color: white;
-    height: 40px;
-    width: 150px;
-    border-radius: 6px;
-    font-size: 12px;
-    margin-top: 10px;
+  background-color: teal;
+  color: white;
+  min-height: 2rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 5px;
+  font-size: calc(0.85rem + 2px);
+  margin-top: 0.45rem;
+  border: none;
+  cursor: pointer;
 }
 
-h6 {
-    font-size: 10px;
-}
-
-#forum {
-    margin-top: 65px;
-    font-size: 70px;
-}
-
-.comment-card {
-    margin-top: -10px;
-    margin-left: 20px;
-    display: inline-flex;
-    color: black;
-}
-
+/* One forum comment: body + single meta row (poster · like · count) */
 .comment-card-whole {
-    margin-top: 8px;
+  margin: 0.25rem 0 0.4rem;
+  padding: 0.35rem 0 0.2rem;
+  border-bottom: 1px solid #e8e8e8;
 }
 
-.user {
-    padding-left: 25px;
-    color: gray;
+.comment-card-whole:last-child {
+  border-bottom: none;
 }
 
-.comment-card-1 {
-    position: relative;
-    bottom: 25px;
-    left: 5px;
+.comment-card__body {
+  margin: 0 0 0.2rem;
+  font-size: calc(0.82rem + 2px);
+  line-height: 1.35;
+  color: #111;
 }
 
-.like {
-    position: relative;
-    bottom: -3px;
-    right: 8px;
-    height: 20px;
+.comment-card__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.5rem;
+  font-size: calc(0.75rem + 2px);
+  line-height: 1.3;
+}
+
+.comment-card__poster {
+  color: #555;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.comment-card__likes {
+  font-variant-numeric: tabular-nums;
+  color: #333;
+  min-width: 1ch;
 }
 
 .like-button {
-    margin-left: 10px;
-    width: 20px;
-    height: 20px;
-    display: relative;
-    margin-top: 5px;
-    text-align: left;
-    display: inline-flex;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.1rem 0.2rem;
+  margin: 0;
+  min-width: 1.5rem;
+  min-height: 1.5rem;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: #c62828;
+  cursor: pointer;
+}
 
+.like-button:hover {
+  background: #ffebee;
+}
+
+.like-icon {
+  display: block;
 }
 
 .external-link {
-    font-size: 25px;
+  font-size: calc(0.95rem + 2px);
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.external-link a {
+  color: #006699;
 }
 
 .forum-article-card {
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 10px;
-    padding-bottom: 15px;
-    padding-right: 30px;
-    margin-left: 180px;
-    margin-right: 180px;
-    margin-bottom: 50px;
-
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 0.65rem 0.85rem 0.85rem;
+  margin: 0 auto 0.85rem;
+  max-width: 100%;
+  overflow: visible;
 }
 
-.url-forum {
-    text-align: left;
-    padding-top: 20px;
-    padding-bottom: -50px;
-    padding-left: 30px;
-    padding-right: 30px;
+.forum-article-card__image {
+  display: block;
+  width: 100%;
+  max-height: 10rem;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 0.45rem;
 }
 
-
-@media screen and (max-width: 420px) {
-    .top, .top-1 {
-        text-align: center;
-        font-size: 25vw;
-    }
+#forum {
+  margin-top: 0.35rem;
+  margin-bottom: 0.5rem;
+  font-size: clamp(calc(1.2rem + 2px), calc(3.2vw + 2px), calc(1.65rem + 2px));
+  text-align: center;
+  line-height: 1.25;
 }
 
+.forum-page h6 {
+  font-size: calc(0.85rem + 2px);
+}
+
+.forum-page h4 {
+  font-size: calc(0.9rem + 2px);
+  margin: 0.35rem 0 0;
+  font-weight: 500;
+}

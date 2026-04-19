@@ -1,50 +1,31 @@
-import React, { useState } from 'react'
-import '../css/FrontPage.css'
-import {Helpers} from "../helpers"
-import myImage from './penfeather.png'
+import React, { useState } from "react";
+import "../css/FrontPage.css";
+import { saveArticle } from "../api";
+import myImage from "./penfeather.png";
 
+const Archive = ({ username, url, title, description, author }) => {
+  const [activeButton, setActiveButton] = useState(true);
 
-// let token = localStorage.getItem('token')
-// const decode = jwtDecode(token)
-
-// button component to archive article takes in data from parent component
-const Archive = ({username, link, title, excerpt, author}) =>{
-    
-    const [activeButton, setActiveButton] = useState(true)
-    const [state, setState] = useState([])
-  
-    
-    async function handleArchive() {
-        apiCall();
-
+  async function handleArchive() {
+    try {
+      setActiveButton(false);
+      await saveArticle(username, url, title, description, author);
+    } catch (e) {
+      console.log(e);
     }
+  }
 
-    //apiCall thru helper function to post article into archive table
-    async function apiCall() {
-        try {
-        setActiveButton(false);
-        const res = await Helpers.saveArticle(username, link, title, excerpt, author)
-        setState(res)
-     
+  return (
+    <button
+      type="button"
+      className="archive"
+      onClick={handleArchive}
+      style={{ backgroundColor: activeButton ? "gold" : "grey" }}
+    >
+      <img className="article-card__archive-icon" src={myImage} alt="" />
+      Archive
+    </button>
+  );
+};
 
-    }   catch (e) {
-        console.log(e)
-    }}
-
-  
-// if (decode)
-    return (
-        <>
-
-        <button className='archive' onClick={handleArchive} style={{backgroundColor: activeButton ? 'gold' : 'grey' }}><img id= 'archive' src = {myImage} alt=''></img>Archive</button>
-
-
-      
-        </>
-    )
-
-
-
-}
-
-export default Archive
+export default Archive;

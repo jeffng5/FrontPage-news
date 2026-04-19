@@ -17,8 +17,12 @@ if (process.env.NODE_ENV === "production") {
     }
   });
 } else {
-console.log('Error loading database. Please look at render.com db')
+  db = new Client({
+    connectionString: `postgresql://${USER}:${PASSWORD}@127.0.0.1:${DATABASE_PORT}/news`,
+  });
 }
 
+// Connect before running queries (see server.js).
+// Do not call .connect() here: server awaits connect then listens.
 
 module.exports = db;

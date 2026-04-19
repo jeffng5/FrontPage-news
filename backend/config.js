@@ -7,8 +7,10 @@ require("colors");
 
 const SECRET_KEY = process.env.SECRET_KEY || "secret-dev";
 
-const PORT = +process.env.PORT || 3000;
-
+const PORT = +process.env.PORT || 3001;
+const USER = process.env.USER;
+const password = process.env.PASSWORD;
+const DATABASE_PORT = process.env.DATABASE_PORT;
 // Use dev database, testing database, or via env var, production database
 function getDatabaseUri() {
   return (
@@ -27,6 +29,12 @@ console.log("News Config:".green);
 console.log("SECRET_KEY:".yellow, SECRET_KEY);
 console.log("PORT:".yellow, PORT.toString());
 console.log("BCRYPT_WORK_FACTOR".yellow, BCRYPT_WORK_FACTOR);
+if (USER && DATABASE_PORT) {
+  console.log(
+    "Database:".yellow,
+    `postgresql://${USER}:${password ? "***" : ""}@127.0.0.1:${DATABASE_PORT}/news`
+  );
+}
 console.log("---");
 
 module.exports = {

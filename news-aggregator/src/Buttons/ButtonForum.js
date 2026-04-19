@@ -1,33 +1,48 @@
-import React, { useState} from 'react'
-import '../css/FrontPage.css'
-import {Helpers} from "../helpers"
+import React, { useState } from "react";
+import "../css/FrontPage.css";
+import { postForum } from "../api";
 
+const ButtonForum = ({
+  username,
+  url,
+  title,
+  description,
+  author,
+  urlToImage,
+  image,
+}) => {
+  const [, setState] = useState([]);
+  const [buttonColor, setButtonColor] = useState(true);
 
-
-const ButtonForum = ({username, link, title, excerpt, author, media}) => {
-  
-  
-    const [state, setState] = useState([])
-    const [buttonColor, setButtonColor] = useState(true)
-
-
-    const handleForum = async() => {
-        try {
-            setButtonColor(false)
-            //using function to make backend API call to POST saved article
-            const res = await Helpers.postForum(username, link, title, excerpt,author, media)
-            setState(res)
-        
-        }
-        catch (e){
-            console.log(e)
-        }
+  const handleForum = async () => {
+    try {
+      setButtonColor(false);
+      const res = await postForum(
+        username,
+        url,
+        title,
+        description,
+        author,
+        urlToImage != null && String(urlToImage).trim() !== ""
+          ? urlToImage
+          : image
+      );
+      setState(res);
+    } catch (e) {
+      console.log(e);
     }
-    
+  };
 
-    return (
-        <button className='forum' onClick={handleForum} style={{backgroundColor: buttonColor ? 'gold' : 'grey'  }}><h6 id='button'>Post to Forum</h6></button>
-    )
-    }
+  return (
+    <button
+      type="button"
+      className="forum"
+      onClick={handleForum}
+      style={{ backgroundColor: buttonColor ? "gold" : "grey" }}
+    >
+      <p className="article-card__forum-label">Post to Forum</p>
+    </button>
+  );
+};
 
-    export default ButtonForum
+export default ButtonForum;

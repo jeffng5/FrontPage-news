@@ -1,26 +1,34 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import Login from './Login'
+import React from "react";
+import { render, fireEvent } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
+import Login from "./Login";
 
-it('renders without crashing', function() {
-  render(<Login />);
-})
+function renderLogin() {
+  return render(
+    <MemoryRouter>
+      <Login />
+    </MemoryRouter>
+  );
+}
 
-//snapshot test
-it("matches snapshot", function() {
-    const {asFragment} = render(<Login />);
-    expect(asFragment()).toMatchSnapshot();
-  });
+it("renders without crashing", function () {
+  renderLogin();
+});
 
-test('testing component', ()=> {
-    const {getByText} = render( <Login />);
-    getByText('Please Login')
-})
+it("matches snapshot", function () {
+  const { asFragment } = renderLogin();
+  expect(asFragment()).toMatchSnapshot();
+});
 
-test('login button works', ()=> {
-    const { getByText } = render(<Login/>);
-    const heading = getByText('Log In')
-    expect(heading).toHaveClass('preferences')
-    fireEvent.click(getByText('Log In'))
-    expect(heading).toBeInTheDocument();
-})
+test("testing component", () => {
+  const { getByText } = renderLogin();
+  getByText("Please Login");
+});
+
+test("login button works", () => {
+  const { getByText } = renderLogin();
+  const heading = getByText("Log In");
+  expect(heading).toHaveClass("preferences");
+  fireEvent.click(getByText("Log In"));
+  expect(heading).toBeInTheDocument();
+});

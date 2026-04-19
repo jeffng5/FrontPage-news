@@ -2,70 +2,58 @@
 
 exports[`matches snapshot 1`] = `
 <DocumentFragment>
-  <div
-    class="article"
+  <article
+    class="article-card"
   >
-    <p>
-      <img
-        alt="news"
-        class="photograph"
-      />
-    </p>
-    <h2
-      class="headline"
-      id="headline"
-    >
-      <span>
-        <a
-          target="_blank"
-        >
-          <h5
-            class="desc"
-          />
-        </a>
-      </span>
-    </h2>
-  </div>
-  <div
-    class="button-6"
-  >
-    <button
-      class="archive"
-      style="background-color: yellow;"
-    >
-      <img
-        alt=""
-        id="archive"
-        src="penfeather.png"
-      />
-      Archive
-    </button>
-  </div>
-  <div
-    class="button-6"
-  >
-    <button
-      class="forum"
-      style="background-color: aquamarine;"
-    >
-      <h6
-        id="button"
-      >
-        Post to Forum
-      </h6>
-    </button>
-  </div>
-  <div
-    class="author-2"
-  >
-    by: 
-  </div>
-  <div
-    class="line"
-  >
-    <hr
-      style="color: gray; background-color: gray; height: 3px;"
+    <div
+      class="article-card__media"
     />
-  </div>
+    <div
+      class="article-card__body"
+    >
+      <h2
+        class="article-card__title"
+      />
+    </div>
+    <div
+      class="article-card__actions"
+    >
+      <button
+        class="archive"
+        style="background-color: gold;"
+        type="button"
+      >
+        <img
+          alt=""
+          class="article-card__archive-icon"
+          src="penfeather.png"
+        />
+        Archive
+      </button>
+      <button
+        class="forum"
+        style="background-color: gold;"
+        type="button"
+      >
+        <p
+          class="article-card__forum-label"
+        >
+          Post to Forum
+        </p>
+      </button>
+    </div>
+    <p
+      class="article-card__byline"
+    >
+      by: Unknown
+    </p>
+    <div
+      class="article-card__divider"
+    >
+      <hr
+        style="color: gray; background-color: gray; height: 3px;"
+      />
+    </div>
+  </article>
 </DocumentFragment>
 `;

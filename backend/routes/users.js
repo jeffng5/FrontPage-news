@@ -20,69 +20,107 @@ router.get('/', async function (req, res, next) {
   
 })
 
-// route to post archive article into database, accessed by helper function in frontend
+// route to post archive article into database
 router.post("/frontpage", async function (req, res, next) {
-    
-    // try {
-        const {username, link, title, excerpt, author} = req.body
-        console.log(req.body)
-        
-        // const test = await db.query(`select username, url FROM archives WHERE username = $1 AND url = $2`, [username, url])
-       
-        // if (test) 
-        // { return console.log("YES IT HAS BEGUN")
-        //         }
-        // else 
-        // {
-        const addArticle = await db.query(`
-        INSERT INTO archives (username, url, title, description, author)
-        VALUES ($1, $2, $3, $4, $5)`, [username, link, title, excerpt, author]) 
-        
-      
-        let result = addArticle.rows
-        console.log(result)
-        return res.status(201).json({ result })}
-    // }
-    //  catch (e) {
-    //     return next(e)
-    // }
-  
-)
-
-// route to query archived articles, returns archives for that user 
-router.get('/archives', async function (req, res, next) {
     try {
-        let { username } = req.query
-        const results = await db.query(`SELECT title, url, description, author FROM archives WHERE username = $1`, [username]);
-
-        let articles = results.rows;
-        console.log('youve made it');
-        console.log(articles);
-        return res.json({articles});
+        const { username, url, title, description, author } = req.body;
+        if (!username || !url || !title) {
+            return res.status(400).json({
+                error: "username, url, and title are required",
+            });
+        }
+        const addArticle = await db.query(
+            `INSERT INTO archives (username, url, title, description, author)
+             VALUES ($1, $2, $3, $4, $5)
+             RETURNING id, username, url, title, description, author`,
+            [username, url, title, description, author]
+        );
+        return res.status(201).json({ article: addArticle.rows[0] });
+    } catch (e) {
+        console.log(e);
+        return next(e);
     }
-    catch (err){
-        return next(err)
-    }  
-})
+});
+
+// GET sends username as ?username= (not req.body)
+router.get("/archives", async function (req, res, next) {
+    try {
+        const username = req.query.username;
+        if (!username || String(username).trim() === "") {
+            return res.status(400).json({
+                error: "username query parameter is required",
+            });
+        }
+        const results = await db.query(
+            `SELECT title, url, description, author FROM archives WHERE username = $1`,
+            [username]
+        );
+        return res.json({ articles: results.rows });
+    } catch (err) {
+        return next(err);
+    }
+});
 
 
 router.post('/forum', async function (req, res, next) {
     try {
-        const { username, link, title, excerpt, author, media }= req.body
-    const postToForum = await db.query(`INSERT into forum (username, url, title, description, author, urlToImage) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`, [username, link, title, excerpt, author, media])
-    if (postToForum) {
-        console.log('Forum article POSTED!')}
-    return res.status(201).json(postToForum.rows)   
-    
-}
-    catch (err) { return next(err)}
+        const {
+            username,
+            url,
+            title,
+            description,
+            author,
+            urlToImage,
+            image,
+        } = req.body;
 
-})
+        const imageUrl =
+            urlToImage != null && String(urlToImage).trim() !== ""
+                ? String(urlToImage).trim()
+                : image != null && String(image).trim() !== ""
+                  ? String(image).trim()
+                  : null;
+
+        const missing = [];
+        if (username == null || String(username).trim() === "") {
+            missing.push("username");
+        }
+        if (url == null || String(url).trim() === "") {
+            missing.push("url");
+        }
+        if (title == null || String(title).trim() === "") {
+            missing.push("title");
+        }
+        if (missing.length) {
+            return res.status(400).json({
+                error: `Missing required fields: ${missing.join(", ")}`,
+            });
+        }
+
+        const postToForum = await db.query(
+            `INSERT INTO forum (username, url, title, description, author, urlToImage)
+             VALUES ($1, $2, $3, $4, $5, $6)
+             RETURNING *`,
+            [
+                String(username).trim(),
+                String(url).trim(),
+                String(title).trim(),
+                description != null ? String(description) : null,
+                author != null ? String(author) : null,
+                imageUrl,
+            ]
+        );
+        console.log(postToForum, "POST TO FORUM")
+        return res.status(201).json(postToForum.rows);
+    } catch (err) {
+        return next(err);
+    }
+});
 
 router.get('/forum', async function(req, res, next){
     try {
         const forum = await db.query(`SELECT * from forum`);
-    console.log(res.rows, "I am here too!")
+    console.log(forum.rows, "I am here too!")
     let forumArticles= forum.rows
     return res.json({forumArticles});
     }

@@ -1,0 +1,153 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <main
+    class="front-page"
+  >
+    <div
+      class="front-page__inner"
+    >
+      <nav
+        aria-label="Main"
+        class="front-page__nav links"
+      >
+        <a
+          href="/"
+        >
+          Hi tester,
+        </a>
+        <a
+          href="/users"
+        >
+          Preferences
+        </a>
+        <a
+          href="/users/frontpage"
+        >
+          FrontPage
+        </a>
+        <a
+          href="/users/forum"
+        >
+          Forum
+        </a>
+        <a
+          href="/users/archives"
+        >
+          Archives
+        </a>
+        <a
+          href="/logout"
+        >
+          Logout
+        </a>
+      </nav>
+      <header
+        class="front-page__header"
+      >
+        <h1
+          class="front-page__title title"
+        >
+          Your Front Page News
+        </h1>
+        <h2
+          class="front-page__date date"
+        >
+          4/18/2026
+        </h2>
+      </header>
+      <div
+        class="front-page__rule"
+      >
+        <hr
+          style="color: black; background-color: black; height: 5px;"
+        />
+      </div>
+      <section
+        class="front-page__articles"
+      >
+        <article
+          class="article-card"
+        >
+          <div
+            class="article-card__media"
+          />
+          <div
+            class="article-card__body"
+          >
+            <h2
+              class="article-card__title"
+            >
+              <a
+                href="https://example.com/a"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Test headline
+              </a>
+            </h2>
+            <p
+              class="article-card__description"
+            >
+              Test description
+            </p>
+          </div>
+          <div
+            class="article-card__actions"
+          >
+            <button
+              class="archive"
+              style="background-color: gold;"
+              type="button"
+            >
+              <img
+                alt=""
+                class="article-card__archive-icon"
+                src="penfeather.png"
+              />
+              Archive
+            </button>
+            <button
+              class="forum"
+              style="background-color: gold;"
+              type="button"
+            >
+              <p
+                class="article-card__forum-label"
+              >
+                Post to Forum
+              </p>
+            </button>
+          </div>
+          <p
+            class="article-card__byline"
+          >
+            by: Author
+          </p>
+          <div
+            class="article-card__divider"
+          >
+            <hr
+              style="color: gray; background-color: gray; height: 3px;"
+            />
+          </div>
+        </article>
+      </section>
+      <footer
+        class="front-page__footer"
+      >
+        <h2
+          class="closing"
+        >
+          <a
+            href="/users"
+          >
+            Go back to Preferences Page
+          </a>
+        </h2>
+      </footer>
+    </div>
+  </main>
+</DocumentFragment>
+`;

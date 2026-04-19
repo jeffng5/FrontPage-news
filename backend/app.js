@@ -46,14 +46,8 @@ const { createToken } = require('./helpers/tokens')
 // app.use(function (req, res, next) {
 //     return next(new NotFoundError());
 //   });
-  
-const password = process.env.PASSWORD
-const PORT = process.env.DATABASE_PORT
-const USER = process.env.USER
 
-const pgp = require('pg-promise')
 const db = require('./db.js');
-db.connect();
 
 
 /////////////////////////// BASIC ROUTES for register and login ///////////////////////////////
@@ -73,9 +67,8 @@ app.post('/register', async (req,res, next)=> {
         INSERT INTO users (username, password, email)
         VALUES ($1, $2, $3)
         RETURNING *`, [username, hashedPwd, email]);
-            console.log('INSERTED RECORD!!!')
-        await bcrypt.compare(password, hashedPwd) 
-            const user = result.rows[0].username;
+        const row = result.rows[0];
+        const user = row.username;
             const token= createToken(user)
             let ans = res.status(201).json({user, token}) 
             console.log(ans)
@@ -93,22 +86,25 @@ app.get('/login', async (req, res, next) => {
     try {
 
         const {username, password} = req.query;
-        console.log(req.query)
+   
 
         const results = await db.query(
         `SELECT username, password FROM users
         WHERE username = $1`, [username]);
-            console.log(results.rows[0])
-        const user = results.rows[0].username;
-        const pwd = results.rows[0].password;
-            console.log('anything')
-        // const validPasswordResult = await bcrypt.compare(password, pwd)
-        // console.log(validPasswordResult)
+         
+        const row = results.rows[0];
+        if (!row) {
+            return res.status(401).json({ error: "Username and/or password do not match" });
+        }
+        const user = row.username;
+        const pwd = row.password;
+
         if (user && pwd) {
               if (await bcrypt.compare(password, pwd)) {
                 const token = createToken(user)
                 let result = res.status(201).json({user, token})
                 return result
+
                 }
             
             else {

@@ -1,0 +1,254 @@
+/* /users (Preferences) — centered layout; overrides semantic.css positioning */
+
+.preferences-page {
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 1.5rem 1rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: #fff;
+}
+
+.preferences-page *,
+.preferences-page *::before,
+.preferences-page *::after {
+  box-sizing: border-box;
+}
+
+.preferences-page__nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.65rem 1.15rem;
+  margin-bottom: 1.75rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 48rem;
+  background: #fafafa;
+}
+
+.preferences-page__nav a {
+  color: #006699;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: clamp(0.9rem, 2vw, 1.05rem);
+}
+
+.preferences-page__nav a:hover {
+  text-decoration: underline;
+}
+
+.preferences-page__title {
+  font-size: clamp(1.65rem, 4vw, 2.5rem);
+  margin: 0 0 0.75rem;
+  max-width: 36rem;
+  font-family: var(--app-font, "Nunito", sans-serif);
+}
+
+.preferences-page__lead,
+.preferences-page .topics {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  margin: 0 auto 1.25rem;
+  max-width: 34rem;
+  width: 100%;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.preferences-page__current-label {
+  display: block;
+  margin-bottom: 0.35rem;
+  text-align: center;
+  width: 100%;
+}
+
+.preferences-page__current-value {
+  color: #228b22;
+  font-weight: 700;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  word-break: break-word;
+  text-align: center;
+  display: block;
+  width: 100%;
+}
+
+.preferences-page__instruction {
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  margin: 0 auto 1rem;
+  max-width: 34rem;
+  width: 100%;
+  text-align: center;
+}
+
+.preferences-page__form {
+  width: 100%;
+  max-width: min(100%, 48rem);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.preferences-page__checkboxes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 1.25rem;
+  row-gap: 0.55rem;
+  width: 100%;
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 0;
+  justify-items: stretch;
+}
+
+@media (max-width: 720px) {
+  .preferences-page__checkboxes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .preferences-page__checkboxes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 0.65rem;
+    row-gap: 0.45rem;
+    /* Narrow fixed-ish block, centered on small screens */
+    width: min(100%, 22.5rem);
+    max-width: min(100%, 22.5rem);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 0.5rem;
+    justify-items: stretch;
+  }
+
+  .preferences-page__check-label {
+    font-size: 0.9rem;
+  }
+}
+
+.preferences-page__checkbox {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+}
+
+.preferences-page__check-label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  line-height: 1.35;
+  cursor: pointer;
+  text-align: left;
+  position: static;
+}
+
+.preferences-page__check-label input[type="checkbox"] {
+  width: 1.05rem;
+  height: 1.05rem;
+  flex-shrink: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.preferences-page__separator {
+  margin: 0.75rem 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  font-family: var(--app-font, "Nunito", sans-serif);
+}
+
+.preferences-page__wildcard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 22rem;
+}
+
+.preferences-page__wildcard label {
+  position: static;
+  font-size: 0.95rem;
+}
+
+.preferences-page__wildcard input {
+  position: static;
+  width: 100%;
+  max-width: 22rem;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.preferences-page__search-display {
+  margin: 0.15rem 0 0;
+  padding: 0.35rem 0.5rem;
+  width: 100%;
+  max-width: 22rem;
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.35;
+  color: #333;
+  background: #f0f4f8;
+  border: none;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.preferences-page__search-display-label {
+  font-weight: 600;
+  color: #555;
+}
+
+.preferences-page__search-display-value {
+  font-weight: 700;
+  color: #0d47a1;
+  word-break: break-word;
+}
+
+.preferences-page__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.preferences-page .preferences,
+.preferences-page .save {
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  margin: 0 !important;
+  border: none;
+  box-shadow: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.preferences-page .preferences:focus-visible,
+.preferences-page .save:focus-visible {
+  outline: 2px solid #0a6f8a;
+  outline-offset: 3px;
+}
+
+.preferences-page__actions a {
+  text-decoration: none;
+}

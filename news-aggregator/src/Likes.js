@@ -1,23 +1,31 @@
-import React, {useState} from 'react'
-import {Helpers} from './helpers'
-import './css/forum.css'
+import React, { useState, useEffect } from "react";
+import { getPostLike } from "./api";
+import "./css/forum.css";
 
-//component to fetch like data from comments table
-const Likes =({comment}) =>{
-    console.log(comment)
-    const [likeCount, setLikeCount] = useState()
-    // API call to backend to fetch amt of likes per comment
-    async function getLikeCount() {
-    const res = await Helpers.getPostLike(comment)
-     
-        setLikeCount(res.thing[0].likes)
+const Likes = ({ comment, bump = 0 }) => {
+  const [likeCount, setLikeCount] = useState(null);
+
+  useEffect(() => {
+    if (comment == null || String(comment).trim() === "") {
+      setLikeCount(null);
+      return;
     }
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await getPostLike(comment);
+        const n = res?.thing?.[0]?.likes;
+        if (!cancelled) setLikeCount(n != null ? n : 0);
+      } catch {
+        if (!cancelled) setLikeCount(null);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [comment, bump]);
 
-    getLikeCount()
-    return (
-    <h4 className='comment-card-1'>{likeCount}</h4>
-)}
+  return <span className="comment-card__likes">{likeCount ?? "—"}</span>;
+};
 
-
-
-export default Likes
+export default Likes;

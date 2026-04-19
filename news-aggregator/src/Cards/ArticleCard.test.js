@@ -14,5 +14,18 @@ it("matches snapshot", function() {
 
   test('testing component', ()=> {
     const {getByText} = render( <ArticleCard />);
-    getByText('by:')
+    getByText(/by:/i)
 })
+
+test("byline uses article-card__byline for layout", () => {
+  const { getByText } = render(
+    <ArticleCard
+      title="T"
+      url="https://example.com"
+      description="D"
+      author="Ann"
+      urlToImage=""
+    />
+  );
+  expect(getByText(/by:/)).toHaveClass("article-card__byline");
+});

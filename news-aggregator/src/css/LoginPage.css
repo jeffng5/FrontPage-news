@@ -1,0 +1,100 @@
+/* /login — centered layout (overrides shared semantic.css positioning) */
+
+.login-page {
+  box-sizing: border-box;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2rem 1rem 3rem;
+  text-align: center;
+}
+
+.login-page #login-welcome {
+  margin: 0;
+  padding: 0 0.5rem;
+  text-align: center;
+  width: 100%;
+  max-width: 28rem;
+  flex-shrink: 0;
+}
+
+.login-page .ui.form {
+  margin: clamp(2.5rem, 14vh, 6rem) 0 0 !important;
+  margin-right: 0 !important;
+  width: 100%;
+  max-width: 24rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+.login-page .form-entry {
+  position: static;
+  left: auto;
+  width: 100%;
+  max-width: 22rem;
+  padding-bottom: 0;
+  margin: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-page__error {
+  margin-top: 0.25rem !important;
+  margin-bottom: 0.25rem !important;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.login-page .form-entry .field,
+.login-page .form-entry .ui.input,
+.login-page .form-entry .ui.input > input {
+  width: 100%;
+  max-width: 22rem;
+}
+
+.login-page .log-in-form-1,
+.login-page__actions {
+  position: static;
+  bottom: auto;
+  width: 100%;
+  max-width: 22rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+}
+
+.login-page .preferences {
+  position: static;
+  top: auto;
+  left: auto;
+  margin: 0;
+  border: none;
+  box-shadow: none;
+  appearance: none;
+}
+
+.login-page .preferences:focus-visible {
+  outline: 2px solid #0a6f8a;
+  outline-offset: 3px;
+}
+
+.login-page .ui.message {
+  width: 100%;
+  max-width: 22rem;
+  margin: 0 !important;
+  text-align: left;
+}
+
+.login-page__error .ui.message {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}

@@ -1,0 +1,74 @@
+/* /signup — centered layout (overrides shared semantic.css positioning) */
+
+.signup-page {
+  box-sizing: border-box;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem 3rem;
+  text-align: center;
+}
+
+.signup-page #login-welcome {
+  margin: 0 0 1.5rem;
+  text-align: center;
+  width: 100%;
+  max-width: 28rem;
+}
+
+.signup-page .ui.form {
+  margin: 0 !important;
+  margin-right: 0 !important;
+  width: 100%;
+  max-width: 24rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signup-page .sign-in {
+  position: static;
+  left: auto;
+  width: 100%;
+  max-width: 22rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding-bottom: 0.5rem;
+}
+
+.signup-page .sign-in .field,
+.signup-page .sign-in .ui.input,
+.signup-page .sign-in .ui.input > input {
+  width: 100%;
+  max-width: 22rem;
+}
+
+.signup-page .log-in-form {
+  position: static;
+  bottom: auto;
+  left: auto;
+  width: 100%;
+  max-width: 22rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.signup-page .preferences {
+  position: static;
+  top: auto;
+  left: auto;
+  margin: 0;
+  border: none;
+  box-shadow: none;
+  appearance: none;
+}
+
+.signup-page .preferences:focus-visible {
+  outline: 2px solid #0a6f8a;
+  outline-offset: 3px;
+}

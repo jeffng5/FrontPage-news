@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <main
+    class="welcome-page"
+  >
+    <h1
+      class="welcome"
+    >
+      Welcome to
+    </h1>
+    <p
+      class="news-title"
+    >
+      <b
+        class="title"
+      >
+        YourFrontPageNews.com
+      </b>
+    </p>
+    <h2
+      class="welcome-page__tagline"
+    >
+      <span
+        class="welcome-page__line"
+      >
+        your curated articles of your news preferences
+      </span>
+      <span
+        class="welcome-page__line"
+      >
+        from the 
+        <strong
+          class="welcome-page__emphasis"
+        >
+          top news publications
+        </strong>
+      </span>
+    </h2>
+    <nav
+      aria-label="Account"
+      class="welcome-page__actions"
+    >
+      <a
+        class="welcome-page__link"
+        href="/login"
+      >
+        <p
+          class="top"
+        >
+          Login
+        </p>
+      </a>
+      <a
+        class="welcome-page__link"
+        href="/signup"
+      >
+        <p
+          class="top-1"
+        >
+          Register
+        </p>
+      </a>
+    </nav>
+  </main>
+</DocumentFragment>
+`;

@@ -1,264 +1,228 @@
+/**
+ * Shared class hooks for auth, preferences, nav, and headings.
+ * No bare element selectors — layout lives in *Page.css, FrontPage.css, forum.css, App.css.
+ */
 
-
-form {
-    margin-top: 30px;
-    margin-right: 1200px;
-    display: inline-block;
-    width: 500px;
-    height: 40px;
-    font-size: 27px;
-
-}
-
-.selection {
-    display: block;
-    
-
-}
-
-.button {
-    margin-top: 10px;
-
-}
-
+/* ----- Buttons ----- */
+.preferences,
 button.save {
-    font-size: 17px;
-    border-radius: 5px;
-    background-color: teal;
-    color: white;
-    padding: 3px;
-    font-weight: 550;
-    height: 33px;
-    width: 250px;
-    position: relative;
-    top: 500px;
-    left: 590px;
-
+  font-size: 17px;
+  border-radius: 8px;
+  background-color: teal;
+  color: #fff;
+  padding: 0.45rem 1rem;
+  font-weight: 600;
+  min-height: 2.25rem;
+  text-align: center;
+  cursor: pointer;
 }
 
 .preferences {
-    font-size: 17px;
-    border-radius: 5px;
-    background-color: teal;
-    color: white;
-    padding: 3px;
-    font-weight: 550;
-    height: 35px;
-    width: 200px;
-    text-align: center;
-    position: relative;
-    top: 505px;
-    left: 600px;
-
+  width: 200px;
+  max-width: 100%;
 }
 
-button#log {
-    text-align: center;
-    position: relative;
-    top: 500px;
-    left: -15px;
+button.save {
+  min-width: 12rem;
+  max-width: 100%;
 }
 
+#log {
+  background-color: teal;
+  color: #fff;
+  border-radius: 8px;
+  width: min(100%, 11rem);
+  min-height: 2.25rem;
+  text-align: center;
+  padding: 0.35rem 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ----- Nav rows (Forum, Saved; combined with page wrappers elsewhere) ----- */
 .links {
-    text-align: right;
-    margin-top: 25px;
-    display: inline-grid;
-    font-size: 31px;
-    grid-template-columns: 200px 250px 250px 250px 250px 300px;
-    width: 100%;
-    z-index: 100;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.65rem 1.15rem;
+  text-align: center;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+}
 
+.links a {
+  color: #006699;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.links a:hover {
+  text-decoration: underline;
 }
 
 .frontpage-links {
-    text-align: right;
-    margin-top: 25px;
-    display: inline-grid;
-    font-size: 25px;
-    grid-template-columns: 475px 200px 200px 200px 200px 200px;
-    width: 100%;
-    /* margin-bottom: -45px ; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
 }
 
-.intro {
-    font-size: 30px;
-    font-family: Helvetica;
-
-}
-
-.form-entry {
-    position: relative;
-    left: 600px;
-    text-align: center;
-    padding-bottom: 20px;
-
-}
-
-.log-in-form {
-    position: relative;
-    bottom: 460px;
-    left: 600px;
-}
-
-.log-in-form-1 {
-    position: relative;
-    bottom: 460px;
-
+/* ----- Form hooks (defaults only; LoginPage / SignUpPage override layout) ----- */
+.form-entry,
+.log-in-form,
+.log-in-form-1,
+.sign-in {
+  display: block;
 }
 
 .button-preferences {
-    text-align: center;
-    padding: 12px;
-    position: relative;
-
+  padding: 0.5rem 0;
+  text-align: center;
 }
 
-#username-error-message {
-    position: relative;
-
-
+.selection {
+  display: block;
 }
 
-h1.prefs {
-    font-size: 55px;
-    font-family: Helvetica;
-    text-align: center;
+/* ----- Typography / headings ----- */
+h1.prefs,
+#login-welcome {
+  font-family: var(--app-font, "Nunito", system-ui, sans-serif);
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  text-align: center;
+  margin: 0;
 }
 
-.forum {
-    font-family: Helvetica;
-    font-size: 55px;
+h1.forum {
+  font-family: var(--app-font, "Nunito", system-ui, sans-serif);
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  text-align: center;
+  margin: 0.5rem 0 1rem;
 }
 
 .separator {
-    text-align: center;
-    margin-left: 840px;
-    margin-top: -30px;
-    margin-bottom: -400px;
+  text-align: center;
+  margin: 1rem auto;
 }
 
+h3.topics,
 .topics {
-    font-size: 25px;
-    font-family: Helvetica;
-    text-align: center;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-family: var(--app-font, "Nunito", system-ui, sans-serif);
+  text-align: center;
 }
 
+h3.color,
 .color {
-    color: green;
-    font-size: 28px;
-    font-family: Helvetica;
+  color: #228b22;
+  font-weight: 700;
 }
 
-
-.welcome {
-    font-size: 80px;
-    font-family: Helvetica;
+h1.welcome {
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-family: var(--app-font, "Nunito", system-ui, sans-serif);
+  text-align: center;
+  margin: 0;
 }
 
-p {
-    color: grey;
-    font-size: 24px;
+.intro {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-family: var(--app-font, "Nunito", system-ui, sans-serif);
 }
 
-p.header {
-    color: gray;
-    font-size: 24px;
-}
-
-label {
-    position: relative;
-    font-size: 14px;
-    font-weight: 450;
-}
-
-#login-welcome {
-    font-size: 55px;
-    font-family: Helvetica;
-
-}
-
-.sign-in {
-    position: relative;
-    left: 600px;
-    text-align: center;
-}
-
-span {
-    display: grid;
-    position: relative;
-    top: 0px;
-    margin-left: 750px;
-}
-
-
-h5 {
-    display: inline-grid;
-    text-align: center;
-    position: relative;
-    left: 320px;
-    margin-right: 40px;
-    margin-top: 15px;
-}
-
-input {
-    position: relative;
-
+/* ----- Misc ----- */
+.error-page {
+  margin: 3rem auto;
+  max-width: 40rem;
+  padding: 1.5rem;
+  text-align: center;
+  font-family: var(--app-font, "Nunito", system-ui, sans-serif);
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  line-height: 1.5;
 }
 
 .anything {
+  font-size: 1rem;
+}
+
+#username-error-message {
+  position: relative;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .form-entry {
     position: relative;
-    top: 500px;
-    right: 42px;
-    font-size: 25px;
+    left: 0;
+  }
+
+  .preferences {
+    position: relative;
+    left: 0;
+    background-color: teal;
+  }
+
+  .sign-in {
+    position: relative;
+    left: 0;
+  }
+
+  #log {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .selection {
+    display: block;
+    position: relative;
+    left: 0;
+  }
+
+  .separator,
+  .anything,
+  .button-preferences {
+    position: relative;
+    left: 0;
     text-align: center;
+  }
+
+  .links {
+    display: flex;
+  }
 }
 
-.error-page {
-    margin-top: 200px;
+/* Preferences (/users MainComponents): topic checkboxes — 3 columns on desktop */
+.preferences-topics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 1.25rem;
+  row-gap: 0.65rem;
+  width: 100%;
+  max-width: 42rem;
+  margin: 0 auto 1rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  justify-items: start;
+  text-align: left;
 }
 
+.preferences-topics-grid > h5 {
+  margin: 0;
+  display: block;
+  position: static;
+  left: auto;
+  width: 100%;
+}
 
-@media only screen and (min-device-width : 320px ) and (max-device-width: 480px) {
+@media (max-width: 720px) {
+  .preferences-topics-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
 
-    .form-entry {
-    position: relative;
-    left: 0px;
-
-    }
-    .preferences {
-        position: relative;
-        left: 0px;
-    }
-
-    .sign-in {
-        position: relative;
-        left: 0px;
-    }
-
-    #log {
-        margin-left: -430px;
-        margin-right: 1900px;
-    }
-
-    .selection {
-        display: block;
-        position: relative;
-        left: -300px;
-    }
-    
-    .separator, .anything, .button-preferences {
-        position: relative;
-        left: -700px;
-        text-align: center;
-    }
-
-    .preferences {
-        background-color: teal;
-        position: relative;
-        left: 600px;
-
-    }
-    .links {
-        display: '-moz-inline-box';
-    }
-    }
+@media (max-width: 480px) {
+  .preferences-topics-grid {
+    grid-template-columns: 1fr;
+    max-width: 22rem;
+    padding: 0 0.5rem;
+  }
+}
