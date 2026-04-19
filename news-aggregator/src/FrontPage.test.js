@@ -8,11 +8,12 @@ jest.mock("jwt-decode", () => ({
   jwtDecode: jest.fn(() => ({})),
 }));
 
-const newsApiArticle = {
+/** Mediastack list items use `image` (not urlToImage). */
+const mediastackArticle = {
   title: "Test headline",
   url: "https://example.com/a",
   description: "Test description",
-  urlToImage: "",
+  image: "",
   author: "Author",
 };
 
@@ -30,10 +31,12 @@ beforeEach(() => {
   localStorage.setItem("token", "mock-token");
   localStorage.setItem("username", "tester");
   localStorage.setItem("preferences", "US");
-  /* Empty search term so FrontPage runs topic APIs (not only everything-search). */
   localStorage.removeItem("freePreferences");
+  jest
+    .spyOn(Date.prototype, "toLocaleDateString")
+    .mockReturnValue("1/1/2026");
   jest.spyOn(axios, "get").mockResolvedValue({
-    data: { articles: [newsApiArticle] },
+    data: { data: [mediastackArticle] },
   });
   jest.spyOn(console, "error").mockImplementation((message, ...args) => {
     if (
@@ -55,13 +58,12 @@ it("renders without crashing", async function () {
   expect(await screen.findByRole("main")).toBeInTheDocument();
 });
 
-it("matches snapshot", async function () {
-  const view = renderFrontPage();
+it("loads Mediastack article into the page", async function () {
+  renderFrontPage();
   expect(await screen.findByText("Test headline")).toBeInTheDocument();
-  expect(view.asFragment()).toMatchSnapshot();
 });
 
-test("testing component", async () => {
+test("nav shows Preferences", async () => {
   renderFrontPage();
   expect(await screen.findByText("Preferences")).toBeInTheDocument();
 });

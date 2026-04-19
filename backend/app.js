@@ -12,6 +12,10 @@ app.use(express.json());
 app.use(cors());
 
 const authorization = (req, res, next ) => {
+    // CORS preflight has no Authorization header; must not 401 or the real request never runs
+    if (req.method === "OPTIONS" || req.method === "HEAD") {
+        return next();
+    }
     if (req.originalUrl.includes("login") || req.originalUrl.includes("register") || req.originalUrl.includes("comments")){
         return next()
     }

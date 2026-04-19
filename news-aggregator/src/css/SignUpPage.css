@@ -10,6 +10,11 @@
   text-align: center;
 }
 
+.signup-page .links {
+  flex-shrink: 0;
+  margin-bottom: 1rem;
+}
+
 .signup-page #login-welcome {
   margin: 0 0 1.5rem;
   text-align: center;

@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../css/forum.css'
 import Comments from '../Comments'
 import Comment from '../Comment'
 
 // component to add structure into each article 
 const ForumArticleCard = ({title, description, url, author, likes, id}) =>{
-
+    const [commentsRefresh, setCommentsRefresh] = useState(0)
 
     return (
         <>
@@ -15,8 +15,8 @@ const ForumArticleCard = ({title, description, url, author, likes, id}) =>{
         <p className='author-forum-article'>-Author: {author}</p>
 
         
-        <p className='commentary'><Comments id={id} /></p> 
-        <p className= 'commentary'><Comment id={id}/></p>
+        <p className='commentary'><Comments id={id} refreshVersion={commentsRefresh} /></p> 
+        <p className= 'commentary'><Comment id={id} onCommentPosted={() => setCommentsRefresh((n) => n + 1)} /></p>
         </p>
         </>
     

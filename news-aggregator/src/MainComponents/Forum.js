@@ -5,9 +5,6 @@ import { useNavigate } from 'react-router-dom'
 import { Helpers } from '../helpers'
 import ForumArticleCard from '../Cards/ForumArticleCard'
 import { Link } from 'react-router-dom'
-import snoopy from './snoopy.jpg'
-
-
 
 //forum component
 const Forum = () => {
@@ -28,73 +25,60 @@ const Forum = () => {
     const navigate = useNavigate()
     let username = localStorage.getItem('username')
     const [state, setState] = useState([])
-    const [userLoggedIn, setUserLoggedIn] = useState(false)
-    const [isLoading, setIsLoading] = useState(true)
+    const [userLoggedIn, setUserLoggedIn] = useState(() =>
+        Boolean(localStorage.getItem('token'))
+    )
 
     useEffect(() => {
         getForumArticles();
         checkToken();
     }, [])
 
-    // helper function to get all articles in forum table
     async function getForumArticles() {
-        let res = await Helpers.getForum();
-        setState(res.forumArticles);
-    }
-    console.log(state)
-
-    async function loading() {
-        setIsLoading(false)
-
-    }
-    setTimeout(loading, 2000)
-
-    if (isLoading) { return (
-        <>
-        <h1 className='snoopy'>Fetching News...</h1><img src = {snoopy} alt ='snoopy'/> </>) }
-
-    else {
-        if (userLoggedIn && user) {
-            return (
-
-                <>
-                    <div className='links'>
-                        <Link to="">Hi {username},</Link>
-                        <Link to="/users">Preferences</Link>
-                        <Link to="/users/frontpage">FrontPage</Link>
-                        <Link to="/users/forum">Forum</Link>
-                        <Link to="/users/archives">Archives</Link>
-                        <Link to="/logout">Logout</Link>
-                    </div>
-                    <h1 id='forum'>Welcome to the News Forum</h1>
-
-                    {state.map(c => (
-                        <ForumArticleCard
-                            key={c.id}
-                            title={c.title}
-                            description={c.summary}
-                            urlToImage={c.media}
-                            author={c.author}
-                            url={c.url}
-                            likes={c.likes}
-                            id={c.id}
-                        />
-
-                    ))}
-
-                    <div className='external-link'>
-                        <Link to='/users/frontpage'>Go back to your Front Page</Link>
-                    </div>
-                </>
-            )
+        try {
+            const res = await Helpers.getForum();
+            setState(Array.isArray(res?.forumArticles) ? res.forumArticles : []);
+        } catch (e) {
+            console.error(e);
+            setState([]);
         }
-
-        else {
-            navigate('/')
-
-        }
-
     }
 
+    if (userLoggedIn && user) {
+        return (
+            <>
+                <nav className="links" aria-label="Main">
+                    <Link to="">Hi {username},</Link>
+                    <Link to="/users">Preferences</Link>
+                    <Link to="/users/frontpage">FrontPage</Link>
+                    <Link to="/users/forum">Forum</Link>
+                    <Link to="/users/archives">Archives</Link>
+                    <Link to="/logout">Logout</Link>
+                </nav>
+                <h1 id='forum'>Welcome to the News Forum</h1>
+
+                {state.map(c => (
+                    <ForumArticleCard
+                        key={c.id}
+                        title={c.title}
+                        description={c.summary}
+                        urlToImage={c.media}
+                        author={c.author}
+                        url={c.url}
+                        likes={c.likes}
+                        id={c.id}
+                    />
+
+                ))}
+
+                <div className='external-link'>
+                    <Link to='/users/frontpage'>Go back to your Front Page</Link>
+                </div>
+            </>
+        )
+    }
+
+    navigate('/')
+    return null
 }
 export default Forum

@@ -112,7 +112,7 @@ const Preferences = () => {
       <>
 
 
-        <div className='links'>
+        <nav className="links" aria-label="Main">
           <Link to="">Hi {user},</Link>
           <Link to="/users">Preferences</Link>
           <Link to='/users/frontpage'>FrontPage</Link>
@@ -121,7 +121,7 @@ const Preferences = () => {
           <Link to="/users/archives">Archives</Link>
           <Link to="/logout">Logout</Link>
 
-        </div>
+        </nav>
         <h1 className='prefs'>News Topic Preferences</h1>
 
         <h3 className='topics'> Your current Topics Are:</h3> <h3 className='color'>{pref}</h3>

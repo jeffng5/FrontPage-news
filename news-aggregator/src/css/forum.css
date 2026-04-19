@@ -7,9 +7,8 @@
 }
 
 .forum-page .links {
-  gap: 0.35rem 0.65rem;
-  font-size: clamp(calc(0.82rem + 2px), calc(1.6vw + 2px), calc(0.95rem + 2px));
-  margin-bottom: 0.35rem;
+  margin-bottom: 1.35rem;
+  font-size: clamp(calc(0.85rem + 2px), calc(1.65vw + 2px), calc(1rem + 2px));
 }
 
 .url {
@@ -49,6 +48,9 @@
   padding-left: 0;
   font-size: calc(0.8rem + 2px);
   margin: 0.35rem 0 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 /* Comment form: full box so top border is not lost to margin-collapse / overlap */
@@ -65,10 +67,45 @@
   box-sizing: border-box;
   position: relative;
   z-index: 1;
+  width: 100%;
+  max-width: 100%;
 }
 
-.commentary--form form {
+.commentary--form form,
+.commentary form {
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.55rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Full-width textarea on all forum routes (MainComponents forum has no .forum-page) */
+.commentary textarea {
+  font-size: calc(0.9rem + 2px);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0.45rem 0.5rem;
+  line-height: 1.35;
+  border: 1px solid #cfd8dc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background: #fff;
+  display: block;
+  flex-shrink: 0;
+}
+
+.commentary form .add-comment {
+  margin-top: 0;
+  width: auto;
+  max-width: 100%;
+  align-self: flex-start;
+  box-sizing: border-box;
 }
 
 .comment-form__status {
@@ -80,19 +117,6 @@
 .forum-page label {
   position: static;
   bottom: auto;
-}
-
-.forum-page textarea {
-  font-size: calc(0.9rem + 2px);
-  width: 100%;
-  max-width: 100%;
-  margin: 0;
-  padding: 0.45rem 0.5rem;
-  line-height: 1.35;
-  border: 1px solid #cfd8dc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  background: #fff;
 }
 
 .add-comment {

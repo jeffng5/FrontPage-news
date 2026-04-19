@@ -1,20 +1,31 @@
-import React from 'react'
-import '../css/App.css'
+import React from "react";
+import "../css/FrontPage.css";
+import ColoredLineThin from "../SmallComponents/ColoredLineThin";
 
-const ArchiveArticleCard = ({title, url, description, author}) => {
-
+/** Matches Front Page article cards: title link, description, byline, gray rule. */
+const ArchiveArticleCard = ({ title, url, description, author }) => {
   return (
-    <article className="divider-card">
-      <h2 className="archive-card archive-card__title">Title: {title}</h2>
-      <p className="archive-card">Description: {description}</p>
-      <p className="archive-card">
-        <a href={url} target="_blank" rel="noopener noreferrer">
-          {url}
-        </a>
-      </p>
-      <p className="archive-card-1">By: {author}</p>
+    <article className="article-card">
+      <div className="article-card__body">
+        <h2 className="article-card__title">
+          {url ? (
+            <a href={url} target="_blank" rel="noopener noreferrer">
+              {title}
+            </a>
+          ) : (
+            title
+          )}
+        </h2>
+        {description ? (
+          <p className="article-card__description">{description}</p>
+        ) : null}
+      </div>
+      <p className="article-card__byline">by: {author || "Unknown"}</p>
+      <div className="article-card__divider">
+        <ColoredLineThin color="gray" />
+      </div>
     </article>
   );
-}
+};
 
-export default ArchiveArticleCard
+export default ArchiveArticleCard;

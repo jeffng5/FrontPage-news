@@ -3,9 +3,6 @@ import { Helpers } from "../helpers"
 import { jwtDecode } from "jwt-decode"
 import ArchiveArticleCard from "../Cards/ArchiveArticleCard"
 import { Link, useNavigate } from 'react-router-dom'
-import snoopy from './snoopy.jpg'
-
-
 
 //display archives 
 const Saved = () => {
@@ -24,9 +21,9 @@ const Saved = () => {
 
   const navigate = useNavigate()
   const [articles, setArticles] = useState([])
-  const [userLoggedIn, setUserLoggedIn] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
-
+  const [userLoggedIn, setUserLoggedIn] = useState(() =>
+    Boolean(localStorage.getItem('token'))
+  )
 
   useEffect(() => {
     archiveResults()
@@ -34,61 +31,46 @@ const Saved = () => {
   }, [])
 
   async function archiveResults() {
-
-    console.log(username)
-    //helper function to query archives
-
-    const res = await Helpers.getArticles(username)
-
-    console.log(res)
-    // res not returning anything
-    setArticles(res.articles)
-
-
-  }
-
-  async function loading() {
-    setIsLoading(false)
-
-  }
-  setTimeout(loading, 2000)
-
-  if (isLoading) { return (
-    <>
-    <h1 className='snoopy'>Fetching News...</h1><img src = {snoopy} alt ='snoopy'/> </>) }
-
-  else {
-    if (userLoggedIn && username) {
-      return (
-        <>
-          <div className='links'>
-            <Link to="">Hi {username},</Link>
-            <Link to="/users">Preferences</Link>
-            <Link to="/users/frontpage">FrontPage</Link>
-            <Link to="/users/forum">Forum</Link>
-            <Link to="/users/archives">Archives</Link>
-            <Link to="/logout">Logout</Link>
-
-          </div>
-          <h1 className='archive-page'>YOUR ARCHIVE PAGE</h1>
-
-          {articles.map(c => (<ArchiveArticleCard title={c.title}
-            url={c.url}
-            description={c.description}
-            author={c.author} />))
-          }
-        </>
-      )
-    }
-    else {
-      navigate('/')
-
+    try {
+      const res = await Helpers.getArticles(username)
+      setArticles(Array.isArray(res?.articles) ? res.articles : [])
+    } catch (e) {
+      console.error(e)
+      setArticles([])
     }
   }
+
+  if (userLoggedIn && username) {
+    return (
+      <>
+        <nav className="links" aria-label="Main">
+          <Link to="">Hi {username},</Link>
+          <Link to="/users">Preferences</Link>
+          <Link to="/users/frontpage">FrontPage</Link>
+          <Link to="/users/forum">Forum</Link>
+          <Link to="/users/archives">Archives</Link>
+          <Link to="/logout">Logout</Link>
+
+        </nav>
+        <h1 className='archive-page'>YOUR ARCHIVE PAGE</h1>
+
+        <section className="front-page__articles">
+          {articles.map((c, i) => (
+            <ArchiveArticleCard
+              key={c.url || `archive-${i}`}
+              title={c.title}
+              url={c.url}
+              description={c.description}
+              author={c.author}
+            />
+          ))}
+        </section>
+      </>
+    )
+  }
+
+  navigate('/')
+  return null
 }
-
-
-
-
 
 export default Saved;

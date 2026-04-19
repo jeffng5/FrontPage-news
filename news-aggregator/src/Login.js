@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import "../css/semantic.css";
-import "../css/LoginPage.css";
+import "./css/semantic.css";
+import "./css/LoginPage.css";
 import { FormInput, Form, Message } from "semantic-ui-react";
-import { loginUser } from "../api";
-import { useNavigate, Link } from "react-router-dom";
+import { loginUser } from "./api";
+import { useNavigate } from "react-router-dom";
+
+
 
 const Login = () => {
-  const navigate = useNavigate();
-  const [formData, setFormData] = useState([]);
-  const [errorState, setErrorState] = useState({
-    visible: false,
-    message: "",
-  });
+    //redirect to /users onCLick
+    const navigate = useNavigate()
+    const [formData, setFormData] = useState([])
+    const [errorState, setErrorState] = useState({visible: false, message: ''})
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -53,10 +53,6 @@ const Login = () => {
 
   return (
     <main className="login-page">
-      <nav className="links login-page__nav" aria-label="Auth">
-        <Link to="/">Home</Link>
-        <Link to="/signup">Register</Link>
-      </nav>
       <h1 id="login-welcome">Please Login</h1>
 
       <Form error={errorState.visible}>

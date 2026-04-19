@@ -26,10 +26,10 @@ test("testing component", () => {
 });
 
 test("sign up button works", () => {
-  const { getByText } = renderSignUp();
-  const btn = getByText("Sign In");
-  expect(btn).toHaveClass("preferences");
+  const { getByRole } = renderSignUp();
+  const btn = getByRole("button", { name: /sign in/i });
+  expect(btn).toHaveAttribute("id", "log");
 
-  fireEvent.click(getByText("Sign In"));
+  fireEvent.click(btn);
   expect(btn).toBeInTheDocument();
 });

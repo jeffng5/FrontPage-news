@@ -50,14 +50,14 @@ if (userLoggedIn && user)
 {
 return (
 <main className="forum-page">
-<div className='links'>
+<nav className="links" aria-label="Main">
         <Link to="/">Hi {username},</Link>
         <Link to = "/users">Preferences</Link>
         <Link to = '/users/frontpage'>FrontPage</Link>
         <Link to = "/users/forum">Forum</Link>
         <Link to = "/users/archives">Archives</Link>
         <Link to = "/logout">Logout</Link>
-    </div>
+    </nav>
 <h1 id = 'forum'>Welcome to the News Forum</h1>
 
 {(Array.isArray(state) ? state : []).map((c) => (

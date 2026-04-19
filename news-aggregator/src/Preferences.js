@@ -126,10 +126,7 @@ const Preferences = () => {
 
   return (
     <main className="preferences-page">
-      <nav
-        className="preferences-page__nav links"
-        aria-label="Preferences navigation"
-      >
+      <nav className="links" aria-label="Main">
         <Link to="/">Hi {user},</Link>
         <Link to="/users">Preferences</Link>
         <Link to="/users/frontpage">FrontPage</Link>

@@ -17,34 +17,10 @@
   box-sizing: border-box;
 }
 
-.preferences-page__nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 0.65rem 1.15rem;
-  margin-bottom: 1.75rem;
-  padding: 0.75rem 1rem;
-  border: 1px solid #e5e5e5;
-  border-radius: 10px;
-  width: 100%;
-  max-width: 48rem;
-  background: #fafafa;
-}
+/* Nav: shared `.links` in semantic.css */
 
-.preferences-page__nav a {
-  color: #006699;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: clamp(0.9rem, 2vw, 1.05rem);
-}
-
-.preferences-page__nav a:hover {
-  text-decoration: underline;
-}
-
-.preferences-page__title {
-  font-size: clamp(1.65rem, 4vw, 2.5rem);
+.preferences-page h1.preferences-page__title {
+  font-size: calc(clamp(1.65rem, 4vw, 2.5rem) + 2px);
   margin: 0 0 0.75rem;
   max-width: 36rem;
   font-family: var(--app-font, "Nunito", sans-serif);
@@ -52,7 +28,7 @@
 
 .preferences-page__lead,
 .preferences-page .topics {
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-size: calc(clamp(1rem, 2.5vw, 1.2rem) + 2px);
   margin: 0 auto 1.25rem;
   max-width: 34rem;
   width: 100%;
@@ -70,7 +46,7 @@
 .preferences-page__current-value {
   color: #228b22;
   font-weight: 700;
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-size: calc(clamp(1rem, 2.5vw, 1.25rem) + 2px);
   word-break: break-word;
   text-align: center;
   display: block;
@@ -78,7 +54,7 @@
 }
 
 .preferences-page__instruction {
-  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  font-size: calc(clamp(1rem, 2.5vw, 1.15rem) + 2px);
   margin: 0 auto 1rem;
   max-width: 34rem;
   width: 100%;
@@ -129,7 +105,7 @@
   }
 
   .preferences-page__check-label {
-    font-size: 0.9rem;
+    font-size: calc(0.9rem + 2px);
   }
 }
 
@@ -150,11 +126,16 @@
   width: 100%;
   margin: 0;
   padding: 0;
-  font-size: 1rem;
+  font-size: calc(1rem + 2px);
+  font-weight: 250;
   line-height: 1.35;
   cursor: pointer;
   text-align: left;
   position: static;
+}
+
+.preferences-page__check-label span {
+  font-weight: 250;
 }
 
 .preferences-page__check-label input[type="checkbox"] {
@@ -167,7 +148,7 @@
 
 .preferences-page__separator {
   margin: 0.75rem 0;
-  font-size: 1.2rem;
+  font-size: calc(1.2rem + 2px);
   font-weight: 600;
   font-family: var(--app-font, "Nunito", sans-serif);
 }
@@ -183,7 +164,7 @@
 
 .preferences-page__wildcard label {
   position: static;
-  font-size: 0.95rem;
+  font-size: calc(0.95rem + 2px);
 }
 
 .preferences-page__wildcard input {
@@ -193,7 +174,7 @@
   padding: 0.55rem 0.75rem;
   border: 1px solid #ccc;
   border-radius: 6px;
-  font-size: 1rem;
+  font-size: calc(1rem + 2px);
 }
 
 .preferences-page__search-display {
@@ -202,7 +183,7 @@
   width: 100%;
   max-width: 22rem;
   text-align: center;
-  font-size: 0.9rem;
+  font-size: calc(0.9rem + 2px);
   line-height: 1.35;
   color: #333;
   background: #f0f4f8;
@@ -237,6 +218,7 @@
   top: auto !important;
   left: auto !important;
   margin: 0 !important;
+  font-size: calc(17px + 2px);
   border: none;
   box-shadow: none;
   appearance: none;

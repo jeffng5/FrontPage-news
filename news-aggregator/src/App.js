@@ -3,7 +3,7 @@ import './css/App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Welcome from './MainComponents/Welcome'
 import Preferences from './MainComponents/Preferences'
-import FrontPage from './MainComponents/FrontPage'
+import FrontPage from './FrontPage'
 import Saved from './MainComponents/Saved'
 import Forum from './MainComponents/Forum'
 import Login from './MainComponents/Login'

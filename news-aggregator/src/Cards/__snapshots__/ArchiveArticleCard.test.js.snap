@@ -3,31 +3,27 @@
 exports[`matches snapshot 1`] = `
 <DocumentFragment>
   <article
-    class="divider-card"
+    class="article-card"
   >
-    <h2
-      class="archive-card archive-card__title"
+    <div
+      class="article-card__body"
     >
-      Title: 
-    </h2>
-    <p
-      class="archive-card"
-    >
-      Description: 
-    </p>
-    <p
-      class="archive-card"
-    >
-      <a
-        rel="noopener noreferrer"
-        target="_blank"
+      <h2
+        class="article-card__title"
       />
-    </p>
+    </div>
     <p
-      class="archive-card-1"
+      class="article-card__byline"
     >
-      By: 
+      by: Unknown
     </p>
+    <div
+      class="article-card__divider"
+    >
+      <hr
+        style="color: gray; background-color: gray; height: 3px;"
+      />
+    </div>
   </article>
 </DocumentFragment>
 `;

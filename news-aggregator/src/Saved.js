@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { getArticles } from "./api";
 import { jwtDecode } from "jwt-decode"
-import ArchiveArticleCard from "./ArchiveArticleCard"
+import ArchiveArticleCard from "./Cards/ArchiveArticleCard"
 import { Link, useNavigate } from 'react-router-dom'
 
 
@@ -47,7 +47,7 @@ const Saved = () => {
 if (userLoggedIn && username){
 return (
 <main className="saved-page">
-<div className='links'>
+<nav className="links" aria-label="Main">
         <Link to="/">Hi {username},</Link>
         <Link to = "/users">Preferences</Link>
         <Link to = "/users/frontpage">FrontPage</Link>
@@ -55,9 +55,10 @@ return (
         <Link to = "/users/archives">Archives</Link>
         <Link to = "/logout">Logout</Link>
    
-        </div>
+        </nav>
      <h1 className='archive-page'>YOUR ARCHIVE PAGE</h1>
 
+<section className="front-page__articles">
 {articles.map((c, i) => (
           <ArchiveArticleCard
             key={c.url || `archive-${i}`}
@@ -67,6 +68,7 @@ return (
             author={c.author}
           />
         ))}
+</section>
 </main>
 )
 }

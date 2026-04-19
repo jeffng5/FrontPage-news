@@ -20,29 +20,6 @@
   text-align: center;
 }
 
-.front-page__nav {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem 1.25rem;
-  margin-bottom: 2rem;
-  padding: 0.75rem 1rem;
-  background: #fff;
-  border-radius: 10px;
-  border: 1px solid #e0e0e0;
-}
-
-.front-page__nav a {
-  color: #006699;
-  font-weight: 500;
-  text-decoration: none;
-}
-
-.front-page__nav a:hover {
-  text-decoration: underline;
-}
-
 .front-page__header {
   margin-bottom: 1rem;
 }

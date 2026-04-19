@@ -4,11 +4,10 @@ import "./css/semantic.css";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import ArticleCard from "./ArticleCard";
-import ColoredLine from "./ColoredLine";
+import ColoredLine from "./SmallComponents/ColoredLine";
 import { Link, Navigate } from "react-router-dom";
 
 const apiKey = process.env.REACT_APP_APIKEY;
-console.log("apiKey", apiKey);
 
 function parseTopics(pref) {
   if (pref == null || pref === "") return [];
@@ -239,7 +238,7 @@ const FrontPage = () => {
   return (
     <main className="front-page">
       <div className="front-page__inner">
-        <nav className="front-page__nav links" aria-label="Main">
+        <nav className="links" aria-label="Main">
           <Link to="/">Hi {username},</Link>
           <Link to="/users">Preferences</Link>
           <Link to="/users/frontpage">FrontPage</Link>

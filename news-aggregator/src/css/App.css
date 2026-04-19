@@ -10,11 +10,11 @@ body {
 }
 
 b.title {
-  color: yellow;
+  color: #4a5568;
   /* Fluid on small screens; cap on large desktops */
   font-size: clamp(1.15rem, 5vw + 1.5vmin, 5rem);
   line-height: 1.1;
-  text-shadow: -1px -1px 0 black, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  text-shadow: none;
   max-width: 100%;
   overflow-wrap: anywhere;
   word-break: break-word;
@@ -92,47 +92,20 @@ p {
   margin: 0.5rem 0 1.5rem;
 }
 
-/* Archive article cards: width follows content, caps at page width */
-.divider-card {
+.logout-page {
   box-sizing: border-box;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  width: fit-content;
-  max-width: 100%;
-  margin: 0 auto 1.25rem;
-  padding: 1rem 1.25rem 1.15rem;
-  border: 1px solid #000;
-  border-radius: 10px;
-  background-color: #fff;
-  text-align: left;
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  align-items: center;
+  padding: 2rem 1rem 3rem;
+  text-align: center;
+  font-family: var(--app-font);
 }
 
-.archive-card__title {
-  font-size: 1.05rem;
-  font-weight: 700;
-  margin: 0;
-  line-height: 1.35;
-}
-
-.archive-card {
-  font-size: 1rem;
-  margin: 0;
-  font-weight: 600;
-  line-height: 1.4;
-}
-
-.archive-card a {
-  font-weight: 400;
-}
-
-.archive-card-1 {
-  font-size: 0.9rem;
-  margin: 0;
-  font-weight: 500;
-  opacity: 0.9;
+.logout-page .links {
+  flex-shrink: 0;
+  margin-bottom: 1.5rem;
 }
 
 /* Welcome — centered on all viewports */
@@ -194,12 +167,21 @@ p {
 }
 
 .welcome-page__actions {
+  box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem 2.5rem;
-  margin-top: 0.5rem;
+  gap: 0.75rem 1rem;
+  row-gap: 0.65rem;
+  width: 100%;
+  max-width: min(52rem, calc(100% - 2rem));
+  margin: 0.75rem auto 0;
+  padding: 0;
+  font-family: var(--app-font);
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 
 .welcome-page__link {
@@ -213,83 +195,94 @@ p {
   right: auto;
   bottom: auto;
   margin: 0;
+  padding: 0.55rem 1.15rem;
+  border-radius: 10px;
+  border: none;
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  font-weight: 600;
+  color: #0d3d4d;
+  background: rgba(0, 102, 153, 0.08);
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
-/* Phone: keep Welcome on one screen, no horizontal scroll */
+.welcome-page__link:hover .top,
+.welcome-page__link:hover .top-1 {
+  background: rgba(0, 102, 153, 0.16);
+  color: #006699;
+}
+
+/* Phone: larger type, full width, content starts higher on screen */
 @media (max-width: 540px) {
   .welcome-page {
-    justify-content: center;
-    padding: max(0.75rem, env(safe-area-inset-top, 0px))
-      max(0.85rem, env(safe-area-inset-right, 0px))
-      max(0.85rem, env(safe-area-inset-bottom, 0px))
-      max(0.85rem, env(safe-area-inset-left, 0px));
-    gap: 0.25rem;
+    justify-content: flex-start;
+    align-items: stretch;
+    padding-top: max(0.25rem, env(safe-area-inset-top, 0px));
+    padding-bottom: max(1.25rem, env(safe-area-inset-bottom, 0px));
+    padding-left: max(1rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1rem, env(safe-area-inset-right, 0px));
+    gap: 0.5rem;
   }
 
   .welcome-page .welcome {
-    margin-top: 0;
-    margin-bottom: 0.2rem;
-    font-size: clamp(1.1rem, 5.2vw, 1.5rem);
-    line-height: 1.2;
+    margin-top: 0.15rem;
+    margin-bottom: 0.35rem;
+    font-size: clamp(1.45rem, 6.5vw, 2.1rem);
+    line-height: 1.15;
   }
 
   .welcome-page .news-title {
-    margin: 0 0 0.5rem;
+    margin: 0 0 0.65rem;
     max-width: 100%;
-    padding: 0 0.25rem;
+    width: 100%;
+    padding: 0;
   }
 
   .welcome-page b.title {
-    font-size: clamp(1rem, 6.2vw, 1.65rem);
-    line-height: 1.12;
+    font-size: clamp(1.4rem, 8vw, 2.35rem);
+    line-height: 1.1;
     display: block;
-    padding: 0 0.35rem;
+    padding: 0;
+    width: 100%;
   }
 
   .welcome-page__tagline {
-    margin: 0 auto 1rem;
-    padding: 0 0.65rem;
-    font-size: clamp(0.88rem, 3.6vw, 1.05rem);
-    gap: 0.25rem;
+    margin: 0 auto 1.15rem;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(1.05rem, 4.5vw, 1.45rem);
+    gap: 0.35rem;
   }
 
   .welcome-page__actions {
     flex-direction: column;
-    gap: 0.65rem;
-    margin-top: 0.35rem;
+    gap: 0.85rem;
+    margin-top: 0.25rem;
     width: 100%;
-    max-width: 16rem;
+    max-width: 100%;
+    align-items: stretch;
   }
 
   .welcome-page__link {
     width: 100%;
     max-width: 100%;
+    display: block;
   }
 
   .welcome-page__link .top,
   .welcome-page__link .top-1 {
-    font-size: clamp(0.95rem, 3.8vw, 1.1rem);
-    padding: 0.35rem 0;
-  }
-}
-
-@media only screen and (min-device-width : 320px ) and (max-device-width: 480px) {
-  #top,
-  #top-1 {
-    bottom: 450px;
-    text-align: center;
-  }
-  .title,
-  .intro {
-    font-size: 15px;
-  }
-
-  .welcome {
-    font-size: 15px;
-    margin-bottom: 20px;
-  }
-
-  .mobile-users {
-    font-size: 15px;
+    font-size: clamp(1.15rem, 4.8vw, 1.45rem);
+    font-weight: 600;
+    padding: 0.95rem 1.15rem;
+    min-height: 3.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: none;
+    background: #e8f4f8;
+    color: #0d3d4d;
   }
 }

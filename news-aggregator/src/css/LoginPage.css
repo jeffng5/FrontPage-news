@@ -11,6 +11,11 @@
   text-align: center;
 }
 
+.login-page .links {
+  flex-shrink: 0;
+  margin-bottom: 1rem;
+}
+
 .login-page #login-welcome {
   margin: 0;
   padding: 0 0.5rem;
@@ -21,7 +26,7 @@
 }
 
 .login-page .ui.form {
-  margin: clamp(2.5rem, 14vh, 6rem) 0 0 !important;
+  margin: clamp(1rem, 5vh, 2.5rem) 0 0 !important;
   margin-right: 0 !important;
   width: 100%;
   max-width: 24rem;

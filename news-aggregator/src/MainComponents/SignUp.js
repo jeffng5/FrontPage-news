@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import '../css/semantic.css'
+import '../css/SignUpPage.css'
 import { Helpers } from "../helpers"
 import { FormInput, Form } from 'semantic-ui-react'
 import { useNavigate, Link } from 'react-router-dom'
@@ -50,7 +51,11 @@ const SignUp = () => {
 
 
   return (
-    <>
+    <main className="signup-page">
+      <nav className="links signup-page__nav" aria-label="Auth">
+        <Link to="/">Home</Link>
+        <Link to="/login">Login</Link>
+      </nav>
       <h1 id='login-welcome'>Please SignUp</h1>
       <Form>
         <div className='sign-in'>
@@ -89,7 +94,7 @@ const SignUp = () => {
         </div>
 
       </Form>
-    </>
+    </main>
   )
 }
 

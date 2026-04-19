@@ -12,7 +12,15 @@ it("matches snapshot", function() {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  test('testing component', ()=> {
-    const {getByText} = render( <ArchiveArticleCard />);
-    getByText('Title:')
-})
+  test('renders title as link when url is set', () => {
+    const { getByRole } = render(
+      <ArchiveArticleCard
+        title="Sample headline"
+        url="https://example.com/article"
+        description="A short summary."
+        author="Pat"
+      />
+    );
+    const link = getByRole('link', { name: /Sample headline/i });
+    expect(link).toHaveAttribute('href', 'https://example.com/article');
+  });
