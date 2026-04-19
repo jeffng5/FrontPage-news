@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { jwtDecode } from "jwt-decode"
 import '../css/forum.css'
 import { useNavigate } from 'react-router-dom'
-import { Helpers } from '../helpers'
+import { getForum } from '../api'
 import ForumArticleCard from '../Cards/ForumArticleCard'
 import { Link } from 'react-router-dom'
 
@@ -36,7 +36,7 @@ const Forum = () => {
 
     async function getForumArticles() {
         try {
-            const res = await Helpers.getForum();
+            const res = await getForum();
             setState(Array.isArray(res?.forumArticles) ? res.forumArticles : []);
         } catch (e) {
             console.error(e);

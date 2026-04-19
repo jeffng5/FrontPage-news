@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import '../css/semantic.css'
 import '../css/SignUpPage.css'
-import { Helpers } from "../helpers"
+import { signUpUser } from "../api"
 import { FormInput, Form } from 'semantic-ui-react'
 import { useNavigate, Link } from 'react-router-dom'
 
@@ -30,7 +30,7 @@ const SignUp = () => {
       let username = formData.username
       let password = formData.password
       let email = formData.email
-      let res = await Helpers.signUpUser(username, password, email);
+      let res = await signUpUser(username, password, email);
 
       if (res.token && res.user) {
         // localStorage.setItem("token", res.token)

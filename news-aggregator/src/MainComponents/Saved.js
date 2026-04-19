@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Helpers } from "../helpers"
+import { getArticles } from "../api"
 import { jwtDecode } from "jwt-decode"
 import ArchiveArticleCard from "../Cards/ArchiveArticleCard"
 import { Link, useNavigate } from 'react-router-dom'
@@ -32,7 +32,7 @@ const Saved = () => {
 
   async function archiveResults() {
     try {
-      const res = await Helpers.getArticles(username)
+      const res = await getArticles(username)
       setArticles(Array.isArray(res?.articles) ? res.articles : [])
     } catch (e) {
       console.error(e)
