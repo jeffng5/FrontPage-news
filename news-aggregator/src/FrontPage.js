@@ -57,6 +57,7 @@ const FrontPage = () => {
   const [asia, setAsia] = useState([]);
   const [uk, setUk] = useState([]);
   const [us, setUS] = useState([]);
+  const [food, setFood] = useState([]);
   const [business, setBusiness] = useState([]);
   const [entertainment, setEntertainment] = useState([]);
   const [general, setGeneral] = useState([]);
@@ -105,61 +106,67 @@ const FrontPage = () => {
         }
         if (hasTopic(topics, "Asia")) {
           const res1 = await axios.get(
-            `https://api.mediastack.com/v1/news?access_key=${apiKey}&countries=jp,cn,tw,hk,kr,id`
+            `https://api.mediastack.com/v1/news?access_key=${apiKey}&languages=en&countries=jp,cn,tw,hk,kr,id`
           );
           setAsia(res1?.data?.data ?? []);
         }
         if (hasTopic(topics, "U.K.")) {
           const res2 = await axios.get(
-            `https://api.mediastack.com/v1/news?access_key=${apiKey}&countries=gb`
+            `https://api.mediastack.com/v1/news?access_key=${apiKey}&languages=en&countries=gb`
           );
           setUk(res2?.data?.data ?? []);
         }
         if (hasTopic(topics, "US")) {
           const res3 = await axios.get(
-            `https://api.mediastack.com/v1/news?access_key=${apiKey}&countries=us`
+            `https://api.mediastack.com/v1/news?access_key=${apiKey}&languages=en&countries=us`
           );
           setUS(res3?.data?.data ?? []);
         }
         if (hasTopic(topics, "Business")) {
           const res4 = await axios.get(
-            `https://api.mediastack.com/v1/news?access_key=${apiKey}&keywords=business&limit=30`
+            `https://api.mediastack.com/v1/news?access_key=${apiKey}&languages=en&keywords=business&limit=30`
           );
           setBusiness(res4?.data?.data ?? []);
         }
         if (hasTopic(topics, "Entertainment")) {
           const res5 = await axios.get(
-            `https://api.mediastack.com/v1/news?access_key=${apiKey}&keywords=entertainment&limit=30`
+            `https://api.mediastack.com/v1/news?access_key=${apiKey}&keywords=entertainment&languages=en&limit=30`
           );
           setEntertainment(res5?.data?.data ?? []);
         }
+        if (hasTopic(topics, "Food")){
+          const resFood = await axios.get(
+            `https://api.mediastack.com/v1/news?access_key=${apiKey}&keywords=food,culinary&languages=en&limit=30`
+          );
+          setFood(resFood?.data?.data ?? []);
+        }
         if (hasTopic(topics, "General")) {
           const res6 = await axios.get(
-            `https://api.mediastack.com/v1/news?access_key=${apiKey}&keywords=worldnews&limit=30`
+            `https://api.mediastack.com/v1/news?access_key=${apiKey}&keywords=worldnews&languages=en&limit=30`
           );
           setGeneral(res6?.data?.data ?? []);
         }
         if (hasTopic(topics, "Health")) {
           const res7 = await axios.get(
-            `https://api.mediastack.com/v1/news?access_key=${apiKey}&keywords=health&limit=30`
+            `https://api.mediastack.com/v1/news?access_key=${apiKey}&keywords=health&languages=en&limit=30`
           );
           setHealth(res7?.data?.data ?? []);
         }
         if (hasTopic(topics, "Science")) {
           const res8 = await axios.get(
-            `https://api.mediastack.com/v1/news?access_key=${apiKey}&keywords=science&limit=30`
+            `https://api.mediastack.com/v1/news?access_key=${apiKey}&keywords=science&languages=en&limit=30`
           );
           setScience(res8?.data?.data ?? []);
         }
         if (hasTopic(topics, "Sports")) {
           const res9 = await axios.get(
-            `https://api.mediastack.com/v1/news?access_key=${apiKey}&keywords=sports&limit=30`
+            `https://api.mediastack.com/v1/news?access_key=${apiKey}&keywords=sports&languages=en&&limit=30`
           );
           setSports(res9?.data?.data ?? []);
         }
         if (hasTopic(topics, "Technology")) {
           const res10 = await axios.get(
-            `https://api.mediastack.com/v1/news?access_key=${apiKey}&keywords=technology&limit=30`
+            `https://api.mediastack.com/v1/news?access_key=${apiKey}&keywords=technology&languages=en&limit=30`
           );
           setTechnology(res10?.data?.data ?? []);
         }
@@ -170,7 +177,7 @@ const FrontPage = () => {
       try {
         const q = encodeURIComponent(term);
         const res11 = await axios.get(
-          `https://api.mediastack.com/v1/news?access_key=${apiKey}&keywords=${q}&limit=30`
+          `https://api.mediastack.com/v1/news?access_key=${apiKey}&keywords=${q}&lnguages=en&&limit=30`
         );
         setSearch(res11?.data?.data ?? []);
       } catch {
@@ -178,12 +185,10 @@ const FrontPage = () => {
       }
     };
 
-   
     getApi2();
     getApi();
     setSearch([]);
-
-  }, []);
+  }, [checkToken]);
 
   const [
     usDisplay,
@@ -191,6 +196,7 @@ const FrontPage = () => {
     asiaDisplay,
     businessDisplay,
     entertainmentDisplay,
+    foodDisplay,
     generalDisplay,
     ukDisplay,
     healthDisplay,
@@ -206,6 +212,7 @@ const FrontPage = () => {
         asia,
         business,
         entertainment,
+        food,
         general,
         uk,
         health,
@@ -220,6 +227,7 @@ const FrontPage = () => {
       asia,
       business,
       entertainment,
+      food,
       general,
       uk,
       health,
@@ -309,6 +317,17 @@ const FrontPage = () => {
               image={c.image}
               author={c.author}
             />
+          ))}
+
+          {foodDisplay.map((c, i) => (
+            <ArticleCard
+              title={c.title}
+              url={c.url}
+              key={c.url || `ent-${i}`}
+              description={c.description}
+              image={c.image}
+              author={c.author}
+              />
           ))}
 
           {generalDisplay.map((c, i) => (

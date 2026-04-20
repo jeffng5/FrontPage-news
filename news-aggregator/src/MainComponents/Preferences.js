@@ -34,7 +34,7 @@ const Preferences = () => {
   const [error, setError] = useState("")
   const [searchTopics, setSearchTopics] = useState([])
   const [userLoggedIn, setUserLoggedIn] = useState(false)
-  const [termState, setTermState] = useState('anything')
+  const [termState, setTermState] = useState('')
 
   useEffect(() => {
 
@@ -173,6 +173,13 @@ const Preferences = () => {
                 control={Checkbox}
                 label={<label>General</label>}
                 id='General' name='General' value="General" onChange={handleChange}
+              />
+            </h5>
+            <h5>
+              <FormField
+                control={Checkbox}
+                label={<label>Health</label>}
+                id='Health' name='Health' value="Health" onChange={handleChange}
               />
             </h5>
             <h5>
