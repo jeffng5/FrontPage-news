@@ -46,23 +46,26 @@ const Forum = () => {
 
     if (userLoggedIn && user) {
         return (
-            <>
+            <main className="forum-page">
                 <nav className="links" aria-label="Main">
                     <Link to="">Hi {username},</Link>
                     <Link to="/users">Preferences</Link>
                     <Link to="/users/frontpage">FrontPage</Link>
-                    <Link to="/users/forum">Forum</Link>
+                    <Link to="/users/forum" aria-current="page">Forum</Link>
                     <Link to="/users/archives">Archives</Link>
                     <Link to="/logout">Logout</Link>
                 </nav>
-                <h1 id='forum'>Welcome to the News Forum</h1>
+                <header className="forum-page__header">
+                    <h1 id='forum'>News Forum</h1>
+                    <span className="forum-page__count">{state.length} discussions</span>
+                </header>
 
                 {state.map(c => (
                     <ForumArticleCard
                         key={c.id}
                         title={c.title}
-                        description={c.summary}
-                        urlToImage={c.media}
+                        description={c.description || c.summary}
+                        urlToImage={c.urltoimage || c.urlToImage || c.media}
                         author={c.author}
                         url={c.url}
                         likes={c.likes}
@@ -74,7 +77,7 @@ const Forum = () => {
                 <div className='external-link'>
                     <Link to='/users/frontpage'>Go back to your Front Page</Link>
                 </div>
-            </>
+            </main>
         )
     }
 

@@ -8,6 +8,18 @@ import ColoredLine from "./SmallComponents/ColoredLine";
 import { Link, Navigate } from "react-router-dom";
 
 const apiKey = process.env.REACT_APP_APIKEY;
+const pendingSearchRequests = new Map();
+
+function fetchSearchArticles(term) {
+  if (!pendingSearchRequests.has(term)) {
+    const q = encodeURIComponent(term);
+    const request = axios.get(
+      `https://api.mediastack.com/v1/news?access_key=${apiKey}&keywords=${q}&languages=en&sort=published_desc&limit=30`
+    ).finally(() => pendingSearchRequests.delete(term));
+    pendingSearchRequests.set(term, request);
+  }
+  return pendingSearchRequests.get(term);
+}
 
 function parseTopics(pref) {
   if (pref == null || pref === "") return [];
@@ -53,6 +65,7 @@ const FrontPage = () => {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
   const [dateTime, setDateTime] = useState(new Date());
   const [search, setSearch] = useState([]);
+  const [searchError, setSearchError] = useState("");
   const [australia, setAustralia] = useState([]);
   const [asia, setAsia] = useState([]);
   const [uk, setUk] = useState([]);
@@ -90,16 +103,14 @@ const FrontPage = () => {
     const pref = localStorage.getItem("preferences");
     const topics = parseTopics(pref);
     const rawTerm = localStorage.getItem("freePreferences");
-    const term =
-      rawTerm != null && String(rawTerm).trim() !== ""
-        ? String(rawTerm).trim()
-        : null;
+    // Older preference saves stored a missing value as the string "null".
+    const term = rawTerm == null || rawTerm === "null" ? "" : rawTerm.trim();
 
     const getApi = async () => {
       try {
         if (hasTopic(topics, "Australia")) {
           const res = await axios.get(
-            `https://api.mediastack.com/v1/news?access_key=${apiKey}&countries=au`
+            `https://api.mediastack.com/v1/news?access_key=${apiKey}&languages=en&countries=au`
           );
           console.log("res", res);
           setAustralia(res?.data?.data ?? []);
@@ -175,19 +186,27 @@ const FrontPage = () => {
 
     const getApi2 = async () => {
       try {
-        const q = encodeURIComponent(term);
-        const res11 = await axios.get(
-          `https://api.mediastack.com/v1/news?access_key=${apiKey}&keywords=${q}&lnguages=en&&limit=30`
-        );
+        const res11 = await fetchSearchArticles(term);
+        if (res11?.data?.error) {
+          throw new Error(res11.data.error.info || "Search request failed.");
+        }
         setSearch(res11?.data?.data ?? []);
-      } catch {
+      } catch (error) {
         setSearch([]);
+        setSearchError(
+          error.response?.status === 429
+            ? "The news provider is limiting requests. Please try again shortly."
+            : error.response?.data?.error?.info || error.message || "Search request failed."
+        );
       }
     };
 
-    getApi2();
-    getApi();
     setSearch([]);
+    setSearchError("");
+    if (term !== "") {
+      getApi2();
+    }
+    getApi();
   }, [checkToken]);
 
   const [
@@ -263,6 +282,7 @@ const FrontPage = () => {
           <ColoredLine color="black" />
         </div>
 
+        {searchError && <p role="alert">Unable to load search articles: {searchError}</p>}
         <section className="front-page__articles">
           {usDisplay.map((c, i) => (
             <ArticleCard

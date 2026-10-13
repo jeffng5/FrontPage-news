@@ -35,7 +35,8 @@ const Comment = ({ id, onCommentPosted }) => {
     <>
       <form onSubmit={addComment}>
         <textarea
-          placeholder="Type comment here..."
+          placeholder="Add to the discussion..."
+          aria-label="Your comment"
           name="message"
           rows={3}
           value={body}

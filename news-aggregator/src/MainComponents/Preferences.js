@@ -25,16 +25,17 @@ const Preferences = () => {
   const navigate = useNavigate()
   let user = localStorage.getItem('username')
   let pref = localStorage.getItem('preferences')
-  let wildCard = localStorage.getItem('freePreferences')
+  const storedSearch = localStorage.getItem('freePreferences')
 
   console.log(pref)
 
-  const [showWildCard, setShowWildCard] = useState(wildCard)
   const [prefs, setPrefs] = useState(pref)
   const [error, setError] = useState("")
   const [searchTopics, setSearchTopics] = useState([])
   const [userLoggedIn, setUserLoggedIn] = useState(false)
-  const [termState, setTermState] = useState('')
+  const [termState, setTermState] = useState(
+    storedSearch == null || storedSearch === 'null' ? '' : storedSearch
+  )
 
   useEffect(() => {
 
@@ -49,12 +50,9 @@ const Preferences = () => {
   // function to intake search term and save to localStorage
   const handleForm = (e) => {
 
-    let wildCard = []
-    console.log(e.target.value)
-    wildCard.push(e.target.value)
-    localStorage.setItem('freePreferences', wildCard)
-    setShowWildCard(wildCard)
-    setTermState(wildCard)
+    const term = e.target.value
+    localStorage.setItem('freePreferences', term.trim())
+    setTermState(term)
     
 
   }
@@ -95,9 +93,7 @@ const Preferences = () => {
   const handleSave = () => {
     localStorage.setItem('preferences', searchTopics)
     setPrefs(searchTopics)
-    localStorage.setItem('freePreferences', wildCard)
-    setShowWildCard(wildCard)
-    setTermState(wildCard)
+    localStorage.setItem('freePreferences', termState.trim())
    
 
   }
@@ -221,8 +217,8 @@ const Preferences = () => {
           </div>
           <h2 className='separator'>or</h2>
             
-          <FormField><span className='anything'> <label for="Anything">Most popular articles by search term <h3 className='color'>{termState}</h3></label>
-            <input type='text' id='Anything' name='anything' placeholder={termState} onChange={handleForm} /></span>
+          <FormField><span className='anything'> <label htmlFor="Anything">Most popular articles by search term <h3 className='color'>{termState}</h3></label>
+            <input type='text' id='Anything' name='anything' placeholder='Search term' value={termState} onChange={handleForm} /></span>
           </FormField>
           
           <div className='button-preferences'>
@@ -230,7 +226,7 @@ const Preferences = () => {
               onClick={handleSave}>Save Preferences</button>
           </div>
           <div className="button-preferences">
-            <Link to='frontpage'><button className='save'>See Front Page News</button></Link>
+            <Link to='frontpage'><button type='button' className='save'>See Front Page News</button></Link>
           </div>
 
         </form>
