@@ -27,11 +27,11 @@ const Preferences = () => {
   let pref = localStorage.getItem('preferences')
   const storedSearch = localStorage.getItem('freePreferences')
 
-  console.log(pref)
-
-  const [prefs, setPrefs] = useState(pref)
+  const [prefs, setPrefs] = useState(pref || '')
   const [error, setError] = useState("")
-  const [searchTopics, setSearchTopics] = useState([])
+  const [searchTopics, setSearchTopics] = useState(() =>
+    (pref || '').split(',').map(topic => topic.trim()).filter(Boolean)
+  )
   const [userLoggedIn, setUserLoggedIn] = useState(false)
   const [termState, setTermState] = useState(
     storedSearch == null || storedSearch === 'null' ? '' : storedSearch
@@ -40,8 +40,7 @@ const Preferences = () => {
   useEffect(() => {
 
     checkToken();
-    throwError();
-  }, [pref])
+  }, [])
 
   useEffect(() => {
     console.log(userLoggedIn)
@@ -59,46 +58,29 @@ const Preferences = () => {
 
 
   // capture the checkbox input
-  function handleChange(e) {
-    // protected with username/sign in
-    if (user) {
-
-      e.preventDefault();
-      //checks if checkbox is checked
-      if (e.target.checked === true) {
-        setSearchTopics([...searchTopics, e.target.value])
-      }
-      //handles if the box is unchecked
-      if (e.target.checked === false) {
-         
-        setSearchTopics(searchTopics.filter(topic => topic !== e.target.value))
-      }
-      console.log(searchTopics)
+  function handleChange(e, { value, checked }) {
+    if (!user) return
+    if (checked && !searchTopics.includes(value) && searchTopics.length >= 5) {
+      setError('Please select at most 5 topics')
+      return
     }
-  }
-  // function to catch if user selects more than 5 topics and defaults back to 0
-  function throwError() {
-    if (searchTopics.length > 5) {
-      setError("Please select at most 5 topics")
-      localStorage.setItem('preferences', "")
-      
-
-    } else {
-      setError("")
-    }
+    setError('')
+    setSearchTopics(previous => checked
+      ? previous.includes(value) ? previous : [...previous, value]
+      : previous.filter(topic => topic !== value))
   }
 
 
  // function to ingest the topics and search term into localStorage 
   const handleSave = () => {
-    localStorage.setItem('preferences', searchTopics)
-    setPrefs(searchTopics)
+    const topics = searchTopics.join(',')
+    localStorage.setItem('preferences', topics)
+    setPrefs(topics)
     localStorage.setItem('freePreferences', termState.trim())
    
 
   }
 
-  console.log(prefs)
     
   //////////////////////////////// CHECKBOX FORM ////////////////////////////////
 
@@ -120,7 +102,7 @@ const Preferences = () => {
         </nav>
         <h1 className='prefs'>News Topic Preferences</h1>
 
-        <h3 className='topics'> Your current Topics Are:</h3> <h3 className='color'>{pref}</h3>
+        <h3 className='topics'> Your current Topics Are:</h3> <h3 className='color'>{prefs}</h3>
         <h4>{error}</h4>
         <h3 className='topics'> Please Choose One (Up to 5): </h3>
         <form>
@@ -133,56 +115,56 @@ const Preferences = () => {
               <FormField
                 control={Checkbox}
                 label={<label className='choices'>Australia</label>}
-                id='Australia' name='Australia' value="Australia" onChange={handleChange}
+                id='Australia' name='Australia' value="Australia" checked={searchTopics.includes('Australia')} onChange={handleChange}
               />
             </h5>
             <h5>
               <FormField
                 control={Checkbox}
                 label={<label>Asia</label>}
-                id='Asia' name='Asia' value="Asia" onChange={handleChange}
+                id='Asia' name='Asia' value="Asia" checked={searchTopics.includes('Asia')} onChange={handleChange}
               />
             </h5>
             <h5>
               <FormField
                 control={Checkbox}
                 label={<label>Business</label>}
-                id='Business' name='Business' value="Business" onChange={handleChange}
+                id='Business' name='Business' value="Business" checked={searchTopics.includes('Business')} onChange={handleChange}
               />
             </h5>
             <h5>
               <FormField
                 control={Checkbox}
                 label={<label>Entertainment</label>}
-                id='Entertainment' name='Entertainment' value="Entertainment" onChange={handleChange}
+                id='Entertainment' name='Entertainment' value="Entertainment" checked={searchTopics.includes('Entertainment')} onChange={handleChange}
               />
             </h5>
             <h5>
               <FormField
                 control={Checkbox}
                 label={<label>Food</label>}
-                id='Food' name='Food' value="Food" onChange={handleChange}
+                id='Food' name='Food' value="Food" checked={searchTopics.includes('Food')} onChange={handleChange}
               />
             </h5>
             <h5>
               <FormField
                 control={Checkbox}
                 label={<label>General</label>}
-                id='General' name='General' value="General" onChange={handleChange}
+                id='General' name='General' value="General" checked={searchTopics.includes('General')} onChange={handleChange}
               />
             </h5>
             <h5>
               <FormField
                 control={Checkbox}
                 label={<label>Health</label>}
-                id='Health' name='Health' value="Health" onChange={handleChange}
+                id='Health' name='Health' value="Health" checked={searchTopics.includes('Health')} onChange={handleChange}
               />
             </h5>
             <h5>
               <FormField
                 control={Checkbox}
                 label={<label>U.K.</label>}
-                id='U.K' name='U.K' value="U.K." onChange={handleChange}
+                id='U.K' name='U.K' value="U.K." checked={searchTopics.includes('U.K.')} onChange={handleChange}
               />
             </h5>
 
@@ -190,28 +172,28 @@ const Preferences = () => {
               <FormField
                 control={Checkbox}
                 label={<label>Science</label>}
-                id='Science' name='Science' value="Science" onChange={handleChange}
+                id='Science' name='Science' value="Science" checked={searchTopics.includes('Science')} onChange={handleChange}
               />
             </h5>
             <h5>
               <FormField
                 control={Checkbox}
                 label={<label>Sports</label>}
-                id='Sports' name='Sports' value="Sports" onChange={handleChange}
+                id='Sports' name='Sports' value="Sports" checked={searchTopics.includes('Sports')} onChange={handleChange}
               />
             </h5>
             <h5>
               <FormField
                 control={Checkbox}
                 label={<label>Technology</label>}
-                id='Technology' name='Technology' value="Technology" onChange={handleChange}
+                id='Technology' name='Technology' value="Technology" checked={searchTopics.includes('Technology')} onChange={handleChange}
               />
             </h5>
             <h5>
               <FormField
                 control={Checkbox}
                 label={<label>U.S.</label>}
-                id='US' name='US' value="US" onChange={handleChange}
+                id='US' name='US' value="US" checked={searchTopics.includes('US')} onChange={handleChange}
               />
             </h5>
           </div>
