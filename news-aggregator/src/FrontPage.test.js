@@ -1,6 +1,6 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
-import { MemoryRouter } from "react-router-dom";
+import { render, screen, fireEvent } from "@testing-library/react";
+import { MemoryRouter, Link } from "react-router-dom";
 import axios from "axios";
 import FrontPage from "./FrontPage";
 
@@ -121,4 +121,35 @@ test("shows provider errors returned in a successful HTTP response", async () =>
   axios.get.mockResolvedValueOnce({ data: { error: { info: "Request quota exceeded" } } });
   renderFrontPage();
   expect(await screen.findByRole("alert")).toHaveTextContent("Request quota exceeded");
+});
+
+test("refetches topics on navigation changes and removes old articles", async () => {
+  localStorage.setItem("preferences", "");
+  axios.get.mockImplementation(url => {
+    const topic = new URL(url).searchParams.get("keywords");
+    return Promise.resolve({ data: { data: [{ ...mediastackArticle, title: `${topic} headline` }] } });
+  });
+  render(
+    <MemoryRouter initialEntries={[{ pathname: "/users/frontpage", state: { topics: "Sports" } }]}>
+      <Link to="/users/frontpage" state={{ topics: "Science" }}>Change topics</Link>
+      <FrontPage />
+    </MemoryRouter>
+  );
+  expect(await screen.findByText("sports headline")).toBeInTheDocument();
+  fireEvent.click(screen.getByRole("link", { name: "Change topics" }));
+  expect(await screen.findByText("science headline")).toBeInTheDocument();
+  expect(screen.queryByText("sports headline")).not.toBeInTheDocument();
+  expect(axios.get).toHaveBeenCalledTimes(2);
+});
+
+test("one failed topic does not prevent other topics from loading", async () => {
+  localStorage.setItem("preferences", "Sports,Science");
+  axios.get.mockImplementation(url =>
+    new URL(url).searchParams.get("keywords") === "science"
+      ? Promise.reject(new Error("Request failed"))
+      : Promise.resolve({ data: { data: [mediastackArticle] } })
+  );
+  renderFrontPage();
+  expect(await screen.findByText("Test headline")).toBeInTheDocument();
+  expect(await screen.findByRole("alert")).toHaveTextContent("Science");
 });

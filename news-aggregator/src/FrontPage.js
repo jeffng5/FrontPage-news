@@ -5,7 +5,7 @@ import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import ArticleCard from "./ArticleCard";
 import ColoredLine from "./SmallComponents/ColoredLine";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const apiKey = process.env.REACT_APP_APIKEY;
 const pendingSearchRequests = new Map();
@@ -29,9 +29,6 @@ function parseTopics(pref) {
     .filter(Boolean);
 }
 console.log("topics", parseTopics(localStorage.getItem("preferences")));
-function hasTopic(topics, name) {
-  return topics.includes(name);
-}
 
 /** Normalized title for dedupe, or null when title is missing/blank (those rows are not deduped). */
 function articleTitleDedupeKey(article) {
@@ -61,11 +58,15 @@ function dedupeArticlesByTitle(...sectionLists) {
 
 const FrontPage = () => {
   const username = localStorage.getItem("username");
+  const location = useLocation();
+  const selectedTopics = location.state?.topics ?? localStorage.getItem("preferences") ?? "";
+  const selectedTerm = localStorage.getItem("freePreferences") ?? "";
 
   const [userLoggedIn, setUserLoggedIn] = useState(false);
   const [dateTime, setDateTime] = useState(new Date());
   const [search, setSearch] = useState([]);
   const [searchError, setSearchError] = useState("");
+  const [topicErrors, setTopicErrors] = useState([]);
   const [australia, setAustralia] = useState([]);
   const [asia, setAsia] = useState([]);
   const [uk, setUk] = useState([]);
@@ -97,91 +98,44 @@ const FrontPage = () => {
   }, []);
 
   useEffect(() => {
+    let active = true;
     setDateTime(new Date());
     checkToken();
 
-    const pref = localStorage.getItem("preferences");
-    const topics = parseTopics(pref);
-    const rawTerm = localStorage.getItem("freePreferences");
+    const topics = parseTopics(selectedTopics);
+    const rawTerm = selectedTerm;
     // Older preference saves stored a missing value as the string "null".
     const term = rawTerm == null || rawTerm === "null" ? "" : rawTerm.trim();
 
+    const topicRequests = [
+      ["Australia", { countries: "au" }, setAustralia],
+      ["Asia", { countries: "jp,cn,tw,hk,kr,id" }, setAsia],
+      ["U.K.", { countries: "gb" }, setUk],
+      ["US", { countries: "us" }, setUS],
+      ["Business", { keywords: "business", limit: "30" }, setBusiness],
+      ["Entertainment", { keywords: "entertainment", limit: "30" }, setEntertainment],
+      ["Food", { keywords: "food,culinary", limit: "30" }, setFood],
+      ["General", { keywords: "worldnews", limit: "30" }, setGeneral],
+      ["Health", { keywords: "health", limit: "30" }, setHealth],
+      ["Science", { keywords: "science", limit: "30" }, setScience],
+      ["Sports", { keywords: "sports", limit: "30" }, setSports],
+      ["Technology", { keywords: "technology", limit: "30" }, setTechnology],
+    ];
+
     const getApi = async () => {
-      try {
-        if (hasTopic(topics, "Australia")) {
-          const res = await axios.get(
-            `https://api.mediastack.com/v1/news?access_key=${apiKey}&languages=en&countries=au`
-          );
-          console.log("res", res);
-          setAustralia(res?.data?.data ?? []);
+      setTopicErrors([]);
+      topicRequests.forEach(([, , setArticles]) => setArticles([]));
+      await Promise.all(topicRequests.map(async ([topic, query, setArticles]) => {
+        if (!topics.includes(topic)) return;
+        const params = new URLSearchParams({ access_key: apiKey, languages: "en", ...query });
+        try {
+          const response = await axios.get(`https://api.mediastack.com/v1/news?${params}`);
+          if (response?.data?.error) throw new Error(response.data.error.info || "Request failed.");
+          if (active) setArticles(response?.data?.data ?? []);
+        } catch {
+          if (active) setTopicErrors(previous => [...previous, topic]);
         }
-        if (hasTopic(topics, "Asia")) {
-          const res1 = await axios.get(
-            `https://api.mediastack.com/v1/news?access_key=${apiKey}&languages=en&countries=jp,cn,tw,hk,kr,id`
-          );
-          setAsia(res1?.data?.data ?? []);
-        }
-        if (hasTopic(topics, "U.K.")) {
-          const res2 = await axios.get(
-            `https://api.mediastack.com/v1/news?access_key=${apiKey}&languages=en&countries=gb`
-          );
-          setUk(res2?.data?.data ?? []);
-        }
-        if (hasTopic(topics, "US")) {
-          const res3 = await axios.get(
-            `https://api.mediastack.com/v1/news?access_key=${apiKey}&languages=en&countries=us`
-          );
-          setUS(res3?.data?.data ?? []);
-        }
-        if (hasTopic(topics, "Business")) {
-          const res4 = await axios.get(
-            `https://api.mediastack.com/v1/news?access_key=${apiKey}&languages=en&keywords=business&limit=30`
-          );
-          setBusiness(res4?.data?.data ?? []);
-        }
-        if (hasTopic(topics, "Entertainment")) {
-          const res5 = await axios.get(
-            `https://api.mediastack.com/v1/news?access_key=${apiKey}&keywords=entertainment&languages=en&limit=30`
-          );
-          setEntertainment(res5?.data?.data ?? []);
-        }
-        if (hasTopic(topics, "Food")){
-          const resFood = await axios.get(
-            `https://api.mediastack.com/v1/news?access_key=${apiKey}&keywords=food,culinary&languages=en&limit=30`
-          );
-          setFood(resFood?.data?.data ?? []);
-        }
-        if (hasTopic(topics, "General")) {
-          const res6 = await axios.get(
-            `https://api.mediastack.com/v1/news?access_key=${apiKey}&keywords=worldnews&languages=en&limit=30`
-          );
-          setGeneral(res6?.data?.data ?? []);
-        }
-        if (hasTopic(topics, "Health")) {
-          const res7 = await axios.get(
-            `https://api.mediastack.com/v1/news?access_key=${apiKey}&keywords=health&languages=en&limit=30`
-          );
-          setHealth(res7?.data?.data ?? []);
-        }
-        if (hasTopic(topics, "Science")) {
-          const res8 = await axios.get(
-            `https://api.mediastack.com/v1/news?access_key=${apiKey}&keywords=science&languages=en&limit=30`
-          );
-          setScience(res8?.data?.data ?? []);
-        }
-        if (hasTopic(topics, "Sports")) {
-          const res9 = await axios.get(
-            `https://api.mediastack.com/v1/news?access_key=${apiKey}&keywords=sports&languages=en&&limit=30`
-          );
-          setSports(res9?.data?.data ?? []);
-        }
-        if (hasTopic(topics, "Technology")) {
-          const res10 = await axios.get(
-            `https://api.mediastack.com/v1/news?access_key=${apiKey}&keywords=technology&languages=en&limit=30`
-          );
-          setTechnology(res10?.data?.data ?? []);
-        }
-      } catch {}
+      }));
     };
 
     const getApi2 = async () => {
@@ -190,8 +144,9 @@ const FrontPage = () => {
         if (res11?.data?.error) {
           throw new Error(res11.data.error.info || "Search request failed.");
         }
-        setSearch(res11?.data?.data ?? []);
+        if (active) setSearch(res11?.data?.data ?? []);
       } catch (error) {
+        if (!active) return;
         setSearch([]);
         setSearchError(
           error.response?.status === 429
@@ -207,7 +162,8 @@ const FrontPage = () => {
       getApi2();
     }
     getApi();
-  }, [checkToken]);
+    return () => { active = false; };
+  }, [checkToken, selectedTopics, selectedTerm]);
 
   const [
     usDisplay,
@@ -282,6 +238,7 @@ const FrontPage = () => {
           <ColoredLine color="black" />
         </div>
 
+        {topicErrors.length > 0 && <p role="alert">Unable to load articles for: {topicErrors.join(", ")}. Please try again shortly.</p>}
         {searchError && <p role="alert">Unable to load search articles: {searchError}</p>}
         <section className="front-page__articles">
           {usDisplay.map((c, i) => (

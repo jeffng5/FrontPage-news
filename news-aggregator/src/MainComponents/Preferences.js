@@ -93,7 +93,7 @@ const Preferences = () => {
         <nav className="links" aria-label="Main">
           <Link to="">Hi {user},</Link>
           <Link to="/users">Preferences</Link>
-          <Link to='/users/frontpage'>FrontPage</Link>
+          <Link to='/users/frontpage' state={{ topics: searchTopics.join(',') }}>FrontPage</Link>
           <Link to="/users/forum">Forum</Link>
 
           <Link to="/users/archives">Archives</Link>
@@ -208,7 +208,7 @@ const Preferences = () => {
               onClick={handleSave}>Save Preferences</button>
           </div>
           <div className="button-preferences">
-            <Link to='frontpage'><button type='button' className='save'>See Front Page News</button></Link>
+            <Link to='frontpage' state={{ topics: searchTopics.join(',') }}><button type='button' className='save'>See Front Page News</button></Link>
           </div>
 
         </form>

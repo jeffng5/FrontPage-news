@@ -76,3 +76,25 @@ test("saving without a term replaces the legacy null value with blank", () => {
   fireEvent.click(screen.getByRole("button", { name: "Save Preferences" }));
   expect(localStorage.getItem("freePreferences")).toBe("");
 });
+
+test.each(["See Front Page News", "FrontPage"])(
+  "uses all current topic selections through %s without saving",
+  async (destination) => {
+    localStorage.setItem("preferences", "US");
+    renderPreferences();
+    fireEvent.click(screen.getByRole("checkbox", { name: "U.S." }));
+    ["Business", "Entertainment", "Food", "Health", "Science"].forEach(name =>
+      fireEvent.click(screen.getByRole("checkbox", { name }))
+    );
+    await act(async () => {
+      fireEvent.click(screen.getByRole(destination === "FrontPage" ? "link" : "button", { name: destination }));
+    });
+    expect(axios.get).toHaveBeenCalledTimes(5);
+    const queries = axios.get.mock.calls.map(([url]) => new URL(url).searchParams);
+    expect(queries.map(params => params.get("keywords"))).toEqual([
+      "business", "entertainment", "food,culinary", "health", "science",
+    ]);
+    expect(queries.every(params => params.get("languages") === "en")).toBe(true);
+    expect(localStorage.getItem("preferences")).toBe("US");
+  }
+);
