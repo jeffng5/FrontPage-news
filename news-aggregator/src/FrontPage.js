@@ -107,35 +107,79 @@ const FrontPage = () => {
     // Older preference saves stored a missing value as the string "null".
     const term = rawTerm == null || rawTerm === "null" ? "" : rawTerm.trim();
 
-    const topicRequests = [
-      ["Australia", { countries: "au" }, setAustralia],
-      ["Asia", { countries: "jp,cn,tw,hk,kr,id" }, setAsia],
-      ["U.K.", { countries: "gb" }, setUk],
-      ["US", { countries: "us" }, setUS],
-      ["Business", { keywords: "business", limit: "30" }, setBusiness],
-      ["Entertainment", { keywords: "entertainment", limit: "30" }, setEntertainment],
-      ["Food", { keywords: "food,culinary", limit: "30" }, setFood],
-      ["General", { keywords: "worldnews", limit: "30" }, setGeneral],
-      ["Health", { keywords: "health", limit: "30" }, setHealth],
-      ["Science", { keywords: "science", limit: "30" }, setScience],
-      ["Sports", { keywords: "sports", limit: "30" }, setSports],
-      ["Technology", { keywords: "technology", limit: "30" }, setTechnology],
-    ];
+    async function fetchTopic(topic, url, setArticles) {
+      try {
+        const response = await axios.get(url);
+        if (response?.data?.error) throw new Error(response.data.error.info || "Request failed.");
+        if (active) setArticles(response?.data?.data ?? []);
+      } catch {
+        if (active) setTopicErrors(previous => [...previous, topic]);
+      }
+    }
 
     const getApi = async () => {
       setTopicErrors([]);
-      topicRequests.forEach(([, , setArticles]) => setArticles([]));
-      await Promise.all(topicRequests.map(async ([topic, query, setArticles]) => {
-        if (!topics.includes(topic)) return;
-        const params = new URLSearchParams({ access_key: apiKey, languages: "en", ...query });
-        try {
-          const response = await axios.get(`https://api.mediastack.com/v1/news?${params}`);
-          if (response?.data?.error) throw new Error(response.data.error.info || "Request failed.");
-          if (active) setArticles(response?.data?.data ?? []);
-        } catch {
-          if (active) setTopicErrors(previous => [...previous, topic]);
-        }
-      }));
+      setAustralia([]);
+      setAsia([]);
+      setUk([]);
+      setUS([]);
+      setBusiness([]);
+      setEntertainment([]);
+      setFood([]);
+      setGeneral([]);
+      setHealth([]);
+      setScience([]);
+      setSports([]);
+      setTechnology([]);
+
+      if (topics.includes("Australia")) {
+        await fetchTopic("Australia",
+          `https://api.mediastack.com/v1/news?access_key=${apiKey}&languages=en&countries=au`, setAustralia);
+      }
+      if (topics.includes("Asia")) {
+        await fetchTopic("Asia",
+          `https://api.mediastack.com/v1/news?access_key=${apiKey}&languages=en&countries=jp,cn,tw,hk,kr,id`, setAsia);
+      }
+      if (topics.includes("U.K.")) {
+        await fetchTopic("U.K.",
+          `https://api.mediastack.com/v1/news?access_key=${apiKey}&languages=en&countries=gb`, setUk);
+      }
+      if (topics.includes("US")) {
+        await fetchTopic("US",
+          `https://api.mediastack.com/v1/news?access_key=${apiKey}&languages=en&countries=us`, setUS);
+      }
+      if (topics.includes("Business")) {
+        await fetchTopic("Business",
+          `https://api.mediastack.com/v1/news?access_key=${apiKey}&languages=en&keywords=business&limit=30`, setBusiness);
+      }
+      if (topics.includes("Entertainment")) {
+        await fetchTopic("Entertainment",
+          `https://api.mediastack.com/v1/news?access_key=${apiKey}&keywords=entertainment&languages=en&limit=30`, setEntertainment);
+      }
+      if (topics.includes("Food")) {
+        await fetchTopic("Food",
+          `https://api.mediastack.com/v1/news?access_key=${apiKey}&keywords=food,culinary&languages=en&limit=30`, setFood);
+      }
+      if (topics.includes("General")) {
+        await fetchTopic("General",
+          `https://api.mediastack.com/v1/news?access_key=${apiKey}&keywords=worldnews&languages=en&limit=30`, setGeneral);
+      }
+      if (topics.includes("Health")) {
+        await fetchTopic("Health",
+          `https://api.mediastack.com/v1/news?access_key=${apiKey}&keywords=health&languages=en&limit=30`, setHealth);
+      }
+      if (topics.includes("Science")) {
+        await fetchTopic("Science",
+          `https://api.mediastack.com/v1/news?access_key=${apiKey}&keywords=science&languages=en&limit=30`, setScience);
+      }
+      if (topics.includes("Sports")) {
+        await fetchTopic("Sports",
+          `https://api.mediastack.com/v1/news?access_key=${apiKey}&keywords=sports&languages=en&limit=30`, setSports);
+      }
+      if (topics.includes("Technology")) {
+        await fetchTopic("Technology",
+          `https://api.mediastack.com/v1/news?access_key=${apiKey}&keywords=technology&languages=en&limit=30`, setTechnology);
+      }
     };
 
     const getApi2 = async () => {
