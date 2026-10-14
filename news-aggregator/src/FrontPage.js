@@ -116,7 +116,7 @@ const FrontPage = () => {
         if (active) setTopicErrors(previous => [...previous, topic]);
       }
     }
-
+    console.log("topics", topics)
     const getApi = async () => {
       setTopicErrors([]);
       setAustralia([]);
